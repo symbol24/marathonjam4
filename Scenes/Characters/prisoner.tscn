@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy1v615dqau2k"]
+
+[ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="1_amvce"]
+[ext_resource type="Script" path="res://Code/Characters/prisoner.gd" id="1_lhevl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmlgc"]
+radius = 16.0
+
+[node name="Character" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_lhevl")
+
+[node name="sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_amvce")
+
+[node name="move_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lmlgc")

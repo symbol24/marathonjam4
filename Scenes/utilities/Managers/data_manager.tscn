@@ -1,0 +1,14 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd11qq4g440l0"]
+
+[ext_resource type="Script" path="res://Code/Utilities/Managers/data_manager.gd" id="1_lq4dl"]
+[ext_resource type="PackedScene" uid="uid://dy1v615dqau2k" path="res://Scenes/Characters/prisoner.tscn" id="2_5eqfh"]
+[ext_resource type="PackedScene" uid="uid://d2i3gvwl5202p" path="res://Scenes/Elements/prisoner_target_move.tscn" id="3_vx1em"]
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="4_xdoc1"]
+[ext_resource type="Resource" uid="uid://bbuskpml4e4no" path="res://Data/Prisoners/test_01.tres" id="5_mmaba"]
+[ext_resource type="Resource" uid="uid://dco85fcqx644u" path="res://Data/Prisoners/test_02.tres" id="6_mcgbj"]
+
+[node name="DataManager" type="Node" groups=["data_manager"]]
+script = ExtResource("1_lq4dl")
+prisoner_scene = ExtResource("2_5eqfh")
+prisoner_target_move_scene = ExtResource("3_vx1em")
+prisoners = Array[ExtResource("4_xdoc1")]([ExtResource("5_mmaba"), ExtResource("6_mcgbj")])

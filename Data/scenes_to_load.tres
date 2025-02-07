@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ScenesToLoadData" load_steps=6 format=3 uid="uid://wtbnt80h848w"]
+
+[ext_resource type="Script" path="res://Code/Utilities/scene_data.gd" id="1_fft4t"]
+[ext_resource type="Script" path="res://Code/Utilities/scenes_to_load_data.gd" id="1_mky8d"]
+[ext_resource type="Resource" uid="uid://b4846x1vk0k4" path="res://Data/SceneData/logos.tres" id="2_rn6of"]
+[ext_resource type="Resource" uid="uid://dvwjcec6a1757" path="res://Data/SceneData/main_menu.tres" id="3_eyeu4"]
+[ext_resource type="Resource" uid="uid://dblp0ow1jk40o" path="res://Data/SceneData/test_level.tres" id="4_00wid"]
+
+[resource]
+script = ExtResource("1_mky8d")
+scenes_to_load = Array[ExtResource("1_fft4t")]([ExtResource("2_rn6of"), ExtResource("3_eyeu4"), ExtResource("4_00wid")])

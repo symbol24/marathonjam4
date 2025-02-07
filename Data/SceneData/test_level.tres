@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=2 format=3 uid="uid://dblp0ow1jk40o"]
+
+[ext_resource type="Script" path="res://Code/Utilities/scene_data.gd" id="1_dcd0t"]
+
+[resource]
+script = ExtResource("1_dcd0t")
+id = "test_level"
+path = "res://Scenes/PlayLevels/test_level.tscn"

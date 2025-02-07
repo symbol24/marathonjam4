@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2i3gvwl5202p"]
+
+[ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="1_18dja"]
+
+[node name="PrisonerTargetMove" type="Sprite2D"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_18dja")

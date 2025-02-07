@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://bgwviw5n7vjqs"]
+
+[ext_resource type="Script" path="res://Code/Utilities/boot.gd" id="1_ot87g"]
+[ext_resource type="Texture2D" uid="uid://bqjnhl0d4q5tv" path="res://Textures/Logos/Godot-Spritesheet.png" id="2_1rato"]
+[ext_resource type="PackedScene" uid="uid://bq5fgkfe8c02r" path="res://Scenes/utilities/Managers/manager_loader.tscn" id="2_swvv4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avtll"]
+atlas = ExtResource("2_1rato")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycqjq"]
+atlas = ExtResource("2_1rato")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igi2t"]
+atlas = ExtResource("2_1rato")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lvwh"]
+atlas = ExtResource("2_1rato")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gni5f"]
+atlas = ExtResource("2_1rato")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gukju"]
+atlas = ExtResource("2_1rato")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k6xx"]
+atlas = ExtResource("2_1rato")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52qi3"]
+atlas = ExtResource("2_1rato")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rvuo"]
+atlas = ExtResource("2_1rato")
+region = Rect2(2048, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6huo8"]
+atlas = ExtResource("2_1rato")
+region = Rect2(2304, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfmwl"]
+atlas = ExtResource("2_1rato")
+region = Rect2(2560, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lebmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avtll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycqjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igi2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lvwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gni5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gukju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k6xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52qi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rvuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6huo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfmwl")
+}],
+"loop": false,
+"name": &"godot",
+"speed": 18.0
+}]
+
+[node name="Boot" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ot87g")
+manager_loader = ExtResource("2_swvv4")
+
+[node name="godot" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_lebmv")
+animation = &"godot"
+autoplay = "godot"
+frame = 10
+frame_progress = 1.0

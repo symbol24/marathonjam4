@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=2 format=3 uid="uid://dvwjcec6a1757"]
+
+[ext_resource type="Script" path="res://Code/Utilities/scene_data.gd" id="1_buu5m"]
+
+[resource]
+script = ExtResource("1_buu5m")
+id = "main_menu"
+path = "res://Scenes/MainMenu/main_menu.tscn"
