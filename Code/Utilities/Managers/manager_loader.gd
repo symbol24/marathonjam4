@@ -7,6 +7,7 @@ const SAVEMANAGER:String = "res://Scenes/utilities/Managers/save_manager.tscn"
 const INPUTMANAGER:String = "res://Scenes/utilities/Managers/input_manager.tscn"
 const SPAWNMANAGER:String = "res://Scenes/utilities/Managers/spawn_manager.tscn"
 const GAMEMANAGER:String = "res://Scenes/utilities/Managers/game_manager.tscn"
+const UIMANAGER:String = "res://Scenes/utilities/Managers/ui_manager.tscn"
 
 
 var progress:Array = []
@@ -43,6 +44,8 @@ func _load_manager(_manager_name:String) -> void:
 			to_load = SPAWNMANAGER
 		"game_manager":
 			to_load = GAMEMANAGER
+		"ui_manager":
+			to_load = UIMANAGER
 		_:
 			pass
 	

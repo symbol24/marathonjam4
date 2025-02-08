@@ -20,7 +20,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if loading:
 		load_status = ResourceLoader.load_threaded_get_status(to_load)
-		if not progress.is_empty(): print("Loading ", scene_name, " at ", floori(progress[0]*100))
+		if not progress.is_empty(): Debug.log("Loading ", scene_name, " at ", floori(progress[0]*100))
 		if load_status == ResourceLoader.THREAD_LOAD_LOADED: _complete_load()
 
 
@@ -30,7 +30,6 @@ func _load_scene(_scene_name:String = "") -> void:
 		var data:SceneData = scenes_to_load.get_scene_by_name(scene_name)
 		if data != null: to_load = data.path
 		else: to_load = ""
-		print(to_load)
 		loading = true
 		Signals.ToggleLoadingScreen.emit(true)
 		ResourceLoader.load_threaded_request(to_load)

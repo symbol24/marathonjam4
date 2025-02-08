@@ -22,6 +22,8 @@ func _loading(manager_name:String) -> void:
 		"data_manager":
 			Signals.LoadManager.emit("save_manager")
 		"save_manager":
+			Signals.LoadManager.emit("ui_manager")
+		"ui_manager":
 			Signals.LoadManager.emit("scene_manager")
 		"scene_manager":
 			await get_tree().create_timer(3).timeout

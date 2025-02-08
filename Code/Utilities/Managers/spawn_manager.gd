@@ -34,3 +34,4 @@ func _spawn_a_prisoner(prisoner_data:PrisonerData) -> void:
 		current_count += 1
 		if current_count >= to_spawn_count:
 			Signals.AllPrisonersSpawned.emit()
+		Debug.log("Prisoner %s spawned" % prisoner_data.display_name)
