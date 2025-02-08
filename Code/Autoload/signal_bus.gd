@@ -23,6 +23,7 @@ signal ToggleLoadingScreen(display:bool)
 
 
 # Input Manager
-signal MouseEnterPrisoner(prisoner)
+signal MouseEnterPrisoner(prisoner:Prisoner)
 signal MouseExitPrisoner()
-signal PrisonerMoveTo(prisoner, pos:Vector2)
+signal PrisonerMoveTo(prisoner:Prisoner, target:TextureRect)
+signal SelectPrisoner(prisoner:Prisoner)

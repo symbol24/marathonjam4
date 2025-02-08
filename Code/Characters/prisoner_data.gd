@@ -7,3 +7,7 @@ class_name PrisonerData extends Resource
 
 @export var base_hp:int = 100
 @export var base_movement_speed:float = 400
+
+
+var move_speed:float:
+	get: return base_movement_speed

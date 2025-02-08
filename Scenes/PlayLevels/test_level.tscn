@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://i8jt15hht6av"]
+[gd_scene load_steps=4 format=3 uid="uid://i8jt15hht6av"]
 
 [ext_resource type="Script" path="res://Code/PlayLevels/play_level.gd" id="1_emf0l"]
+[ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="2_ed4ye"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hkvji"]
+vertices = PackedVector2Array(1904.97, 1062.04, 30.8828, 1070.95, 850.938, 579.359, 1902.02, 19.0469, 705, 574.688, 18.1172, 14.2266, 695.023, 29.3203, 705, 430.563, 838.18, 433.172, 694.758, 25.9297, 817.602, 432.789, 725.148, 431.43, 725.203, 432.07, 743.258, 432.227, 817.68, 435.531)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(4, 1, 5, 6, 7), PackedInt32Array(3, 2, 8), PackedInt32Array(9, 3, 8, 6), PackedInt32Array(7, 6, 8, 10), PackedInt32Array(11, 7, 10), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(13, 10, 14)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(8, 4, 21, 1081, 1915, 1072, 1912, 9, 684, 16, 716, 442, 829, 443, 840, 569, 715, 565, 715, 441, 828, 446, 815, 22)])
 
 [node name="TestLevel" type="Control" groups=["play_level"]]
 layout_mode = 3
@@ -10,3 +16,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emf0l")
+
+[node name="nav_region" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_hkvji")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(776, 502)
+texture = ExtResource("2_ed4ye")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
