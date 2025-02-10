@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://i8jt15hht6av"]
+[gd_scene load_steps=5 format=3 uid="uid://i8jt15hht6av"]
 
 [ext_resource type="Script" path="res://Code/PlayLevels/play_level.gd" id="1_emf0l"]
 [ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="2_ed4ye"]
+[ext_resource type="PackedScene" uid="uid://dajw7qd55a3mm" path="res://Scenes/Elements/Interactibles/pickup_item.tscn" id="3_84dlm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hkvji"]
 vertices = PackedVector2Array(1904.97, 1062.04, 30.8828, 1070.95, 850.938, 579.359, 1902.02, 19.0469, 705, 574.688, 18.1172, 14.2266, 695.023, 29.3203, 705, 430.563, 838.18, 433.172, 694.758, 25.9297, 817.602, 432.789, 725.148, 431.43, 725.203, 432.07, 743.258, 432.227, 817.68, 435.531)
@@ -25,3 +26,6 @@ position = Vector2(776, 502)
 texture = ExtResource("2_ed4ye")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="pickup_item" parent="." instance=ExtResource("3_84dlm")]
+position = Vector2(787, 1021)

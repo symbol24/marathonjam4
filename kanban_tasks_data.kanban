@@ -10,12 +10,17 @@
 		{
 			"uuid": "8508de65-42e2-4821-93e7-ec4ef07d042d",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"dfc5fe74-fa82-4111-9e2f-b27e577fe08c",
+				"7f530ffa-2f22-436a-8410-2ddc8db40c97"
+			]
 		},
 		{
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"e8505081-a0c4-43ec-9876-3617d8d82967"
+			]
 		},
 		{
 			"uuid": "e5e74ad0-c93c-49b8-bc0e-dfa2d4e023e5",
@@ -23,7 +28,36 @@
 			"tasks": []
 		}
 	],
-	"tasks": [],
+	"tasks": [
+		{
+			"uuid": "e8505081-a0c4-43ec-9876-3617d8d82967",
+			"title": "interactibles",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "dfc5fe74-fa82-4111-9e2f-b27e577fe08c",
+			"title": "prisoner interact",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "992d92ee-6662-42b1-b2d7-be0169e00941",
+			"title": "New task",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "7f530ffa-2f22-436a-8410-2ddc8db40c97",
+			"title": "remove move target icon on new move order",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		}
+	],
 	"layout": {
 		"columns": [
 			[

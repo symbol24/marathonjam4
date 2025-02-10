@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://p0wyhd2q5hfc"]
+
+[ext_resource type="Script" path="res://Code/UI/small_popup.gd" id="1_tykol"]
+
+[node name="SmallPopup" type="Control"]
+custom_minimum_size = Vector2(640, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -880.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tykol")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(640, 200)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="text" type="RichTextLabel" parent="PanelContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "hello
+this is text
+"
+fit_content = true

@@ -52,6 +52,10 @@ play_level=""
 scene_manager=""
 game_manager=""
 
+[gui]
+
+theme/custom="res://Data/default_theme.tres"
+
 [input]
 
 mouse_left={

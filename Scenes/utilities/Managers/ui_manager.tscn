@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dew6agc1588r3"]
+[gd_scene load_steps=4 format=3 uid="uid://dew6agc1588r3"]
 
 [ext_resource type="PackedScene" uid="uid://ckkvhmv1d5svm" path="res://Scenes/Debug/debug_command_menu.tscn" id="1_8qu8m"]
+[ext_resource type="PackedScene" uid="uid://cklw3jbgocru3" path="res://Scenes/UI/popup_manager.tscn" id="1_n6wcb"]
 [ext_resource type="Script" path="res://Code/Debug/debug_ui.gd" id="1_qmtsh"]
 
 [node name="UiManager" type="CanvasLayer"]
+
+[node name="Popup_manager" parent="." instance=ExtResource("1_n6wcb")]
+mouse_filter = 2
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("1_qmtsh")
 
 [node name="DebugCommandMenu" parent="Debug" instance=ExtResource("1_8qu8m")]
