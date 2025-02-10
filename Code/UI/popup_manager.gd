@@ -59,11 +59,12 @@ func _display_small_popup(_timer:int, _text:String) -> void:
 	else: Debug.error("Small Popup null")
 
 
-func _display_context_popup(_id:String, _options:Dictionary, _pos:Vector2) -> void:
+func _display_context_popup(interactible:Interactible) -> void:
+	Debug.log("Display context")
 	if context_popup == null and data_manager != null:
 		context_popup = data_manager.context_popup.instantiate()
 		add_child.call_deferred(context_popup)
 		if not context_popup.is_node_ready(): await context_popup.ready
 
-	if context_popup != null: context_popup.display_popup(_id, _options, data_manager, _pos)
+	if context_popup != null: context_popup.display_popup(interactible, data_manager)
 	else: Debug.error("Context Popup null")

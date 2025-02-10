@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8amyvhddmc3c" path="res://Textures/Icons/popup_icon_warning.png" id="2_tph52"]
 [ext_resource type="Texture2D" uid="uid://cm3m5rkwbc6p2" path="res://Textures/Icons/popup_icon_error.png" id="3_oricw"]
 
-[node name="LargePopup" type="Control"]
+[node name="LargePopup" type="Control" groups=["element"]]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
 anchors_preset = 15

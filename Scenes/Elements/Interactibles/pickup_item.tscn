@@ -2,27 +2,34 @@
 
 [ext_resource type="Script" path="res://Code/Elements/Interactibles/pickup_item.gd" id="1_wepwl"]
 [ext_resource type="Script" path="res://Code/Elements/Interactibles/interactible_data.gd" id="2_rjv75"]
-[ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="3_hs1as"]
+[ext_resource type="Texture2D" uid="uid://bsotrokkrx82l" path="res://Textures/Debug/temp_icon.png" id="3_8f5dg"]
 
 [sub_resource type="Resource" id="Resource_j4y64"]
 script = ExtResource("2_rjv75")
 type = 0
 base_state = 1
 base_interact_time = 0.0
+options = {
+"pickup": "pickup"
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5af6i"]
-radius = 13.0384
+radius = 8.0
 
-[node name="pickup_item" type="Area2D"]
+[node name="pickup_item" type="Area2D" groups=["element"]]
 script = ExtResource("1_wepwl")
 data = SubResource("Resource_j4y64")
-
-[node name="sprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-modulate = Color(0.0705882, 1, 0, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_hs1as")
 
 [node name="interact_collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_5af6i")
+
+[node name="interact_btn" type="TextureButton" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture_normal = ExtResource("3_8f5dg")
+texture_pressed = ExtResource("3_8f5dg")

@@ -5,21 +5,22 @@ const ACCELERATION:float = 400
 const FRICTION:float = 1500
 
 
-@onready var sprite: Sprite2D = %sprite
-@onready var mouse_area: Area2D = %mouse_area
-@onready var selected: Panel = %selected
+@onready var prisoner_btn: TextureButton = %prisoner_btn
 @onready var nav_agent: NavigationAgent2D = %nav_agent
 
 var data:PrisonerData = null
 var move_to:bool = false
 var target:TextureRect = null
+var top_left:Vector2:
+	get: return Vector2(global_position.x + prisoner_btn.position.x, global_position.y + prisoner_btn.position.y)
+var bottom_right:Vector2:
+	get: return Vector2(global_position.x + (prisoner_btn.size.x / 2), global_position.y + (prisoner_btn.size.y / 2))
 
 
 func _ready() -> void:
-	Signals.SelectPrisoner.connect(_set_selected)
 	Signals.PrisonerMoveTo.connect(_set_move_to_target)
-	mouse_area.mouse_entered.connect(_mouse_enter)
-	mouse_area.mouse_exited.connect(_mouse_exit)
+	Signals.SelectPrisoner.connect(_check_selected)
+	prisoner_btn.pressed.connect(_select_prisoner)
 	nav_agent.path_desired_distance = 1.0
 	nav_agent.target_desired_distance = 1.0
 	nav_agent.path_max_distance = 1.0
@@ -38,29 +39,12 @@ func _physics_process(delta: float) -> void:
 			target.queue_free()
 			target = null
 			
-		move_and_slide()
-	
+		move_and_slide()	
 
 
 func _move_to(delta:float, current_velocity:Vector2, _direction:Vector2, multi:float = 1.0) -> Vector2:
 	var speed:float = data.move_speed if data else 100.0
 	return current_velocity.move_toward(_direction * speed, delta * multi)
-	
-
-
-func _mouse_enter() -> void:
-	Signals.MouseEnterPrisoner.emit(self)
-	#Debug.log("Mouse entered ", name)
-
-
-func _mouse_exit() -> void:
-	Signals.MouseExitPrisoner.emit()
-	#Debug.log("Mouse exited ", name)
-
-
-func _set_selected(_prisoner:Prisoner = null) -> void:
-	if _prisoner == self: selected.show()
-	else: selected.hide()
 
 
 func _set_move_to_target(prisoner:Prisoner, _target:TextureRect) -> void:
@@ -72,3 +56,12 @@ func _set_move_to_target(prisoner:Prisoner, _target:TextureRect) -> void:
 			target = null
 			nav_agent.target_position = global_position
 			Debug.log("Navigation target unreachable.")
+
+
+func _select_prisoner() -> void:
+	Signals.SelectPrisoner.emit(self)
+
+
+func _check_selected(_prisoner:Prisoner) -> void:
+	if _prisoner != self:
+		prisoner_btn.set_pressed_no_signal(false)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/UI/context_menu_button.gd" id="1_33u2i"]
 
-[node name="ContextMenuButton" type="Button"]
+[node name="ContextMenuButton" type="Button" groups=["element"]]
 clip_contents = true
 custom_minimum_size = Vector2(100, 30)
 text = "context_btn"

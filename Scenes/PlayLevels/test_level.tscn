@@ -28,4 +28,4 @@ texture = ExtResource("2_ed4ye")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
 [node name="pickup_item" parent="." instance=ExtResource("3_84dlm")]
-position = Vector2(787, 1021)
+position = Vector2(374, 423)

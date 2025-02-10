@@ -7,7 +7,6 @@
 [node name="UiManager" type="CanvasLayer"]
 
 [node name="Popup_manager" parent="." instance=ExtResource("1_n6wcb")]
-mouse_filter = 2
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3

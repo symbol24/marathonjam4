@@ -1,23 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy1v615dqau2k"]
+[gd_scene load_steps=5 format=3 uid="uid://dy1v615dqau2k"]
 
-[ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="1_amvce"]
 [ext_resource type="Script" path="res://Code/Characters/prisoner.gd" id="1_lhevl"]
+[ext_resource type="Texture2D" uid="uid://bqs30mvusxy24" path="res://Textures/Debug/temp_icon_diamond.png" id="2_gd1bx"]
+[ext_resource type="Texture2D" uid="uid://dkqol38if7hq" path="res://Textures/Debug/temp_icon_diamond_selected.png" id="3_owyae"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmlgc"]
 radius = 16.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mvjuf"]
-radius = 23.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juvcv"]
-draw_center = false
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.0580004, 0.552263, 0.318746, 1)
-
-[node name="Prisoner" type="CharacterBody2D"]
+[node name="Prisoner" type="CharacterBody2D" groups=["element"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_lhevl")
@@ -25,27 +15,16 @@ script = ExtResource("1_lhevl")
 [node name="nav_agent" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 
-[node name="sprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_amvce")
-
 [node name="move_collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lmlgc")
 
-[node name="mouse_area" type="Area2D" parent="."]
+[node name="prisoner_btn" type="TextureButton" parent="."]
 unique_name_in_owner = true
-collision_layer = 32768
-collision_mask = 0
-
-[node name="mouse_area_collider" type="CollisionShape2D" parent="mouse_area"]
-shape = SubResource("CircleShape2D_mvjuf")
-
-[node name="selected" type="Panel" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_juvcv")
+custom_minimum_size = Vector2(16, 16)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+texture_normal = ExtResource("2_gd1bx")
+texture_pressed = ExtResource("3_owyae")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/UI/context_popup.gd" id="1_ul0ay"]
 
-[node name="ContextPopup" type="Control"]
+[node name="ContextPopup" type="Control" groups=["element"]]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 3
 anchors_preset = 15
