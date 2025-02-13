@@ -1,16 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://3o01guq6u8vq"]
+[gd_scene load_steps=6 format=3 uid="uid://3o01guq6u8vq"]
 
 [ext_resource type="Script" path="res://Code/Elements/Interactibles/interactible.gd" id="1_jrw8f"]
+[ext_resource type="Script" path="res://Code/Elements/Interactibles/interactible_data.gd" id="2_3mjts"]
 [ext_resource type="Texture2D" uid="uid://cmhg0pdtei08u" path="res://Textures/Debug/temp_icon_square.png" id="2_7ybye"]
+
+[sub_resource type="Resource" id="Resource_f4x27"]
+script = ExtResource("2_3mjts")
+type = 1
+base_state = 2
+base_interact_time = 3.0
+options = {
+"close": "close",
+"open": "open",
+"search": "search"
+}
+required_key = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa44h"]
 
-[node name="OpenItem" type="Area2D"]
+[node name="OpenItem" type="Area2D" groups=["element"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_jrw8f")
+data = SubResource("Resource_f4x27")
 
-[node name="collider" type="CollisionShape2D" parent="."]
+[node name="interact_collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_sa44h")
 
 [node name="interact_btn" type="TextureButton" parent="."]

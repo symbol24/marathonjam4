@@ -12,11 +12,14 @@ base_interact_time = 0.0
 options = {
 "pickup": "pickup"
 }
+required_key = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5af6i"]
 radius = 8.0
 
 [node name="pickup_item" type="Area2D" groups=["element"]]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_wepwl")
 data = SubResource("Resource_j4y64")
 

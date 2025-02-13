@@ -1,13 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://i8jt15hht6av"]
+[gd_scene load_steps=10 format=3 uid="uid://i8jt15hht6av"]
 
 [ext_resource type="Script" path="res://Code/PlayLevels/play_level.gd" id="1_emf0l"]
 [ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="2_ed4ye"]
 [ext_resource type="PackedScene" uid="uid://dajw7qd55a3mm" path="res://Scenes/Elements/Interactibles/pickup_item.tscn" id="3_84dlm"]
+[ext_resource type="PackedScene" uid="uid://3o01guq6u8vq" path="res://Scenes/Elements/Interactibles/open_item.tscn" id="4_iutrr"]
+[ext_resource type="Script" path="res://Code/Elements/Interactibles/interactible_data.gd" id="5_magcv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hkvji"]
 vertices = PackedVector2Array(1904.97, 1062.04, 30.8828, 1070.95, 850.938, 579.359, 1902.02, 19.0469, 705, 574.688, 18.1172, 14.2266, 695.023, 29.3203, 705, 430.563, 838.18, 433.172, 694.758, 25.9297, 817.602, 432.789, 725.148, 431.43, 725.203, 432.07, 743.258, 432.227, 817.68, 435.531)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(4, 1, 5, 6, 7), PackedInt32Array(3, 2, 8), PackedInt32Array(9, 3, 8, 6), PackedInt32Array(7, 6, 8, 10), PackedInt32Array(11, 7, 10), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(13, 10, 14)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(8, 4, 21, 1081, 1915, 1072, 1912, 9, 684, 16, 716, 442, 829, 443, 840, 569, 715, 565, 715, 441, 828, 446, 815, 22)])
+
+[sub_resource type="Resource" id="Resource_h3x2u"]
+script = ExtResource("5_magcv")
+type = 1
+base_state = 2
+base_interact_time = 3.0
+options = {
+"close": "close",
+"open": "open"
+}
+required_key = 0
+
+[sub_resource type="Resource" id="Resource_u2rpt"]
+script = ExtResource("5_magcv")
+type = 1
+base_state = 0
+base_interact_time = 3.0
+options = {
+"close": "close",
+"open": "open"
+}
+required_key = 1
+
+[sub_resource type="Resource" id="Resource_t3c4q"]
+resource_local_to_scene = true
+script = ExtResource("5_magcv")
+type = 2
+base_state = 1
+base_interact_time = 3.0
+options = {
+"search": "search"
+}
+required_key = 0
 
 [node name="TestLevel" type="Control" groups=["play_level"]]
 layout_mode = 3
@@ -29,3 +64,15 @@ texture = ExtResource("2_ed4ye")
 
 [node name="pickup_item" parent="." instance=ExtResource("3_84dlm")]
 position = Vector2(374, 423)
+
+[node name="OpenItem" parent="." instance=ExtResource("4_iutrr")]
+position = Vector2(377, 531)
+data = SubResource("Resource_h3x2u")
+
+[node name="locked_item" parent="." instance=ExtResource("4_iutrr")]
+position = Vector2(251, 499)
+data = SubResource("Resource_u2rpt")
+
+[node name="searchable_item" parent="." instance=ExtResource("4_iutrr")]
+position = Vector2(515, 494)
+data = SubResource("Resource_t3c4q")

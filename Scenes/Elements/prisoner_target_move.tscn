@@ -1,11 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2i3gvwl5202p"]
+[gd_scene load_steps=3 format=3 uid="uid://d2i3gvwl5202p"]
 
-[ext_resource type="Texture2D" uid="uid://djhjqrug82e77" path="res://icon.svg" id="1_18dja"]
+[ext_resource type="Texture2D" uid="uid://com831v3426at" path="res://Textures/Debug/temp_icon_target.png" id="1_6taut"]
+[ext_resource type="Script" path="res://Code/Elements/prisoner_target_move.gd" id="2_tvsev"]
 
 [node name="PrisonerTargetMove" type="TextureRect"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 118.0
-offset_bottom = 118.0
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_18dja")
+texture = ExtResource("1_6taut")
+script = ExtResource("2_tvsev")

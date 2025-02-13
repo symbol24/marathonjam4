@@ -11,3 +11,9 @@ class_name PrisonerData extends Resource
 
 var move_speed:float:
 	get: return base_movement_speed
+
+var inventory:Array = []
+
+
+func add_items_to_intentory(new_items:Array = []) -> void:
+	inventory.append_array(new_items)

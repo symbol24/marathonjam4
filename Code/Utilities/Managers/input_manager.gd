@@ -27,10 +27,11 @@ func _set_prisoner_move_target(event:InputEvent) -> void:
 	if data_manager:
 		var target_icon = data_manager.prisoner_target_move_scene.instantiate()
 		add_child(target_icon)
+		pos = pos - (target_icon.texture.get_size()/2)
 		target_icon.global_position = pos
 		target_icon.name = "target_" + str(target_count)
 		target_count += 1
-		Signals.PrisonerMoveTo.emit(active_prisoner, target_icon)
+		Signals.PrisonerMoveTo.emit(active_prisoner, target_icon.global_position)
 
 
 func _display_context_menu() -> void:

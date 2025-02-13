@@ -90,9 +90,9 @@ ai_time={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player characters"
 2d_physics/layer_3="interactables"
-2d_physics/layer_4="collectibles"
-2d_physics/layer_5="enemies"
-2d_physics/layer_16="mouse"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="player attacks"
+2d_physics/layer_6="enemy attacks"
 
 [rendering]
 

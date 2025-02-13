@@ -27,9 +27,14 @@ signal MouseEnterPrisoner(prisoner:Prisoner)
 signal MouseExitPrisoner()
 signal MouseEnteredInteractible(interactible:Interactible)
 signal MouseExitedInteractible()
-signal PrisonerMoveTo(prisoner:Prisoner, target:TextureRect)
-signal SelectPrisoner(prisoner:Prisoner)
 signal MouseRightPressed()
+
+
+# Prisoner
+signal PrisonerMoveTo(prisoner:Prisoner, target:Vector2)
+signal PrisonerReachedTarget(prisoner:Prisoner)
+signal SelectPrisoner(prisoner:Prisoner)
+signal PrisonerInteract(interaction:String, interactible:Interactible)
 
 
 # UI
@@ -37,6 +42,10 @@ signal PopupResult(id:String, result:bool)
 signal DisplayPopup(type:PopupManager.Type, id:String, severity:PopupManager.Severity, title:String, text:String, timer:int)
 signal DisplayContextPopup(interactible:Interactible)
 signal ContextPopupToggled(id:String, displayed:bool)
-signal ContextPopupResult(key_selection:String)
+signal ContextPopupResult(interactible:Interactible, key_selection:String)
 signal ContextMenuBtnPressed(id:String)
 signal CloseContextMenu()
+
+
+# Interactibles
+signal InteractibleStateUpdate(data:InteractibleData, state:Interactible.State)

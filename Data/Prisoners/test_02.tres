@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_njt7p")
 id = "test_02"
-display_name = "test_o2"
+display_name = "test_02"
 base_hp = 100
 base_movement_speed = 400.0

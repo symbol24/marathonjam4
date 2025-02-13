@@ -11,6 +11,7 @@ var top_left:Vector2:
 	get: return global_position
 var bottom_right:Vector2:
 	get: return global_position + size
+var interactible:Interactible = null
 
 
 func _ready() -> void:
@@ -20,8 +21,9 @@ func _ready() -> void:
 	modulate = Color.TRANSPARENT
 
 
-func display_popup(interactible:Interactible, data_manager) -> void:
+func display_popup(_interactible:Interactible, data_manager) -> void:
 	if data_manager != null:
+		interactible = _interactible
 		for key in interactible.data.options.keys():
 			var new_btn:ContextMenuButton = data_manager.context_button.instantiate()
 			vbox.add_child.call_deferred(new_btn)
@@ -53,6 +55,8 @@ func _clear_context_menu() -> void:
 
 func _button_pressed(_id:String) -> void:
 	if option_id.has(_id):
+		Signals.ContextPopupResult.emit(interactible, _id)
+		interactible = null
 		_close()
 
 

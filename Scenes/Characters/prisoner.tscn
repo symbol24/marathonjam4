@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy1v615dqau2k"]
+[gd_scene load_steps=7 format=3 uid="uid://dy1v615dqau2k"]
 
 [ext_resource type="Script" path="res://Code/Characters/prisoner.gd" id="1_lhevl"]
 [ext_resource type="Texture2D" uid="uid://bqs30mvusxy24" path="res://Textures/Debug/temp_icon_diamond.png" id="2_gd1bx"]
 [ext_resource type="Texture2D" uid="uid://dkqol38if7hq" path="res://Textures/Debug/temp_icon_diamond_selected.png" id="3_owyae"]
+[ext_resource type="Texture2D" uid="uid://bsotrokkrx82l" path="res://Textures/Debug/temp_icon.png" id="4_sl3op"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmlgc"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_siccq"]
+radius = 16.0312
 
 [node name="Prisoner" type="CharacterBody2D" groups=["element"]]
 collision_layer = 2
@@ -28,3 +32,22 @@ offset_bottom = 8.0
 toggle_mode = true
 texture_normal = ExtResource("2_gd1bx")
 texture_pressed = ExtResource("3_owyae")
+
+[node name="area_detector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 4
+
+[node name="area_collider" type="CollisionShape2D" parent="area_detector"]
+shape = SubResource("CircleShape2D_siccq")
+
+[node name="action_progress" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_top = -30.0
+offset_right = 8.0
+offset_bottom = -14.0
+rounded = true
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("4_sl3op")
