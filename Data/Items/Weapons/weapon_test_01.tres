@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b03t3a8qp7kes"]
+
+[ext_resource type="Script" path="res://Code/Items/item_data.gd" id="1_6l0s4"]
+
+[resource]
+script = ExtResource("1_6l0s4")
+item_id = "weapon_test_01"
+can_stack = false
+display_name = "weapon_test_01"
+display_text = "weapon_test_01"
+type = 2

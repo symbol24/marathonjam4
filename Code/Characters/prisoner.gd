@@ -4,6 +4,7 @@ class_name Prisoner extends CharacterBody2D
 const ACCELERATION:float = 400
 const FRICTION:float = 1500
 
+@export var display_debug:bool = false
 
 @onready var prisoner_btn: TextureButton = %prisoner_btn
 @onready var nav_agent: NavigationAgent2D = %nav_agent
@@ -49,6 +50,7 @@ func _ready() -> void:
 	nav_agent.target_desired_distance = 1.0
 	nav_agent.path_max_distance = 1.0
 	action_progress.hide()
+	if data == null: data = PrisonerData.new()
 
 
 func _process(delta: float) -> void:
@@ -57,7 +59,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not actions.is_empty() and current_action == null:
-		Debug.log("getting new action")
+		if display_debug: Debug.log("getting new action")
 		current_action = actions.pop_front()
 
 	if current_action != null:
@@ -67,6 +69,7 @@ func _physics_process(delta: float) -> void:
 			if not nav_agent.is_target_reached():
 				if direction != Vector2.ZERO:
 					velocity = _move_to(delta, velocity, direction, ACCELERATION)
+					velocity = velocity.clamp(-data.move_speed * Vector2(1,1), data.move_speed * Vector2(1,1))
 			
 			else:
 				velocity = _move_to(delta, velocity, direction, FRICTION)
@@ -89,10 +92,10 @@ func _add_move_to_action(prisoner:Prisoner, _target:Vector2) -> void:
 		nav_agent.target_position = new_action.target_pos
 		if not nav_agent.is_target_reachable():
 			nav_agent.target_position = global_position
-			Debug.log("Navigation target unreachable.")
+			if display_debug: Debug.log("Navigation target unreachable.")
 		else:
 			actions.append(new_action)
-			Debug.log("Action move to added to actions on prisoner %s." % self.name)
+			if display_debug: Debug.log("Action move to added to actions on prisoner %s." % self.name)
 
 
 func _select_prisoner() -> void:
@@ -115,7 +118,7 @@ func _add_interact_action(_action:String, interactible:Interactible) -> void:
 		interact_action.action = _action
 		interact_action.interactible = interactible
 		actions.append(interact_action)
-		Debug.log("Action %s added to actions on prisoner %s." % [_action, self.name])
+		if display_debug: Debug.log("Action %s added to actions on prisoner %s." % [_action, self.name])
 
 
 func _complete_move_action() -> void:
@@ -138,7 +141,7 @@ func _start_interact_action() -> void:
 		
 
 func _area_entered(area:Area2D) -> void:
-	Debug.log("Entered area: ", area.name)
+	if display_debug: Debug.log("Entered area: ", area.name)
 	area_in_id = area.name
 
 
@@ -155,7 +158,7 @@ func _finish_interaction() -> void:
 				result = int_data.attempt_to_pick_up()
 				if result.has("result") and result["result"]:
 					if result.has("loot") and not result["loot"].is_empty():
-						data.add_items_to_intentory(result["loot"])
+						if data != null: data.add_items_to_intentory(result["loot"])
 						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "pickup_loot", PopupManager.Severity.NORMAL, "", "Items picked up", 3)
 					else:
 						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "pickup_loot", PopupManager.Severity.NORMAL, "", "Nothing picked up", 3)
@@ -165,7 +168,7 @@ func _finish_interaction() -> void:
 				if result.has("result") and result["result"]:
 					if result.has("loot") and not result["loot"].is_empty():
 						# TODO: display list of items and allow choosing which to take
-						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "searched_loot", PopupManager.Severity.NORMAL, "", "Items picked up", 3)
+						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "searched_loot", PopupManager.Severity.NORMAL, "", "Missing popup to show selection of items.", 3)
 					else:
 						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "searched_loot", PopupManager.Severity.NORMAL, "", "Nothing to find", 3)
 					Signals.InteractibleStateUpdate.emit(int_data, Interactible.State.DEPLETED)
@@ -177,7 +180,7 @@ func _finish_interaction() -> void:
 					Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "seal_thing", PopupManager.Severity.NORMAL, "", "Unable to complete action.", 3)
 
 
-		Debug.log("Action complete")
+		if display_debug: Debug.log("Action complete")
 
 		current_action.is_active = false
 		current_action = null

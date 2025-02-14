@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://c7w31dpw8i0b2"]
+
+[ext_resource type="Script" path="res://Code/Items/item_data.gd" id="1_84k8d"]
+
+[resource]
+script = ExtResource("1_84k8d")
+item_id = "junk_test_02"
+can_stack = true
+display_name = "junk_test_02"
+display_text = "junk_test_02"
+type = 4

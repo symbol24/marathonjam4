@@ -4,7 +4,6 @@ class_name LootTable extends Resource
 @export var table:Array[LootItem] = []
 
 
-
 func get_loot(amount:int = 1) -> Array[LootItem]:
 	var total:int = 0
 	for each in table:

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=5 format=3 uid="uid://bhtnmqdk177ca"]
+
+[ext_resource type="Script" path="res://Code/Utilities/loot_table.gd" id="1_g055g"]
+[ext_resource type="Script" path="res://Code/Utilities/loot_item.gd" id="2_822o7"]
+[ext_resource type="Resource" uid="uid://n2yv2mato3hj" path="res://Data/Items/Junk/junk_test_01.tres" id="3_6edne"]
+
+[sub_resource type="Resource" id="Resource_qdkvm"]
+script = ExtResource("2_822o7")
+weight = 1
+is_unique = false
+item_data = ExtResource("3_6edne")
+
+[resource]
+script = ExtResource("1_g055g")
+table = Array[ExtResource("2_822o7")]([SubResource("Resource_qdkvm"), null])

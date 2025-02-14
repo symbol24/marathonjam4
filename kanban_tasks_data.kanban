@@ -10,7 +10,12 @@
 		{
 			"uuid": "8508de65-42e2-4821-93e7-ec4ef07d042d",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"19d122ab-00aa-45ab-baf3-47331bf0f7fe",
+				"37fa6565-7d01-4294-941e-b589dac4f7a7",
+				"21f81ea5-2ce1-469c-9abc-2950179b260e",
+				"0dc785e0-46d5-41bb-bc3b-792e08a868ff"
+			]
 		},
 		{
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
@@ -52,6 +57,34 @@
 		{
 			"uuid": "7f530ffa-2f22-436a-8410-2ddc8db40c97",
 			"title": "remove move target icon on new move order",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "0dc785e0-46d5-41bb-bc3b-792e08a868ff",
+			"title": "item system",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "19d122ab-00aa-45ab-baf3-47331bf0f7fe",
+			"title": "inventory backend",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "37fa6565-7d01-4294-941e-b589dac4f7a7",
+			"title": "inventory ui",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "21f81ea5-2ce1-469c-9abc-2950179b260e",
+			"title": "damage system",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

@@ -7,4 +7,4 @@ script = ExtResource("1_x14w6")
 id = "test_01"
 display_name = "test_01"
 base_hp = 100
-base_movement_speed = 400.0
+base_movement_speed = 50.0
