@@ -49,3 +49,7 @@ signal CloseContextMenu()
 
 # Interactibles
 signal InteractibleStateUpdate(data:InteractibleData, state:Interactible.State)
+
+
+# Armour
+signal ArmourBroken(data:ArmourData)
