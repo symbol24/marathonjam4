@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=3 format=3 uid="uid://beh1k4ssv1ebr"]
+
+[ext_resource type="Texture2D" uid="uid://csufbn8optpy" path="res://Textures/Prisoners/Portraits/SFCP 1 69.png" id="1_s67e2"]
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_oj275"]
+
+[resource]
+script = ExtResource("2_oj275")
+id = "SFCP 1 69"
+display_name = "SFCP 1 69"
+head_shot = ExtResource("1_s67e2")
+base_hp = 159
+base_movement_speed = 77.0
+base_strength = 57
+base_agility = 31
+base_constitution = 55
+base_intelligence = 46
+base_dissruptive = 80

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=3 format=3 uid="uid://fjylfd85y43f"]
+
+[ext_resource type="Texture2D" uid="uid://deyaky3uckngc" path="res://Textures/Prisoners/Portraits/SFCP 1-117.png" id="1_yaysg"]
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_d5cpw"]
+
+[resource]
+script = ExtResource("2_d5cpw")
+id = "SFCP 1-117"
+display_name = "SFCP 1-117"
+head_shot = ExtResource("1_yaysg")
+base_hp = 107
+base_movement_speed = 70.0
+base_strength = 15
+base_agility = 19
+base_constitution = 18
+base_intelligence = 8
+base_dissruptive = 44
