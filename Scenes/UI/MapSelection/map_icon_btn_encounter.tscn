@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://7q7kqjus2nbr"]
+
+[ext_resource type="Texture2D" uid="uid://bvjjhqucmjwq5" path="res://Textures/Debug/map_icon_encounters.png" id="1_neljw"]
+[ext_resource type="Texture2D" uid="uid://dsk4dfc60pssk" path="res://Textures/Debug/map_icon_encounter_target.png" id="2_5awkb"]
+[ext_resource type="Texture2D" uid="uid://cbfo1tmvtkl8g" path="res://Textures/Debug/map_icon_encounter_semi.png" id="3_7ytjm"]
+[ext_resource type="Script" path="res://Code/UI/MapSelection/map_icon_btn.gd" id="4_hmy1y"]
+
+[node name="MapIconBtnEncounter" type="TextureButton"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+toggle_mode = true
+texture_normal = ExtResource("1_neljw")
+texture_pressed = ExtResource("2_5awkb")
+texture_hover = ExtResource("2_5awkb")
+texture_disabled = ExtResource("3_7ytjm")
+texture_focused = ExtResource("2_5awkb")
+script = ExtResource("4_hmy1y")

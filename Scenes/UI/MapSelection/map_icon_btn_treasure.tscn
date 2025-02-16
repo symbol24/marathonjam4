@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvvgkx8eu4fth"]
+
+[ext_resource type="Texture2D" uid="uid://di0vx7nylhwlf" path="res://Textures/Debug/map_icon_treasure.png" id="1_wag86"]
+[ext_resource type="Texture2D" uid="uid://bp71t5mr5gfhb" path="res://Textures/Debug/map_icon_treasure_target.png" id="2_fti2m"]
+[ext_resource type="Texture2D" uid="uid://cpdoytsfh0gwh" path="res://Textures/Debug/map_icon_treasure_semi.png" id="3_mlppa"]
+[ext_resource type="Script" path="res://Code/UI/MapSelection/map_icon_btn.gd" id="4_h4vvy"]
+
+[node name="MapIconBtnTreasure" type="TextureButton"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -1904.0
+offset_bottom = -1064.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("1_wag86")
+texture_pressed = ExtResource("2_fti2m")
+texture_hover = ExtResource("2_fti2m")
+texture_disabled = ExtResource("3_mlppa")
+texture_focused = ExtResource("2_fti2m")
+script = ExtResource("4_h4vvy")

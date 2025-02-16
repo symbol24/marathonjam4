@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=2 format=3 uid="uid://dng5pr2d5qg8y"]
+
+[ext_resource type="Script" path="res://Code/Utilities/scene_data.gd" id="1_txpm8"]
+
+[resource]
+script = ExtResource("1_txpm8")
+id = "map_selection_menu"
+path = "res://Scenes/UI/MapSelection/map_selection.tscn"

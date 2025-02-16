@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://dd11qq4g440l0"]
+[gd_scene load_steps=140 format=3 uid="uid://dd11qq4g440l0"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/data_manager.gd" id="1_lq4dl"]
 [ext_resource type="PackedScene" uid="uid://dy1v615dqau2k" path="res://Scenes/Characters/prisoner.tscn" id="2_5eqfh"]
@@ -130,8 +130,17 @@
 [ext_resource type="Resource" uid="uid://dew5sgy0f1l4t" path="res://Data/Prisoners/SFCP 1-118.tres" id="120_d0wfa"]
 [ext_resource type="Resource" uid="uid://c00df6q24m8ld" path="res://Data/Prisoners/SFCP 1-119.tres" id="121_c3nfv"]
 [ext_resource type="Resource" uid="uid://csdcdlgg0m4d1" path="res://Data/Prisoners/SFCP 1-120.tres" id="122_obpup"]
+[ext_resource type="PackedScene" uid="uid://cqjoajxtl6mxa" path="res://Scenes/MapGenerator/map_generator.tscn" id="131_xv8pf"]
+[ext_resource type="PackedScene" uid="uid://7q7kqjus2nbr" path="res://Scenes/UI/MapSelection/map_icon_btn_encounter.tscn" id="132_xigua"]
+[ext_resource type="PackedScene" uid="uid://dvvgkx8eu4fth" path="res://Scenes/UI/MapSelection/map_icon_btn_treasure.tscn" id="133_7s7fm"]
+[ext_resource type="PackedScene" uid="uid://8imja47ix64m" path="res://Scenes/UI/MapSelection/map_icon_btn_station.tscn" id="134_26e5j"]
+[ext_resource type="PackedScene" uid="uid://cfcpkfmnb2eot" path="res://Scenes/UI/MapSelection/map_icon_btn_shop.tscn" id="135_u1j81"]
+[ext_resource type="PackedScene" uid="uid://dw01y802o8vhb" path="res://Scenes/UI/MapSelection/map_icon_btn_boss.tscn" id="136_3p60x"]
+[ext_resource type="PackedScene" uid="uid://bte462gww1d2i" path="res://Scenes/UI/MapSelection/map_icon_spaceship.tscn" id="137_515n2"]
+[ext_resource type="PackedScene" uid="uid://bxke87dev30pn" path="res://Scenes/UI/MapSelection/map_icon_btn_start.tscn" id="137_sspui"]
+[ext_resource type="PackedScene" uid="uid://s5jy75f7aaif" path="res://Scenes/UI/MapSelection/map_line.tscn" id="138_6klp3"]
 
-[node name="_Node_21822" type="Node" groups=["data_manager"]]
+[node name="DataManager" type="Node" groups=["data_manager"]]
 script = ExtResource("1_lq4dl")
 prisoner_datas = Array[ExtResource("4_xdoc1")]([ExtResource("3_0s8et"), ExtResource("4_r1fm4"), ExtResource("5_6e6cf"), ExtResource("6_hh03t"), ExtResource("7_jld7j"), ExtResource("8_1uosh"), ExtResource("9_24ab4"), ExtResource("10_xv0bv"), ExtResource("11_aubc6"), ExtResource("12_ic40o"), ExtResource("13_0t62s"), ExtResource("14_tkpp2"), ExtResource("15_opys3"), ExtResource("16_nm77o"), ExtResource("17_wdxvu"), ExtResource("18_2137d"), ExtResource("19_ax5lw"), ExtResource("20_f641y"), ExtResource("21_6a30u"), ExtResource("22_3osgu"), ExtResource("23_vorsm"), ExtResource("24_s6o8x"), ExtResource("25_imhe5"), ExtResource("26_xgdff"), ExtResource("27_22fbt"), ExtResource("28_e1p2o"), ExtResource("29_j24sa"), ExtResource("30_igiy1"), ExtResource("31_25pbh"), ExtResource("32_f72ok"), ExtResource("33_v45ei"), ExtResource("34_tifrb"), ExtResource("35_sodjb"), ExtResource("36_pypvi"), ExtResource("37_jvp6j"), ExtResource("38_6vcmd"), ExtResource("39_kfcid"), ExtResource("40_akk52"), ExtResource("41_252ki"), ExtResource("42_6xowb"), ExtResource("43_b67em"), ExtResource("44_801ej"), ExtResource("45_e5kke"), ExtResource("46_shyjp"), ExtResource("47_dvova"), ExtResource("48_lhbxx"), ExtResource("49_3jfnh"), ExtResource("50_iplfh"), ExtResource("51_cm7mn"), ExtResource("52_xkwrx"), ExtResource("53_qgkfg"), ExtResource("54_ecqv4"), ExtResource("55_nxvdh"), ExtResource("56_ikuji"), ExtResource("57_nfquq"), ExtResource("58_nrphv"), ExtResource("59_q83c3"), ExtResource("60_e0v3y"), ExtResource("61_1tqs1"), ExtResource("62_ki2r5"), ExtResource("63_y5q5x"), ExtResource("64_rigu3"), ExtResource("65_ng7s1"), ExtResource("66_041ke"), ExtResource("67_hha8d"), ExtResource("68_fkxuu"), ExtResource("69_716ie"), ExtResource("70_jloqx"), ExtResource("71_dhf54"), ExtResource("72_jy24j"), ExtResource("73_qfijj"), ExtResource("74_i2hru"), ExtResource("75_byuqa"), ExtResource("76_32j75"), ExtResource("77_xr1ie"), ExtResource("78_g5cpj"), ExtResource("79_iv467"), ExtResource("80_osfcf"), ExtResource("81_g0fgx"), ExtResource("82_yyaqc"), ExtResource("83_6dnf7"), ExtResource("84_ekkp5"), ExtResource("85_uvu58"), ExtResource("86_dikd5"), ExtResource("87_x0w6s"), ExtResource("88_7koth"), ExtResource("89_71050"), ExtResource("90_y03ii"), ExtResource("91_16iea"), ExtResource("92_xg86w"), ExtResource("93_dhm4v"), ExtResource("94_8q13j"), ExtResource("95_s4qep"), ExtResource("96_es6xy"), ExtResource("97_6pacy"), ExtResource("98_ep21n"), ExtResource("99_spurn"), ExtResource("100_o8es5"), ExtResource("101_3kayf"), ExtResource("102_ao5es"), ExtResource("103_yd60n"), ExtResource("104_hcthq"), ExtResource("105_8ebej"), ExtResource("106_dfsqv"), ExtResource("107_wmmu2"), ExtResource("108_7g33g"), ExtResource("109_3g0c4"), ExtResource("110_qunte"), ExtResource("111_pd87u"), ExtResource("112_kko8x"), ExtResource("113_0tnaj"), ExtResource("114_nb27o"), ExtResource("115_jgo8i"), ExtResource("116_hwws6"), ExtResource("117_exikd"), ExtResource("118_700e3"), ExtResource("119_ltvua"), ExtResource("120_d0wfa"), ExtResource("121_c3nfv"), ExtResource("122_obpup"), ExtResource("5_mmaba"), ExtResource("6_mcgbj")])
 prisoner_scene = ExtResource("2_5eqfh")
@@ -140,3 +149,12 @@ large_popup = ExtResource("7_aw1vj")
 small_popup = ExtResource("8_7u762")
 context_popup = ExtResource("9_agp78")
 context_button = ExtResource("10_1nsgm")
+map_generator = ExtResource("131_xv8pf")
+map_icon_btn_encounter = ExtResource("132_xigua")
+map_icon_btn_treasure = ExtResource("133_7s7fm")
+map_icon_btn_station = ExtResource("134_26e5j")
+map_icon_btn_shop = ExtResource("135_u1j81")
+map_icon_btn_boss = ExtResource("136_3p60x")
+map_icon_btn_start = ExtResource("137_sspui")
+map_icon_spaceship = ExtResource("137_515n2")
+map_line = ExtResource("138_6klp3")

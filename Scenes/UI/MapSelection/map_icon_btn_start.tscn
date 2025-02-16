@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxke87dev30pn"]
+
+[ext_resource type="Script" path="res://Code/UI/MapSelection/map_icon_btn.gd" id="1_jvdog"]
+[ext_resource type="Texture2D" uid="uid://eg1sndvmakol" path="res://Textures/Debug/map_icon_start.png" id="1_yxw8q"]
+
+[node name="MapIconBtnStart" type="TextureButton"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("1_yxw8q")
+script = ExtResource("1_jvdog")

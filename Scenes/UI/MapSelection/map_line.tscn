@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://s5jy75f7aaif"]
+
+[ext_resource type="Texture2D" uid="uid://khqcixhipki" path="res://Textures/Debug/map_line.png" id="1_6cq32"]
+
+[node name="MapLine" type="Line2D"]
+z_index = -10
+texture_repeat = 2
+width = 16.0
+default_color = Color(0.205117, 0.205117, 0.205117, 1)
+texture = ExtResource("1_6cq32")
+texture_mode = 1

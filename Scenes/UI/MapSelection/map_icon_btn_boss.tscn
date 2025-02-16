@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw01y802o8vhb"]
+
+[ext_resource type="Texture2D" uid="uid://dg8m2b2ek8wok" path="res://Textures/Debug/map_icon_boss.png" id="1_mw74r"]
+[ext_resource type="Texture2D" uid="uid://bt8fx7s0owvm" path="res://Textures/Debug/map_icon_boss_target.png" id="2_tvvts"]
+[ext_resource type="Texture2D" uid="uid://d215gg8it66ub" path="res://Textures/Debug/map_icon_boss_semi.png" id="3_7ffnd"]
+[ext_resource type="Script" path="res://Code/UI/MapSelection/map_icon_btn.gd" id="4_e111y"]
+
+[node name="MapIconBtnBoss" type="TextureButton"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+toggle_mode = true
+texture_normal = ExtResource("1_mw74r")
+texture_pressed = ExtResource("2_tvvts")
+texture_hover = ExtResource("2_tvvts")
+texture_disabled = ExtResource("3_7ffnd")
+texture_focused = ExtResource("2_tvvts")
+script = ExtResource("4_e111y")

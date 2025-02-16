@@ -53,3 +53,9 @@ signal InteractibleStateUpdate(data:InteractibleData, state:Interactible.State)
 
 # Armour
 signal ArmourBroken(data:ArmourData)
+
+
+# Map selection menu
+signal RoomIconBtnPressed(room_data:RoomData)
+signal SpaceshipMoveFinished(room_data:RoomData)
+signal MapStuffPlacementComplete()
