@@ -182,7 +182,6 @@ func _setup_room_types() -> void:
 	
 	# Second to last floor
 	for room:RoomData in map_data[FLOORS - 2]:
-		#Debug.log("Room ", RoomData.Type.keys()[room.type], " is not empty? ", not room.next_rooms.is_empty())
 		if not room.next_rooms.is_empty():
 			room.type = RoomData.Type.STATION
 	
@@ -192,16 +191,6 @@ func _setup_room_types() -> void:
 			for next:RoomData in room.next_rooms:
 				if next.type == RoomData.Type.NOT_ASSIGNED:
 					_set_room_type(next)
-
-	#var boss_room:RoomData = null
-	#for room:RoomData in map_data[FLOORS - 1]:
-	#	if room.type != RoomData.Type.BOSS:
-	#		room.type = RoomData.Type.NOT_ASSIGNED
-	#	else:
-	#		boss_room = room
-	
-	#for room:RoomData in map_data[FLOORS - 2]:
-	#	room.next_rooms = [boss_room]
 
 
 func _set_room_type(room:RoomData) -> void:

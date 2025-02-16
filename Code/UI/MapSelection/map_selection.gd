@@ -19,10 +19,12 @@ var scroll_movement:Array[bool] = []
 var camera_y_max:float = 1.0
 var grabbed:bool = false
 var previous_mouse_position:Vector2 = Vector2.ZERO
+var points:Dictionary = {}
+var selected_point:MapIconButton
 
 
 func _input(event: InputEvent) -> void:
-	if can_scroll:
+	if is_visible and can_scroll:
 		if event.is_action_pressed("mouse_scroll_up"):
 			scroll_movement.append(true)
 		elif event.is_action_pressed("mouse_scroll_down"):
@@ -32,8 +34,6 @@ func _input(event: InputEvent) -> void:
 			previous_mouse_position = get_local_mouse_position()
 		elif event.is_action_released("mouse_left"):
 			grabbed = false
-		#elif grabbed and event is InputEventMouseMotion:
-		#	previous_mouse_position = _mouse_move_camera(previous_mouse_position, event.position)
 
 
 func _ready() -> void:
@@ -51,7 +51,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if can_scroll and get_next_scroll:
+	if is_visible and can_scroll and get_next_scroll:
 		if not scroll_movement.is_empty():
 			_move_camera(scroll_movement.pop_front(), delta)
 		
@@ -120,6 +120,8 @@ func _place_rooms() -> void:
 				var offset:Vector2 = map_icon_btn.texture_normal.get_size()/2
 				map_icon_btn.global_position = room.coords_on_map - offset
 				map_icon_btn.name = RoomData.Type.keys()[room.type] + "_" + str(i) + "_" + str(j)
+				room.button_name = map_icon_btn.name
+				points[map_icon_btn.name] = map_icon_btn
 
 			j += 1
 			
@@ -170,3 +172,23 @@ func _mouse_move_camera(delta:float) -> Vector2:
 
 func _allow_scrolling() -> void:
 	can_scroll = true
+	_set_start_point()
+	_spawn_ship()
+
+
+func _set_start_point() -> void:
+	for k in points.keys():
+		if points[k].room_data.type == RoomData.Type.START:
+			selected_point = points[k]
+			selected_point.select()
+			return
+	Debug.error("No Starting point found!")
+
+
+func _spawn_ship() -> void:
+	var ship:MapIconSpaceship = data_manager.map_icon_spaceship.instantiate()
+	add_child(ship)
+	if not ship.is_node_ready(): await ship.ready
+	var pos:Vector2 = Vector2(16,16) + selected_point.global_position
+	ship.global_position = pos
+	ship.current_room = selected_point.room_data

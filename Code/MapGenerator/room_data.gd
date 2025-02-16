@@ -22,6 +22,7 @@ enum Type {
 
 var coords_on_map:Vector2 = Vector2.ZERO
 var button_can_be_pressed:bool = false
+var button_name:StringName = &""
 
 
 func _to_string() -> String:
