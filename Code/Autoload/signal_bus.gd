@@ -11,6 +11,11 @@ signal LoadScene(scene_name:String)
 signal SceneLoadComplete(scene:Node)
 
 
+# Data Manager
+signal PrisonerHeadshotsLoaded()
+signal LoadPrisonerHeadshots(prisoner_array:Array[PrisonerData])
+
+
 # Level
 signal LevelReady(level:Node)
 signal SpawnPrisoners()
@@ -80,3 +85,6 @@ signal ToggleLoadPanel(display:bool)
 
 # Select Prisoners Menu
 signal ToggleActivePrisonersPanel()
+signal BtnSelectPrisonerPressed(prisoner_data:PrisonerData)
+signal ActivatePrisonerData(prisoner_data:PrisonerData)
+signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])

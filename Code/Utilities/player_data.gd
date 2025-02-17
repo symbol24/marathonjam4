@@ -13,6 +13,8 @@ const WEB_CANCEL:Key = KEY_BACKSPACE
 
 @export_category("Prisoners")
 @export var prisoners:Array[PrisonerData] = []
+@export var active_prisoners:Array[String] = []
+var current_prisoners:Array[PrisonerData] = []
 
 @export_category("Ship")
 var current_ship:int = -1

@@ -4,6 +4,7 @@ class_name SpawnManager extends Node2D
 var data_manager:DataManager
 var active_level:PlayLevel
 var game_manager:GameManager
+var save_manager:SaveManager
 var to_spawn_count:int = -1
 var current_count:int = 0
 
@@ -16,12 +17,14 @@ func _ready() -> void:
 	if active_level == null: push_error("Play Level is missing!")
 	game_manager = get_tree().get_first_node_in_group("game_manager")
 	if game_manager == null: push_error("Game_manager is missing!")
+	save_manager = get_tree().get_first_node_in_group("save_manager")
+	if save_manager == null: push_error("save_manager is missing!")
 
 
 func _spawn_prisoner() -> void:
-	to_spawn_count = game_manager.current_prisoners.size()
+	to_spawn_count = save_manager.active_save.current_prisoners.size()
 	current_count = 0
-	for each in game_manager.current_prisoners:
+	for each in save_manager.active_save.current_prisoners:
 		_spawn_a_prisoner(each)
 
 

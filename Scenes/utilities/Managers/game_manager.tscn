@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsetd0kyra21a"]
+[gd_scene load_steps=2 format=3 uid="uid://dsetd0kyra21a"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/game_manager.gd" id="1_lmxqh"]
-[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_uegwl"]
-[ext_resource type="Resource" uid="uid://bbuskpml4e4no" path="res://Data/Prisoners/test_01.tres" id="3_8j4q6"]
-[ext_resource type="Resource" uid="uid://dco85fcqx644u" path="res://Data/Prisoners/test_02.tres" id="4_ug8nw"]
 
 [node name="GameManager" type="Node2D" groups=["game_manager"]]
 script = ExtResource("1_lmxqh")
 use_debug = true
-debug_current_prisoners = Array[ExtResource("2_uegwl")]([ExtResource("3_8j4q6"), ExtResource("4_ug8nw")])

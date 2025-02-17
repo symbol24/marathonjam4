@@ -1,0 +1,48 @@
+class_name PrisonerSelectionMenu extends RidControl
+
+
+const ACTIVE_PANEL_OUT_X:float = 2020.0
+const ACTIVE_PANEL_IN_X:float = 1420.0
+const ACTIVE_PANEL_SLIDE_TIME:float = 0.4
+const PRISONER_SELECT_BUTTON:String = "res://Scenes/UI/PrisonerSelection/prisoner_select_button.tscn"
+
+@onready var prisoner_list_vbox: VBoxContainer = %prisoner_list_vbox
+@onready var btn_confirm: Button = %btn_confirm
+@onready var btn_display_active: Button = %btn_display_active
+@onready var prisoners_active_list: VBoxContainer = %prisoners_active_list
+@onready var active_prisoners_panel_btn: Button = %active_prisoners_panel_btn
+@onready var prisoners_active_panel: PanelContainer = %prisoners_active
+
+var button:PrisonerSelectButton = null
+var data_manager:DataManager
+var save_manager:SaveManager
+
+
+func _ready() -> void:
+	Signals.PrisonerHeadshotsLoaded.connect(_populate_prisoners)
+	btn_display_active.pressed.connect(_active_panel_toggle_btn)
+	btn_confirm.pressed.connect(_btn_confirm_pressed)
+	button = load(PRISONER_SELECT_BUTTON).instantiate()
+	if button == null: Debug.warning("Prisoner selection button not loading")
+	data_manager = get_tree().get_first_node_in_group("data_manager")
+	save_manager = get_tree().get_first_node_in_group("save_manager")
+	Signals.LoadPrisonerHeadshots.emit(save_manager.active_save.prisoners)
+
+
+func _active_panel_toggle_btn() -> void:
+	Signals.ToggleActivePrisonersPanel.emit()
+
+
+func _populate_prisoners() -> void:
+	for prisoner in save_manager.active_save.prisoners:
+		var new_button:PrisonerSelectButton = button.duplicate()
+		prisoner_list_vbox.add_child(new_button)
+		if not new_button.is_node_ready(): await new_button.ready
+		new_button.set_data(prisoner)
+
+
+func _btn_confirm_pressed() -> void:
+	if save_manager.active_save.active_prisoners.is_empty():
+		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "no_prisoners_selected", PopupManager.Severity.NORMAL, "", tr("prisoner_selection_no_prisoners"), 3)
+	else:
+		Signals.LoadScene.emit("test_level")
