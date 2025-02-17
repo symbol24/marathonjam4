@@ -48,7 +48,7 @@ func _setup_buttons() -> void:
 			var btn:BtnLoadReference = load_button.duplicate()
 			load_vbox.add_child(btn)
 			if not btn.is_node_ready(): await btn.ready
-			btn.hash_id = key
+			btn.setup_button(save_manager.all_saves[key])
 			buttons.append(btn)
 
 

@@ -9,6 +9,7 @@ const WEB_CANCEL:Key = KEY_BACKSPACE
 @export var hash_id:int = -1
 @export var last_save_date_time:String
 @export var was_last_used:bool = false
+@export var playtime:float = 0.0
 
 @export_category("Prisoners")
 @export var prisoners:Array[PrisonerData] = []
