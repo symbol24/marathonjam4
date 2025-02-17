@@ -25,9 +25,11 @@ func _ready() -> void:
 		var save:PlayerData = save_manager.get_last_save_used()
 		if save == null:
 			btn_continue.disabled = true
+			btn_new_game.grab_focus()
 		else:
 			continue_id = save.hash_id
-
+			btn_continue.grab_focus()
+	
 
 func _continue_pressed() -> void:
 	_untoggle_panels()

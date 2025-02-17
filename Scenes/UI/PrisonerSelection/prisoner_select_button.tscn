@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://erm5eexpxybe"]
+
+[ext_resource type="Script" path="res://Code/UI/PlayerSelect/prisoner_select_button.gd" id="1_4k1m4"]
+[ext_resource type="Texture2D" uid="uid://cvei1p4fwcjx" path="res://Textures/Prisoners/Portraits/SFCP 1 01.png" id="1_vxdsh"]
+
+[node name="PrisonerSelectButton" type="Control"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1520.0
+offset_bottom = -980.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4k1m4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 100.0
+
+[node name="headshot" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("1_vxdsh")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "NAME:"
+
+[node name="prisoner_name" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "SENTENCE:"
+
+[node name="prisoner_sentence" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "DATE OF INCARCERATION:"
+
+[node name="prisoner_doi" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="deceased_label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 31.0
+offset_right = 321.0
+offset_bottom = 119.0
+rotation = -0.174533
+theme_override_font_sizes/font_size = 64
+text = "DECEASED"
+
+[node name="btn_select" type="TextureButton" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_default_cursor_shape = 2

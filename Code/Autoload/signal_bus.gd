@@ -76,3 +76,7 @@ signal CreateNewSave(id:String)
 # Main Menu
 signal SelectHashIdForLoad(hash_id:int)
 signal ToggleLoadPanel(display:bool)
+
+
+# Select Prisoners Menu
+signal ToggleActivePrisonersPanel()

@@ -44,7 +44,7 @@ func _make_prisoner_data() -> void:
 			npd.base_agility = randi_range(1, 100)
 			npd.base_constitution = randi_range(1, 100)
 			npd.base_intelligence = randi_range(1, 100)
-			npd.base_dissruptive = randi_range(1, 100)
+			npd.base_criminality = randi_range(1, 100)
 
 			npd.base_hp = randi_range(85, 115) + floori(npd.base_constitution + 0.1)
 			npd.base_movement_speed = randi_range(35, 65) + floori(npd.base_agility + 0.1)

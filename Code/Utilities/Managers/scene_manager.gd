@@ -27,12 +27,11 @@ func _process(_delta: float) -> void:
 func _load_scene(_scene_name:String = "") -> void:
 	if scenes_to_load != null:
 		scene_name = _scene_name
-		var data:SceneData = scenes_to_load.get_scene_by_name(scene_name)
-		if data != null: to_load = data.path
-		else: to_load = ""
-		loading = true
-		Signals.ToggleLoadingScreen.emit(true)
-		ResourceLoader.load_threaded_request(to_load)
+		to_load = scenes_to_load.get_scene_by_name(scene_name)
+		if to_load != "":
+			loading = true
+			Signals.ToggleLoadingScreen.emit(true)
+			ResourceLoader.load_threaded_request(to_load)
 
 
 func _complete_load() -> void:
