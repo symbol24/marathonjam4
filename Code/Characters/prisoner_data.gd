@@ -13,7 +13,7 @@ enum Health_Status {
 
 @export var id:String
 @export var display_name:String
-@export var head_shot:CompressedTexture2D
+@export var headshot_path:String = ""
 
 @export var base_hp:int = 100
 ## Values not below 30 to start
@@ -36,6 +36,7 @@ enum Health_Status {
 
 @export var current_status:Health_Status = Health_Status.CRYO
 
+var headshot:CompressedTexture2D
 var default_status:Health_Status:
 	get: return get_default_value()
 var move_speed:float:

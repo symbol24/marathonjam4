@@ -14,6 +14,7 @@ var save_manager:SaveManager = null
 
 func _ready() -> void:
 	Signals.LoadComplete.connect(_load_complete)
+	Signals.SelectHashIdForLoad.connect(_set_continue_hash_id)
 	btn_continue.pressed.connect(_continue_pressed)
 	btn_new_game.pressed.connect(_new_game_pressed)
 	btn_load_game.pressed.connect(_load_game_pressed)
@@ -63,3 +64,7 @@ func _load_complete(hash_id:int) -> void:
 
 func _untoggle_panels(panel_called:String = "") -> void:
 	if panel_called != "load" and load_panel.displayed: Signals.ToggleLoadPanel.emit(false)
+
+
+func _set_continue_hash_id(new_hash_id:int) -> void:
+	continue_id = new_hash_id

@@ -4,6 +4,7 @@ class_name LoadPanel extends PanelContainer
 const TRANSITION_TIME:float = 0.5
 const ONSCREEEN_X:float = 1220.0
 const OFFSCREEN_X:float = 1990.0
+const BTN_LOAD_SAVE_FILE:String = "res://Scenes/MainMenu/btn_load_reference.tscn"
 
 
 @onready var load_vbox: VBoxContainer = %load_vbox
@@ -16,6 +17,7 @@ var selected_hash_id:int = -1
 var buttons:Array[BtnLoadReference] = []
 var displayed:bool = false
 
+var load_button:BtnLoadReference = null
 
 func _ready() -> void:
 	position.x = OFFSCREEN_X
@@ -25,6 +27,8 @@ func _ready() -> void:
 	btn_load_file.pressed.connect(_load_btn_pressed)
 	data_manager = get_tree().get_first_node_in_group("data_manager")
 	save_manager = get_tree().get_first_node_in_group("save_manager")
+	load_button = load(BTN_LOAD_SAVE_FILE).instantiate()
+	if load_button == null: Debug.log("Load save file button not instantiated")
 
 
 func _toggle_load_panel(_display:bool = false) -> void:
@@ -41,7 +45,7 @@ func _setup_buttons() -> void:
 	if save_manager:
 		_clear_buttons()
 		for key in save_manager.all_saves.keys():
-			var btn:BtnLoadReference = data_manager.btn_load_reference.instantiate()
+			var btn:BtnLoadReference = load_button.duplicate()
 			load_vbox.add_child(btn)
 			if not btn.is_node_ready(): await btn.ready
 			btn.hash_id = key
@@ -83,4 +87,5 @@ func _transition_out() -> bool:
 
 func _load_btn_pressed() -> void:
 	await _transition_out()
+	Debug.log("Sending load signal for hash id: ", selected_hash_id)
 	Signals.LoadFromHashId.emit(selected_hash_id)

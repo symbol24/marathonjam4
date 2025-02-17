@@ -1,17 +1,25 @@
-[gd_resource type="Resource" script_class="PrisonerData" load_steps=3 format=3 uid="uid://dnytt2163aea6"]
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=2 format=3 uid="uid://dnytt2163aea6"]
 
-[ext_resource type="Texture2D" uid="uid://bead05lwretga" path="res://Textures/Prisoners/Portraits/SFCP 1 29.png" id="1_bnipr"]
 [ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_tl15y"]
 
 [resource]
 script = ExtResource("2_tl15y")
 id = "SFCP 1 29"
 display_name = "SFCP 1 29"
-head_shot = ExtResource("1_bnipr")
+headshot_path = "res://Textures/Prisoners/Portraits/SFCP 1 29.png"
 base_hp = 175
 base_movement_speed = 75.0
 base_strength = 3
 base_agility = 18
 base_constitution = 81
 base_intelligence = 96
-base_dissruptive = 48
+base_criminality = 1
+height = 1
+weight = 1
+dob = ""
+doi = ""
+sentence = ""
+location_of_origin = ""
+criminal_record = ""
+education = ""
+current_status = 5

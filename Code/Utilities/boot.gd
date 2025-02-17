@@ -6,6 +6,7 @@ extends RidControl
 
 func _ready() -> void:
 	Signals.ManagerLoaded.connect(_loading)
+	await get_tree().create_timer(1).timeout
 	_load_loader()
 
 

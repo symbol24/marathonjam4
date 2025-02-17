@@ -4,7 +4,7 @@ class_name PrisonerSelectionMenu extends RidControl
 const ACTIVE_PANEL_OUT_X:float = 2020.0
 const ACTIVE_PANEL_IN_X:float = 1420.0
 const ACTIVE_PANEL_SLIDE_TIME:float = 0.4
-
+const PRISONER_SELECT_BUTTON:String = "res://Scenes/UI/PrisonerSelection/prisoner_select_button.tscn"
 
 @onready var prisoner_list_vbox: VBoxContainer = %prisoner_list_vbox
 @onready var prisoner_details_vbox: VBoxContainer = %prisoner_details_vbox
@@ -30,9 +30,13 @@ const ACTIVE_PANEL_SLIDE_TIME:float = 0.4
 @onready var active_prisoners_panel_btn: Button = %active_prisoners_panel_btn
 @onready var prisoners_active_panel: PanelContainer = %prisoners_active
 
+var button:PrisonerSelectButton = null
+
 
 func _ready() -> void:
 	btn_display_active.pressed.connect(_active_panel_toggle_btn)
+	button = load(PRISONER_SELECT_BUTTON).instantiate()
+	if button == null: Debug.warning("Prisoner selection button not loading")
 
 
 func _active_panel_toggle_btn() -> void:

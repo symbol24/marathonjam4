@@ -9,8 +9,13 @@ const DATAMANAGERPATH:String = "res://Scenes/utilities/Managers/data_manager.tsc
 
 @export var make_prisoner_data:bool = false:
 	set(value):
-		_make_prisoner_data()
+		#_make_prisoner_data()
 		make_prisoner_data = false
+
+@export var update_prisoner_data:bool = false:
+	set(value):
+		_update_prisoner_datas()
+		update_prisoner_data = false
 
 @export var push_prisoners_to_data_manager:bool = false:
 	set(value):
@@ -52,7 +57,34 @@ func _make_prisoner_data() -> void:
 			var result = ResourceSaver.save(npd, DATAFOLDER + slices[0] + ".tres")
 			if result != OK:
 				push_error("Error %s while saving new prisoner data." % result)
-				
+
+
+func _update_prisoner_datas() -> void:
+	var portrait_dir:DirAccess = DirAccess.open(PORTRAITFOLDER)
+	if portrait_dir == null:
+		var error = DirAccess.get_open_error()
+		push_error("Error open portrait folder: ", error)
+		return
+
+	var data_dir:DirAccess = DirAccess.open(DATAFOLDER)
+	if data_dir == null:
+		var error = DirAccess.get_open_error()
+		push_error("Error open data folder: ", error)
+		return
+	
+	var files:PackedStringArray = portrait_dir.get_files()
+	var datas:PackedStringArray = data_dir.get_files()
+
+	for data_file in datas:
+		var prisoner = ResourceLoader.load(DATAFOLDER + data_file)
+		var portrait_name:StringName = data_file.split(".")[0] + "." + "png"
+		if prisoner is PrisonerData:
+			if files.has(portrait_name):
+				prisoner.headshot_path = PORTRAITFOLDER + portrait_name
+				ResourceSaver.save(prisoner, DATAFOLDER + data_file)
+				print("%s has been added to %s and saved." % [data_file, prisoner.display_name])
+
+
 
 func _push_prisoners_to_data_manager() -> void:
 	var data_dir:DirAccess = DirAccess.open(DATAFOLDER)
