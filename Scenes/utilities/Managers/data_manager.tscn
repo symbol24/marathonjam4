@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://dd11qq4g440l0"]
+[gd_scene load_steps=141 format=3 uid="uid://dd11qq4g440l0"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/data_manager.gd" id="1_lq4dl"]
 [ext_resource type="PackedScene" uid="uid://dy1v615dqau2k" path="res://Scenes/Characters/prisoner.tscn" id="2_5eqfh"]
@@ -130,6 +130,7 @@
 [ext_resource type="Resource" uid="uid://dew5sgy0f1l4t" path="res://Data/Prisoners/SFCP 1-118.tres" id="120_d0wfa"]
 [ext_resource type="Resource" uid="uid://c00df6q24m8ld" path="res://Data/Prisoners/SFCP 1-119.tres" id="121_c3nfv"]
 [ext_resource type="Resource" uid="uid://csdcdlgg0m4d1" path="res://Data/Prisoners/SFCP 1-120.tres" id="122_obpup"]
+[ext_resource type="PackedScene" uid="uid://tfnfvkaobin4" path="res://Scenes/MainMenu/btn_load_reference.tscn" id="131_ehtiq"]
 [ext_resource type="PackedScene" uid="uid://cqjoajxtl6mxa" path="res://Scenes/MapGenerator/map_generator.tscn" id="131_xv8pf"]
 [ext_resource type="PackedScene" uid="uid://7q7kqjus2nbr" path="res://Scenes/UI/MapSelection/map_icon_btn_encounter.tscn" id="132_xigua"]
 [ext_resource type="PackedScene" uid="uid://dvvgkx8eu4fth" path="res://Scenes/UI/MapSelection/map_icon_btn_treasure.tscn" id="133_7s7fm"]
@@ -149,6 +150,7 @@ large_popup = ExtResource("7_aw1vj")
 small_popup = ExtResource("8_7u762")
 context_popup = ExtResource("9_agp78")
 context_button = ExtResource("10_1nsgm")
+btn_load_reference = ExtResource("131_ehtiq")
 map_generator = ExtResource("131_xv8pf")
 map_icon_btn_encounter = ExtResource("132_xigua")
 map_icon_btn_treasure = ExtResource("133_7s7fm")

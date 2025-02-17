@@ -24,7 +24,8 @@
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
 			"title": "Doing",
 			"tasks": [
-				"98e7c57f-63b8-409f-a865-7ffa2164d743"
+				"1f1df0cc-cb03-4b37-871a-1543927777c5",
+				"c4c80074-be85-4a0d-83d2-ac1fb74c9745"
 			]
 		},
 		{
@@ -34,7 +35,8 @@
 				"e8505081-a0c4-43ec-9876-3617d8d82967",
 				"dfc5fe74-fa82-4111-9e2f-b27e577fe08c",
 				"7f530ffa-2f22-436a-8410-2ddc8db40c97",
-				"b3d085dc-665e-449e-beb8-130b17e6b3d3"
+				"b3d085dc-665e-449e-beb8-130b17e6b3d3",
+				"98e7c57f-63b8-409f-a865-7ffa2164d743"
 			]
 		}
 	],
@@ -126,6 +128,20 @@
 		{
 			"uuid": "98e7c57f-63b8-409f-a865-7ffa2164d743",
 			"title": "map system",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "1f1df0cc-cb03-4b37-871a-1543927777c5",
+			"title": "player data",
+			"description": "contains:\n\n- current prisoners\n- remaining prisoners\n- map data\n\nship stats:\n- propulsion\n- hull integrity\n- ai core\n- life support\n\nsystem settings:\n- player id\n- save time/date\n- difficulty\n- window mode\n- window size\n- audio values\n- color blind mode\n- dyslexic friendly font\n- visual filters\n- remove flashes\n- m/k remapping",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "c4c80074-be85-4a0d-83d2-ac1fb74c9745",
+			"title": "save load system",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

@@ -14,8 +14,9 @@ class_name DataManager extends RidManager
 @export var small_popup:PackedScene
 @export var context_popup:PackedScene
 @export var context_button:PackedScene
+@export var btn_load_reference:PackedScene
 
-@export_category("Map Generation")
+@export_group("Map Generation")
 @export var map_generator:PackedScene
 @export var map_icon_btn_encounter:PackedScene
 @export var map_icon_btn_treasure:PackedScene
@@ -25,3 +26,12 @@ class_name DataManager extends RidManager
 @export var map_icon_btn_start:PackedScene
 @export var map_icon_spaceship:PackedScene
 @export var map_line:PackedScene
+
+
+func get_prisoner_duplicates() -> Array[PrisonerData]:
+	var result:Array[PrisonerData] = []
+	for prisoner in prisoner_datas:
+		var new_data:PrisonerData = prisoner.duplicate(true)
+		result.append(new_data)
+
+	return result

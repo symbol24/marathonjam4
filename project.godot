@@ -52,6 +52,7 @@ play_level=""
 scene_manager=""
 game_manager=""
 element=""
+save_manager=""
 
 [gui]
 

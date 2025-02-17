@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=2 format=3 uid="uid://hfn5tt8bxg6v"]
+
+[ext_resource type="Script" path="res://Code/Utilities/scene_data.gd" id="1_mxir2"]
+
+[resource]
+script = ExtResource("1_mxir2")
+id = "story_intro"
+path = "res://Scenes/UI/StoryIntro/story_intro.tscn"

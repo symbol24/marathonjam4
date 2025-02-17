@@ -15,10 +15,12 @@ class_name PrisonerData extends Resource
 @export var base_intelligence:int = 1
 @export var base_dissruptive:int = 1
 
+@export var is_dead:bool = false
+@export var is_active:bool = false
+
 var move_speed:float:
 	get: return base_movement_speed
 var current_hp:int
-var is_dead:bool = false
 var inventory:Array[LootItem] = []
 
 

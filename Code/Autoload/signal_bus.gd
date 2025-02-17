@@ -62,3 +62,17 @@ signal MapStuffPlacementComplete()
 signal CancelRoomIconBtnPressed(room_data:RoomData)
 signal ResetRoomIconBtnOnRow(row:int)
 signal DisableRoomIconBtnSameRow(roomd_data:RoomData)
+
+
+# Save Load Manager
+signal SaveForHashId(hash_id:int)
+signal SaveComplete(hash_id:int)
+signal LoadFromHashId(hash_id:int)
+signal LoadComplete(hash_id:int)
+signal DisplaySaveIcon()
+signal CreateNewSave(id:String)
+
+
+# Main Menu
+signal SelectHashIdForLoad(hash_id:int)
+signal ToggleLoadPanel(display:bool)

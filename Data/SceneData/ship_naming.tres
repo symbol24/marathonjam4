@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=2 format=3 uid="uid://vemt41nbvsp4"]
+
+[ext_resource type="Script" path="res://Code/Utilities/scene_data.gd" id="1_cipb0"]
+
+[resource]
+script = ExtResource("1_cipb0")
+id = "ship_naming"
+path = "res://Scenes/UI/ShipNaming/ship_naming.tscn"

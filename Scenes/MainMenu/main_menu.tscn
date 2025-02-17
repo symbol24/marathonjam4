@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq7rpmsanf5r"]
 
 [ext_resource type="Script" path="res://Code/MainMenu/main_menu.gd" id="1_jltti"]
-[ext_resource type="Script" path="res://Code/MainMenu/temp_btn_play.gd" id="2_cdpa8"]
+[ext_resource type="Script" path="res://Code/MainMenu/load_panel.gd" id="2_8ggdj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,11 +20,91 @@ offset_right = 1002.0
 offset_bottom = 211.0
 text = "MAIN MENU"
 
-[node name="btn_play" type="Button" parent="."]
-layout_mode = 0
-offset_left = 938.0
+[node name="menu_buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 860.0
 offset_top = 299.0
-offset_right = 985.0
-offset_bottom = 330.0
-text = "PLAY"
-script = ExtResource("2_cdpa8")
+offset_right = 1060.0
+offset_bottom = 569.0
+theme_override_constants/separation = 10
+
+[node name="btn_continue" type="Button" parent="menu_buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="btn_new_game" type="Button" parent="menu_buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "NEW GAME"
+
+[node name="btn_load_game" type="Button" parent="menu_buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "LOAD GAME"
+
+[node name="btn_settings" type="Button" parent="menu_buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="btn_credits" type="Button" parent="menu_buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "CREDITS"
+
+[node name="LoadPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 800)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 70.0
+offset_top = 140.0
+offset_right = 670.0
+offset_bottom = 940.0
+grow_horizontal = 0
+script = ExtResource("2_8ggdj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadPanel"]
+layout_mode = 2
+
+[node name="load_title" type="Label" parent="LoadPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Load Save File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="load_files_scroll" type="ScrollContainer" parent="LoadPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="load_vbox" type="VBoxContainer" parent="LoadPanel/VBoxContainer/load_files_scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="btn_load_file" type="Button" parent="LoadPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "LOAD"
+
+[node name="btn_load_cancel" type="Button" parent="LoadPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "CLOSE
+"

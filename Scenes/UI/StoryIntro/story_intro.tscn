@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4ck327x4b7nk"]
+[gd_scene load_steps=3 format=3 uid="uid://c4ck327x4b7nk"]
 
 [ext_resource type="Script" path="res://Code/UI/StoryIntro/story_intro.gd" id="1_jnnlk"]
+[ext_resource type="Script" path="res://Code/MainMenu/temp_btn_play.gd" id="2_2fcwx"]
 
 [node name="StoryIntro" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_jnnlk")
+id = "story_intro"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 368.0
+offset_right = 1049.0
+offset_bottom = 391.0
+text = "Story goes here"
+
+[node name="temp_load_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 464.0
+offset_right = 1068.0
+offset_bottom = 495.0
+text = "Create / select ship"
+script = ExtResource("2_2fcwx")
+destination = "ship_naming"

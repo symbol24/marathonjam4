@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/save_manager.gd" id="1_0xfja"]
 
-[node name="SaveManager" type="Node"]
+[node name="SaveManager" type="Node" groups=["save_manager"]]
 script = ExtResource("1_0xfja")
