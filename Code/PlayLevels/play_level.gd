@@ -3,6 +3,7 @@ class_name PlayLevel extends RidControl
 
 func _ready() -> void:
 	Signals.ManagerLoaded.connect(_load_managers)
+	Signals.AllPrisonersSpawned.connect(_prisoners_spawned)
 	_load_managers()
 
 
@@ -19,4 +20,4 @@ func _load_managers(manager:String = "start"):
 
 
 func _prisoners_spawned() -> void:
-	pass
+	Signals.ToggleLoadingScreen.emit(false)

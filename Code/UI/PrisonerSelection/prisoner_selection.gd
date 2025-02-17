@@ -39,10 +39,12 @@ func _populate_prisoners() -> void:
 		prisoner_list_vbox.add_child(new_button)
 		if not new_button.is_node_ready(): await new_button.ready
 		new_button.set_data(prisoner)
+	
+	Signals.ToggleLoadingScreen.emit(false)
 
 
 func _btn_confirm_pressed() -> void:
 	if save_manager.active_save.active_prisoners.is_empty():
 		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "no_prisoners_selected", PopupManager.Severity.NORMAL, "", tr("prisoner_selection_no_prisoners"), 3)
 	else:
-		Signals.LoadScene.emit("test_level")
+		Signals.LoadScene.emit("test_level", true)

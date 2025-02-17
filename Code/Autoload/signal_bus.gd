@@ -7,7 +7,7 @@ signal ManagerLoaded(manager_name:String)
 
 
 # Scene Manager
-signal LoadScene(scene_name:String)
+signal LoadScene(scene_name:String, loading_screen:bool)
 signal SceneLoadComplete(scene:Node)
 
 

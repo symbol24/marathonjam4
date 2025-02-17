@@ -5,4 +5,4 @@ extends Button
 
 
 func _pressed() -> void:
-	Signals.LoadScene.emit(destination)
+	Signals.LoadScene.emit(destination, false)

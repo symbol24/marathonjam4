@@ -39,7 +39,7 @@ func _continue_pressed() -> void:
 
 func _new_game_pressed() -> void:
 	_untoggle_panels()
-	Signals.LoadScene.emit("story_intro")
+	Signals.LoadScene.emit("story_intro", true)
 
 
 func _load_game_pressed() -> void:

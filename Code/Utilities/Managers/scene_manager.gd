@@ -24,13 +24,13 @@ func _process(_delta: float) -> void:
 		if load_status == ResourceLoader.THREAD_LOAD_LOADED: _complete_load()
 
 
-func _load_scene(_scene_name:String = "") -> void:
+func _load_scene(_scene_name:String = "", display_loading_screen:bool = false) -> void:
 	if scenes_to_load != null:
 		scene_name = _scene_name
 		to_load = scenes_to_load.get_scene_by_name(scene_name)
 		if to_load != "":
 			loading = true
-			Signals.ToggleLoadingScreen.emit(true)
+			if display_loading_screen: Signals.ToggleLoadingScreen.emit(true)
 			ResourceLoader.load_threaded_request(to_load)
 
 

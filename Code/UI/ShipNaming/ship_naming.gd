@@ -16,11 +16,12 @@ func _ready() -> void:
 
 
 func _confirm_pressed() -> void:
+	Signals.ToggleLoadingScreen.emit(true)
 	Signals.CreateNewSave.emit(spaceship_name.text)
 
 
 func _save_complete(_hash_id:int) -> void:
-	Signals.LoadScene.emit("prisoner_select")
+	Signals.LoadScene.emit("prisoner_select", true)
 
 
 func _name_length_check(text:String) -> void:

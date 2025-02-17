@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/UI/popup_manager.gd" id="1_vq74y"]
 
-[node name="Popup_manager" type="Control"]
+[node name="PopupManager" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
