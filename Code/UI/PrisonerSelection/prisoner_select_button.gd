@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func set_data(prisoner:PrisonerData) -> void:
 	prisoner_data = prisoner
-	headshot.texture = prisoner_data.headshot
+	headshot.texture = prisoner_data.headshot_small
 	prisoner_name.text = prisoner_data.display_name
 	prisoner_doi.text = prisoner_data.doi
 

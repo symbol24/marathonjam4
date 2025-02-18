@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=2 format=3 uid="uid://cxgoarehhayhu"]
+
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="1_ufpyr"]
+
+[resource]
+script = ExtResource("1_ufpyr")
+id = "prisoner_0048"
+display_name = "prisoner_0048"
+headshot_path = ""
+headshot_normal_path = "res://Textures/Prisoners/Portraits/Normal/SFCP 1-28_normal.jpg"
+headshot_small_path = "res://Textures/Prisoners/Portraits/Small/SFCP 1-28_small.jpg"
+base_hp = 108
+base_movement_speed = 63.0
+base_strength = 71
+base_agility = 96
+base_constitution = 28
+base_intelligence = 5
+base_criminality = 90
+height = 216
+weight = 89
+dob = "prisoner_0096_do_birth"
+doi = "prisoner_0096_do_incarceration"
+sentence = "prisoner_0096_sentence"
+location_of_origin = "prisoner_0096_location_origin"
+criminal_record = "prisoner_0096_criminal_record"
+education = "prisoner_0096_education"
+current_status = 5

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=2 format=3 uid="uid://buusnam43562d"]
+
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="1_lbfcf"]
+
+[resource]
+script = ExtResource("1_lbfcf")
+id = "prisoner_0059"
+display_name = "prisoner_0059"
+headshot_path = ""
+headshot_normal_path = "res://Textures/Prisoners/Portraits/Normal/SFCP 1-39_normal.jpg"
+headshot_small_path = "res://Textures/Prisoners/Portraits/Small/SFCP 1-39_small.jpg"
+base_hp = 117
+base_movement_speed = 65.0
+base_strength = 78
+base_agility = 63
+base_constitution = 100
+base_intelligence = 31
+base_criminality = 44
+height = 193
+weight = 57
+dob = "prisoner_0118_do_birth"
+doi = "prisoner_0118_do_incarceration"
+sentence = "prisoner_0118_sentence"
+location_of_origin = "prisoner_0118_location_origin"
+criminal_record = "prisoner_0118_criminal_record"
+education = "prisoner_0118_education"
+current_status = 5

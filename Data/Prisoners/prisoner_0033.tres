@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=2 format=3 uid="uid://bsa02th11yhwi"]
+
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="1_g6fhy"]
+
+[resource]
+script = ExtResource("1_g6fhy")
+id = "prisoner_0033"
+display_name = "prisoner_0033"
+headshot_path = ""
+headshot_normal_path = "res://Textures/Prisoners/Portraits/Normal/SFCP 1-13_normal.jpg"
+headshot_small_path = "res://Textures/Prisoners/Portraits/Small/SFCP 1-13_small.jpg"
+base_hp = 124
+base_movement_speed = 70.0
+base_strength = 88
+base_agility = 36
+base_constitution = 46
+base_intelligence = 59
+base_criminality = 29
+height = 167
+weight = 45
+dob = "prisoner_0066_do_birth"
+doi = "prisoner_0066_do_incarceration"
+sentence = "prisoner_0066_sentence"
+location_of_origin = "prisoner_0066_location_origin"
+criminal_record = "prisoner_0066_criminal_record"
+education = "prisoner_0066_education"
+current_status = 5

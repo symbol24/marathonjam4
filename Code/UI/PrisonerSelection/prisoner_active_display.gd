@@ -11,7 +11,7 @@ var prisoner_data:PrisonerData
 
 func setup_data(new_prisoner:PrisonerData) -> void:
 	prisoner_data = new_prisoner
-	headshot.texture = prisoner_data.headshot
+	headshot.texture = prisoner_data.headshot_small
 	prisoner_name.text = tr(prisoner_data.display_name)
 	prisoner_sentence.text = tr(prisoner_data.sentence)
 	prisoner_doi.text = tr(prisoner_data.doi)

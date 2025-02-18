@@ -33,7 +33,7 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 	if prisoner_details_vbox.is_visible():
 		prisoner_details_vbox.hide()
 	
-	prisoner_headshot.texture = prisoner_data.headshot
+	prisoner_headshot.texture = prisoner_data.headshot_normal
 	prisoner_name.text = tr(prisoner_data.display_name)
 	prisoner_status.text = tr(PrisonerData.Health_Status.keys()[prisoner_data.current_status])
 	prisoner_height.text = str(prisoner_data.height) + "cm"
@@ -47,6 +47,7 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 	prisoner_sr.text = str(prisoner_data.base_strength)
 	prisoner_ar.text = str(prisoner_data.base_agility)
 	prisoner_cr.text = str(prisoner_data.base_constitution)
+	prisoner_ir.text = str(prisoner_data.base_intelligence)
 	prisoner_criminal_record.text = tr(prisoner_data.criminal_record)
 
 	await get_tree().create_timer(0.2).timeout

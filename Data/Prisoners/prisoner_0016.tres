@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=2 format=3 uid="uid://rmysa85qrslt"]
+
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="1_lt6yb"]
+
+[resource]
+script = ExtResource("1_lt6yb")
+id = "prisoner_0016"
+display_name = "prisoner_0016"
+headshot_path = ""
+headshot_normal_path = "res://Textures/Prisoners/Portraits/Normal/SFCP 1-107_normal.png"
+headshot_small_path = "res://Textures/Prisoners/Portraits/Small/SFCP 1-107_small.png"
+base_hp = 107
+base_movement_speed = 56.0
+base_strength = 86
+base_agility = 48
+base_constitution = 20
+base_intelligence = 94
+base_criminality = 93
+height = 205
+weight = 74
+dob = "prisoner_0032_do_birth"
+doi = "prisoner_0032_do_incarceration"
+sentence = "prisoner_0032_sentence"
+location_of_origin = "prisoner_0032_location_origin"
+criminal_record = "prisoner_0032_criminal_record"
+education = "prisoner_0032_education"
+current_status = 5

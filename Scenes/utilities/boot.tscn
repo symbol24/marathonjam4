@@ -109,6 +109,7 @@ frame_progress = 1.0
 [node name="loading_progression_bar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1200, 100)
+layout_mode = 0
 offset_left = 360.0
 offset_top = 590.0
 offset_right = 1560.0
@@ -118,7 +119,7 @@ step = 0.01
 texture_over = ExtResource("4_oop2q")
 texture_progress = ExtResource("5_do63k")
 tint_over = Color(0, 0.513726, 0, 1)
-tint_progress = Color(0, 0.513726, 0, 1)
+tint_progress = Color(0, 0.513726, 0, 0.498039)
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(1200, 100)

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PrisonerData" load_steps=2 format=3 uid="uid://cendhwhettn2f"]
+
+[ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="1_67cs4"]
+
+[resource]
+script = ExtResource("1_67cs4")
+id = "prisoner_0039"
+display_name = "prisoner_0039"
+headshot_path = ""
+headshot_normal_path = "res://Textures/Prisoners/Portraits/Normal/SFCP 1-19_normal.jpg"
+headshot_small_path = "res://Textures/Prisoners/Portraits/Small/SFCP 1-19_small.jpg"
+base_hp = 133
+base_movement_speed = 60.0
+base_strength = 89
+base_agility = 85
+base_constitution = 91
+base_intelligence = 44
+base_criminality = 96
+height = 208
+weight = 100
+dob = "prisoner_0078_do_birth"
+doi = "prisoner_0078_do_incarceration"
+sentence = "prisoner_0078_sentence"
+location_of_origin = "prisoner_0078_location_origin"
+criminal_record = "prisoner_0078_criminal_record"
+education = "prisoner_0078_education"
+current_status = 5

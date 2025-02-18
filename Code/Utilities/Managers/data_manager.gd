@@ -44,18 +44,21 @@ func load_prisoner_headshots(prisoner_array:Array[PrisonerData]) -> void:
 	var loaded_count:int = 0
 	var errors:Array = []
 	for prisoner in prisoner_array:
-		if prisoner.headshot == null:
-			var headshot:CompressedTexture2D = ResourceLoader.load(prisoner.headshot_path, "Image", ResourceLoader.CACHE_MODE_REUSE)
-			prisoner.headshot = headshot
+		if prisoner.headshot_normal == null:
+			prisoner.headshot_normal = ResourceLoader.load(prisoner.headshot_normal_path)
 		
-		if prisoner.headshot != null:
+		if prisoner.headshot_small == null:
+			prisoner.headshot_small = ResourceLoader.load(prisoner.headshot_small_path)
+		
+		if prisoner.headshot_normal != null and prisoner.headshot_small != null:
 			loaded_count += 1
 		else:
 			errors.append(prisoner)
 	
 	if not errors.is_empty():
 		for each:PrisonerData in errors:
-			Debug.log("%s has '%s' as path." % [each.display_name, each.headshot_path])
+			Debug.log("%s has '%s' as normal path." % [each.display_name, each.headshot_normal_path])
+			Debug.log("%s has '%s' as small path." % [each.display_name, each.headshot_small_path])
 
 	if loaded_count == prisoner_datas.size():
 		Signals.PrisonerHeadshotsLoaded.emit()
