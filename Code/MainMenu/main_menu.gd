@@ -1,41 +1,51 @@
 class_name MainMenu extends RidControl
 
 
-@onready var btn_continue: Button = %btn_continue
+@onready var btn_new_run: Button = %btn_new_run
+@onready var btn_continue_run: Button = %btn_continue_run
+@onready var btn_abandon_run: Button = %btn_abandon_run
 @onready var btn_new_game: Button = %btn_new_game
 @onready var btn_load_game: Button = %btn_load_game
 @onready var btn_settings: Button = %btn_settings
 @onready var btn_credits: Button = %btn_credits
-@onready var load_panel: LoadPanel = %LoadPanel
 
-var continue_id:int = -1
-
-var save_manager:SaveManager = null
+var save_manager:SaveManager:
+	get:
+		if save_manager == null: 
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: 
+				push_error("Save Manager is missing!")
+				return null
+			else: return save_manager
+		else: return save_manager
 
 func _ready() -> void:
-	Signals.LoadComplete.connect(_load_complete)
-	Signals.SelectHashIdForLoad.connect(_set_continue_hash_id)
-	btn_continue.pressed.connect(_continue_pressed)
+	Signals.PopupResult.connect(_check_popup_result)
+	Signals.SaveComplete.connect(_toggle_buttons)
+	btn_new_run.pressed.connect(_btn_new_run_pressed)
+	btn_continue_run.pressed.connect(_btn_continue_run_pressed)
+	btn_abandon_run.pressed.connect(_btn_abandon_run_pressed)
 	btn_new_game.pressed.connect(_new_game_pressed)
 	btn_load_game.pressed.connect(_load_game_pressed)
 	btn_settings.pressed.connect(_settings_pressed)
 	btn_credits.pressed.connect(_credits_pressed)
-	save_manager = get_tree().get_first_node_in_group("save_manager")
 	if save_manager == null: Debug.error("Main menu unable to find save manager.")
-	else:
-		var save:PlayerData = save_manager.get_last_save_used()
-		if save == null:
-			btn_continue.disabled = true
-			btn_new_game.grab_focus()
-		else:
-			continue_id = save.hash_id
-			btn_continue.grab_focus()
+	else: _toggle_buttons(-1)
 	
 
-func _continue_pressed() -> void:
-	Signals.ToggleLoadingScreen.emit(true, "continue_pressed", 5)
+func _btn_new_run_pressed() -> void:
 	_untoggle_panels()
-	Signals.LoadFromHashId.emit(continue_id)
+	Signals.LoadScene.emit("ship_naming", false)
+
+
+func _btn_continue_run_pressed() -> void:
+	_untoggle_panels()
+	Signals.LoadScene.emit("continue_loader", true)
+
+
+func _btn_abandon_run_pressed() -> void:
+	_untoggle_panels()
+	Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "abandon_run", PopupManager.Severity.WARNING, tr("abandon_run_popup_title"), tr("abandon_run_popup_text"), 0)
 
 
 func _new_game_pressed() -> void:
@@ -58,14 +68,45 @@ func _credits_pressed() -> void:
 	pass
 
 
-func _load_complete(hash_id:int) -> void:
-	if hash_id == continue_id:
-		Signals.LoadScene.emit("map_selection_menu")
+func _untoggle_panels(_panel_called:String = "") -> void:
+	pass
 
 
-func _untoggle_panels(panel_called:String = "") -> void:
-	if panel_called != "load" and load_panel.displayed: Signals.ToggleLoadPanel.emit(false)
+func _toggle_buttons(_hash_id:int) -> void:
+	if save_manager.active_save != null:
+		if save_manager.active_save.has_active_run:
+			btn_new_run.hide()
+			btn_continue_run.show()
+			btn_abandon_run.show()
+			btn_continue_run.grab_focus()
+			btn_new_game.hide()
+		else:
+			if not save_manager.active_save.is_new_save:
+				btn_new_run.show()
+				btn_new_run.grab_focus()
+				btn_continue_run.hide()
+				btn_abandon_run.hide()
+				btn_new_game.hide()
+			else:
+				btn_new_run.hide()
+				btn_continue_run.hide()
+				btn_abandon_run.hide()
+				btn_new_game.show()
+				btn_new_game.grab_focus()
+	else:
+		Signals.CreateNewSave.emit(Time.get_date_string_from_system())
+		btn_new_run.hide()
+		btn_continue_run.hide()
+		btn_abandon_run.hide()
+		btn_new_game.show()
+		btn_new_game.grab_focus()
 
 
-func _set_continue_hash_id(new_hash_id:int) -> void:
-	continue_id = new_hash_id
+func _check_popup_result(popup_id:String, result:bool) -> void:
+	match popup_id:
+		"abandon_run":
+			if result:
+				Debug.log("Abandoning run")
+				Signals.AbandonCurrentRun.emit()
+		_:
+			pass

@@ -13,7 +13,15 @@ const PRISONER_ACTIVE_DISPLAY:String = "res://Scenes/UI/PrisonerSelection/prison
 var displayed:bool = false
 var sliding:bool = false
 var pad:PrisonerActiveDisplay = null
-var save_manager:SaveManager
+var save_manager:SaveManager:
+	get:
+		if save_manager == null: 
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: 
+				push_error("Save Manager is missing!")
+				return null
+			else: return save_manager
+		else: return save_manager
 
 
 func _ready() -> void:
@@ -22,7 +30,6 @@ func _ready() -> void:
 	active_prisoners_panel_btn.pressed.connect(_toggle_active_prisoner_panel)
 	pad = load(PRISONER_ACTIVE_DISPLAY).instantiate()
 	if pad == null: Debug.warning("Prisoner Active Display not instantiated in prisoner active panel")
-	save_manager = get_tree().get_first_node_in_group("save_manager")
 	_update_active_prisoners(save_manager.active_save.current_prisoners)
 
 

@@ -14,8 +14,25 @@ const PRISONER_SELECT_BUTTON:String = "res://Scenes/UI/PrisonerSelection/prisone
 @onready var prisoners_active_panel: PanelContainer = %prisoners_active
 
 var button:PrisonerSelectButton = null
-var data_manager:DataManager
-var save_manager:SaveManager
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
+
+var save_manager:SaveManager:
+	get:
+		if save_manager == null: 
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: 
+				push_error("Save Manager is missing!")
+				return null
+			else: return save_manager
+		else: return save_manager
 
 
 func _ready() -> void:
@@ -26,8 +43,6 @@ func _ready() -> void:
 	btn_confirm.pressed.connect(_btn_confirm_pressed)
 	button = load(PRISONER_SELECT_BUTTON).instantiate()
 	if button == null: Debug.warning("Prisoner selection button not loading")
-	data_manager = get_tree().get_first_node_in_group("data_manager")
-	save_manager = get_tree().get_first_node_in_group("save_manager")
 	Signals.LoadPrisonerHeadshots.emit(save_manager.active_save.prisoners)
 
 

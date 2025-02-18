@@ -3,17 +3,33 @@ class_name GameManager extends RidManager
 
 @export var use_debug:bool = false
 
-var data_manager:DataManager
-var save_manager:SaveManager
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
+
+var save_manager:SaveManager:
+	get:
+		if save_manager == null: 
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: 
+				push_error("Save Manager is missing!")
+				return null
+			else: return save_manager
+		else: return save_manager
+
 var current_prisoners:Array[PrisonerData]
 
 
 func _ready() -> void:
 	Signals.ActivatePrisonerData.connect(_activate_prisoner)
-	data_manager = get_tree().get_first_node_in_group("data_manager")
-	if data_manager == null: push_error("Data Manager is missing!")
-	save_manager = get_tree().get_first_node_in_group("save_manager")
-	if save_manager == null: push_error("Save Manager is missing!")
+	Signals.SelectShipAndName.connect(_select_ship_and_name)
+	Signals.AbandonCurrentRun.connect(_abandon_current_run)
 
 
 func _activate_prisoner(new_prisoner:PrisonerData) -> void:
@@ -32,3 +48,15 @@ func _activate_prisoner(new_prisoner:PrisonerData) -> void:
 	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "activated_prisoner", PopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text"), 3)
 	
 	
+func _select_ship_and_name(ship_name:String = "SS Botany Bay", ship_id:int = 100) -> void:
+	save_manager.active_save.has_active_run = true
+	save_manager.active_save.ship_name = ship_name
+	save_manager.active_save.current_ship_id = ship_id
+	Signals.Save.emit()
+
+
+func _abandon_current_run() -> void:
+	Debug.log(save_manager.active_save.has_active_run)
+	if save_manager.active_save.has_active_run:
+		save_manager.active_save.has_active_run = false
+		Signals.Save.emit()

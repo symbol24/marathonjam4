@@ -16,13 +16,16 @@
 				"21f81ea5-2ce1-469c-9abc-2950179b260e",
 				"0dc785e0-46d5-41bb-bc3b-792e08a868ff",
 				"00900778-6ef0-42c6-b8a0-779e25589322",
-				"a53b0da1-521a-452e-9bd6-c8f8626378da"
+				"a53b0da1-521a-452e-9bd6-c8f8626378da",
+				"e0c0571a-a0ca-4cd2-9cb0-d9781522a28e"
 			]
 		},
 		{
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"0aabb376-00a5-4f0d-89a8-3822c73a7f16"
+			]
 		},
 		{
 			"uuid": "e5e74ad0-c93c-49b8-bc0e-dfa2d4e023e5",
@@ -157,6 +160,20 @@
 		{
 			"uuid": "211940a4-a753-4ff7-b901-bd1a57077a2a",
 			"title": "implement loading screen!",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "0aabb376-00a5-4f0d-89a8-3822c73a7f16",
+			"title": "make prog map load encounter",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "e0c0571a-a0ca-4cd2-9cb0-d9781522a28e",
+			"title": "encounter map proc gen",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

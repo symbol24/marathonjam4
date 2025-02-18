@@ -6,7 +6,18 @@ const PREFIX:String = "save_"
 const EXTENSION:String = "tres"
 
 
-var data_manager:DataManager
+@export var is_unique:bool = true
+
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
+		
 var active_save:PlayerData = null
 var all_saves:Dictionary = {}
 var hash_id_cached:int = -1
@@ -17,8 +28,11 @@ func _ready() -> void:
 	Signals.LoadFromHashId.connect(_try_load_for_hash_id)
 	Signals.PopupResult.connect(_confirm_popup_result)
 	Signals.CreateNewSave.connect(_create_save)
-	data_manager = get_tree().get_first_node_in_group("data_manager")
+	Signals.Save.connect(_save)
 	all_saves = _get_all_saves()
+	if is_unique and not all_saves.is_empty():
+		var keys = all_saves.keys()
+		active_save = all_saves[keys[0]]
 
 
 func get_last_save_used() -> PlayerData:
@@ -29,16 +43,21 @@ func get_last_save_used() -> PlayerData:
 
 
 func _create_save(id:String = "test") -> void:
-	var player_data:PlayerData = PlayerData.new()
-	player_data.id = id
-	var date_time:String = Time.get_datetime_string_from_system()
-	player_data.hash_id = hash(id + "_" + date_time)
-	player_data.prisoners = data_manager.get_prisoner_duplicates()
+	if (is_unique and all_saves.is_empty()) or not is_unique:
+		var player_data:PlayerData = PlayerData.new()
+		player_data.id = id
+		var date_time:String = Time.get_datetime_string_from_system()
+		player_data.hash_id = hash(id + "_" + date_time)
+		player_data.prisoners = data_manager.get_prisoner_duplicates()
 
-	if OS.get_name().contains("HTML"):
-		player_data.keyboard_cancel = PlayerData.WEB_CANCEL
-	
-	active_save = player_data
+		if OS.get_name().contains("HTML"):
+			player_data.keyboard_cancel = PlayerData.WEB_CANCEL
+		
+		active_save = player_data
+		_save_for_hash_id(active_save.hash_id)
+
+
+func _save() -> void:
 	_save_for_hash_id(active_save.hash_id)
 
 
@@ -53,6 +72,7 @@ func _save_for_hash_id(_hash_id:int) -> void:
 	
 	var date_time:String = Time.get_datetime_string_from_system()
 	active_save.last_save_date_time = date_time
+	if active_save.is_new_save: active_save.is_new_save = false
 	Signals.DisplaySaveIcon.emit()
 	_check_folder()
 	var result:Error = ResourceSaver.save(active_save, FOLDER + PREFIX + str(_hash_id) + "." + EXTENSION)
@@ -60,7 +80,7 @@ func _save_for_hash_id(_hash_id:int) -> void:
 		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "save_error_generic", PopupManager.Severity.ERROR, tr("save_error_title"), "save_error_text %s" % result, -1)
 		return
 	
-	_set_last_saved(_hash_id)
+	#_set_last_saved(_hash_id)
 
 	Signals.SaveComplete.emit(_hash_id)
 
@@ -140,3 +160,4 @@ func _confirm_popup_result(id:String, result:bool) -> void:
 			if result: _load_for_has_id(hash_id_cached)
 		_:
 			pass
+			

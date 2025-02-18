@@ -16,7 +16,15 @@ enum Type {
 var large_popup:LargePopup = null
 var small_popup:SmallPopup = null
 var context_popup:ContextPopup = null
-var data_manager:DataManager = null
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
 
 
 func _ready() -> void:

@@ -1,3 +1,30 @@
-[gd_resource type="Theme" format=3 uid="uid://ckulva3dnkn8g"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ckulva3dnkn8g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bya1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28s5v"]
+bg_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2du5x"]
+bg_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_er8pl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_teh4u"]
+bg_color = Color(0, 0.513726, 0, 1)
 
 [resource]
+BootLabel/base_type = &"Label"
+BootLabel/colors/font_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+Button/colors/font_color = Color(0, 0.513726, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0.513726, 0, 0.529412)
+Button/colors/font_focus_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+Button/colors/font_hover_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+Button/colors/font_hover_pressed_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+Button/colors/font_pressed_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_2bya1")
+Button/styles/focus = SubResource("StyleBoxFlat_28s5v")
+Button/styles/hover = SubResource("StyleBoxFlat_2du5x")
+Button/styles/normal = SubResource("StyleBoxEmpty_er8pl")
+Button/styles/pressed = SubResource("StyleBoxFlat_teh4u")
+Label/colors/font_color = Color(0, 0.513726, 0, 1)

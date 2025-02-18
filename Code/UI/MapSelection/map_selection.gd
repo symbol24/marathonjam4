@@ -8,7 +8,15 @@ const CAMERA_Y_MIN:float = 0.0
 
 @onready var camera: Camera2D = %camera
 
-var data_manager:DataManager = null
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
 var map_generator:MapGenerator = null
 var grid:Array[Array] = []
 var last_room_coords:Vector2
@@ -40,6 +48,7 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_ready", 25)
 	Signals.MapStuffPlacementComplete.connect(_allow_scrolling)
+	Signals.SpaceshipMoveFinished.connect(_load_encounter)
 	data_manager = get_tree().get_first_node_in_group("data_manager")
 	if data_manager == null: Debug.error("Map Generator cannot find Data Manager.")
 	else:
@@ -200,3 +209,7 @@ func _spawn_ship() -> void:
 	var pos:Vector2 = Vector2(16,16) + selected_point.global_position
 	ship.global_position = pos
 	ship.current_room = selected_point.room_data
+
+
+func _load_encounter(_room_data:RoomData) -> void:
+	Signals.LoadScene.emit("test_level", true)

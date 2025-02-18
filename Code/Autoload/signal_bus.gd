@@ -76,6 +76,7 @@ signal LoadFromHashId(hash_id:int)
 signal LoadComplete(hash_id:int)
 signal DisplaySaveIcon()
 signal CreateNewSave(id:String)
+signal Save()
 
 
 # Main Menu
@@ -88,3 +89,8 @@ signal ToggleActivePrisonersPanel()
 signal BtnSelectPrisonerPressed(prisoner_data:PrisonerData)
 signal ActivatePrisonerData(prisoner_data:PrisonerData)
 signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])
+
+
+# Game Manager
+signal SelectShipAndName(ship_name:String, ship_id:int)
+signal AbandonCurrentRun()

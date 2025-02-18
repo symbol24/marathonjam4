@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _confirm_pressed() -> void:
 	Signals.ToggleLoadingScreen.emit(true)
-	Signals.CreateNewSave.emit(spaceship_name.text)
+	Signals.SelectShipAndName.emit()
 
 
 func _save_complete(_hash_id:int) -> void:

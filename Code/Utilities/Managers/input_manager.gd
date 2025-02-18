@@ -1,7 +1,15 @@
 class_name InputManager extends Node2D
 
 
-var data_manager:DataManager
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
 var target_count:int = 0
 var active_prisoner:Prisoner = null
 var active_interactible:Interactible = null

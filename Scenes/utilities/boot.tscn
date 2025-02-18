@@ -127,6 +127,7 @@ offset_left = 360.0
 offset_top = 590.0
 offset_right = 1560.0
 offset_bottom = 690.0
+theme_type_variation = &"BootLabel"
 text = "MADE WITH GODOT"
 horizontal_alignment = 1
 vertical_alignment = 1

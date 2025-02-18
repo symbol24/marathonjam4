@@ -11,8 +11,25 @@ const BTN_LOAD_SAVE_FILE:String = "res://Scenes/MainMenu/btn_load_reference.tscn
 @onready var btn_load_file: Button = %btn_load_file
 @onready var btn_load_cancel: Button = %btn_load_cancel
 
-var data_manager:DataManager
-var save_manager:SaveManager
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: 
+				push_error("Data Manager is missing!")
+				return null
+			else: return data_manager
+		else: return data_manager
+
+var save_manager:SaveManager:
+	get:
+		if save_manager == null: 
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: 
+				push_error("Save Manager is missing!")
+				return null
+			else: return save_manager
+		else: return save_manager
 var selected_hash_id:int = -1
 var buttons:Array[BtnLoadReference] = []
 var displayed:bool = false
@@ -25,8 +42,6 @@ func _ready() -> void:
 	Signals.ToggleLoadPanel.connect(_toggle_load_panel)
 	btn_load_cancel.pressed.connect(_toggle_load_panel)
 	btn_load_file.pressed.connect(_load_btn_pressed)
-	data_manager = get_tree().get_first_node_in_group("data_manager")
-	save_manager = get_tree().get_first_node_in_group("save_manager")
 	load_button = load(BTN_LOAD_SAVE_FILE).instantiate()
 	if load_button == null: Debug.log("Load save file button not instantiated")
 

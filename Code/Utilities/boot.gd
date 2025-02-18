@@ -47,6 +47,8 @@ func _loading(manager_name:String) -> void:
 		"ui_manager":
 			Signals.LoadManager.emit("scene_manager")
 		"scene_manager":
+			Signals.LoadManager.emit("game_manager")
+		"game_manager":
 			load_done = true
 
 

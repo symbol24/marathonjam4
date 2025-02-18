@@ -10,18 +10,27 @@ const WEB_CANCEL:Key = KEY_BACKSPACE
 @export var last_save_date_time:String
 @export var was_last_used:bool = false
 @export var playtime:float = 0.0
+@export var is_new_save:bool = true
 
-@export_category("Prisoners")
-@export var prisoners:Array[PrisonerData] = []
-@export var active_prisoners:Array[String] = []
-var current_prisoners:Array[PrisonerData] = []
+@export_category("Active Run")
+@export var has_active_run:bool = false
 
-@export_category("Ship")
-var current_ship:int = -1
+@export_group("Ship")
+@export var current_ship_id:int = -1
+@export var ship_name:String = ""
 @export var current_propulsion:float = 1.0
 @export var current_hull_integrity:float = 1.0
 @export var current_ai_core:float = 1.0
 @export var current_life_support:float = 1.0
+
+@export_group("Prisonser")
+@export var prisoners:Array[PrisonerData] = []
+@export var active_prisoners:Array[String] = []
+var current_prisoners:Array[PrisonerData] = []
+
+@export_group("Progression Map")
+@export var current_progression_map:Array[Array] = []
+@export var current_location:Vector2 = Vector2.ZERO
 
 @export_category("System Settings")
 @export_group("General")
