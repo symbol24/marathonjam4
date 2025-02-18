@@ -19,6 +19,8 @@ var save_manager:SaveManager
 
 
 func _ready() -> void:
+	await get_tree().create_timer(0.5).timeout
+	Signals.ToggleLoadingScreen.emit(true, "prisoner_selection_ready", 25)
 	Signals.PrisonerHeadshotsLoaded.connect(_populate_prisoners)
 	btn_display_active.pressed.connect(_active_panel_toggle_btn)
 	btn_confirm.pressed.connect(_btn_confirm_pressed)
@@ -34,12 +36,17 @@ func _active_panel_toggle_btn() -> void:
 
 
 func _populate_prisoners() -> void:
+	await get_tree().create_timer(0.5).timeout
+	Signals.ToggleLoadingScreen.emit(true, "prisoner_selection_populate", 25)
 	for prisoner in save_manager.active_save.prisoners:
 		var new_button:PrisonerSelectButton = button.duplicate()
 		prisoner_list_vbox.add_child(new_button)
 		if not new_button.is_node_ready(): await new_button.ready
 		new_button.set_data(prisoner)
 	
+	await get_tree().create_timer(1).timeout
+	Signals.ToggleLoadingScreen.emit(true, "prisoner_selection_populate_done", 25)
+	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(false)
 
 
@@ -47,4 +54,4 @@ func _btn_confirm_pressed() -> void:
 	if save_manager.active_save.active_prisoners.is_empty():
 		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "no_prisoners_selected", PopupManager.Severity.NORMAL, "", tr("prisoner_selection_no_prisoners"), 3)
 	else:
-		Signals.LoadScene.emit("test_level", true)
+		Signals.LoadScene.emit("map_selection_menu", true)

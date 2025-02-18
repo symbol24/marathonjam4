@@ -33,6 +33,7 @@ func _ready() -> void:
 	
 
 func _continue_pressed() -> void:
+	Signals.ToggleLoadingScreen.emit(true, "continue_pressed", 5)
 	_untoggle_panels()
 	Signals.LoadFromHashId.emit(continue_id)
 

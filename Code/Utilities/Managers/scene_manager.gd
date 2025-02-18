@@ -30,7 +30,7 @@ func _load_scene(_scene_name:String = "", display_loading_screen:bool = false) -
 		to_load = scenes_to_load.get_scene_by_name(scene_name)
 		if to_load != "":
 			loading = true
-			if display_loading_screen: Signals.ToggleLoadingScreen.emit(true)
+			if display_loading_screen: Signals.ToggleLoadingScreen.emit(true, "scene_load", 25)
 			ResourceLoader.load_threaded_request(to_load)
 
 

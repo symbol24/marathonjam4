@@ -24,7 +24,7 @@ signal AllPrisonersSpawned()
 
 # Menus
 signal ToggleMenu(id:String, display:bool)
-signal ToggleLoadingScreen(display:bool)
+signal ToggleLoadingScreen(display:bool, message:String, progress:float)
 
 
 # Input Manager

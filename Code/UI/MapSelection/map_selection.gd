@@ -37,6 +37,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	await get_tree().create_timer(1).timeout
+	Signals.ToggleLoadingScreen.emit(true, "map_selection_ready", 25)
 	Signals.MapStuffPlacementComplete.connect(_allow_scrolling)
 	data_manager = get_tree().get_first_node_in_group("data_manager")
 	if data_manager == null: Debug.error("Map Generator cannot find Data Manager.")
@@ -60,6 +62,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _place_map_stuff() -> void:
+	await get_tree().create_timer(1).timeout
+	Signals.ToggleLoadingScreen.emit(true, "map_selection_placing_stuff", 25)
 	await _place_rooms()
 	await _place_lines()
 
@@ -171,9 +175,13 @@ func _mouse_move_camera(delta:float) -> Vector2:
 
 
 func _allow_scrolling() -> void:
+	await get_tree().create_timer(1).timeout
+	Signals.ToggleLoadingScreen.emit(true, "map_selection_spawning_ship", 15)
 	can_scroll = true
 	_set_start_point()
 	_spawn_ship()
+	await get_tree().create_timer(1).timeout
+	Signals.ToggleLoadingScreen.emit(false)
 
 
 func _set_start_point() -> void:

@@ -28,6 +28,7 @@ func _activate_prisoner(new_prisoner:PrisonerData) -> void:
 		save_manager.active_save.active_prisoners.append(new_prisoner.id)
 	
 	Signals.UpdateActivePrisonersPanel.emit(save_manager.active_save.current_prisoners)
-	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "activated_prisoner", PopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text") % tr(new_prisoner.display_name), 3)
+	# TODO: Make sure the prisoner name is displayed in popup
+	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "activated_prisoner", PopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text"), 3)
 	
 	
