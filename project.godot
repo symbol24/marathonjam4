@@ -57,6 +57,7 @@ save_manager=""
 [gui]
 
 theme/custom="res://Data/default_theme.tres"
+theme/custom_font="res://Data/Fonts/80s-retro-future.ttf"
 
 [input]
 
