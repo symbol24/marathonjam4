@@ -42,7 +42,6 @@ offset_left = 360.0
 offset_top = 590.0
 offset_right = 1560.0
 offset_bottom = 690.0
-value = 50.0
 texture_over = ExtResource("1_dyd3l")
 texture_progress = ExtResource("2_ko08d")
 tint_over = Color(0, 0.513726, 0, 1)

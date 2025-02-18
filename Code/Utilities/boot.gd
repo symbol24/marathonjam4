@@ -1,13 +1,33 @@
 extends RidControl
 
 
+const LOAD_TIME:float = 4.0
+
 @export var manager_loader:PackedScene
+
+@onready var godot: AnimatedSprite2D = %godot
+@onready var loading_progression_bar: TextureProgressBar = %loading_progression_bar
+
+var can_load:bool = false
+var load_done:bool = false
+var timer:float = LOAD_TIME:
+	set(value):
+		timer = value
+		loading_progression_bar.value = 1 - (timer/LOAD_TIME)
+		if timer <= 0.0:
+			can_load = true
 
 
 func _ready() -> void:
 	Signals.ManagerLoaded.connect(_loading)
-	await get_tree().create_timer(1).timeout
 	_load_loader()
+	await get_tree().create_timer(1).timeout
+	godot.play("godot")
+
+
+func _process(delta: float) -> void:
+	if not can_load: timer -= delta
+	if can_load and load_done: _load_done()
 
 
 func _load_loader() -> void:
@@ -27,6 +47,9 @@ func _loading(manager_name:String) -> void:
 		"ui_manager":
 			Signals.LoadManager.emit("scene_manager")
 		"scene_manager":
-			await get_tree().create_timer(3).timeout
-			Signals.LoadScene.emit("logos")
-			queue_free()
+			load_done = true
+
+
+func _load_done() -> void:
+	Signals.LoadScene.emit("logos")
+	queue_free()

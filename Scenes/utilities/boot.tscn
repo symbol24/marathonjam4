@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgwviw5n7vjqs"]
+[gd_scene load_steps=18 format=3 uid="uid://bgwviw5n7vjqs"]
 
 [ext_resource type="Script" path="res://Code/Utilities/boot.gd" id="1_ot87g"]
 [ext_resource type="Texture2D" uid="uid://bqjnhl0d4q5tv" path="res://Textures/Logos/Godot-Spritesheet.png" id="2_1rato"]
 [ext_resource type="PackedScene" uid="uid://bq5fgkfe8c02r" path="res://Scenes/utilities/Managers/manager_loader.tscn" id="2_swvv4"]
+[ext_resource type="Texture2D" uid="uid://cuk8lv0u3y1gs" path="res://Textures/Debug/loading_progression_bar_over.png" id="4_oop2q"]
+[ext_resource type="Texture2D" uid="uid://bmkn6n61m2rhv" path="res://Textures/Debug/loading_progression_bar_fill.png" id="5_do63k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_avtll"]
 atlas = ExtResource("2_1rato")
@@ -97,9 +99,34 @@ script = ExtResource("1_ot87g")
 manager_loader = ExtResource("2_swvv4")
 
 [node name="godot" type="AnimatedSprite2D" parent="."]
-position = Vector2(960, 540)
+unique_name_in_owner = true
+position = Vector2(960, 424)
 sprite_frames = SubResource("SpriteFrames_lebmv")
 animation = &"godot"
-autoplay = "godot"
 frame = 10
 frame_progress = 1.0
+
+[node name="loading_progression_bar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1200, 100)
+offset_left = 360.0
+offset_top = 590.0
+offset_right = 1560.0
+offset_bottom = 690.0
+max_value = 1.0
+step = 0.01
+texture_over = ExtResource("4_oop2q")
+texture_progress = ExtResource("5_do63k")
+tint_over = Color(0, 0.513726, 0, 1)
+tint_progress = Color(0, 0.513726, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(1200, 100)
+layout_mode = 0
+offset_left = 360.0
+offset_top = 590.0
+offset_right = 1560.0
+offset_bottom = 690.0
+text = "MADE WITH GODOT"
+horizontal_alignment = 1
+vertical_alignment = 1
