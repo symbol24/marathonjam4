@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 func _spawn_prisoner() -> void:
-	Debug.log(save_manager.active_save.current_prisoners)
+	#Debug.log(save_manager.active_save.current_prisoners)
 	to_spawn_count = save_manager.active_save.current_prisoners.size()
 	current_count = 0
 	for each in save_manager.active_save.current_prisoners:
@@ -35,7 +35,7 @@ func _spawn_prisoner() -> void:
 
 
 func _spawn_a_prisoner(prisoner_data:PrisonerData) -> void:
-	Debug.log(prisoner_data)
+	#Debug.log(prisoner_data)
 	if prisoner_data != null:
 		var new:Prisoner = data_manager.prisoner_scene.instantiate()
 		active_level.add_child.call_deferred(new)
@@ -45,4 +45,4 @@ func _spawn_a_prisoner(prisoner_data:PrisonerData) -> void:
 		current_count += 1
 		if current_count >= to_spawn_count:
 			Signals.AllPrisonersSpawned.emit()
-		Debug.log("Prisoner %s spawned" % prisoner_data.display_name)
+		#Debug.log("Prisoner %s spawned" % prisoner_data.display_name)

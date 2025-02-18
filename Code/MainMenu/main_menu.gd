@@ -106,7 +106,6 @@ func _check_popup_result(popup_id:String, result:bool) -> void:
 	match popup_id:
 		"abandon_run":
 			if result:
-				Debug.log("Abandoning run")
 				Signals.AbandonCurrentRun.emit()
 		_:
 			pass

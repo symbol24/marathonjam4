@@ -12,11 +12,14 @@ var data_manager:DataManager:
 	get:
 		if data_manager == null:
 			data_manager = get_tree().get_first_node_in_group("data_manager")
-			if data_manager == null: 
-				push_error("Data Manager is missing!")
-				return null
-			else: return data_manager
-		else: return data_manager
+			if data_manager == null: Debug.error("Data Manager is missing!")
+		return data_manager
+var save_manager:SaveManager:
+	get:
+		if save_manager == null:
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: Debug.error("Save manager not found")
+		return save_manager
 var map_generator:MapGenerator = null
 var grid:Array[Array] = []
 var last_room_coords:Vector2
@@ -45,20 +48,18 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	hide()
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_ready", 25)
 	Signals.MapStuffPlacementComplete.connect(_allow_scrolling)
 	Signals.SpaceshipMoveFinished.connect(_load_encounter)
-	data_manager = get_tree().get_first_node_in_group("data_manager")
 	if data_manager == null: Debug.error("Map Generator cannot find Data Manager.")
 	else:
-		map_generator = data_manager.map_generator.instantiate()
-		add_child(map_generator)
-		if not map_generator.is_node_ready(): await map_generator.ready
-		grid = map_generator.generate_map()
-		if grid.is_empty(): Debug.error("Grid not generated.")
+		if save_manager and not save_manager.active_save.current_grid.is_empty():
+			Signals.ToggleLoadingScreen.emit(true, "map_selection_retrieving_map", 10)
+			_load_map_from_save()
 		else:
-			_place_map_stuff()
+			_generate_map()
 
 
 func _physics_process(delta: float) -> void:
@@ -140,6 +141,7 @@ func _place_rooms() -> void:
 			
 		previous_floor_y = floor_y
 		i += 1
+	Debug.log("Points size: ", points.size())
 
 
 func _place_lines() -> void:
@@ -186,19 +188,26 @@ func _mouse_move_camera(delta:float) -> Vector2:
 func _allow_scrolling() -> void:
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_spawning_ship", 15)
-	can_scroll = true
-	_set_start_point()
+	_set_selected_point()
 	_spawn_ship()
+	show()
+	camera.position.y = selected_point.position.y
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(false)
+	can_scroll = true
 
 
-func _set_start_point() -> void:
-	for k in points.keys():
-		if points[k].room_data.type == RoomData.Type.START:
-			selected_point = points[k]
-			selected_point.select()
-			return
+func _set_selected_point() -> void:
+	if not save_manager.active_save.current_grid.is_empty() and save_manager.active_save.current_location != Vector2i.ZERO:
+		selected_point = _get_point_from_coords(save_manager.active_save.current_location)
+		selected_point.select()
+		return
+	else:
+		for k in points.keys():
+			if points[k].room_data.type == RoomData.Type.START:
+				selected_point = points[k]
+				selected_point.select()
+				return
 	Debug.error("No Starting point found!")
 
 
@@ -212,4 +221,39 @@ func _spawn_ship() -> void:
 
 
 func _load_encounter(_room_data:RoomData) -> void:
+	_update_location(_room_data)
+	await get_tree().create_timer(0.2).timeout
 	Signals.LoadScene.emit("test_level", true)
+
+
+func _load_map_from_save() -> void:
+	if not save_manager.active_save.current_grid.is_empty():
+		grid = save_manager.active_save.current_grid
+		_place_map_stuff()
+	else:
+		Debug.warning("Save file does not contain a grid, generating new map.")
+		_generate_map()
+
+
+func _update_location(_room_data:RoomData) -> void:
+	save_manager.active_save.current_location = Vector2i(_room_data.row, _room_data.column)
+	save_manager.active_save.current_grid = grid
+	Signals.Save.emit()
+
+
+func _generate_map() -> void:
+	Signals.ToggleLoadingScreen.emit(true, "map_selection_generating_map", 10)
+	map_generator = data_manager.map_generator.instantiate()
+	add_child(map_generator)
+	if not map_generator.is_node_ready(): await map_generator.ready
+	grid = map_generator.generate_map()
+	if grid.is_empty(): Debug.error("Grid not generated.")
+	else:
+		_place_map_stuff()
+
+
+func _get_point_from_coords(coords:Vector2i) -> MapIconButton:
+	for key in points.keys():
+		if points[key].room_data.row == coords.x and points[key].room_data.column == coords.y:
+			return points[key]
+	return null

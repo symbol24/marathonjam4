@@ -30,5 +30,5 @@ func _load_managers(manager:String = "start"):
 
 
 func _prisoners_spawned() -> void:
-	Debug.log("Prisoner Spawn complete signal received")
+	#Debug.log("Prisoner Spawn complete signal received")
 	Signals.ToggleLoadingScreen.emit(false)

@@ -88,6 +88,7 @@ signal ToggleLoadPanel(display:bool)
 signal ToggleActivePrisonersPanel()
 signal BtnSelectPrisonerPressed(prisoner_data:PrisonerData)
 signal ActivatePrisonerData(prisoner_data:PrisonerData)
+signal ActivatePrisonerDataFromId(id:String)
 signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])
 
 

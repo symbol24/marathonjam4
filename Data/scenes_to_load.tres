@@ -13,6 +13,7 @@
 script = ExtResource("1_mky8d")
 scenes_to_load = Array[ExtResource("1_fft4t")]([ExtResource("2_rn6of"), ExtResource("3_eyeu4"), ExtResource("4_00wid"), ExtResource("5_g7bqu"), ExtResource("6_rovlc"), ExtResource("7_tt2xn")])
 scenes_dict = {
+"continue_loader": "res://Scenes/utilities/continue_loader.tscn",
 "logos": "res://Scenes/MainMenu/logos.tscn",
 "main_menu": "res://Scenes/MainMenu/main_menu.tscn",
 "map_selection_menu": "res://Scenes/UI/MapSelection/map_selection.tscn",

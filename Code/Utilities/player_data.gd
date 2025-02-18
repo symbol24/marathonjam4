@@ -29,8 +29,8 @@ const WEB_CANCEL:Key = KEY_BACKSPACE
 var current_prisoners:Array[PrisonerData] = []
 
 @export_group("Progression Map")
-@export var current_progression_map:Array[Array] = []
-@export var current_location:Vector2 = Vector2.ZERO
+@export var current_grid:Array[Array] = []
+@export var current_location:Vector2i = Vector2i.ZERO
 
 @export_category("System Settings")
 @export_group("General")
@@ -73,3 +73,28 @@ var current_prisoners:Array[PrisonerData] = []
 @export var joy_cancel:JoyButton = JOY_BUTTON_B
 
 var has_unsaved_changes:bool = false
+
+
+func get_prisoner_data_from_id(_id:String) -> PrisonerData:
+	for pd:PrisonerData in prisoners:
+		if pd.id == _id:
+			return pd
+	return null
+
+
+func activate_prisoner_from_id(prisoner_id:String) -> Dictionary:
+	var result:Dictionary = {}
+	var prisoner:PrisonerData = get_prisoner_data_from_id(prisoner_id)
+
+	if prisoner != null:
+		if not current_prisoners.has(prisoner):
+			current_prisoners.append(prisoner)
+			result["result"] = true
+		else:
+			result["result"] = false
+			result["reason"] = "present"
+	else:
+		result["result"] = false
+		result["reason"] = "not_found"
+
+	return result
