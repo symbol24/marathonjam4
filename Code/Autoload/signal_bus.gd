@@ -39,6 +39,7 @@ signal MouseRightPressed()
 signal PrisonerMoveTo(prisoner:Prisoner, target:Vector2)
 signal PrisonerReachedTarget(prisoner:Prisoner)
 signal SelectPrisoner(prisoner:Prisoner)
+signal SelecetPrisonerByData(prisoner_data:PrisonerData)
 signal PrisonerInteract(interaction:String, interactible:Interactible)
 
 
@@ -50,6 +51,12 @@ signal ContextPopupToggled(id:String, displayed:bool)
 signal ContextPopupResult(interactible:Interactible, key_selection:String)
 signal ContextMenuBtnPressed(id:String)
 signal CloseContextMenu()
+
+
+# Play UI
+signal TogglePlayUi(display:bool)
+signal ToggleInventoryForPrisonerData(prisoner_data:PrisonerData)
+signal PlayUiDisplayed()
 
 
 # Interactibles

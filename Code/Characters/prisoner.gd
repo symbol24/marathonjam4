@@ -6,10 +6,11 @@ const FRICTION:float = 1500
 
 @export var display_debug:bool = false
 
-@onready var prisoner_btn: TextureButton = %prisoner_btn
+@onready var prisoner_btn: Button = %prisoner_btn
 @onready var nav_agent: NavigationAgent2D = %nav_agent
 @onready var area_detector: Area2D = %area_detector
 @onready var action_progress: TextureProgressBar = %action_progress
+@onready var prisoner_id: Label = %prisoner_id
 
 var data:PrisonerData = null
 var selected:bool = false
@@ -45,12 +46,12 @@ func _ready() -> void:
 	Signals.PrisonerMoveTo.connect(_add_move_to_action)
 	Signals.SelectPrisoner.connect(_check_selected)
 	Signals.PrisonerInteract.connect(_add_interact_action)
+	Signals.SelecetPrisonerByData.connect(_select_prisoner_by_data)
 	prisoner_btn.pressed.connect(_select_prisoner)
 	nav_agent.path_desired_distance = 1.0
-	nav_agent.target_desired_distance = 1.0
-	nav_agent.path_max_distance = 1.0
+	nav_agent.target_desired_distance = 32.0
+	nav_agent.path_max_distance = 30.0
 	action_progress.hide()
-	if data == null: data = PrisonerData.new()
 
 
 func _process(delta: float) -> void:
@@ -80,6 +81,11 @@ func _physics_process(delta: float) -> void:
 			_start_interact_action()
 
 
+func setup_prisoner(new_data:PrisonerData) -> void:
+	data = new_data
+	prisoner_id.text = "P" + str(data.display_id)
+
+
 func _move_to(delta:float, current_velocity:Vector2, _direction:Vector2, multi:float = 1.0) -> Vector2:
 	var speed:float = data.move_speed if data else 100.0
 	return current_velocity.move_toward(_direction * speed, delta * multi)
@@ -99,8 +105,14 @@ func _add_move_to_action(prisoner:Prisoner, _target:Vector2) -> void:
 
 
 func _select_prisoner() -> void:
-	selected = true
+	selected = MIDI_MESSAGE_TUNE_REQUEST
 	Signals.SelectPrisoner.emit(self)
+
+
+func _select_prisoner_by_data(_data:PrisonerData) ->void:
+	if data == _data:
+		prisoner_btn.set_pressed_no_signal(true)
+		_select_prisoner()
 
 
 func _check_selected(_prisoner:Prisoner) -> void:

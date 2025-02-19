@@ -13,6 +13,7 @@ config_version=5
 config/name="marathonjam4"
 run/main_scene="res://Scenes/utilities/boot.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://Textures/Logos/logo_back_mini.png"
 config/icon="res://icon.svg"
 
 [autoload]

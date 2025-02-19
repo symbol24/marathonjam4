@@ -14,6 +14,7 @@ class_name DataManager extends RidManager
 @export var small_popup:PackedScene
 @export var context_popup:PackedScene
 @export var context_button:PackedScene
+@export var play_ui:PackedScene
 
 @export_group("Map Generation")
 @export var map_generator:PackedScene

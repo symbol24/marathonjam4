@@ -1,15 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy1v615dqau2k"]
+[gd_scene load_steps=5 format=3 uid="uid://dy1v615dqau2k"]
 
 [ext_resource type="Script" path="res://Code/Characters/prisoner.gd" id="1_lhevl"]
-[ext_resource type="Texture2D" uid="uid://bqs30mvusxy24" path="res://Textures/Debug/temp_icon_diamond.png" id="2_gd1bx"]
-[ext_resource type="Texture2D" uid="uid://dkqol38if7hq" path="res://Textures/Debug/temp_icon_diamond_selected.png" id="3_owyae"]
 [ext_resource type="Texture2D" uid="uid://bsotrokkrx82l" path="res://Textures/Debug/temp_icon.png" id="4_sl3op"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmlgc"]
-radius = 16.0
+radius = 31.0161
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siccq"]
-radius = 16.0312
+radius = 45.0999
 
 [node name="Prisoner" type="CharacterBody2D" groups=["element"]]
 collision_layer = 2
@@ -22,17 +20,6 @@ unique_name_in_owner = true
 [node name="move_collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lmlgc")
 
-[node name="prisoner_btn" type="TextureButton" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-toggle_mode = true
-texture_normal = ExtResource("2_gd1bx")
-texture_pressed = ExtResource("3_owyae")
-
 [node name="area_detector" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 2
@@ -41,13 +28,34 @@ collision_mask = 4
 [node name="area_collider" type="CollisionShape2D" parent="area_detector"]
 shape = SubResource("CircleShape2D_siccq")
 
-[node name="action_progress" type="TextureProgressBar" parent="."]
+[node name="action_progress" type="TextureProgressBar" parent="." groups=["element"]]
 unique_name_in_owner = true
 offset_left = -8.0
-offset_top = -30.0
+offset_top = -64.0
 offset_right = 8.0
-offset_bottom = -14.0
+offset_bottom = -48.0
 rounded = true
 fill_mode = 4
 nine_patch_stretch = true
 texture_progress = ExtResource("4_sl3op")
+
+[node name="prisoner_btn" type="Button" parent="." groups=["element"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+offset_top = -45.0
+offset_right = 64.0
+offset_bottom = 19.0
+rotation = 0.785398
+theme_type_variation = &"PrisonerPlayButton"
+toggle_mode = true
+
+[node name="prisoner_id" type="Label" parent="." groups=["element"]]
+unique_name_in_owner = true
+offset_left = -47.0
+offset_top = 45.0
+offset_right = 53.0
+offset_bottom = 85.0
+text = "P0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

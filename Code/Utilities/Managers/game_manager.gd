@@ -58,5 +58,5 @@ func _select_ship_and_name(ship_name:String = "SS Botany Bay", ship_id:int = 100
 func _abandon_current_run() -> void:
 	Debug.log(save_manager.active_save.has_active_run)
 	if save_manager.active_save.has_active_run:
-		save_manager.active_save.has_active_run = false
+		save_manager.active_save.reset()
 		Signals.Save.emit()

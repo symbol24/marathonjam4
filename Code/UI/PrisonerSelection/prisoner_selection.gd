@@ -43,6 +43,8 @@ func _ready() -> void:
 	btn_confirm.pressed.connect(_btn_confirm_pressed)
 	button = load(PRISONER_SELECT_BUTTON).instantiate()
 	if button == null: Debug.warning("Prisoner selection button not loading")
+	if save_manager.active_save.prisoners.is_empty():
+		save_manager.active_save.prisoners = data_manager.get_prisoner_duplicates()
 	Signals.LoadPrisonerHeadshots.emit(save_manager.active_save.prisoners)
 
 

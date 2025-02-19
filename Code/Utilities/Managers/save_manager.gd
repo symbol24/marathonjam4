@@ -48,7 +48,6 @@ func _create_save(id:String = "test") -> void:
 		player_data.id = id
 		var date_time:String = Time.get_datetime_string_from_system()
 		player_data.hash_id = hash(id + "_" + date_time)
-		player_data.prisoners = data_manager.get_prisoner_duplicates()
 
 		if OS.get_name().contains("HTML"):
 			player_data.keyboard_cancel = PlayerData.WEB_CANCEL

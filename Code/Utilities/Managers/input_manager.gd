@@ -55,8 +55,9 @@ func _check_can_click(event:InputEvent) -> bool:
 	var result:bool = true
 	if event is InputEventMouse:
 		var elements = get_tree().get_nodes_in_group("element")
+		var mouse_pos:Vector2 = get_local_mouse_position()
 		for each in elements:
 			if each.get("top_left") != null and each.get("bottom_right") != null:
-				if event.position.x >= each.top_left.x and event.position.y >= each.top_left.y and event.position.x <= each.bottom_right.x and event.position.x <= each.bottom_right.x:
+				if mouse_pos.x >= each.top_left.x and mouse_pos.y >= each.top_left.y and mouse_pos.x <= each.bottom_right.x and mouse_pos.x <= each.bottom_right.x:
 					result = false
 	return result

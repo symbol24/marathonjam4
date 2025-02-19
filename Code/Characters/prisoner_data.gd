@@ -10,6 +10,14 @@ enum Health_Status {
 						CRYO = 5,
 }
 
+enum Action_State {
+					DEAD = 0,
+					IDLE = 1,
+					MOVING = 2,
+					INTERACTING = 3,
+					COMBAT = 4,
+					IGNORE = 5,
+}
 
 @export var id:String
 @export var display_name:String
@@ -43,8 +51,10 @@ var default_status:Health_Status:
 	get: return get_default_value()
 var move_speed:float:
 	get: return base_movement_speed
-var current_hp:int
+var current_hp:int = base_hp
 var inventory:Array[LootItem] = []
+var current_action_state:Action_State = Action_State.IDLE
+var display_id:int
 
 
 func add_items_to_intentory(new_items:Array[LootItem] = []) -> void:

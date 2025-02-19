@@ -98,3 +98,18 @@ func activate_prisoner_from_id(prisoner_id:String) -> Dictionary:
 		result["reason"] = "not_found"
 
 	return result
+
+
+func reset() -> void:
+	has_active_run = false
+	prisoners = []
+	current_grid = []
+	current_prisoners = []
+	active_prisoners = []
+	current_ship_id = -1
+	ship_name = ""
+	current_propulsion = 1
+	current_hull_integrity = 1
+	current_life_support = 1
+	current_ai_core = 1
+	current_location = Vector2i.ZERO

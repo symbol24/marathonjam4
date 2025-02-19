@@ -1,9 +1,27 @@
 class_name PlayLevel extends RidControl
 
 
+var save_manager:SaveManager:
+	get:
+		if save_manager == null:
+			save_manager = get_tree().get_first_node_in_group("save_manager")
+			if save_manager == null: Debug.error("Save manager not found by Play Level, ", id)
+		return save_manager
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: Debug.error("Data manager not found by Play Level, ", id)
+		return data_manager
+
 func _ready() -> void:
-	Signals.AllPrisonersSpawned.connect(_prisoners_spawned)
+	Signals.AllPrisonersSpawned.connect(_prisoners_all_spawned)
+	Signals.PlayUiDisplayed.connect(_play_level_loading_complete)
 	Signals.ManagerLoaded.connect(_load_managers)
+	if save_manager.active_save.prisoners[0].headshot_normal == null: 
+		await get_tree().create_timer(1).timeout
+		Signals.ToggleLoadingScreen.emit(true, "play_level_loading_headshots", 5)
+		data_manager.load_prisoner_headshots(save_manager.active_save.prisoners)
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "play_level_starting", 5)
 	await get_tree().create_timer(1).timeout
@@ -29,6 +47,11 @@ func _load_managers(manager:String = "start"):
 			pass
 
 
-func _prisoners_spawned() -> void:
-	#Debug.log("Prisoner Spawn complete signal received")
+func _prisoners_all_spawned() -> void:
+	await get_tree().create_timer(0.5).timeout
+	Signals.ToggleLoadingScreen.emit(true, "play_level_loading_manager", 5)
+	Signals.TogglePlayUi.emit(true)
+
+
+func _play_level_loading_complete() -> void:
 	Signals.ToggleLoadingScreen.emit(false)

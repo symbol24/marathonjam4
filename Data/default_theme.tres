@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cti4blmm0u75n" path="res://Textures/Ui/icons20x20_hslider_tick.png" id="4_mqliv"]
 [ext_resource type="Texture2D" uid="uid://it81kp7k58qy" path="res://Textures/Ui/icons20x20_check_button_unchecked_disabled.png" id="4_o010a"]
 [ext_resource type="StyleBox" uid="uid://b0o6gqwuifiws" path="res://Data/ThemeStyles/panel_container_normal.tres" id="9_f8kgl"]
+[ext_resource type="StyleBox" uid="uid://il62fu8kjd3b" path="res://Data/ThemeStyles/prisoner_play_hover.tres" id="10_lis2c"]
 [ext_resource type="StyleBox" uid="uid://cbnpncm72j1ui" path="res://Data/ThemeStyles/panel_container_button_hover.tres" id="10_uebv1"]
 [ext_resource type="StyleBox" uid="uid://bpcl2leyowhgq" path="res://Data/ThemeStyles/panel_container_button_normal.tres" id="11_dck3a"]
+[ext_resource type="StyleBox" uid="uid://h312rdmuejqo" path="res://Data/ThemeStyles/prisoner_play_normal.tres" id="11_sxdm5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be26a"]
 draw_center = false
@@ -143,17 +145,6 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0, 0.513726, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq0ov"]
-bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0.513726, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bwn0"]
-bg_color = Color(0, 0.513726, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mkdd"]
 bg_color = Color(0, 0.513726, 0, 0.258824)
 border_width_left = 10
@@ -260,10 +251,12 @@ PrisonerDetailsLabelSmall/font_sizes/font_size = 16
 PrisonerDetailsLabelSmallHover/base_type = &"Label"
 PrisonerDetailsLabelSmallHover/colors/font_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 PrisonerDetailsLabelSmallHover/font_sizes/font_size = 16
+PrisonerPanelInventoryButton/base_type = &"Button"
+PrisonerPanelInventoryButton/font_sizes/font_size = 10
 PrisonerPlayButton/base_type = &"Button"
 PrisonerPlayButton/styles/focus = SubResource("StyleBoxFlat_j61ci")
-PrisonerPlayButton/styles/hover = SubResource("StyleBoxFlat_gq0ov")
-PrisonerPlayButton/styles/normal = SubResource("StyleBoxFlat_7bwn0")
+PrisonerPlayButton/styles/hover = ExtResource("10_lis2c")
+PrisonerPlayButton/styles/normal = ExtResource("11_sxdm5")
 PrisonerPlayButton/styles/pressed = SubResource("StyleBoxFlat_6mkdd")
 PrisonerSelectButtonHover/base_type = &"PanelContainer"
 PrisonerSelectButtonHover/styles/panel = ExtResource("10_uebv1")

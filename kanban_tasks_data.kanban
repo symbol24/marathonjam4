@@ -21,7 +21,12 @@
 				"bd1812c9-0db3-4c07-a2c8-eca9c3d36619",
 				"12e35636-d875-49ec-a682-781ab8738fe9",
 				"3a71316f-513d-4885-9219-111d4f04271a",
-				"667f9039-07fd-4fc9-a52f-2be28b465076"
+				"667f9039-07fd-4fc9-a52f-2be28b465076",
+				"cc6c6d8a-4059-4edc-ae9d-d7738cffb70e",
+				"fd2190ea-5958-49ba-9ca8-8db3b0beda98",
+				"f6f9ea0f-6f45-48c1-b748-b278e36f5502",
+				"5bf3db86-147a-42aa-99aa-bf7c4cd00366",
+				"032396c5-92b8-46f2-b4fe-ff9ae8a34daf"
 			]
 		},
 		{
@@ -49,7 +54,8 @@
 				"211940a4-a753-4ff7-b901-bd1a57077a2a",
 				"964ad8c1-fab0-49b5-8770-8207ecfdc090",
 				"0aabb376-00a5-4f0d-89a8-3822c73a7f16",
-				"395a026d-2340-469f-a382-35d40d6d7f1d"
+				"395a026d-2340-469f-a382-35d40d6d7f1d",
+				"f33642ef-6f34-465d-bc10-28713684c982"
 			]
 		}
 	],
@@ -246,6 +252,48 @@
 		{
 			"uuid": "667f9039-07fd-4fc9-a52f-2be28b465076",
 			"title": "CRT shader",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "cc6c6d8a-4059-4edc-ae9d-d7738cffb70e",
+			"title": "update status of prisoners to active/health when activated in activation ui",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "fd2190ea-5958-49ba-9ca8-8db3b0beda98",
+			"title": "add backing out of ship naming",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "f33642ef-6f34-465d-bc10-28713684c982",
+			"title": "fix abandon run to clear all data from previous run",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "f6f9ea0f-6f45-48c1-b748-b278e36f5502",
+			"title": "loacalization file",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "5bf3db86-147a-42aa-99aa-bf7c4cd00366",
+			"title": "redo prog map so that it is in a panel container and scrollcontainer",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "032396c5-92b8-46f2-b4fe-ff9ae8a34daf",
+			"title": "display save icon on save",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

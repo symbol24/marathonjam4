@@ -40,6 +40,8 @@ func _spawn_a_prisoner(prisoner_data:PrisonerData) -> void:
 		var new:Prisoner = data_manager.prisoner_scene.instantiate()
 		active_level.add_child.call_deferred(new)
 		if not new.is_node_ready(): await new.ready
+		prisoner_data.display_id = current_count + 1
+		new.setup_prisoner(prisoner_data)
 		new.global_position = Vector2(randi_range(100,200), randi_range(100,200))
 		new.name = "prisoner_" + prisoner_data.id
 		current_count += 1

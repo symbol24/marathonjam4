@@ -1,0 +1,188 @@
+[gd_scene load_steps=4 format=3 uid="uid://xpgtmytw67ym"]
+
+[ext_resource type="Script" path="res://Code/UI/play_ui.gd" id="1_i4ul4"]
+[ext_resource type="PackedScene" uid="uid://dy4dv7h33imjw" path="res://Scenes/UI/prisoner_play_ui_panel.tscn" id="2_rjk1v"]
+[ext_resource type="StyleBox" uid="uid://h312rdmuejqo" path="res://Data/ThemeStyles/prisoner_play_normal.tres" id="3_tp2ex"]
+
+[node name="PlayUi" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4ul4")
+panel_btn = ExtResource("2_rjk1v")
+
+[node name="prisoner_info_panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 160.0
+grow_horizontal = 0
+mouse_force_pass_scroll_events = false
+
+[node name="panel_vbox" type="VBoxContainer" parent="prisoner_info_panel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="prioner_list" type="VBoxContainer" parent="prisoner_info_panel/panel_vbox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="spacer" type="Control" parent="prisoner_info_panel/panel_vbox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="prisoner_info_toggle_btn" type="Button" parent="prisoner_info_panel/panel_vbox" groups=["element"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+text = "HIDE"
+text_overrun_behavior = 1
+clip_text = true
+
+[node name="legend" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(200, 140)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -160.0
+offset_right = 266.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="legend"]
+layout_mode = 2
+
+[node name="legend_grid" type="GridContainer" parent="legend/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="icon_control" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control"]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 70.0
+offset_bottom = 40.0
+rotation = 0.785398
+theme_override_styles/panel = ExtResource("3_tp2ex")
+
+[node name="prionser_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "prisoner_icon_label"
+uppercase = true
+
+[node name="icon_control2" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control2"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 50.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("3_tp2ex")
+
+[node name="pikup_item_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "pickup_item_icon_label"
+uppercase = true
+
+[node name="icon_control3" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control3"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 50.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("3_tp2ex")
+
+[node name="searchable_item" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "searchable_icon_label"
+uppercase = true
+
+[node name="icon_control4" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control4"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 50.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("3_tp2ex")
+
+[node name="locked_interactible_lable" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "locked_interactible_label"
+uppercase = true
+
+[node name="icon_control5" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control5"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 50.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("3_tp2ex")
+
+[node name="open_interactible_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "open_interactible_label"
+uppercase = true
+
+[node name="icon_control6" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control6"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 50.0
+offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("3_tp2ex")
+
+[node name="closed_interactible_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "closed_interactible_label"
+uppercase = true
+
+[node name="btn_legend_toggle" type="Button" parent="legend/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "legend_show"
