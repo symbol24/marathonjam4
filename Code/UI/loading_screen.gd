@@ -2,7 +2,7 @@ class_name LoadingScreen extends Control
 
 
 @onready var progression_text: Label = %progression_text
-@onready var loading_progression_bar: TextureProgressBar = %loading_progression_bar
+@onready var loading_bar: ProgressBar = %loading_bar
 
 
 func _ready() -> void:
@@ -13,9 +13,9 @@ func _toggle_loading_screen(display:bool = false, message:String = "normal_loadi
 	if display:
 		show()
 		progression_text.text = tr(message)
-		loading_progression_bar.value += progress
+		loading_bar.value += progress
 	else:
 		hide()
 		progression_text.text = ""
-		loading_progression_bar.value = 0
+		loading_bar.value = 0
 

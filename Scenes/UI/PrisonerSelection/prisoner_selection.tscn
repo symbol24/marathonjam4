@@ -19,16 +19,17 @@ custom_minimum_size = Vector2(400, 900)
 layout_mode = 1
 offset_left = 100.0
 offset_top = 90.0
-offset_right = 500.0
+offset_right = 585.0
 offset_bottom = 990.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="prisoner_list_panel"]
 layout_mode = 2
 
 [node name="prisoner_list_panel_label" type="Label" parent="prisoner_list_panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "Available Prisoners"
+theme_type_variation = &"HeaderLarge"
+text = "PRISONERS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -67,6 +68,7 @@ modulate = Color(0, 0.513726, 0, 1)
 custom_minimum_size = Vector2(276.86, 374)
 layout_mode = 2
 texture = ExtResource("3_1o2wo")
+expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer"]
 layout_mode = 2
@@ -77,168 +79,196 @@ layout_mode = 2
 
 [node name="label_for_name" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"PrisonerDetailsLabel"
 text = "NAME:"
 
 [node name="prisoner_name" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_status" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme_type_variation = &"PrisonerDetailsLabel"
 text = "STATUS:"
 
 [node name="prisoner_status" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_height" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+theme_type_variation = &"PrisonerDetailsLabel"
 text = "HEIGHT:"
 
 [node name="prisoner_height" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_weight" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+theme_type_variation = &"PrisonerDetailsLabel"
 text = "WEIGHT:"
 
 [node name="prisoner_weight" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_dob" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-text = "Date of Birth:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "DATE OF BIRTH:"
 
 [node name="prisoner_dob" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer5"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer13" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_doi" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer13"]
 layout_mode = 2
-text = "Date of Incarceration:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "DATE OF INCARCERATION:"
 
 [node name="prisoner_doi" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer13"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer14" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_sentence" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer14"]
 layout_mode = 2
-text = "Sentence:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "SENTENCE:"
 
 [node name="prisoner_sentence" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer14"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_loo" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
-text = "Location of Origin:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "LOCARION OF ORIGIN:"
 
 [node name="prisoner_loo" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer6"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_loe" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer8"]
 layout_mode = 2
-text = "Level of Education:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "LEVEL OF EDUCATION:"
 
 [node name="prisoner_loe" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer8"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_criminality_rating" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
-text = "Criminality Rating:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "CRIMINALITY RATING:"
 
 [node name="prisoner_criminality_rating" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer7"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_sr" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
-text = "Strength Rating:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "STRENGTH RATING:"
 
 [node name="prisoner_sr" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer9"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer10" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_ar" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer10"]
 layout_mode = 2
-text = "Agility Rating:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "AGILITY RATING:"
 
 [node name="prisoner_ar" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer10"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer11" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_cr" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer11"]
 layout_mode = 2
-text = "Endurance Rating:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "ENDURANCE RATING:"
 
 [node name="prisoner_cr" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer11"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="HBoxContainer12" type="HBoxContainer" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="label_for_ir" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer12"]
 layout_mode = 2
-text = "Intelligence Rating:"
+theme_type_variation = &"PrisonerDetailsLabel"
+text = "INTELLIGENCE RATING:"
 
 [node name="prisoner_ir" type="Label" parent="prisoner_details_panel/prisoner_details_vbox/HBoxContainer/VBoxContainer/HBoxContainer12"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrisonerDetailsLabel"
 
 [node name="Label" type="Label" parent="prisoner_details_panel/prisoner_details_vbox"]
 layout_mode = 2
@@ -253,6 +283,34 @@ bbcode_enabled = true
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="floating_info" type="Control" parent="prisoner_details_panel"]
+layout_mode = 2
+
+[node name="hp" type="Label" parent="prisoner_details_panel/floating_info"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 121.0
+offset_bottom = 32.0
+theme_type_variation = &"LabelBlack"
+text = "000/000"
+vertical_alignment = 1
+
+[node name="speed" type="Label" parent="prisoner_details_panel/floating_info"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 0
+offset_left = 155.0
+offset_top = -1.0
+offset_right = 275.0
+offset_bottom = 39.0
+theme_type_variation = &"LabelBlack"
+text = "000"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="prisoner_select_button_panel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(1220, 180)
@@ -272,14 +330,14 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(380, 100)
 layout_mode = 2
 size_flags_vertical = 4
-text = "EXIT PRISONER REVIVE PROTOCOL"
+text = "EXIT"
 
 [node name="btn_display_active" type="Button" parent="prisoner_select_button_panel/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(380, 100)
 layout_mode = 2
 size_flags_vertical = 4
-text = "DISPLAY REVIVED PRISONERS"
+text = "REVIVED PRISONERS"
 
 [node name="btn_select_prisoner" type="Button" parent="prisoner_select_button_panel/HBoxContainer"]
 unique_name_in_owner = true
@@ -287,7 +345,7 @@ custom_minimum_size = Vector2(380, 100)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-text = "REVIVE PRISONER FROM CRYOSTASIS"
+text = "REVIVE PRISONER"
 
 [node name="prisoners_active" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -303,11 +361,14 @@ script = ExtResource("3_lwov6")
 layout_mode = 2
 
 [node name="Label" type="Label" parent="prisoners_active/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "ACTIVE PRISONERS"
+theme_type_variation = &"HeaderLarge"
+text = "ACTIVE"
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
 
 [node name="prisoners_active_list" type="VBoxContainer" parent="prisoners_active/VBoxContainer"]
 unique_name_in_owner = true
@@ -323,6 +384,6 @@ vertical_alignment = 1
 
 [node name="active_prisoners_panel_btn" type="Button" parent="prisoners_active/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "CLOSE PANEL"

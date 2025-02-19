@@ -13,6 +13,7 @@ func _ready() -> void:
 	spaceship_name.text_changed.connect(_name_length_check)
 	btn_confirm.pressed.connect(_confirm_pressed)
 	btn_confirm.disabled = true
+	spaceship_name.grab_focus()
 
 
 func _confirm_pressed() -> void:

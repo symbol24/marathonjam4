@@ -14,8 +14,8 @@ script = ExtResource("1_otuam")
 
 [node name="rid" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 627.0
-offset_top = 116.0
-offset_right = 1427.0
-offset_bottom = 916.0
+offset_left = 560.0
+offset_top = 140.0
+offset_right = 1360.0
+offset_bottom = 940.0
 texture = ExtResource("2_4wow1")

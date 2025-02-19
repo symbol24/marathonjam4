@@ -29,10 +29,6 @@ text = "Please enter the name of the ship"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="spacer" type="Control" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -66,7 +62,7 @@ size_flags_vertical = 3
 
 [node name="btn_confirm" type="Button" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "CONFIRM"

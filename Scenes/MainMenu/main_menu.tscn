@@ -13,59 +13,69 @@ script = ExtResource("1_jltti")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 906.0
-offset_top = 188.0
-offset_right = 1002.0
-offset_bottom = 211.0
+offset_left = 610.0
+offset_top = 140.0
+offset_right = 1310.0
+offset_bottom = 290.0
+theme_type_variation = &"MainMenuTitle"
 text = "MAIN MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="menu_buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 860.0
-offset_top = 299.0
-offset_right = 1060.0
-offset_bottom = 569.0
+offset_left = 785.0
+offset_top = 310.0
+offset_right = 1135.0
+offset_bottom = 960.0
 theme_override_constants/separation = 10
 
 [node name="btn_new_run" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "NEW RUN"
+clip_text = true
 
 [node name="btn_continue_run" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "CONTINUE RUN"
+clip_text = true
 
 [node name="btn_abandon_run" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "ABANDON RUN"
+clip_text = true
 
 [node name="btn_new_game" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "NEW GAME"
+clip_text = true
 
 [node name="btn_load_game" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "LOAD GAME"
+clip_text = true
 
 [node name="btn_settings" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "SETTINGS"
+clip_text = true
 
 [node name="btn_credits" type="Button" parent="menu_buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 text = "CREDITS"
+clip_text = true

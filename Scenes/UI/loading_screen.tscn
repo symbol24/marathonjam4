@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://to313svmi6t6"]
+[gd_scene load_steps=3 format=3 uid="uid://to313svmi6t6"]
 
-[ext_resource type="Texture2D" uid="uid://cuk8lv0u3y1gs" path="res://Textures/Debug/loading_progression_bar_over.png" id="1_dyd3l"]
 [ext_resource type="Script" path="res://Code/UI/loading_screen.gd" id="1_vunhe"]
-[ext_resource type="Texture2D" uid="uid://bmkn6n61m2rhv" path="res://Textures/Debug/loading_progression_bar_fill.png" id="2_ko08d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tacf"]
 bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -30,11 +28,12 @@ offset_left = 360.0
 offset_top = 490.0
 offset_right = 1560.0
 offset_bottom = 590.0
+theme_type_variation = &"LoadingScreenLabel"
 text = "text will go here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="loading_progression_bar" type="TextureProgressBar" parent="."]
+[node name="loading_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1200, 100)
 layout_mode = 0
@@ -42,7 +41,4 @@ offset_left = 360.0
 offset_top = 590.0
 offset_right = 1560.0
 offset_bottom = 690.0
-texture_over = ExtResource("1_dyd3l")
-texture_progress = ExtResource("2_ko08d")
-tint_over = Color(0, 0.513726, 0, 1)
-tint_progress = Color(0, 0.513726, 0, 0.498039)
+step = 1.0

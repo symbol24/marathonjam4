@@ -18,6 +18,8 @@ class_name PrisonerDetailsPanel extends PanelContainer
 @onready var prisoner_cr: Label = %prisoner_cr
 @onready var prisoner_ir: Label = %prisoner_ir
 @onready var prisoner_criminal_record: RichTextLabel = %prisoner_criminal_record
+@onready var prisoner_hp: Label = %hp
+@onready var prisoner_speed: Label = %speed
 @onready var btn_select_prisoner: Button = %btn_select_prisoner
 
 var prisoner_data:PrisonerData
@@ -49,6 +51,8 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 	prisoner_cr.text = str(prisoner_data.base_constitution)
 	prisoner_ir.text = str(prisoner_data.base_intelligence)
 	prisoner_criminal_record.text = tr(prisoner_data.criminal_record)
+	prisoner_hp.text = str(prisoner_data.current_hp) + "/" + str(prisoner_data.base_hp)
+	prisoner_speed.text = str(prisoner_data.move_speed)
 
 	await get_tree().create_timer(0.2).timeout
 
