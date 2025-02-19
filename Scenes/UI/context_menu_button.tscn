@@ -4,7 +4,8 @@
 
 [node name="ContextMenuButton" type="Button" groups=["element"]]
 clip_contents = true
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(150, 40)
+theme_type_variation = &"ConetxtMenuButton"
 text = "context_btn"
 text_overrun_behavior = 1
 clip_text = true

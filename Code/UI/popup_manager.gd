@@ -52,8 +52,10 @@ func _display_large_popup(_id:String, _severity:PopupManager.Severity = PopupMan
 		large_popup = data_manager.large_popup.instantiate()
 		add_child.call_deferred(large_popup)
 		if not large_popup.is_node_ready(): await large_popup.ready
+		large_popup.position = Vector2(640, 300)
 	
-	if large_popup != null: large_popup.display_popup(_id, _severity, _timer, _title, _text)
+	if large_popup != null: 
+		large_popup.display_popup(_id, _severity, _timer, _title, _text)
 	else: Debug.error("Large Popup null")
 
 
@@ -62,6 +64,7 @@ func _display_small_popup(_timer:int, _text:String) -> void:
 		small_popup = data_manager.small_popup.instantiate()
 		add_child.call_deferred(small_popup)
 		if not small_popup.is_node_ready(): await small_popup.ready
+		small_popup.position = Vector2(640, 200)
 	
 	if small_popup != null: small_popup.display_popup(_timer, _text)
 	else: Debug.error("Small Popup null")

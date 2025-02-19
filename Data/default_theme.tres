@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=3 uid="uid://ckulva3dnkn8g"]
+[gd_resource type="Theme" load_steps=38 format=3 uid="uid://ckulva3dnkn8g"]
 
 [ext_resource type="Texture2D" uid="uid://c3rsuxy54fxmn" path="res://Textures/Ui/icons20x20_hslider_grabber.png" id="1_et1ol"]
 [ext_resource type="Texture2D" uid="uid://uf8eje2537gu" path="res://Textures/Ui/icons20x20_check_button_checked.png" id="1_r2vuf"]
@@ -135,6 +135,33 @@ bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 border_width_bottom = 2
 border_color = Color(0, 0.513726, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j61ci"]
+bg_color = Color(0, 0.513726, 0, 0.258824)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq0ov"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bwn0"]
+bg_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mkdd"]
+bg_color = Color(0, 0.513726, 0, 0.258824)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.513726, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x6er"]
 bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 border_width_left = 20
@@ -193,6 +220,8 @@ CheckButton/styles/hover = SubResource("StyleBoxFlat_k3742")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_25v3k")
 CheckButton/styles/normal = SubResource("StyleBoxFlat_lhis7")
 CheckButton/styles/pressed = SubResource("StyleBoxFlat_ljbyn")
+ConetxtMenuButton/base_type = &"Button"
+ConetxtMenuButton/font_sizes/font_size = 12
 HSlider/icons/grabber = ExtResource("1_et1ol")
 HSlider/icons/grabber_disabled = ExtResource("2_bnq4b")
 HSlider/icons/grabber_highlight = ExtResource("3_kl6il")
@@ -220,6 +249,10 @@ LoadingScreenLabel/font_sizes/font_size = 32
 MainMenuTitle/base_type = &"Label"
 MainMenuTitle/font_sizes/font_size = 108
 PanelContainer/styles/panel = ExtResource("9_f8kgl")
+PopupLargTextRTL/base_type = &"RichTextLabel"
+PopupLargTextRTL/font_sizes/normal_font_size = 24
+PopupLargTitleRTL/base_type = &"RichTextLabel"
+PopupLargTitleRTL/font_sizes/normal_font_size = 24
 PrisonerDetailsLabel/base_type = &"Label"
 PrisonerDetailsLabel/font_sizes/font_size = 18
 PrisonerDetailsLabelSmall/base_type = &"Label"
@@ -227,6 +260,11 @@ PrisonerDetailsLabelSmall/font_sizes/font_size = 16
 PrisonerDetailsLabelSmallHover/base_type = &"Label"
 PrisonerDetailsLabelSmallHover/colors/font_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 PrisonerDetailsLabelSmallHover/font_sizes/font_size = 16
+PrisonerPlayButton/base_type = &"Button"
+PrisonerPlayButton/styles/focus = SubResource("StyleBoxFlat_j61ci")
+PrisonerPlayButton/styles/hover = SubResource("StyleBoxFlat_gq0ov")
+PrisonerPlayButton/styles/normal = SubResource("StyleBoxFlat_7bwn0")
+PrisonerPlayButton/styles/pressed = SubResource("StyleBoxFlat_6mkdd")
 PrisonerSelectButtonHover/base_type = &"PanelContainer"
 PrisonerSelectButtonHover/styles/panel = ExtResource("10_uebv1")
 PrisonerSelectButtonPanel/base_type = &"PanelContainer"
@@ -236,6 +274,8 @@ ProgressBar/font_sizes/font_size = 40
 ProgressBar/styles/background = SubResource("StyleBoxFlat_7x6er")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_ifhq2")
 RichTextLabel/colors/default_color = Color(0, 0.513726, 0, 1)
+SmallPopupRTL/base_type = &"RichTextLabel"
+SmallPopupRTL/font_sizes/normal_font_size = 24
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_x5kvo")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ynm77")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_hpvvx")
