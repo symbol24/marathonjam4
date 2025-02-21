@@ -19,13 +19,8 @@ enum State {
 @export var data:InteractibleData
 
 @onready var interact_collider: CollisionShape2D = %interact_collider
-@onready var interact_btn: Button = %interact_btn
 
 var displayed:bool = false
-var top_left:Vector2:
-	get: return Vector2(global_position.x + interact_btn.position.x, global_position.y + interact_btn.position.y)
-var bottom_right:Vector2:
-	get: return Vector2(global_position.x + (interact_btn.size.x / 2), global_position.y + (interact_btn.size.y / 2))
 
 
 func _ready() -> void:
@@ -85,7 +80,3 @@ func _state_update(_data:InteractibleData, new_state:State) -> void:
 
 func _toggle_visuals() -> void:
 	pass
-
-
-func _deselect() -> void:
-	interact_btn.release_focus()
