@@ -20,7 +20,8 @@ var top_left:Vector2:
 	get: return Vector2(global_position.x + prisoner_btn.position.x, global_position.y + prisoner_btn.position.y)
 var bottom_right:Vector2:
 	get: return Vector2(global_position.x + (prisoner_btn.size.x / 2), global_position.y + (prisoner_btn.size.y / 2))
-var area_in_id:StringName = ""
+var areas_in:Dictionary = {}
+var interactible_name:StringName = ""
 
 # Actions 
 var actions:Array[PrisonerActionData] = []
@@ -87,6 +88,10 @@ func setup_prisoner(new_data:PrisonerData) -> void:
 	prisoner_id.text = "P" + str(data.display_id)
 
 
+func grab_prisoner_focus() -> void:
+	prisoner_btn.grab_click_focus()
+
+
 func _move_to(delta:float, current_velocity:Vector2, _direction:Vector2, multi:float = 1.0) -> Vector2:
 	var speed:float = data.move_speed if data else 100.0
 	return current_velocity.move_toward(_direction * speed, delta * multi)
@@ -94,6 +99,7 @@ func _move_to(delta:float, current_velocity:Vector2, _direction:Vector2, multi:f
 
 func _add_move_to_action(prisoner:Prisoner, _target:Vector2) -> void:
 	if prisoner == self and _target != null:
+		_clear_current_action()
 		var new_action:MoveToActionData = MoveToActionData.new()
 		new_action.target_pos = _target
 		nav_agent.target_position = new_action.target_pos
@@ -103,6 +109,12 @@ func _add_move_to_action(prisoner:Prisoner, _target:Vector2) -> void:
 		else:
 			actions.append(new_action)
 			if display_debug: Debug.log("Action move to added to actions on prisoner %s." % self.name)
+
+
+func _clear_current_action() -> void:
+	nav_agent.target_position = global_position
+	current_action = null
+	Signals.ClearMoveToTargets.emit(self)
 
 
 func _select_prisoner() -> void:
@@ -124,6 +136,7 @@ func _check_selected(_prisoner:Prisoner) -> void:
 
 func _add_interact_action(_action:String, interactible:Interactible) -> void:
 	if selected:
+		_clear_current_action()
 		if global_position.distance_squared_to(interactible.global_position) > 150:
 			_add_move_to_action(self, interactible.global_position)
 			
@@ -142,8 +155,8 @@ func _complete_move_action() -> void:
 
 func _start_interact_action() -> void:
 	if current_action is InteractActionData:
-		Debug.log("Interact action started")
 		current_action.is_active = true
+		interactible_name = current_action.interactible.name
 		var int_data:InteractibleData = current_action.interactible.data
 		if int_data.base_interact_time > 0.0:
 			max_time = int_data.base_interact_time
@@ -155,45 +168,37 @@ func _start_interact_action() -> void:
 
 func _area_entered(area:Area2D) -> void:
 	if display_debug: Debug.log("Entered area: ", area.name)
-	area_in_id = area.name
+	if area is Interactible: areas_in[area.name] = area.data
 
 
 func _area_exited(area:Area2D) -> void:
-	if area.name == area_in_id: area_in_id = ""
+	if areas_in.has(area.data): areas_in[area.data] = null
 
 
 func _finish_interaction() -> void:
 	if current_action is InteractActionData:
-		var int_data:InteractibleData = current_action.interactible.data
-		var result:Dictionary
-		match current_action.action:
-			"pickup":
-				result = int_data.attempt_to_pick_up()
-				if result.has("result") and result["result"]:
-					if result.has("loot") and not result["loot"].is_empty():
-						if data != null: data.add_items_to_intentory(result["loot"])
-						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "pickup_loot", PopupManager.Severity.NORMAL, "", "Items picked up", 3)
-					else:
-						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "pickup_loot", PopupManager.Severity.NORMAL, "", "Nothing picked up", 3)
-					Signals.InteractibleStateUpdate.emit(int_data, Interactible.State.DEPLETED)
-			"search":
-				result = int_data.attempt_to_search()
-				if result.has("result") and result["result"]:
-					if result.has("loot") and not result["loot"].is_empty():
-						# TODO: display list of items and allow choosing which to take
-						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "searched_loot", PopupManager.Severity.NORMAL, "", "Missing popup to show selection of items.", 3)
-					else:
-						Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "searched_loot", PopupManager.Severity.NORMAL, "", "Nothing to find", 3)
-					Signals.InteractibleStateUpdate.emit(int_data, Interactible.State.DEPLETED)
-			_:
-				result = int_data.attempt_to_on_open(current_action.action)
-				if result.has("result") and result["result"] and result.has("state"):
-					Signals.InteractibleStateUpdate.emit(int_data, result["state"])
-				else:
-					Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "seal_thing", PopupManager.Severity.NORMAL, "", "Unable to complete action.", 3)
+		if areas_in.has(interactible_name) and areas_in[interactible_name]:
+			var int_data:InteractibleData = current_action.interactible.data
+			var result:Dictionary = int_data.attempt_to_interact(current_action.action)
+			if result.has("result"):
+				var loot = result["loot"]  if result.has("loot") and not result["loot"].is_empty() else []
+				match current_action.action:
+					"pickup":
+						if result["result"]:
+							if data != null: data.add_items_to_intentory(loot)
+							Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "pickup_loot", PopupManager.Severity.NORMAL, "", "Items picked up", 3)
+							Signals.InteractibleStateUpdate.emit(int_data, Interactible.State.DEPLETED)
+					"search":
+						if result["result"]:
+							# TODO: display list of items and allow choosing which to take
+							Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "searched_loot", PopupManager.Severity.NORMAL, "", "Missing popup to show selection of items.", 3)
+					_:
+						if result["result"] and result.has("state"):
+							Signals.InteractibleStateUpdate.emit(int_data, result["state"])
+						else:
+							Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "seal_thing", PopupManager.Severity.NORMAL, "", "Unable to complete action.", 3)
 
-
-		if display_debug: Debug.log("Action complete")
+			if display_debug: Debug.log("Action complete")
 
 		current_action.is_active = false
 		current_action = null

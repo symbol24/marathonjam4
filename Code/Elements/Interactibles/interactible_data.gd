@@ -8,7 +8,6 @@ class_name InteractibleData extends Resource
 @export var options:Dictionary = {}
 @export var required_key:int = 0
 
-
 var current_state:Interactible.State
 var loot:Array = []
 
@@ -18,7 +17,7 @@ func setup_interactible() -> void:
 	current_state = base_state
 
 
-func attempt_to_pick_up() -> Dictionary:
+func attempt_to_interact(_action:String = "", _key_value:int = 0) -> Dictionary:
 	var result:Dictionary = {}
 	match type: 
 		Interactible.Type.PICKUP:
@@ -27,35 +26,12 @@ func attempt_to_pick_up() -> Dictionary:
 					"result":true,
 					"loot": loot,
 			}
-		_:
-			result = {
-					"result":false,
-					"reason":"not pickup",
-			}
-	return result
-
-
-func attempt_to_search() -> Dictionary:
-	var result:Dictionary = {}
-	match type:
 		Interactible.Type.SEARCHABLE:
 			loot = loot_table.get_loot() if loot_table != null else []
 			result = {
 					"result":true,
 					"loot": loot,
 			}
-		_:
-			result = {
-					"result":false,
-					"reason":"not searchable",
-			}
-
-	return result
-
-
-func attempt_to_on_open(_action:String, _key_value:int = 0) -> Dictionary:
-	var result:Dictionary = {}
-	match type:
 		Interactible.Type.OPENABLE:
 			match _action:
 				"open":
@@ -105,7 +81,7 @@ func attempt_to_on_open(_action:String, _key_value:int = 0) -> Dictionary:
 		_:
 			result = {
 					"result":false,
-					"reason":"not an open",
+					"reason":"not an interactible",
 			}
 
 	return result

@@ -12,21 +12,32 @@ var data_manager:DataManager:
 		else: return data_manager
 var target_count:int = 0
 var active_prisoner:Prisoner = null
+var mouse_over_element:ElementControl = null
 var active_interactible:Interactible = null
+var menu_displayed:bool = false
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_right"):
-		Signals.MouseRightPressed.emit()
+		if active_prisoner:
+			if mouse_over_element:
+				if mouse_over_element.can_click:
+					_check_element(mouse_over_element)
+			else:
+				_set_prisoner_move_target(event)
 
-	if event.is_action_pressed("mouse_left") and _check_can_click(event):
-		if active_prisoner != null:
-			_set_prisoner_move_target(event)
+
+	#if event.is_action_pressed("mouse_left"):
+	#	Signals.MouseRightPressed.emit()
+	#	if active_prisoner != null: active_prisoner.grab_prisoner_focus()
 
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
+	Signals.ContextPopupToggled.connect(_toggle_menu_displayed)
 	Signals.SelectPrisoner.connect(_set_active_prisoner)
+	Signals.MouseEnteredElement.connect(_mouse_over_element)
+	Signals.MouseExitedElement.connect(_mouse_out_of_element)
 	data_manager = get_tree().get_first_node_in_group("data_manager")
 	if data_manager == null: push_error("Data Manager missing.")
 
@@ -43,22 +54,25 @@ func _set_prisoner_move_target(event:InputEvent) -> void:
 		Signals.PrisonerMoveTo.emit(active_prisoner, target_icon.global_position)
 
 
-func _display_context_menu() -> void:
-	Debug.log("Trying to display context")
-	Signals.DisplayContextPopup.emit(active_interactible)
-
 
 func _set_active_prisoner(_prisoner:Prisoner) -> void:
 	active_prisoner = _prisoner
 
 
-func _check_can_click(event:InputEvent) -> bool:
-	var result:bool = true
-	if event is InputEventMouse:
-		var elements = get_tree().get_nodes_in_group("element")
-		var mouse_pos:Vector2 = get_local_mouse_position()
-		for each in elements:
-			if each.get("top_left") != null and each.get("bottom_right") != null:
-				if mouse_pos.x >= each.top_left.x and mouse_pos.y >= each.top_left.y and mouse_pos.x <= each.bottom_right.x and mouse_pos.x <= each.bottom_right.x:
-					result = false
-	return result
+func _toggle_menu_displayed(_id:String, displayed:bool) -> void:
+	menu_displayed = displayed
+
+
+func _mouse_over_element(element:ElementControl) -> void:
+	mouse_over_element = element
+
+
+func _mouse_out_of_element() -> void:
+	mouse_over_element = null
+
+
+func _check_element(element:ElementControl) -> void:
+	if element.parent is Interactible:
+		#Debug.log("Interactible Type ", Interactible.Type.keys()[element.parent.data.type])
+		active_interactible = element.parent
+		Signals.DisplayContextPopup.emit(active_interactible)

@@ -25,6 +25,11 @@ var data_manager:DataManager:
 				return null
 			else: return data_manager
 		else: return data_manager
+var input_manager:InputManager:
+	get:
+		if input_manager == null: input_manager = get_tree().get_first_node_in_group("input_manager")
+		if input_manager == null: Debug.log("Popup Manager is unable to get input manager.")
+		return input_manager
 
 
 func _ready() -> void:
@@ -75,11 +80,12 @@ func _display_small_popup(_timer:int, _text:String) -> void:
 
 
 func _display_context_popup(interactible:Interactible) -> void:
-	Debug.log("Display context")
-	if context_popup == null and data_manager != null:
-		context_popup = data_manager.context_popup.instantiate()
-		add_child.call_deferred(context_popup)
-		if not context_popup.is_node_ready(): await context_popup.ready
-
-	if context_popup != null: context_popup.display_popup(interactible, data_manager)
-	else: Debug.error("Context Popup null")
+	if input_manager and input_manager.active_prisoner:
+		if context_popup == null and data_manager != null:
+			context_popup = data_manager.context_popup.instantiate()
+			add_child.call_deferred(context_popup)
+			if not context_popup.is_node_ready(): await context_popup.ready
+	# TODO: clear buttons before adding new
+		if context_popup != null: 
+			context_popup.display_popup(interactible, data_manager)
+		else: Debug.error("Context Popup null")

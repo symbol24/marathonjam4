@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/input_manager.gd" id="1_35smy"]
 
-[node name="InputManager" type="Node2D"]
+[node name="InputManager" type="Node2D" groups=["input_manager"]]
 script = ExtResource("1_35smy")

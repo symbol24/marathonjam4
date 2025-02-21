@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=61 format=3 uid="uid://ckulva3dnkn8g"]
+[gd_resource type="Theme" load_steps=66 format=3 uid="uid://ckulva3dnkn8g"]
 
 [ext_resource type="Texture2D" uid="uid://c3rsuxy54fxmn" path="res://Textures/Ui/icons20x20_hslider_grabber.png" id="1_et1ol"]
 [ext_resource type="Texture2D" uid="uid://uf8eje2537gu" path="res://Textures/Ui/icons20x20_check_button_checked.png" id="1_r2vuf"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cti4blmm0u75n" path="res://Textures/Ui/icons20x20_hslider_tick.png" id="4_mqliv"]
 [ext_resource type="Texture2D" uid="uid://it81kp7k58qy" path="res://Textures/Ui/icons20x20_check_button_unchecked_disabled.png" id="4_o010a"]
 [ext_resource type="StyleBox" uid="uid://b0o6gqwuifiws" path="res://Data/ThemeStyles/panel_container_normal.tres" id="9_f8kgl"]
+[ext_resource type="StyleBox" uid="uid://dq840wx81n3ss" path="res://Data/ThemeStyles/pickup_item_style_hover.tres" id="9_kf2c1"]
+[ext_resource type="StyleBox" uid="uid://qe4dqbrn6doj" path="res://Data/ThemeStyles/open_item_style_hover.tres" id="9_qaja2"]
+[ext_resource type="StyleBox" uid="uid://db250qy85x3gp" path="res://Data/ThemeStyles/open_item_style_normal.tres" id="9_qp6ma"]
 [ext_resource type="StyleBox" uid="uid://il62fu8kjd3b" path="res://Data/ThemeStyles/prisoner_play_hover.tres" id="10_lis2c"]
 [ext_resource type="StyleBox" uid="uid://cbnpncm72j1ui" path="res://Data/ThemeStyles/panel_container_button_hover.tres" id="10_uebv1"]
 [ext_resource type="Texture2D" uid="uid://oldq8l5vku6c" path="res://Textures/Ui/8x8_blank_sprite.png" id="10_wswnd"]
@@ -124,6 +127,41 @@ border_color = Color(0, 0.513726, 0, 1)
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3fb3"]
+bg_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20kom"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrx45"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.513726, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utq5m"]
+bg_color = Color(0, 0.513726, 0, 0.258824)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.513726, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltree"]
 bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 border_width_bottom = 2
@@ -210,22 +248,6 @@ border_color = Color(0, 0.513726, 0, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_nxxxr"]
 color = Color(0, 0.513726, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j61ci"]
-bg_color = Color(0, 0.513726, 0, 0.258824)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0.513726, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mkdd"]
-bg_color = Color(0, 0.513726, 0, 0.258824)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0.513726, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x6er"]
 bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
@@ -369,6 +391,24 @@ HSlider/styles/grabber_area = SubResource("StyleBoxFlat_efs3n")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_yagjr")
 HSlider/styles/slider = SubResource("StyleBoxFlat_75h8m")
 HeaderLarge/font_sizes/font_size = 42
+InteractItemBtn/base_type = &"Button"
+InteractItemBtn/styles/focus = ExtResource("9_qaja2")
+InteractItemBtn/styles/hover = ExtResource("9_qaja2")
+InteractItemBtn/styles/hover_pressed = ExtResource("9_qaja2")
+InteractItemBtn/styles/normal = ExtResource("9_qp6ma")
+InteractItemBtn/styles/pressed = ExtResource("9_qaja2")
+InteractItemPanel/base_type = &"Panel"
+InteractItemPanel/styles/panel = SubResource("StyleBoxFlat_m3fb3")
+InteractItemPanelBack/base_type = &"Panel"
+InteractItemPanelBack/styles/panel = SubResource("StyleBoxFlat_20kom")
+InteractPickupItemBtn/base_type = &"Button"
+InteractPickupItemBtn/styles/focus = ExtResource("9_kf2c1")
+InteractPickupItemBtn/styles/hover = ExtResource("9_kf2c1")
+InteractPickupItemBtn/styles/hover_pressed = ExtResource("9_kf2c1")
+InteractPickupItemBtn/styles/normal = SubResource("StyleBoxFlat_mrx45")
+InteractPickupItemBtn/styles/pressed = ExtResource("9_kf2c1")
+InteractPickupItemPanelBack/base_type = &"Panel"
+InteractPickupItemPanelBack/styles/panel = SubResource("StyleBoxFlat_utq5m")
 Label/colors/font_color = Color(0, 0.513726, 0, 1)
 Label/font_sizes/font_size = 28
 LabelBlack/base_type = &"Label"
@@ -430,10 +470,11 @@ PrisonerDetailsLabelSmallHover/font_sizes/font_size = 16
 PrisonerPanelInventoryButton/base_type = &"Button"
 PrisonerPanelInventoryButton/font_sizes/font_size = 10
 PrisonerPlayButton/base_type = &"Button"
-PrisonerPlayButton/styles/focus = SubResource("StyleBoxFlat_j61ci")
+PrisonerPlayButton/styles/focus = ExtResource("10_lis2c")
 PrisonerPlayButton/styles/hover = ExtResource("10_lis2c")
+PrisonerPlayButton/styles/hover_pressed = ExtResource("10_lis2c")
 PrisonerPlayButton/styles/normal = ExtResource("11_sxdm5")
-PrisonerPlayButton/styles/pressed = SubResource("StyleBoxFlat_6mkdd")
+PrisonerPlayButton/styles/pressed = ExtResource("10_lis2c")
 PrisonerSelectButtonHover/base_type = &"PanelContainer"
 PrisonerSelectButtonHover/styles/panel = ExtResource("10_uebv1")
 PrisonerSelectButtonPanel/base_type = &"PanelContainer"

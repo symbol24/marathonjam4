@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://xpgtmytw67ym"]
+[gd_scene load_steps=6 format=3 uid="uid://xpgtmytw67ym"]
 
 [ext_resource type="Script" path="res://Code/UI/play_ui.gd" id="1_i4ul4"]
 [ext_resource type="PackedScene" uid="uid://dy4dv7h33imjw" path="res://Scenes/UI/PlayUi/prisoner_play_ui_panel.tscn" id="2_rjk1v"]
+[ext_resource type="Script" path="res://Code/Elements/Wrappers/element_control.gd" id="3_ic0sg"]
 [ext_resource type="StyleBox" uid="uid://h312rdmuejqo" path="res://Data/ThemeStyles/prisoner_play_normal.tres" id="3_tp2ex"]
+[ext_resource type="Script" path="res://Code/Elements/Wrappers/element_button.gd" id="5_3ywwo"]
 
 [node name="PlayUi" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -12,10 +14,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_i4ul4")
 panel_btn = ExtResource("2_rjk1v")
 
-[node name="prisoner_info_panel" type="PanelContainer" parent="."]
+[node name="prisoner_info_panel" type="PanelContainer" parent="." groups=["UI", "element"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 1
@@ -28,6 +32,8 @@ offset_right = -20.0
 offset_bottom = 160.0
 grow_horizontal = 0
 mouse_force_pass_scroll_events = false
+script = ExtResource("3_ic0sg")
+can_click = false
 
 [node name="panel_vbox" type="VBoxContainer" parent="prisoner_info_panel"]
 layout_mode = 2
@@ -45,7 +51,7 @@ visible = false
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="prisoner_info_toggle_btn" type="Button" parent="prisoner_info_panel/panel_vbox" groups=["element"]]
+[node name="prisoner_info_toggle_btn" type="Button" parent="prisoner_info_panel/panel_vbox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -53,8 +59,10 @@ mouse_force_pass_scroll_events = false
 text = "HIDE"
 text_overrun_behavior = 1
 clip_text = true
+script = ExtResource("5_3ywwo")
+can_click = false
 
-[node name="legend" type="PanelContainer" parent="."]
+[node name="legend" type="PanelContainer" parent="." groups=["UI", "element"]]
 unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(200, 140)
@@ -67,6 +75,8 @@ offset_top = -160.0
 offset_right = 266.0
 offset_bottom = -20.0
 grow_vertical = 0
+script = ExtResource("3_ic0sg")
+can_click = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="legend"]
 layout_mode = 2
@@ -180,9 +190,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "closed_interactible_label"
 uppercase = true
+script = ExtResource("3_ic0sg")
 
 [node name="btn_legend_toggle" type="Button" parent="legend/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "legend_show"
+script = ExtResource("5_3ywwo")
+can_click = false

@@ -54,6 +54,8 @@ scene_manager=""
 game_manager=""
 element=""
 save_manager=""
+input_manager=""
+UI=""
 
 [gui]
 

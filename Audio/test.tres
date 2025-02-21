@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioFile" load_steps=2 format=3 uid="uid://ybkl7hxv4dry"]
+
+[ext_resource type="Script" path="res://addons/AudioBySymbol/Code/Audio/audio_file.gd" id="1_w0f4n"]
+
+[resource]
+script = ExtResource("1_w0f4n")
+id = ""
+files = Array[AudioStream]([])
+volume_db = -10.0
+min_pitch_scale = 1.0
+max_pitch_scale = 1.0
+is_music = false
+always_play = false
+is_unique = false

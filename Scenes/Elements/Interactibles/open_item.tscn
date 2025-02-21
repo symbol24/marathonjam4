@@ -1,38 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://3o01guq6u8vq"]
+[gd_scene load_steps=4 format=3 uid="uid://3o01guq6u8vq"]
 
-[ext_resource type="Script" path="res://Code/Elements/Interactibles/interactible.gd" id="1_jrw8f"]
-[ext_resource type="Script" path="res://Code/Elements/Interactibles/interactible_data.gd" id="2_3mjts"]
-[ext_resource type="Texture2D" uid="uid://cmhg0pdtei08u" path="res://Textures/Debug/temp_icon_square.png" id="2_7ybye"]
+[ext_resource type="Script" path="res://Code/Elements/Interactibles/open_item.gd" id="1_8oib2"]
+[ext_resource type="Script" path="res://Code/Elements/Wrappers/element_control.gd" id="2_6kaiq"]
 
-[sub_resource type="Resource" id="Resource_f4x27"]
-script = ExtResource("2_3mjts")
-type = 1
-base_state = 2
-base_interact_time = 3.0
-options = {
-"close": "close",
-"open": "open",
-"search": "search"
-}
-required_key = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1rjg"]
+size = Vector2(64, 64)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sa44h"]
-
-[node name="OpenItem" type="Area2D" groups=["element"]]
+[node name="OpenItem" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_jrw8f")
-data = SubResource("Resource_f4x27")
+script = ExtResource("1_8oib2")
+metadata/_edit_horizontal_guides_ = [-16.0]
+metadata/_edit_vertical_guides_ = [0.0]
+
+[node name="back" type="Panel" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_type_variation = &"InteractItemPanelBack"
+
+[node name="closed" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 32)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_type_variation = &"InteractItemPanel"
+
+[node name="sealed" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_type_variation = &"InteractItemPanel"
+
+[node name="Line2D" type="Line2D" parent="sealed"]
+points = PackedVector2Array(0, 0, 48, 48)
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Line2D2" type="Line2D" parent="sealed"]
+points = PackedVector2Array(48, 0, 0, 48)
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="locked" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 16)
+offset_left = -16.0
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_type_variation = &"InteractItemPanel"
+
+[node name="Line2D" type="Line2D" parent="locked"]
+points = PackedVector2Array(2, 0, 2, -5, 3, -9, 5, -12, 8, -14, 11, -15, 16, -15, 21, -15, 24, -14, 27, -12, 29, -9, 30, -5, 30, 0)
+width = 4.0
+default_color = Color(0, 0.513726, 0, 1)
 
 [node name="interact_collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-shape = SubResource("CircleShape2D_sa44h")
+shape = SubResource("RectangleShape2D_y1rjg")
 
-[node name="interact_btn" type="TextureButton" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-texture_normal = ExtResource("2_7ybye")
+[node name="element_control" type="Control" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_force_pass_scroll_events = false
+script = ExtResource("2_6kaiq")

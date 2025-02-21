@@ -1,4 +1,4 @@
-class_name PrisonerPlayUiPanelBtn extends PanelContainer
+class_name PrisonerPlayUiPanelBtn extends ElementControl
 
 
 const PANELNORMAL:String = "PrisonerSelectButtonPanel"

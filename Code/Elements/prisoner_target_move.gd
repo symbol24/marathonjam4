@@ -7,12 +7,18 @@ var prisoner:Prisoner
 func _ready() -> void:
 	Signals.PrisonerReachedTarget.connect(_prisoner_reached_target)
 	Signals.PrisonerMoveTo.connect(_check_if_still_active)
+	Signals.ClearMoveToTargets.connect(_clear)
 
 
 func _check_if_still_active(_prisoner:Prisoner, target:Vector2) -> void:
 	if target == global_position and prisoner == null:
 		prisoner = _prisoner
 	elif global_position != target and prisoner == _prisoner:
+		queue_free.call_deferred()
+
+
+func _clear(_prisoner:Prisoner) -> void:
+	if prisoner == _prisoner:
 		queue_free.call_deferred()
 
 

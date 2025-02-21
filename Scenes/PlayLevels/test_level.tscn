@@ -88,7 +88,7 @@ item_data = ExtResource("11_o5u1p")
 script = ExtResource("4_a7j1o")
 table = Array[ExtResource("5_4ovry")]([SubResource("Resource_tvd6t"), SubResource("Resource_y32s6"), SubResource("Resource_53xpo"), SubResource("Resource_4dc4d")])
 
-[sub_resource type="Resource" id="Resource_f7fub"]
+[sub_resource type="Resource" id="Resource_ybfsd"]
 resource_local_to_scene = true
 script = ExtResource("5_magcv")
 type = 2
@@ -124,7 +124,7 @@ position = Vector2(374, 423)
 data = SubResource("Resource_wdq6s")
 
 [node name="OpenItem" parent="." instance=ExtResource("4_iutrr")]
-position = Vector2(377, 531)
+position = Vector2(289, 522)
 data = SubResource("Resource_h3x2u")
 
 [node name="locked_item" parent="." instance=ExtResource("4_iutrr")]
@@ -133,4 +133,4 @@ data = SubResource("Resource_u2rpt")
 
 [node name="searchable_item" parent="." instance=ExtResource("4_iutrr")]
 position = Vector2(515, 494)
-data = SubResource("Resource_f7fub")
+data = SubResource("Resource_ybfsd")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy4dv7h33imjw"]
+[gd_scene load_steps=4 format=3 uid="uid://dy4dv7h33imjw"]
 
 [ext_resource type="Texture2D" uid="uid://il1hc70nrwql" path="res://Textures/Prisoners/Portraits/Normal/SFCP 1-01_normal.jpg" id="1_dh0ix"]
 [ext_resource type="Script" path="res://Code/UI/prisoner_play_ui_panel.gd" id="1_t05ql"]
+[ext_resource type="Script" path="res://Code/Elements/Wrappers/element_button.gd" id="3_hdg2w"]
 
-[node name="prisoner_play_ui_panel" type="PanelContainer" groups=["element"]]
+[node name="prisoner_play_ui_panel" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ grow_vertical = 2
 mouse_force_pass_scroll_events = false
 theme_type_variation = &"PrisonerSelectButtonPanel"
 script = ExtResource("1_t05ql")
+can_click = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -98,15 +100,17 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="prisoner_play_panel_btn" type="TextureButton" parent="." groups=["element"]]
+[node name="prisoner_play_panel_btn" type="TextureButton" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("3_hdg2w")
+can_click = false
 
 [node name="floating_stuff" type="Control" parent="."]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="inventory_btn" type="Button" parent="floating_stuff" groups=["element"]]
+[node name="inventory_btn" type="Button" parent="floating_stuff"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
@@ -117,3 +121,5 @@ offset_bottom = 114.0
 size_flags_horizontal = 4
 theme_type_variation = &"PrisonerPanelInventoryButton"
 text = "INVENTORY"
+script = ExtResource("3_hdg2w")
+can_click = false

@@ -41,6 +41,8 @@ signal PrisonerReachedTarget(prisoner:Prisoner)
 signal SelectPrisoner(prisoner:Prisoner)
 signal SelecetPrisonerByData(prisoner_data:PrisonerData)
 signal PrisonerInteract(interaction:String, interactible:Interactible)
+signal GrabPrisonerFocus(data:PrisonerData)
+signal ClearMoveToTargets(prisoner:Prisoner)
 
 
 # UI
@@ -109,3 +111,9 @@ signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])
 signal SelectShipAndName(ship_name:String, ship_id:int)
 signal AbandonCurrentRun()
 signal TogglePauseGame(pause:bool)
+
+
+# Elements
+signal MouseEnteredElement(element:ElementControl)
+signal MouseExitedElement()
+signal ElementRightClicked(element:ElementControl)

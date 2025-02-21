@@ -19,7 +19,7 @@ enum State {
 @export var data:InteractibleData
 
 @onready var interact_collider: CollisionShape2D = %interact_collider
-@onready var interact_btn: TextureButton = %interact_btn
+@onready var interact_btn: Button = %interact_btn
 
 var displayed:bool = false
 var top_left:Vector2:
@@ -32,13 +32,10 @@ func _ready() -> void:
 	Signals.ContextPopupToggled.connect(_check_displayed)
 	Signals.ContextPopupResult.connect(_popup_result)
 	Signals.InteractibleStateUpdate.connect(_state_update)
-	interact_btn.pressed.connect(_interact_btn_pressed)
+	#interact_btn.pressed.connect(_interact_btn_pressed)
 
-	# DEBIG
 	data.setup_interactible()
-	if data.current_state == State.OPEN: modulate = Color.LIGHT_GREEN
-	elif data.current_state == State.CLOSED: modulate = Color.LIGHT_PINK
-	elif data.current_state == State.LOCKED: modulate = Color.DARK_RED
+	_toggle_visuals()
 
 
 func iteract() -> Array[LootItem]:
@@ -72,10 +69,8 @@ func _state_update(_data:InteractibleData, new_state:State) -> void:
 				match new_state:
 					State.OPEN:
 						data.current_state = new_state
-						modulate = Color.LIGHT_GREEN
 					State.CLOSED:
 						data.current_state = new_state
-						modulate = Color.LIGHT_PINK
 					_:
 						pass
 			Type.SEARCHABLE:
@@ -83,6 +78,14 @@ func _state_update(_data:InteractibleData, new_state:State) -> void:
 					State.DEPLETED:
 						if data.loot.is_empty(): 
 							data.current_state = State.DEPLETED
-							modulate = Color.LIGHT_GRAY
 					_:
 						pass
+		_toggle_visuals()
+
+
+func _toggle_visuals() -> void:
+	pass
+
+
+func _deselect() -> void:
+	interact_btn.release_focus()
