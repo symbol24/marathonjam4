@@ -97,6 +97,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ot87g")
 manager_loader = ExtResource("2_swvv4")
+id = "boot"
 
 [node name="godot" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

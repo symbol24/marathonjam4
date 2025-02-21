@@ -23,6 +23,7 @@ var save_manager:SaveManager:
 var prisoner_panels:Array[PrisonerPlayUiPanelBtn] = []
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	visibility_changed.connect(_visibility_changed)
 	prisoner_info_toggle_btn.pressed.connect(_prisoner_info_toggle_btn_pressed)
 	btn_legend_toggle.pressed.connect(_toggle_legend)

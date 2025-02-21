@@ -51,6 +51,12 @@ signal ContextPopupToggled(id:String, displayed:bool)
 signal ContextPopupResult(interactible:Interactible, key_selection:String)
 signal ContextMenuBtnPressed(id:String)
 signal CloseContextMenu()
+signal TogglePauseMenu(display:bool)
+
+
+# Settings
+signal ToggleCRTEffects(on:bool)
+signal ToggleFlashEffects(on:bool)
 
 
 # Play UI
@@ -102,3 +108,4 @@ signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])
 # Game Manager
 signal SelectShipAndName(ship_name:String, ship_id:int)
 signal AbandonCurrentRun()
+signal TogglePauseGame(pause:bool)

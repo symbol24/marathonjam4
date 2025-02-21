@@ -35,14 +35,14 @@ func _load_loader() -> void:
 		var loader:ManagerLoader = manager_loader.instantiate()
 		get_parent().add_child.call_deferred(loader)
 		if not loader.is_node_ready(): await loader.ready
-		Signals.LoadManager.emit("data_manager")
+		Signals.LoadManager.emit("save_manager")
 
 
 func _loading(manager_name:String) -> void:
 	match manager_name:
-		"data_manager":
-			Signals.LoadManager.emit("save_manager")
 		"save_manager":
+			Signals.LoadManager.emit("data_manager")
+		"data_manager":
 			Signals.LoadManager.emit("ui_manager")
 		"ui_manager":
 			Signals.LoadManager.emit("scene_manager")

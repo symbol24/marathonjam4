@@ -1,6 +1,9 @@
 class_name MainMenu extends RidControl
 
 
+const SETTTINGS_POSITION:Vector2 = Vector2(260,90)
+
+
 @onready var btn_new_run: Button = %btn_new_run
 @onready var btn_continue_run: Button = %btn_continue_run
 @onready var btn_abandon_run: Button = %btn_abandon_run
@@ -9,15 +12,20 @@ class_name MainMenu extends RidControl
 @onready var btn_settings: Button = %btn_settings
 @onready var btn_credits: Button = %btn_credits
 
+var settings:Settings = null
 var save_manager:SaveManager:
 	get:
-		if save_manager == null: 
+		if save_manager == null:
 			save_manager = get_tree().get_first_node_in_group("save_manager")
-			if save_manager == null: 
-				push_error("Save Manager is missing!")
-				return null
-			else: return save_manager
-		else: return save_manager
+			if save_manager == null: Debug.error("Save Manager not found by main menu")
+		return save_manager
+var data_manager:DataManager:
+	get:
+		if data_manager == null:
+			data_manager = get_tree().get_first_node_in_group("data_manager")
+			if data_manager == null: Debug.error("Data Manager not found by main menu")
+		return data_manager
+
 
 func _ready() -> void:
 	Signals.PopupResult.connect(_check_popup_result)
@@ -60,16 +68,24 @@ func _load_game_pressed() -> void:
 
 func _settings_pressed() -> void:
 	_untoggle_panels("settings")
-	pass
+	if settings == null:
+		if data_manager != null:
+			settings = data_manager.settings.instantiate()
+			add_child.call_deferred(settings)
+			if not settings.is_node_ready(): await settings.ready
+			settings.position = SETTTINGS_POSITION
+			settings.toggle_display(true)
+			settings.floating_control.show()
+	
+	if settings != null: settings.show()
 
 
 func _credits_pressed() -> void:
 	_untoggle_panels("credits")
-	pass
 
 
 func _untoggle_panels(_panel_called:String = "") -> void:
-	pass
+	if settings != null and _panel_called != "settings": settings.toggle_display(false)
 
 
 func _toggle_buttons(_hash_id:int) -> void:
@@ -94,7 +110,6 @@ func _toggle_buttons(_hash_id:int) -> void:
 				btn_new_game.show()
 				btn_new_game.grab_focus()
 	else:
-		Signals.CreateNewSave.emit(Time.get_date_string_from_system())
 		btn_new_run.hide()
 		btn_continue_run.hide()
 		btn_abandon_run.hide()

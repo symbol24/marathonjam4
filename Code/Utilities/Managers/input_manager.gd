@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.SelectPrisoner.connect(_set_active_prisoner)
 	data_manager = get_tree().get_first_node_in_group("data_manager")
 	if data_manager == null: push_error("Data Manager missing.")

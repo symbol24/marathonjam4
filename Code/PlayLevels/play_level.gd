@@ -15,6 +15,7 @@ var data_manager:DataManager:
 		return data_manager
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.AllPrisonersSpawned.connect(_prisoners_all_spawned)
 	Signals.PlayUiDisplayed.connect(_play_level_loading_complete)
 	Signals.ManagerLoaded.connect(_load_managers)
@@ -27,6 +28,10 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "play_level_loading_manager", 5)
 	_load_managers()
+
+
+func _exit_tree() -> void:
+	Signals.TogglePlayUi.emit(false)
 
 
 func _load_managers(manager:String = "start"):

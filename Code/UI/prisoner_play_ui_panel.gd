@@ -21,6 +21,7 @@ var prisoner_data:PrisonerData
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	prisoner_play_panel_btn.mouse_entered.connect(_prisoner_play_panel_btn_mouse_entered)
 	prisoner_play_panel_btn.mouse_exited.connect(_prisoner_play_panel_btn_mouse_exited)
 	prisoner_play_panel_btn.pressed.connect(_prisoner_play_panel_btn_pressed)

@@ -2,15 +2,28 @@ class_name UIManager extends CanvasLayer
 
 
 var play_ui:PlayUi = null
+var pause_menu:PauseMenu = null
 var data_manager:DataManager:
 	get:
 		if data_manager == null:
 			data_manager = get_tree().get_first_node_in_group("data_manager")
 			if data_manager == null: Debug.error("Data manager missing in Ui Manager")
 		return data_manager
+var scene_manager:SceneManager:
+	get:
+		if scene_manager == null: 
+			scene_manager = get_tree().get_first_node_in_group("scene_manager")
+			if scene_manager == null: Debug.error("Scene Manager not found by UI Manager")
+		return scene_manager
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("cancel"):
+		_press_pause()
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.TogglePlayUi.connect(_toggle_play_ui)
 
 
@@ -28,3 +41,34 @@ func _toggle_play_ui(display:bool = false) -> void:
 	else:
 		play_ui.hide()
 		remove_child.call_deferred(play_ui)
+
+
+func _press_pause() -> void:
+	if scene_manager != null:
+		if scene_manager.active_scene != null:
+			match scene_manager.active_scene.id:
+				"main_menu", "ship_naming_menu", "prisoner_selection_menu", "map_selection_menu", "story_intro_menu":
+					Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "popup_cancel_back_in_flow", PopupManager.Severity.NORMAL, tr("popup_cancel_back_in_flow_title"), tr("popup_cancel_back_in_flow_text"), 0)
+				"play_level":
+					_toggle_pause_menu()
+				_:
+					pass
+
+
+func _toggle_pause_menu() -> void:
+	if pause_menu == null:
+		if data_manager.pause_menu != null:
+			pause_menu = data_manager.pause_menu.instantiate()
+			add_child.call_deferred(pause_menu)
+			if not pause_menu.is_node_ready(): await pause_menu.ready
+			Signals.TogglePauseGame.emit(true)
+			pause_menu.show()
+	
+	else:
+		if pause_menu.visible:
+			pause_menu.hide()
+			Signals.TogglePauseGame.emit(false)
+		else:
+			pause_menu.show()
+			Signals.TogglePauseGame.emit(true)
+

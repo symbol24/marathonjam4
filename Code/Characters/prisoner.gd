@@ -41,6 +41,7 @@ var action_timer:float = 0.0:
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_PAUSABLE
 	area_detector.area_entered.connect(_area_entered)
 	area_detector.area_exited.connect(_area_exited)
 	Signals.PrisonerMoveTo.connect(_add_move_to_action)

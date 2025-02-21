@@ -27,9 +27,15 @@ var current_prisoners:Array[PrisonerData]
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.ActivatePrisonerData.connect(_activate_prisoner)
 	Signals.SelectShipAndName.connect(_select_ship_and_name)
 	Signals.AbandonCurrentRun.connect(_abandon_current_run)
+	Signals.TogglePauseGame.connect(_toggle_pause_game)
+
+
+func _toggle_pause_game(pause:bool = false) -> void:
+	get_tree().paused = pause
 
 
 func _activate_prisoner(new_prisoner:PrisonerData) -> void:

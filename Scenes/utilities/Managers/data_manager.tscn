@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://dd11qq4g440l0"]
+[gd_scene load_steps=146 format=3 uid="uid://dd11qq4g440l0"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/data_manager.gd" id="1_lq4dl"]
 [ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_0r3q1"]
@@ -9,12 +9,12 @@
 [ext_resource type="Resource" uid="uid://bxp2c1imfy3w2" path="res://Data/Prisoners/prisoner_0002.tres" id="5_p0ivn"]
 [ext_resource type="Resource" uid="uid://d3s2wajf4kwwi" path="res://Data/Prisoners/prisoner_0003.tres" id="6_vhdo4"]
 [ext_resource type="Resource" uid="uid://d0mtylgc7uei7" path="res://Data/Prisoners/prisoner_0004.tres" id="7_areh6"]
-[ext_resource type="PackedScene" uid="uid://bo178h7hu21m5" path="res://Scenes/UI/large_popup.tscn" id="7_aw1vj"]
+[ext_resource type="PackedScene" uid="uid://bo178h7hu21m5" path="res://Scenes/UI/Popups/large_popup.tscn" id="7_aw1vj"]
 [ext_resource type="Resource" uid="uid://byg6cvos6cdwo" path="res://Data/Prisoners/prisoner_0005.tres" id="8_3fcmq"]
-[ext_resource type="PackedScene" uid="uid://p0wyhd2q5hfc" path="res://Scenes/UI/small_popup.tscn" id="8_7u762"]
-[ext_resource type="PackedScene" uid="uid://bdpdmgxdr6ywt" path="res://Scenes/UI/context_popup.tscn" id="9_agp78"]
+[ext_resource type="PackedScene" uid="uid://p0wyhd2q5hfc" path="res://Scenes/UI/Popups/small_popup.tscn" id="8_7u762"]
+[ext_resource type="PackedScene" uid="uid://bdpdmgxdr6ywt" path="res://Scenes/UI/Popups/context_popup.tscn" id="9_agp78"]
 [ext_resource type="Resource" uid="uid://cdhswdlcixfqi" path="res://Data/Prisoners/prisoner_0006.tres" id="9_k14pn"]
-[ext_resource type="PackedScene" uid="uid://bk5c05hr6shcp" path="res://Scenes/UI/context_menu_button.tscn" id="10_1nsgm"]
+[ext_resource type="PackedScene" uid="uid://bk5c05hr6shcp" path="res://Scenes/UI/Popups/context_menu_button.tscn" id="10_1nsgm"]
 [ext_resource type="Resource" uid="uid://csnbthyhqhp4c" path="res://Data/Prisoners/prisoner_0007.tres" id="10_eg7o2"]
 [ext_resource type="Resource" uid="uid://c0vqx5w31d0a7" path="res://Data/Prisoners/prisoner_0008.tres" id="11_g8lap"]
 [ext_resource type="Resource" uid="uid://bgqbopmg2c4s0" path="res://Data/Prisoners/prisoner_0009.tres" id="12_i8618"]
@@ -130,13 +130,18 @@
 [ext_resource type="Resource" uid="uid://ckg32ifdi6bmf" path="res://Data/Prisoners/prisoner_0119.tres" id="122_g5h36"]
 [ext_resource type="Resource" uid="uid://cyktar8udkjk5" path="res://Data/Prisoners/prisoner_0120.tres" id="123_4b4mp"]
 [ext_resource type="Resource" uid="uid://c1m544cotnywq" path="res://Data/Prisoners/prisoner_0121.tres" id="124_grskq"]
-[ext_resource type="PackedScene" uid="uid://xpgtmytw67ym" path="res://Scenes/UI/play_ui.tscn" id="131_2tbbs"]
+[ext_resource type="PackedScene" uid="uid://xpgtmytw67ym" path="res://Scenes/UI/PlayUi/play_ui.tscn" id="131_2tbbs"]
 [ext_resource type="PackedScene" uid="uid://cqjoajxtl6mxa" path="res://Scenes/MapGenerator/map_generator.tscn" id="131_xv8pf"]
+[ext_resource type="PackedScene" uid="uid://7kk4vbr4iqdq" path="res://Scenes/UI/PauseMenu/pause_menu.tscn" id="132_ed061"]
 [ext_resource type="PackedScene" uid="uid://7q7kqjus2nbr" path="res://Scenes/UI/MapSelection/map_icon_btn_encounter.tscn" id="132_xigua"]
 [ext_resource type="PackedScene" uid="uid://dvvgkx8eu4fth" path="res://Scenes/UI/MapSelection/map_icon_btn_treasure.tscn" id="133_7s7fm"]
+[ext_resource type="PackedScene" uid="uid://cwarm3qoptkoo" path="res://Scenes/UI/Settings/settings_menu.tscn" id="133_c5mpy"]
 [ext_resource type="PackedScene" uid="uid://8imja47ix64m" path="res://Scenes/UI/MapSelection/map_icon_btn_station.tscn" id="134_26e5j"]
+[ext_resource type="FontFile" uid="uid://cymk17yxaq6rp" path="res://Data/Fonts/80s-retro-future.ttf" id="134_whynb"]
+[ext_resource type="FontFile" uid="uid://cq61h5uytvgqc" path="res://Data/Fonts/Lexend-VariableFont_wght.ttf" id="135_g5mp1"]
 [ext_resource type="PackedScene" uid="uid://cfcpkfmnb2eot" path="res://Scenes/UI/MapSelection/map_icon_btn_shop.tscn" id="135_u1j81"]
 [ext_resource type="PackedScene" uid="uid://dw01y802o8vhb" path="res://Scenes/UI/MapSelection/map_icon_btn_boss.tscn" id="136_3p60x"]
+[ext_resource type="Theme" uid="uid://ckulva3dnkn8g" path="res://Data/default_theme.tres" id="136_76b4w"]
 [ext_resource type="PackedScene" uid="uid://bte462gww1d2i" path="res://Scenes/UI/MapSelection/map_icon_spaceship.tscn" id="137_515n2"]
 [ext_resource type="PackedScene" uid="uid://bxke87dev30pn" path="res://Scenes/UI/MapSelection/map_icon_btn_start.tscn" id="137_sspui"]
 [ext_resource type="PackedScene" uid="uid://s5jy75f7aaif" path="res://Scenes/UI/MapSelection/map_line.tscn" id="138_6klp3"]
@@ -151,6 +156,11 @@ small_popup = ExtResource("8_7u762")
 context_popup = ExtResource("9_agp78")
 context_button = ExtResource("10_1nsgm")
 play_ui = ExtResource("131_2tbbs")
+pause_menu = ExtResource("132_ed061")
+settings = ExtResource("133_c5mpy")
+normal_font = ExtResource("134_whynb")
+dyslexia_friendly_font = ExtResource("135_g5mp1")
+default_theme = ExtResource("136_76b4w")
 map_generator = ExtResource("131_xv8pf")
 map_icon_btn_encounter = ExtResource("132_xigua")
 map_icon_btn_treasure = ExtResource("133_7s7fm")

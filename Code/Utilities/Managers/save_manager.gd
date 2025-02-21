@@ -4,9 +4,11 @@ class_name SaveManager extends RidManager
 const FOLDER:String = "user://saves/"
 const PREFIX:String = "save_"
 const EXTENSION:String = "tres"
+const DYSLEXIA_FONT:String = "res://Data/Fonts/Lexend-VariableFont_wght.ttf"
 
 
 @export var is_unique:bool = true
+@export var default_theme:Theme
 
 var data_manager:DataManager:
 	get:
@@ -24,6 +26,7 @@ var hash_id_cached:int = -1
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.SaveForHashId.connect(_save_for_hash_id)
 	Signals.LoadFromHashId.connect(_try_load_for_hash_id)
 	Signals.PopupResult.connect(_confirm_popup_result)
@@ -33,6 +36,10 @@ func _ready() -> void:
 	if is_unique and not all_saves.is_empty():
 		var keys = all_saves.keys()
 		active_save = all_saves[keys[0]]
+	elif all_saves.is_empty():
+		_create_save(Time.get_date_string_from_system())
+	_load_settings()
+	
 
 
 func get_last_save_used() -> PlayerData:
@@ -48,11 +55,8 @@ func _create_save(id:String = "test") -> void:
 		player_data.id = id
 		var date_time:String = Time.get_datetime_string_from_system()
 		player_data.hash_id = hash(id + "_" + date_time)
-
-		if OS.get_name().contains("HTML"):
-			player_data.keyboard_cancel = PlayerData.WEB_CANCEL
-		
 		active_save = player_data
+		active_save.keyboard_cancel = active_save.keyboard_cancel_default
 		_save_for_hash_id(active_save.hash_id)
 
 
@@ -159,4 +163,40 @@ func _confirm_popup_result(id:String, result:bool) -> void:
 			if result: _load_for_has_id(hash_id_cached)
 		_:
 			pass
-			
+
+
+func _load_settings() -> void:
+	_set_general_settings()
+	_set_video_settings()
+	Audio.set_volumes(active_save.master_volume, active_save.music_volume, active_save.sfx_volume)
+
+
+func _set_general_settings() -> void:
+	_update_local_laguage()
+	if active_save.dyslexic_font: 
+		var dyslexia_font:Font = ResourceLoader.load(DYSLEXIA_FONT)
+		default_theme.default_font = dyslexia_font
+	Signals.ToggleCRTEffects.emit(active_save.filters_active)
+	Signals.ToggleFlashEffects.emit(active_save.flashes_active)
+
+
+func _update_local_laguage() -> void:
+	TranslationServer.set_locale(active_save.language)
+
+
+func _set_video_settings() -> void:
+	if OS.get_name() != "Web":
+		_set_display_mode(active_save.window_mode)
+		DisplayServer.window_set_size(active_save.window_size)
+
+
+func _set_display_mode(mode:Settings.Window_Mode) -> void:
+	match mode:
+		Settings.Window_Mode.BORDERLESS_WINDOWED:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		Settings.Window_Mode.WINDOWED:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		_:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

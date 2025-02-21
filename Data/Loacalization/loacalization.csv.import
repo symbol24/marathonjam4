@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bvgkainu26b01"
+
+[deps]
+
+files=["res://Data/Loacalization/loacalization.en.translation", "res://Data/Loacalization/loacalization.fr.translation", "res://Data/Loacalization/loacalization.fr_CA.translation"]
+
+source_file="res://Data/Loacalization/loacalization.csv"
+dest_files=["res://Data/Loacalization/loacalization.en.translation", "res://Data/Loacalization/loacalization.fr.translation", "res://Data/Loacalization/loacalization.fr_CA.translation"]
+
+[params]
+
+compress=true
+delimiter=0

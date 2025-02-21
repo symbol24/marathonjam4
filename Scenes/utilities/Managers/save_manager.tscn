@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://docegc7lkx3xd"]
+[gd_scene load_steps=3 format=3 uid="uid://docegc7lkx3xd"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/save_manager.gd" id="1_0xfja"]
+[ext_resource type="Theme" uid="uid://ckulva3dnkn8g" path="res://Data/default_theme.tres" id="2_hwonb"]
 
 [node name="SaveManager" type="Node" groups=["save_manager"]]
 script = ExtResource("1_0xfja")
+default_theme = ExtResource("2_hwonb")

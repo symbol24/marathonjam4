@@ -5,15 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://blf1sj3pik5su" path="res://Textures/Ui/popup_icons_60x60_warning.png" id="4_y3md1"]
 
 [node name="LargePopup" type="Control" groups=["element"]]
-custom_minimum_size = Vector2(640, 360)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1280.0
-offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_ap18f")
 warning = ExtResource("4_y3md1")
 error = ExtResource("3_u0ie8")
@@ -21,8 +20,10 @@ error = ExtResource("3_u0ie8")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_left = 640.0
+offset_top = 260.0
+offset_right = 1280.0
+offset_bottom = 620.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -30,6 +31,7 @@ mouse_filter = 0
 theme_override_constants/separation = 4
 
 [node name="title_section" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 mouse_filter = 0
 theme_override_constants/separation = 10

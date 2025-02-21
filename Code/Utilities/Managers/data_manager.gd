@@ -15,6 +15,11 @@ class_name DataManager extends RidManager
 @export var context_popup:PackedScene
 @export var context_button:PackedScene
 @export var play_ui:PackedScene
+@export var pause_menu:PackedScene
+@export var settings:PackedScene
+@export var normal_font:Resource
+@export var dyslexia_friendly_font:Resource
+@export var default_theme:Theme
 
 @export_group("Map Generation")
 @export var map_generator:PackedScene

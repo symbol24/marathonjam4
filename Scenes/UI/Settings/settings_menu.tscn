@@ -1,0 +1,345 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwarm3qoptkoo"]
+
+[ext_resource type="Script" path="res://Code/UI/Settings/settings_menu.gd" id="1_junnl"]
+
+[node name="settings" type="PanelContainer"]
+custom_minimum_size = Vector2(1400, 840)
+offset_right = 1200.0
+offset_bottom = 800.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_junnl")
+metadata/_tab_index = 0
+
+[node name="settings_tab_container" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 0
+tabs_position = 1
+tab_focus_mode = 0
+
+[node name="general" type="PanelContainer" parent="settings_tab_container"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_tab_container/general"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="settings_tab_container/general/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/general/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "LANGUAGE:"
+vertical_alignment = 1
+
+[node name="language_options" type="OptionButton" parent="settings_tab_container/general/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "English"
+popup/item_1/text = "French"
+popup/item_1/id = 1
+popup/item_2/text = "Quebecois"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="settings_tab_container/general/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/general/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "DYSLEXIA-FRIENDLY FONT:"
+vertical_alignment = 1
+
+[node name="dyslexic_driendly_font_btn" type="Button" parent="settings_tab_container/general/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "OFF"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings_tab_container/general/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/general/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "CRT EFFECTS:"
+vertical_alignment = 1
+
+[node name="crt_effects_btn" type="Button" parent="settings_tab_container/general/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "ON"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="settings_tab_container/general/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/general/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "FLASH EFFECTS:"
+vertical_alignment = 1
+
+[node name="flash_effects_btn" type="Button" parent="settings_tab_container/general/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "ON"
+
+[node name="btn_reset_general" type="Button" parent="settings_tab_container/general/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "RESET GENERAL SETTINGS"
+
+[node name="video" type="PanelContainer" parent="settings_tab_container"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_tab_container/video"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="normal_window_mode" type="HBoxContainer" parent="settings_tab_container/video/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/video/VBoxContainer/normal_window_mode"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "WINDOW MODE:"
+vertical_alignment = 1
+
+[node name="window_option_btn" type="OptionButton" parent="settings_tab_container/video/VBoxContainer/normal_window_mode"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "FULLSCREEN"
+popup/item_1/text = "WINDOWED"
+popup/item_1/id = 1
+popup/item_2/text = "WINDOWED BORDERLESS"
+popup/item_2/id = 2
+
+[node name="normal_window_sizes" type="HBoxContainer" parent="settings_tab_container/video/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/video/VBoxContainer/normal_window_sizes"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "WINDOW SIZES:"
+vertical_alignment = 1
+
+[node name="window_sizes_btn" type="OptionButton" parent="settings_tab_container/video/VBoxContainer/normal_window_sizes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="web_fullscreen" type="HBoxContainer" parent="settings_tab_container/video/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_tab_container/video/VBoxContainer/web_fullscreen"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "FULLSCREEN:"
+vertical_alignment = 1
+
+[node name="web_fullscreen_btn" type="Button" parent="settings_tab_container/video/VBoxContainer/web_fullscreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "OFF"
+
+[node name="btn_reset_video" type="Button" parent="settings_tab_container/video/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "RESET VIDEO SETTINGS"
+
+[node name="audio" type="PanelContainer" parent="settings_tab_container"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_tab_container/audio"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="audio_option_hb" type="HBoxContainer" parent="settings_tab_container/audio/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="settings_tab_container/audio/VBoxContainer/audio_option_hb"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "MASTER:"
+vertical_alignment = 1
+
+[node name="master_hslider" type="HSlider" parent="settings_tab_container/audio/VBoxContainer/audio_option_hb"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+tick_count = 11
+ticks_on_borders = true
+
+[node name="audio_option_hb2" type="HBoxContainer" parent="settings_tab_container/audio/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="music_label" type="Label" parent="settings_tab_container/audio/VBoxContainer/audio_option_hb2"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "MUSIC:"
+vertical_alignment = 1
+
+[node name="music_hslider" type="HSlider" parent="settings_tab_container/audio/VBoxContainer/audio_option_hb2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+tick_count = 11
+ticks_on_borders = true
+
+[node name="audio_option_hb3" type="HBoxContainer" parent="settings_tab_container/audio/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="settings_tab_container/audio/VBoxContainer/audio_option_hb3"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "SFX:"
+vertical_alignment = 1
+
+[node name="sfx_hslider" type="HSlider" parent="settings_tab_container/audio/VBoxContainer/audio_option_hb3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+tick_count = 11
+ticks_on_borders = true
+
+[node name="btn_reset_audio" type="Button" parent="settings_tab_container/audio/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "RESET AUDIO SETTINGS"
+
+[node name="controls" type="PanelContainer" parent="settings_tab_container"]
+visible = false
+layout_mode = 2
+focus_mode = 2
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_tab_container/controls"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="settings_tab_container/controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="mouse_left_label" type="Label" parent="settings_tab_container/controls/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "INTERACT / SELECT:"
+vertical_alignment = 1
+
+[node name="click_btn" type="Button" parent="settings_tab_container/controls/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings_tab_container/controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="mouse_right_label" type="Label" parent="settings_tab_container/controls/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "DESELECT:"
+vertical_alignment = 1
+
+[node name="deselect_btn" type="Button" parent="settings_tab_container/controls/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="settings_tab_container/controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="cancel_label" type="Label" parent="settings_tab_container/controls/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+text = "PAUSE:"
+vertical_alignment = 1
+
+[node name="pause_btn" type="Button" parent="settings_tab_container/controls/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="btn_reset_controls" type="Button" parent="settings_tab_container/controls/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "RESET MAPPING"
+
+[node name="floating_control" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="btn_main_menu_settings_close" type="Button" parent="floating_control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -138.0
+offset_right = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CLOSE"
+
+[node name="btn_main_menu_settings_apply" type="Button" parent="floating_control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -138.0
+offset_right = -220.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "APPLY"

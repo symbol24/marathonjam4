@@ -34,11 +34,17 @@ var current_prisoners:Array[PrisonerData] = []
 
 @export_category("System Settings")
 @export_group("General")
-@export var difficulty:int = 0
+@export var language:String = "en"
+var language_default:String = "en"
 
 @export_group("Visual")
-@export var window_mode:int = 0
+var platform:String = "Windows"
+@export var window_mode:Settings.Window_Mode = Settings.Window_Mode.FULLSCREEN
+var window_mode_default:Settings.Window_Mode = Settings.Window_Mode.FULLSCREEN if OS.get_name() != "Web" else Settings.Window_Mode.WINDOWED
 @export var window_size:Vector2i = Vector2i(1920, 1080)
+var window_size_default:Vector2i = Vector2i(1920, 1080)
+@export var display_monitor:int = 1
+var default_display_monitor:int = 1
 
 @export_group("Audio")
 @export var master_volume:float = 0.5
@@ -47,20 +53,27 @@ var current_prisoners:Array[PrisonerData] = []
 
 @export_group("Accessibility")
 @export var colorblind_mode:int = 0
+var colorblind_mode_default:int = 0
 @export var dyslexic_font:bool = false
+var dyslexic_font_default:bool = false
 @export var filters_active:bool = true
+var filters_active_default:bool = true
 @export var flashes_active:bool = true
+var flashes_active_default:bool = true
 
 @export_group("Controls")
 @export_subgroup("Mouse and Keyboard")
-@export var mouse_left:MouseButton = MOUSE_BUTTON_LEFT
-@export var mouse_right:MouseButton = MOUSE_BUTTON_RIGHT
+@export var click = MOUSE_BUTTON_LEFT
+var click_default = MOUSE_BUTTON_LEFT
+@export var deselect = MOUSE_BUTTON_RIGHT
+var deselect_default = MOUSE_BUTTON_RIGHT
 @export var keyboard_move_left:Key = KEY_A
 @export var keyboard_move_lup:Key = KEY_W
 @export var keyboard_move_right:Key = KEY_D
 @export var keyboard_move_down:Key = KEY_S
 @export var keyboard_confirm:Key = KEY_ENTER
 @export var keyboard_cancel:Key = KEY_ESCAPE
+var keyboard_cancel_default:Key = WEB_CANCEL if OS.get_name() == "Web" else KEY_ESCAPE
 
 @export_subgroup("Controller")
 @export var joy_axis_left_x:JoyAxis = JOY_AXIS_LEFT_X

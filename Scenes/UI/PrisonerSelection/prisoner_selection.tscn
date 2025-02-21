@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_38nu0")
+id = "prisoner_selection_menu"
 
 [node name="prisoner_list_panel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(400, 900)

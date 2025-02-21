@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dew6agc1588r3"]
 
 [ext_resource type="PackedScene" uid="uid://ckkvhmv1d5svm" path="res://Scenes/Debug/debug_command_menu.tscn" id="1_8qu8m"]
-[ext_resource type="PackedScene" uid="uid://cklw3jbgocru3" path="res://Scenes/UI/popup_manager.tscn" id="1_n6wcb"]
+[ext_resource type="PackedScene" uid="uid://cklw3jbgocru3" path="res://Scenes/UI/Popups/popup_manager.tscn" id="1_n6wcb"]
 [ext_resource type="Script" path="res://Code/Debug/debug_ui.gd" id="1_qmtsh"]
 [ext_resource type="Script" path="res://Code/Utilities/Managers/ui_manager.gd" id="1_w8v3o"]
 [ext_resource type="PackedScene" uid="uid://to313svmi6t6" path="res://Scenes/UI/loading_screen.tscn" id="2_04ojx"]

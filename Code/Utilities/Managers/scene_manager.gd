@@ -12,6 +12,7 @@ var loading:bool = true
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.LoadScene.connect(_load_scene)
 	if scenes_to_load == null: push_error("Scenes to load resource is missing from Scene Manager.")
 	else: scenes_to_load.setup_dict_for_scenes()

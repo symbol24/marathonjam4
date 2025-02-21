@@ -28,6 +28,7 @@ var data_manager:DataManager:
 
 
 func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
 	Signals.DisplayPopup.connect(_display_popup)
 	Signals.DisplayContextPopup.connect(_display_context_popup)
 	var break_count:int = 0
@@ -52,7 +53,7 @@ func _display_large_popup(_id:String, _severity:PopupManager.Severity = PopupMan
 		large_popup = data_manager.large_popup.instantiate()
 		add_child.call_deferred(large_popup)
 		if not large_popup.is_node_ready(): await large_popup.ready
-		large_popup.position = Vector2(640, 300)
+		#large_popup.position = Vector2(640, 300)
 	
 	if large_popup != null: 
 		large_popup.display_popup(_id, _severity, _timer, _title, _text)
