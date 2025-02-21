@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://blf1sj3pik5su" path="res://Textures/Ui/popup_icons_60x60_warning.png" id="4_y3md1"]
 
 [node name="LargePopup" type="Control" groups=["element"]]
+z_index = 4000
+z_as_relative = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 15

@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Code/UI/small_popup.gd" id="1_tykol"]
 
 [node name="SmallPopup" type="Control"]
+z_index = 4000
+z_as_relative = false
 custom_minimum_size = Vector2(640, 200)
 layout_mode = 3
 anchors_preset = 15

@@ -39,6 +39,9 @@ func _ready() -> void:
 
 
 func _display_popup(_type:PopupManager.Type, _id:String, _severity:PopupManager.Severity, _title:String, _text:String, _timer:int) -> void:
+	Debug.log(get_parent().get_child_count()-1)
+	if get_index() < get_parent().get_child_count()-1:
+		get_parent().move_child(self, get_child_count()-1)
 	match _type:
 		Type.LARGE:
 			_display_large_popup(_id, _severity, _timer, _title, _text)

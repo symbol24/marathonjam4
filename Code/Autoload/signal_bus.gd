@@ -45,7 +45,7 @@ signal PrisonerInteract(interaction:String, interactible:Interactible)
 
 # UI
 signal PopupResult(id:String, result:bool)
-signal DisplayPopup(type:PopupManager.Type, id:String, severity:PopupManager.Severity, title:String, text:String, timer:int)
+signal DisplayPopup(type:, id:String, severity:PopupManager.Severity, title:String, text:String, timer:int)
 signal DisplayContextPopup(interactible:Interactible)
 signal ContextPopupToggled(id:String, displayed:bool)
 signal ContextPopupResult(interactible:Interactible, key_selection:String)

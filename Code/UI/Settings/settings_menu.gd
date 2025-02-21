@@ -510,6 +510,13 @@ func _check_popup_results(popup_id:String, result:bool) -> void:
 				_keep_window_mode_change()
 			else:
 				_revert_window_mode_change()
+		"pause_settings_pending_changes":
+			if result:
+				_reset_general_to_saved()
+				_reset_video_to_saved()
+				_reset_audio_to_saved()
+				_reset_controls_to_saved()
+				pending_changes = false
 		_:
 			pass
 

@@ -47,7 +47,7 @@ func _press_pause() -> void:
 	if scene_manager != null:
 		if scene_manager.active_scene != null:
 			match scene_manager.active_scene.id:
-				"main_menu", "ship_naming_menu", "prisoner_selection_menu", "map_selection_menu", "story_intro_menu":
+				"ship_naming_menu", "prisoner_selection_menu", "map_selection_menu", "story_intro_menu":
 					Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "popup_cancel_back_in_flow", PopupManager.Severity.NORMAL, tr("popup_cancel_back_in_flow_title"), tr("popup_cancel_back_in_flow_text"), 0)
 				"play_level":
 					_toggle_pause_menu()
@@ -62,13 +62,11 @@ func _toggle_pause_menu() -> void:
 			add_child.call_deferred(pause_menu)
 			if not pause_menu.is_node_ready(): await pause_menu.ready
 			Signals.TogglePauseGame.emit(true)
-			pause_menu.show()
+			pause_menu.toggle_pause_menu(true)
 	
 	else:
 		if pause_menu.visible:
-			pause_menu.hide()
-			Signals.TogglePauseGame.emit(false)
+			pause_menu.toggle_pause_menu(false)
 		else:
-			pause_menu.show()
-			Signals.TogglePauseGame.emit(true)
+			pause_menu.toggle_pause_menu(true)
 
