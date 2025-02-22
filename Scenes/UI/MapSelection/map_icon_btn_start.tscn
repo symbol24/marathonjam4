@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://eg1sndvmakol" path="res://Textures/Debug/map_icon_start.png" id="1_yxw8q"]
 
 [node name="MapIconBtnStart" type="TextureButton"]
+z_index = 1
 custom_minimum_size = Vector2(32, 32)
 offset_left = -16.0
 offset_top = -16.0

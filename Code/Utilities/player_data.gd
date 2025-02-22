@@ -126,3 +126,19 @@ func reset() -> void:
 	current_life_support = 1
 	current_ai_core = 1
 	current_location = Vector2i.ZERO
+
+
+func get_dead_prisoners() -> int:
+	var result:int = 0
+	for prisoner in prisoners:
+		if prisoner.current_status == PrisonerData.Health_Status.DEAD:
+			result += 1
+	return result
+
+
+func get_crystasis_prisoner() -> int:
+	var not_cryo:int = active_prisoners.size()
+	for prisoner in prisoners:
+		if prisoner.current_status == PrisonerData.Health_Status.DEAD:
+			not_cryo += 1
+	return prisoners.size() - not_cryo

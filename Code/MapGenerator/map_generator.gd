@@ -179,7 +179,7 @@ func _setup_room_types() -> void:
 	# DERILECT FLOOR
 	for room:RoomData in map_data[DERILECT_FLOOR]:
 		if not room.next_rooms.is_empty():
-			room.type = RoomData.Type.TREASURE
+			room.type = RoomData.Type.DERELECT
 	
 	# Second to last floor
 	for room:RoomData in map_data[FLOORS - 2]:

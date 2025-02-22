@@ -1,24 +1,43 @@
 class_name MapSelectionMenu extends RidControl
 
 
-const POINT_DISTANCE_Y:float = -200.0
+const POINT_DISTANCE_Y:float = 200.0
 const CAMERA_MOVE_SPEED:float = 100.0
 const CAMERA_Y_MIN:float = 0.0
+const MAP_WIDTH:float = 1250.0
+const MAP_MOVE_MESSAGE_TIME:float = 2.0
 
 
-@onready var camera: Camera2D = %camera
+@onready var scroll_map: ScrollContainer = %scroll_map
+@onready var map: Panel = %map
+
+# Ship Status
+@onready var ship_name: Label = %ship_name
+@onready var registry: Label = %registry
+@onready var propulsion: Label = %propulsion
+@onready var hull: Label = %hull
+@onready var ai_core: Label = %ai_core
+@onready var life_support: Label = %life_support
+@onready var active_prisoners: Label = %active_prisoners
+@onready var cryostasis_prisoner: Label = %cryostasis_prisoner
+@onready var dead_prisoners: Label = %dead_prisoners
+
+# Legend
+@onready var legend_panel: PanelContainer = %legend_panel
+@onready var btn_legend_toggle: Button = %btn_legend_toggle
+
+# Nav
+@onready var btn_load_prisoners: Button = %btn_load_prisoners
 
 var data_manager:DataManager:
 	get:
-		if data_manager == null:
-			data_manager = get_tree().get_first_node_in_group("data_manager")
-			if data_manager == null: Debug.error("Data Manager is missing!")
+		if data_manager == null: data_manager = get_tree().get_first_node_in_group("data_manager")
+		if data_manager == null: Debug.error("Data Manager is missing!")
 		return data_manager
 var save_manager:SaveManager:
 	get:
-		if save_manager == null:
-			save_manager = get_tree().get_first_node_in_group("save_manager")
-			if save_manager == null: Debug.error("Save manager not found")
+		if save_manager == null: save_manager = get_tree().get_first_node_in_group("save_manager")
+		if save_manager == null: Debug.error("Save manager not found")
 		return save_manager
 var map_generator:MapGenerator = null
 var grid:Array[Array] = []
@@ -31,45 +50,24 @@ var camera_y_max:float = 1.0
 var grabbed:bool = false
 var previous_mouse_position:Vector2 = Vector2.ZERO
 var points:Dictionary = {}
-var selected_point:MapIconButton
-
-
-func _input(event: InputEvent) -> void:
-	if is_visible and can_scroll:
-		if event.is_action_pressed("mouse_scroll_up"):
-			scroll_movement.append(true)
-		elif event.is_action_pressed("mouse_scroll_down"):
-			scroll_movement.append(false)
-		elif event.is_action_pressed("mouse_left"):
-			grabbed = true
-			previous_mouse_position = get_local_mouse_position()
-		elif event.is_action_released("mouse_left"):
-			grabbed = false
+var selected_point:MapIcon
 
 
 func _ready() -> void:
 	hide()
+	legend_panel.hide()
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_ready", 25)
-	Signals.MapStuffPlacementComplete.connect(_allow_scrolling)
+	Signals.MapStuffPlacementComplete.connect(_final_map_selection_prep)
 	Signals.LoadRoom.connect(_load_encounter)
 	Signals.RoomIconBtnPressed.connect(_check_room_data)
-	if data_manager == null: Debug.error("Map Generator cannot find Data Manager.")
+	btn_legend_toggle.pressed.connect(_toggle_legend)
+	btn_load_prisoners.pressed.connect(_load_prisoners_selection)
+	if save_manager and not save_manager.active_save.current_grid.is_empty():
+		Signals.ToggleLoadingScreen.emit(true, "map_selection_retrieving_map", 10)
+		_load_map_from_save()
 	else:
-		if save_manager and not save_manager.active_save.current_grid.is_empty():
-			Signals.ToggleLoadingScreen.emit(true, "map_selection_retrieving_map", 10)
-			_load_map_from_save()
-		else:
-			_generate_map()
-
-
-func _physics_process(delta: float) -> void:
-	if is_visible and can_scroll and get_next_scroll:
-		if not scroll_movement.is_empty():
-			_move_camera(scroll_movement.pop_front(), delta)
-		
-		if grabbed and get_next_scroll:
-			_mouse_move_camera(delta)
+		_generate_map()
 
 
 func _place_map_stuff() -> void:
@@ -77,79 +75,68 @@ func _place_map_stuff() -> void:
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_placing_stuff", 25)
 	await _place_rooms()
 	await _place_lines()
-
 	Signals.MapStuffPlacementComplete.emit()
 
 
 func _check_room_data(room_data:RoomData) -> void:
 	if room_data == selected_point.room_data and not selected_point.room_data.complete:
 		Signals.LoadRoom.emit(room_data)
-	elif room_data != selected_point.room_data and room_data in selected_point.room_data.next_rooms:
-		Signals.MoveSpaceshipTo.emit(room_data)
+	elif room_data != selected_point.room_data and selected_point.room_data.complete and room_data in selected_point.room_data.next_rooms:
+		await _move_popups()
+		Signals.LoadRoom.emit(room_data)
+
+
+func _move_popups() -> void:
+	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "map_select_prepare", PopupManager.Severity.NORMAL, "", tr("map_select_prepare"), MAP_MOVE_MESSAGE_TIME)
+	await get_tree().create_timer(MAP_MOVE_MESSAGE_TIME).timeout
+	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "map_select_transit", PopupManager.Severity.NORMAL, "", tr("map_select_transit"), MAP_MOVE_MESSAGE_TIME)
+	await get_tree().create_timer(MAP_MOVE_MESSAGE_TIME).timeout
+	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "map_select_arriver", PopupManager.Severity.NORMAL, "", tr("map_select_arrived"), MAP_MOVE_MESSAGE_TIME)
+	await get_tree().create_timer(MAP_MOVE_MESSAGE_TIME).timeout
 
 
 func _place_rooms() -> void:
-	var last_floor_x:float = 1920.0 / 2
-	var i:int = 0
-	var previous_floor_y:float = 0.0
+	var first_and_last_floor_x:float = MAP_WIDTH / 2
+	var floor_count:int = 0
+	var previous_floor_y:float = POINT_DISTANCE_Y * (MapGenerator.FLOORS + 1)
+	map.custom_minimum_size = Vector2(MAP_WIDTH, previous_floor_y)
 	for _floor in grid:
-
-		#Debug.log("Floor %s: %s" % [i, _floor])
-
-		var j:int = 1
-		var floor_seperation:float = 1920.0 / (_floor.size()+1)
-		var floor_y:float = previous_floor_y + POINT_DISTANCE_Y
+		var room_count:int = 1
+		var horz_room_seperation:float = MAP_WIDTH / (_floor.size()+1)
+		var floor_y:float = previous_floor_y - POINT_DISTANCE_Y
 
 		for room:RoomData in _floor:
-			var to_insta:PackedScene = data_manager.map_icon_btn_encounter
-			match room.type:
-				RoomData.Type.TREASURE:
-					to_insta = data_manager.map_icon_btn_treasure
-				RoomData.Type.SHOP:
-					to_insta = data_manager.map_icon_btn_shop
-				RoomData.Type.STATION:
-					to_insta = data_manager.map_icon_btn_station
-				RoomData.Type.BOSS:
-					to_insta = data_manager.map_icon_btn_boss
-				RoomData.Type.NOT_ASSIGNED:
-					to_insta = null
-				RoomData.Type.START:
-					to_insta = data_manager.map_icon_btn_start
-				_:
-					pass
+			var to_insta:PackedScene = data_manager.map_icon
+			if room.type == RoomData.Type.NOT_ASSIGNED: to_insta = null
 
 			if to_insta != null:
-				var map_icon_btn:MapIconButton = to_insta.instantiate()
+				var map_icon:MapIcon = to_insta.instantiate()
 				var pos:Vector2
-				if i == 0:
-					var x:float = floor_seperation * j
-					pos = Vector2(x, 0)
-				elif i == grid.size() - 1:
-					#pos = Vector2((floor_seperation*j), floor_y)
-					pos = Vector2(last_floor_x, floor_y)
+				if floor_count == 0:
+					pos = Vector2(first_and_last_floor_x, floor_y)
+				elif floor_count == grid.size() - 1:
+					#pos = Vector2((horz_room_seperation*j), floor_y)
+					pos = Vector2(first_and_last_floor_x, floor_y)
 					last_room_coords = pos
 					camera_y_max = floor_y
 				else:
-					pos = Vector2((floor_seperation*j), floor_y)
+					pos = Vector2((horz_room_seperation*room_count), floor_y)
 
 				room.coords_on_map = pos
-				
+				map.add_child(map_icon)
+				if not map_icon.is_node_ready(): await map_icon.ready
+				map_icon.name = RoomData.Type.keys()[room.type] + "_" + str(floor_count) + "_" + str(room_count)
+				room.button_name = map_icon.name
+				map_icon.setup_button(room)
 
-				map_icon_btn.room_data = room
-				add_child(map_icon_btn)
-				if not map_icon_btn.is_node_ready(): await map_icon_btn.ready
+				var offset:Vector2 = map_icon.size/2
+				map_icon.position = room.coords_on_map - offset
+				points[map_icon.name] = map_icon
 
-				var offset:Vector2 = map_icon_btn.texture_normal.get_size()/2
-				map_icon_btn.global_position = room.coords_on_map - offset
-				map_icon_btn.name = RoomData.Type.keys()[room.type] + "_" + str(i) + "_" + str(j)
-				room.button_name = map_icon_btn.name
-				points[map_icon_btn.name] = map_icon_btn
-
-			j += 1
+			room_count += 1
 			
 		previous_floor_y = floor_y
-		i += 1
-	Debug.log("Points size: ", points.size())
+		floor_count += 1
 
 
 func _place_lines() -> void:
@@ -158,49 +145,21 @@ func _place_lines() -> void:
 			if room.coords_on_map != Vector2.ZERO:
 				for next_room:RoomData in room.next_rooms:
 					var line:Line2D = data_manager.map_line.instantiate()
-					add_child(line)
+					map.add_child(line)
 					if not line.is_node_ready(): await line.ready
 					line.add_point(room.coords_on_map, 0)
 					line.add_point(next_room.coords_on_map, 1)
 
 
-func _move_camera(is_up:bool = true, delta:float = 0.0) -> void:
-	get_next_scroll = false
-	var direction:float = -1.0 if is_up else 1.0
-	#Debug.log("Camera Y:", camera.global_position.y)
-
-	var new_y:float = camera.global_position.y + direction * CAMERA_MOVE_SPEED
-	new_y = clampf(new_y, camera_y_max, CAMERA_Y_MIN)
-	var new_pos:Vector2 = Vector2(camera.global_position.x, new_y)
-
-	var tween:Tween = create_tween()
-	tween.tween_property(camera, "global_position", new_pos, delta)
-	await tween.finished
-	get_next_scroll = true
-
-
-func _mouse_move_camera(delta:float) -> Vector2:
-	get_next_scroll = false
-	var current_mouse:Vector2 = get_local_mouse_position()
-	var new_y:float = camera.global_position.y + (previous_mouse_position.y - current_mouse.y)
-	var new_pos:Vector2 = Vector2(camera.global_position.x, new_y)
-
-	var tween:Tween = create_tween()
-	tween.tween_callback(func(): get_next_scroll = true)
-	tween.tween_property(camera, "global_position", new_pos, delta)
-
-	previous_mouse_position = current_mouse
-	return Vector2(new_pos.x, new_y)
-
-
-func _allow_scrolling() -> void:
+func _final_map_selection_prep() -> void:
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_spawning_ship", 15)
 	_set_selected_point()
-	_spawn_ship()
+	#_spawn_ship()
 	show()
-	camera.position.y = selected_point.position.y
+	_setup_labels()
 	await get_tree().create_timer(1).timeout
+	scroll_map.scroll_vertical = int(selected_point.position.y - 400)
 	Signals.ToggleLoadingScreen.emit(false)
 	can_scroll = true
 
@@ -221,10 +180,9 @@ func _set_selected_point() -> void:
 
 func _spawn_ship() -> void:
 	var ship:MapIconSpaceship = data_manager.map_icon_spaceship.instantiate()
-	add_child(ship)
+	map.add_child(ship)
 	if not ship.is_node_ready(): await ship.ready
-	var pos:Vector2 = Vector2(16,16) + selected_point.global_position
-	ship.global_position = pos
+	ship.position = Vector2(16,16) + selected_point.position
 	ship.current_room = selected_point.room_data
 
 
@@ -260,8 +218,31 @@ func _generate_map() -> void:
 		_place_map_stuff()
 
 
-func _get_point_from_coords(coords:Vector2i) -> MapIconButton:
+func _get_point_from_coords(coords:Vector2i) -> MapIcon:
 	for key in points.keys():
 		if points[key].room_data.row == coords.x and points[key].room_data.column == coords.y:
 			return points[key]
 	return null
+
+
+func _setup_labels() -> void:
+	ship_name.text = save_manager.active_save.ship_name
+	registry.text = str(save_manager.active_save.current_ship_id)
+	propulsion.text = str(save_manager.active_save.current_propulsion) + "%"
+	hull.text = str(save_manager.active_save.current_hull_integrity) + "%"
+	ai_core.text = str(save_manager.active_save.current_ai_core) + "%"
+	life_support.text = str(save_manager.active_save.current_life_support) + "%"
+	active_prisoners.text = str(save_manager.active_save.active_prisoners.size())
+	dead_prisoners.text = str(save_manager.active_save.get_dead_prisoners())
+	cryostasis_prisoner.text = str(save_manager.active_save.get_crystasis_prisoner())
+
+
+func _toggle_legend() -> void:
+	if legend_panel.is_visible():
+		legend_panel.hide()
+	else:
+		legend_panel.show()
+
+
+func _load_prisoners_selection() -> void:
+	Signals.LoadScene.emit("prisoner_select", true)

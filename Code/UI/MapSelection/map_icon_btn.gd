@@ -18,6 +18,7 @@ func _pressed() -> void:
 func select() -> void:
 	set_pressed_no_signal(true)
 	room_data.selected = true
+	grab_focus()
 
 
 func _cancel_pressed(_room_data:RoomData) -> void:

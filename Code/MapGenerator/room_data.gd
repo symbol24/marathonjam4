@@ -4,7 +4,7 @@ class_name RoomData extends Resource
 enum Type {
 			NOT_ASSIGNED = 0,
 			ENCOUNTER = 1,
-			TREASURE = 2, 
+			DERELECT = 2, 
 			STATION = 3,
 			SHOP = 4,
 			BOSS = 5,

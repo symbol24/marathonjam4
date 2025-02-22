@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://bersd7cbttphe"]
+
+[ext_resource type="Script" path="res://Code/UI/MapSelection/map_icon.gd" id="1_26gka"]
+
+[node name="MapIcon" type="Control"]
+z_index = 1
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_26gka")
+
+[node name="selected" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_type_variation = &"MapIconSelected"
+
+[node name="Line2D" type="Line2D" parent="selected"]
+points = PackedVector2Array(33, 2.5, 66, 2.5)
+width = 5.0
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Line2D3" type="Line2D" parent="selected"]
+points = PackedVector2Array(2.5, 66, 2.5, 33)
+width = 5.0
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Line2D4" type="Line2D" parent="selected"]
+position = Vector2(95, 0)
+points = PackedVector2Array(2.5, 66, 2.5, 33)
+width = 5.0
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Line2D2" type="Line2D" parent="selected"]
+position = Vector2(0, 98)
+points = PackedVector2Array(33, -0.5, 66, -0.5)
+width = 5.0
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="icon" type="Panel" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 82.0
+offset_bottom = 82.0
+theme_type_variation = &"MapIconDerelect"
+
+[node name="icon_letter_label" type="Label" parent="icon"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 66.0
+offset_bottom = 68.0
+text = "!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+visible_characters = -3
+visible_ratio = -1.0
+
+[node name="complete" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 82.0
+offset_bottom = 82.0
+
+[node name="btn_map_icon" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 4.0
+theme_type_variation = &"MapIconBtn"
+flat = true
+metadata/_edit_lock_ = true

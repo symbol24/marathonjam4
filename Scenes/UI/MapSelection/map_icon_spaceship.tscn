@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Code/UI/MapSelection/map_icon_spaceship.gd" id="2_jlnvi"]
 
 [node name="MapIconSpaceship" type="TextureRect"]
+z_index = 2
 custom_minimum_size = Vector2(32, 32)
 offset_left = -16.0
 offset_top = -16.0

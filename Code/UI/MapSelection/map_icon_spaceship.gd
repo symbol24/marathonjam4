@@ -41,7 +41,7 @@ func _move_to_target(target_pos:Vector2) -> void:
 	current_state = State.MOVING
 	var tween:Tween = create_tween()
 	tween.finished.connect(_move_finished)
-	tween.tween_property(self, "global_position", target_pos, MOVE_TIME)
+	tween.tween_property(self, "position", target_pos, MOVE_TIME)
 
 
 func _move_finished() -> void:

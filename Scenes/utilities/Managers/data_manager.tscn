@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://dd11qq4g440l0"]
+[gd_scene load_steps=141 format=3 uid="uid://dd11qq4g440l0"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/data_manager.gd" id="1_lq4dl"]
 [ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_0r3q1"]
@@ -133,19 +133,13 @@
 [ext_resource type="PackedScene" uid="uid://xpgtmytw67ym" path="res://Scenes/UI/PlayUi/play_ui.tscn" id="131_2tbbs"]
 [ext_resource type="PackedScene" uid="uid://cqjoajxtl6mxa" path="res://Scenes/MapGenerator/map_generator.tscn" id="131_xv8pf"]
 [ext_resource type="PackedScene" uid="uid://7kk4vbr4iqdq" path="res://Scenes/UI/PauseMenu/pause_menu.tscn" id="132_ed061"]
-[ext_resource type="PackedScene" uid="uid://7q7kqjus2nbr" path="res://Scenes/UI/MapSelection/map_icon_btn_encounter.tscn" id="132_xigua"]
-[ext_resource type="PackedScene" uid="uid://dvvgkx8eu4fth" path="res://Scenes/UI/MapSelection/map_icon_btn_treasure.tscn" id="133_7s7fm"]
 [ext_resource type="PackedScene" uid="uid://cwarm3qoptkoo" path="res://Scenes/UI/Settings/settings_menu.tscn" id="133_c5mpy"]
-[ext_resource type="PackedScene" uid="uid://8imja47ix64m" path="res://Scenes/UI/MapSelection/map_icon_btn_station.tscn" id="134_26e5j"]
 [ext_resource type="FontFile" uid="uid://cymk17yxaq6rp" path="res://Data/Fonts/80s-retro-future.ttf" id="134_whynb"]
 [ext_resource type="FontFile" uid="uid://cq61h5uytvgqc" path="res://Data/Fonts/Lexend-VariableFont_wght.ttf" id="135_g5mp1"]
-[ext_resource type="PackedScene" uid="uid://cfcpkfmnb2eot" path="res://Scenes/UI/MapSelection/map_icon_btn_shop.tscn" id="135_u1j81"]
-[ext_resource type="PackedScene" uid="uid://dw01y802o8vhb" path="res://Scenes/UI/MapSelection/map_icon_btn_boss.tscn" id="136_3p60x"]
 [ext_resource type="Theme" uid="uid://ckulva3dnkn8g" path="res://Data/default_theme.tres" id="136_76b4w"]
 [ext_resource type="PackedScene" uid="uid://b3ehv4ghrd0bx" path="res://Scenes/UI/SaveIcon/save_icon.tscn" id="137_4gk0w"]
-[ext_resource type="PackedScene" uid="uid://bte462gww1d2i" path="res://Scenes/UI/MapSelection/map_icon_spaceship.tscn" id="137_515n2"]
-[ext_resource type="PackedScene" uid="uid://bxke87dev30pn" path="res://Scenes/UI/MapSelection/map_icon_btn_start.tscn" id="137_sspui"]
 [ext_resource type="PackedScene" uid="uid://s5jy75f7aaif" path="res://Scenes/UI/MapSelection/map_line.tscn" id="138_6klp3"]
+[ext_resource type="PackedScene" uid="uid://bersd7cbttphe" path="res://Scenes/UI/MapSelection/map_icon.tscn" id="139_bs0u3"]
 
 [node name="DataManager" type="Node" groups=["data_manager"]]
 script = ExtResource("1_lq4dl")
@@ -164,11 +158,5 @@ dyslexia_friendly_font = ExtResource("135_g5mp1")
 default_theme = ExtResource("136_76b4w")
 save_icon = ExtResource("137_4gk0w")
 map_generator = ExtResource("131_xv8pf")
-map_icon_btn_encounter = ExtResource("132_xigua")
-map_icon_btn_treasure = ExtResource("133_7s7fm")
-map_icon_btn_station = ExtResource("134_26e5j")
-map_icon_btn_shop = ExtResource("135_u1j81")
-map_icon_btn_boss = ExtResource("136_3p60x")
-map_icon_btn_start = ExtResource("137_sspui")
-map_icon_spaceship = ExtResource("137_515n2")
+map_icon = ExtResource("139_bs0u3")
 map_line = ExtResource("138_6klp3")

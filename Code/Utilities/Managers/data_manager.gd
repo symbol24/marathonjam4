@@ -24,13 +24,7 @@ class_name DataManager extends RidManager
 
 @export_group("Map Generation")
 @export var map_generator:PackedScene
-@export var map_icon_btn_encounter:PackedScene
-@export var map_icon_btn_treasure:PackedScene
-@export var map_icon_btn_station:PackedScene
-@export var map_icon_btn_shop:PackedScene
-@export var map_icon_btn_boss:PackedScene
-@export var map_icon_btn_start:PackedScene
-@export var map_icon_spaceship:PackedScene
+@export var map_icon:PackedScene
 @export var map_line:PackedScene
 
 

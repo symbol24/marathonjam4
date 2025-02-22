@@ -12,6 +12,395 @@ grow_vertical = 2
 script = ExtResource("1_yf2q6")
 id = "map_selection_menu"
 
-[node name="camera" type="Camera2D" parent="."]
+[node name="map_panel_container" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(1300, 740)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 200.0
+offset_right = 1400.0
+offset_bottom = 880.0
+
+[node name="scroll_map" type="ScrollContainer" parent="map_panel_container"]
 unique_name_in_owner = true
-position = Vector2(960, 0)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="map_panel_container/scroll_map"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="map" type="Panel" parent="map_panel_container/scroll_map/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MapSelectionBack"
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 893.0
+offset_bottom = 200.0
+theme_type_variation = &"SelectMenuTitle"
+text = "map_prog_title"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ship_title" type="Label" parent="."]
+custom_minimum_size = Vector2(350, 100)
+layout_mode = 2
+offset_left = 1485.0
+offset_top = 200.0
+offset_right = 1835.0
+offset_bottom = 300.0
+theme_type_variation = &"HeaderLarge"
+text = "map_prog_ship_title"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ship_details_panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(350, 600)
+layout_mode = 1
+offset_left = 1485.0
+offset_top = 340.0
+offset_right = 1835.0
+offset_bottom = 940.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ship_details_panel"]
+layout_mode = 2
+
+[node name="ship_name" type="Label" parent="ship_details_panel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="GridContainer" type="GridContainer" parent="ship_details_panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Label2" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "map_registry_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="registry" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="Label" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_propulsion_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="propulsion" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="Label3" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_hull_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="hull" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="Label5" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_ai_core_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ai_core" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="Label7" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_life_support_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="life_support" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="Label9" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_active_prisoners_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="active_prisoners" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "000"
+
+[node name="Label11" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_cryo_prisoners_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="cryostasis_prisoner" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "000"
+
+[node name="Label13" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_dead_prisoners_label"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="dead_prisoners" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "000"
+
+[node name="legend_panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+z_index = 10
+custom_minimum_size = Vector2(600, 740)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 200.0
+offset_right = 700.0
+offset_bottom = 940.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="legend_panel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "map_prog_legend_title"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GridContainer" type="GridContainer" parent="legend_panel/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Control" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="legend_panel/VBoxContainer/GridContainer/Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_type_variation = &"MapIconStart"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer/Control/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 56.0
+offset_bottom = 53.0
+text = "<>"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "map_start_location"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Control2" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="legend_panel/VBoxContainer/GridContainer/Control2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_type_variation = &"MapIconEncounter"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer/Control2/Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 70.0
+offset_bottom = 53.0
+text = "!"
+
+[node name="Label2" type="Label" parent="legend_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_encounter"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Control3" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="legend_panel/VBoxContainer/GridContainer/Control3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_type_variation = &"MapIconShop"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer/Control3/Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 65.0
+offset_bottom = 53.0
+text = "$"
+
+[node name="Label3" type="Label" parent="legend_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_shop"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Control4" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="legend_panel/VBoxContainer/GridContainer/Control4"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_type_variation = &"MapIconDerelect"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer/Control4/Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 18.0
+offset_right = 66.0
+offset_bottom = 51.0
+text = "?"
+
+[node name="Label4" type="Label" parent="legend_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_derilect"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Control5" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="legend_panel/VBoxContainer/GridContainer/Control5"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_type_variation = &"MapIconStation"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer/Control5/Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 18.0
+offset_right = 66.0
+offset_bottom = 51.0
+text = "[]"
+
+[node name="Label5" type="Label" parent="legend_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_station"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Control6" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="legend_panel/VBoxContainer/GridContainer/Control6"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_type_variation = &"MapIconBoss"
+
+[node name="Label" type="Label" parent="legend_panel/VBoxContainer/GridContainer/Control6/Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 61.0
+offset_bottom = 51.0
+text = "!!!"
+
+[node name="Label6" type="Label" parent="legend_panel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "map_boss"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="btn_legend_toggle" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 955.0
+offset_right = 400.0
+offset_bottom = 1055.0
+text = "map_open_legend_btn"
+text_overrun_behavior = 1
+clip_text = true
+
+[node name="btn_load_prisoners" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 425.0
+offset_top = 955.0
+offset_right = 725.0
+offset_bottom = 1055.0
+text = "map_prisoner_btn"
+clip_text = true

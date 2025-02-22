@@ -54,7 +54,7 @@ func _activate_prisoner(new_prisoner:PrisonerData) -> void:
 	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "activated_prisoner", PopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text"), 3)
 
 	
-func _select_ship_and_name(ship_name:String = "SS Botany Bay", ship_id:int = 100) -> void:
+func _select_ship_and_name(ship_name:String = "SS Botany Bay", ship_id:int = 1701) -> void:
 	save_manager.active_save.has_active_run = true
 	save_manager.active_save.ship_name = ship_name
 	save_manager.active_save.current_ship_id = ship_id
