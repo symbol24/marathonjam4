@@ -53,9 +53,7 @@ func _press_pause() -> void:
 	if scene_manager != null:
 		if scene_manager.active_scene != null:
 			match scene_manager.active_scene.id:
-				"ship_naming_menu", "prisoner_selection_menu", "map_selection_menu", "story_intro_menu":
-					Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "popup_cancel_back_in_flow", PopupManager.Severity.NORMAL, tr("popup_cancel_back_in_flow_title"), tr("popup_cancel_back_in_flow_text"), 0)
-				"play_level":
+				"story_intro_menu", "play_level", "ship_naming_menu", "prisoner_selection_menu", "map_selection_menu", "shop_menu", "derelect_menu", "station_menu", "boss_menu":
 					_toggle_pause_menu()
 				_:
 					pass
@@ -86,9 +84,8 @@ func _display_save_icon() -> void:
 		save_icon.hide()
 	
 	if save_icon != null and not save_icon.is_visible():
-		Debug.log("Displaying icon double ?")
 		if save_icon.get_index() < get_child_count()-1:
-			save_icon.move_child(self, get_child_count()-1)
+			move_child(save_icon, get_child_count()-1)
 		
 		var i:int = SAVE_ICON_DISPLAY_TIME / 2
 		while i > 0:

@@ -21,7 +21,7 @@ var timer:float = LOAD_TIME:
 func _ready() -> void:
 	Signals.ManagerLoaded.connect(_loading)
 	_load_loader()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	godot.play("godot")
 
 

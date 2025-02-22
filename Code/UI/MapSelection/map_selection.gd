@@ -56,7 +56,7 @@ var selected_point:MapIcon
 func _ready() -> void:
 	hide()
 	legend_panel.hide()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_ready", 25)
 	Signals.MapStuffPlacementComplete.connect(_final_map_selection_prep)
 	Signals.LoadRoom.connect(_load_encounter)
@@ -71,7 +71,7 @@ func _ready() -> void:
 
 
 func _place_map_stuff() -> void:
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_placing_stuff", 25)
 	await _place_rooms()
 	await _place_lines()
@@ -152,13 +152,13 @@ func _place_lines() -> void:
 
 
 func _final_map_selection_prep() -> void:
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_spawning_ship", 15)
 	_set_selected_point()
 	#_spawn_ship()
 	show()
 	_setup_labels()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	scroll_map.scroll_vertical = int(selected_point.position.y - 400)
 	Signals.ToggleLoadingScreen.emit(false)
 	can_scroll = true
@@ -189,7 +189,11 @@ func _spawn_ship() -> void:
 func _load_encounter(_room_data:RoomData) -> void:
 	_update_location(_room_data)
 	await get_tree().create_timer(0.2).timeout
-	Signals.LoadScene.emit("test_level", true)
+	var to_load:String = "test_level"
+	if _room_data.type == RoomData.Type.SHOP: to_load = "shop_menu"
+	elif _room_data.type == RoomData.Type.STATION: to_load = "station_menu"
+	elif _room_data.type == RoomData.Type.DERELECT: to_load = "derelect_menu"
+	Signals.LoadScene.emit(to_load, true)
 
 
 func _load_map_from_save() -> void:

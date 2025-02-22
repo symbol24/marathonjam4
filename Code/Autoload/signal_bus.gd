@@ -20,6 +20,7 @@ signal LoadPrisonerHeadshots(prisoner_array:Array[PrisonerData])
 signal LevelReady(level:Node)
 signal SpawnPrisoners()
 signal AllPrisonersSpawned()
+signal SendQueueFreeOfPlayManagers()
 
 
 # Menus
@@ -112,6 +113,7 @@ signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])
 signal SelectShipAndName(ship_name:String, ship_id:int)
 signal AbandonCurrentRun()
 signal TogglePauseGame(pause:bool)
+signal CompleteRoom()
 
 
 # Elements

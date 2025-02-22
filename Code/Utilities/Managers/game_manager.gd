@@ -24,6 +24,7 @@ var save_manager:SaveManager:
 		else: return save_manager
 
 var current_prisoners:Array[PrisonerData]
+var active_room:RoomData
 
 
 func _ready() -> void:
@@ -32,6 +33,8 @@ func _ready() -> void:
 	Signals.SelectShipAndName.connect(_select_ship_and_name)
 	Signals.AbandonCurrentRun.connect(_abandon_current_run)
 	Signals.TogglePauseGame.connect(_toggle_pause_game)
+	Signals.LoadRoom.connect(_set_room)
+	Signals.CompleteRoom.connect(_complete_room)
 
 
 func _toggle_pause_game(pause:bool = false) -> void:
@@ -62,7 +65,16 @@ func _select_ship_and_name(ship_name:String = "SS Botany Bay", ship_id:int = 170
 
 
 func _abandon_current_run() -> void:
-	Debug.log(save_manager.active_save.has_active_run)
 	if save_manager.active_save.has_active_run:
 		save_manager.active_save.reset()
 		Signals.Save.emit()
+
+
+func _set_room(data:RoomData) -> void:
+	active_room = data
+
+
+func _complete_room() -> void:
+	if active_room != null: 
+		active_room.complete = true
+		active_room = null

@@ -60,5 +60,4 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 
 
 func _btn_select_prisoner_pressed() -> void:
-	Debug.log("Activate button pressed")
 	Signals.ActivatePrisonerData.emit(prisoner_data)

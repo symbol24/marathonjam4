@@ -11,7 +11,7 @@ var save_manager:SaveManager:
 
 
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	if save_manager.active_save.active_prisoners.is_empty():
 		Signals.ToggleLoadingScreen.emit(true, "continue_loader_redirect_prisoner_select", 5)
 		await get_tree().create_timer(0.5).timeout

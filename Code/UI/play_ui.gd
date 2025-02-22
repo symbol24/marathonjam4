@@ -16,9 +16,7 @@ const LEGEND_START_POS:Vector2 = Vector2(20, 920)
 var legend_visible:bool = false
 var save_manager:SaveManager:
 	get:
-		if save_manager == null:
-			save_manager = get_tree().get_first_node_in_group("save_manager")
-			if save_manager == null: Debug.error("Save manager not found by Play Ui")
+		if save_manager == null: save_manager = get_tree().get_first_node_in_group("save_manager")
 		return save_manager
 var prisoner_panels:Array[PrisonerPlayUiPanelBtn] = []
 
@@ -30,6 +28,11 @@ func _ready() -> void:
 
 
 func generate_prisoner_ui() -> void:
+	_clear_prisoner_panel()
+
+	while save_manager == null:
+		await get_tree().physics_frame
+
 	for prisoner in save_manager.active_save.current_prisoners:
 		await _generate_prisoner_panel(prisoner)
 		
@@ -78,3 +81,10 @@ func _toggle_legend() -> void:
 		btn_legend_toggle.text = tr("legend_hide")
 		legend_visible = true
 		btn_legend_toggle.release_focus()
+
+
+func _clear_prisoner_panel() -> void:
+	if prioner_list:
+		for child in prioner_list.get_children():
+			prioner_list.remove_child(child)
+			child.queue_free.call_deferred()

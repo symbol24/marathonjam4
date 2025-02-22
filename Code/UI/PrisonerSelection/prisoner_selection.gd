@@ -61,9 +61,9 @@ func _populate_prisoners() -> void:
 		if not new_button.is_node_ready(): await new_button.ready
 		new_button.set_data(prisoner)
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	Signals.ToggleLoadingScreen.emit(true, "prisoner_selection_populate_done", 25)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	Signals.ToggleLoadingScreen.emit(false)
 
 

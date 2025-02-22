@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://qpogj4c74jwf"]
+
+[ext_resource type="Script" path="res://Code/UI/DerelectMenu/derelect_menu.gd" id="1_le8eq"]
+
+[node name="DerelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_le8eq")
+id = "derelect_menu"
+
+[node name="btn_debug_complete" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 610.0
+offset_top = 453.0
+offset_right = 1202.0
+offset_bottom = 571.0
+text = "DEBUG COMPLETE DERELECT"

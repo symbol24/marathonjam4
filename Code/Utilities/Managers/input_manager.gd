@@ -38,6 +38,7 @@ func _ready() -> void:
 	Signals.SelectPrisoner.connect(_set_active_prisoner)
 	Signals.MouseEnteredElement.connect(_mouse_over_element)
 	Signals.MouseExitedElement.connect(_mouse_out_of_element)
+	Signals.SendQueueFreeOfPlayManagers.connect(queue_free)
 	data_manager = get_tree().get_first_node_in_group("data_manager")
 	if data_manager == null: push_error("Data Manager missing.")
 

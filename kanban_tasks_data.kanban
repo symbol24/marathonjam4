@@ -16,8 +16,6 @@
 				"21f81ea5-2ce1-469c-9abc-2950179b260e",
 				"0dc785e0-46d5-41bb-bc3b-792e08a868ff",
 				"e0c0571a-a0ca-4cd2-9cb0-d9781522a28e",
-				"bd1812c9-0db3-4c07-a2c8-eca9c3d36619",
-				"12e35636-d875-49ec-a682-781ab8738fe9",
 				"3a71316f-513d-4885-9219-111d4f04271a",
 				"667f9039-07fd-4fc9-a52f-2be28b465076",
 				"cc6c6d8a-4059-4edc-ae9d-d7738cffb70e",
@@ -33,13 +31,17 @@
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
 			"title": "Doing",
 			"tasks": [
-				"5bf3db86-147a-42aa-99aa-bf7c4cd00366"
+				"e691d741-1239-429f-82e7-bff81d7f047a",
+				"bd1812c9-0db3-4c07-a2c8-eca9c3d36619",
+				"12e35636-d875-49ec-a682-781ab8738fe9",
+				"6d4d11e1-16e7-451e-bc3d-c9c40f8684ad"
 			]
 		},
 		{
 			"uuid": "e5e74ad0-c93c-49b8-bc0e-dfa2d4e023e5",
 			"title": "Done",
 			"tasks": [
+				"5bf3db86-147a-42aa-99aa-bf7c4cd00366",
 				"44f6fdb9-4aaf-4c88-940f-9ce6685e7a97",
 				"a53b0da1-521a-452e-9bd6-c8f8626378da",
 				"685c8281-c564-4a8a-812f-02edcdd2cba6",
@@ -350,6 +352,20 @@
 		{
 			"uuid": "44f6fdb9-4aaf-4c88-940f-9ce6685e7a97",
 			"title": "add completion state to prog map points and allow clocking if not complete",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "e691d741-1239-429f-82e7-bff81d7f047a",
+			"title": "encounter flow debug update",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "6d4d11e1-16e7-451e-bc3d-c9c40f8684ad",
+			"title": "station interaction screen",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

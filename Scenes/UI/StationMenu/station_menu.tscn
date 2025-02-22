@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxueodgg2k54p"]
+
+[ext_resource type="Script" path="res://Code/UI/StationMenu/station_menu.gd" id="1_62bgt"]
+
+[node name="StationMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_62bgt")
+id = "station_menu"
+
+[node name="btn_debug_complete" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 610.0
+offset_top = 453.0
+offset_right = 1202.0
+offset_bottom = 571.0
+text = "DEBUG COMPLETE STATION"

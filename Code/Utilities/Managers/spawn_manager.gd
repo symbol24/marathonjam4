@@ -3,15 +3,16 @@ class_name SpawnManager extends Node2D
 
 var data_manager:DataManager:
 	get:
-		if data_manager == null:
-			data_manager = get_tree().get_first_node_in_group("data_manager")
-			if data_manager == null: 
-				push_error("Data Manager is missing!")
-				return null
-			else: return data_manager
-		else: return data_manager
-var active_level:PlayLevel
-var save_manager:SaveManager
+		if data_manager == null: data_manager = get_tree().get_first_node_in_group("data_manager")
+		return data_manager
+var active_level:PlayLevel:
+	get:
+		if active_level == null: active_level = get_tree().get_first_node_in_group("play_level")
+		return active_level
+var save_manager:SaveManager:
+	get:
+		if save_manager == null: save_manager = get_tree().get_first_node_in_group("save_manager")
+		return save_manager
 var to_spawn_count:int = -1
 var current_count:int = 0
 
@@ -19,12 +20,7 @@ var current_count:int = 0
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	Signals.SpawnPrisoners.connect(_spawn_prisoner)
-	data_manager = get_tree().get_first_node_in_group("data_manager")
-	if data_manager == null: push_error("Data Manager is missing!")
-	active_level = get_tree().get_first_node_in_group("play_level")
-	if active_level == null: push_error("Play Level is missing!")
-	save_manager = get_tree().get_first_node_in_group("save_manager")
-	if save_manager == null: push_error("save_manager is missing!")
+	Signals.SendQueueFreeOfPlayManagers.connect(queue_free)
 
 
 func _spawn_prisoner() -> void:

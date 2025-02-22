@@ -88,7 +88,7 @@ item_data = ExtResource("11_o5u1p")
 script = ExtResource("4_a7j1o")
 table = Array[ExtResource("5_4ovry")]([SubResource("Resource_tvd6t"), SubResource("Resource_y32s6"), SubResource("Resource_53xpo"), SubResource("Resource_4dc4d")])
 
-[sub_resource type="Resource" id="Resource_ybfsd"]
+[sub_resource type="Resource" id="Resource_l5u3t"]
 resource_local_to_scene = true
 script = ExtResource("5_magcv")
 type = 2
@@ -133,4 +133,12 @@ data = SubResource("Resource_u2rpt")
 
 [node name="searchable_item" parent="." instance=ExtResource("4_iutrr")]
 position = Vector2(515, 494)
-data = SubResource("Resource_ybfsd")
+data = SubResource("Resource_l5u3t")
+
+[node name="btn_debug_complete" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 1303.0
+offset_top = 940.0
+offset_right = 1895.0
+offset_bottom = 1058.0
+text = "DEBUG COMPLETE ENCOUNTER"
