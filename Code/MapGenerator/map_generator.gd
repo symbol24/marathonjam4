@@ -140,6 +140,7 @@ func _setup_start_room() -> void:
 	var middle:int = floori(MAP_WIDTH * 0.5)
 	var start_room:RoomData = map_data[0][middle]
 	start_room.type = RoomData.Type.START
+	start_room.complete = true
 
 	for room:RoomData in map_data[1]:
 		if room.next_rooms:

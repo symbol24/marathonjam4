@@ -52,7 +52,8 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	Signals.ToggleLoadingScreen.emit(true, "map_selection_ready", 25)
 	Signals.MapStuffPlacementComplete.connect(_allow_scrolling)
-	Signals.SpaceshipMoveFinished.connect(_load_encounter)
+	Signals.LoadRoom.connect(_load_encounter)
+	Signals.RoomIconBtnPressed.connect(_check_room_data)
 	if data_manager == null: Debug.error("Map Generator cannot find Data Manager.")
 	else:
 		if save_manager and not save_manager.active_save.current_grid.is_empty():
@@ -78,6 +79,13 @@ func _place_map_stuff() -> void:
 	await _place_lines()
 
 	Signals.MapStuffPlacementComplete.emit()
+
+
+func _check_room_data(room_data:RoomData) -> void:
+	if room_data == selected_point.room_data and not selected_point.room_data.complete:
+		Signals.LoadRoom.emit(room_data)
+	elif room_data != selected_point.room_data and room_data in selected_point.room_data.next_rooms:
+		Signals.MoveSpaceshipTo.emit(room_data)
 
 
 func _place_rooms() -> void:

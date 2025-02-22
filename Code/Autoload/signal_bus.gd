@@ -77,11 +77,12 @@ signal ArmourBroken(data:ArmourData)
 
 # Map selection menu
 signal RoomIconBtnPressed(room_data:RoomData)
-signal SpaceshipMoveFinished(room_data:RoomData)
+signal LoadRoom(room_data:RoomData)
 signal MapStuffPlacementComplete()
 signal CancelRoomIconBtnPressed(room_data:RoomData)
 signal ResetRoomIconBtnOnRow(row:int)
-signal DisableRoomIconBtnSameRow(roomd_data:RoomData)
+signal DisableRoomIconBtnSameRow(room_data:RoomData)
+signal MoveSpaceshipTo(room_data:RoomData)
 
 
 # Save Load Manager

@@ -8,7 +8,7 @@ func _ready() -> void:
 	#Signals.RoomIconBtnPressed.connect(_disable_same_row)
 	Signals.CancelRoomIconBtnPressed.connect(_cancel_pressed)
 	Signals.ResetRoomIconBtnOnRow.connect(_cancel_from_row)
-	Signals.SpaceshipMoveFinished.connect(_disable_same_row)
+	#Signals.LoadRoom.connect(_disable_same_row)
 
 
 func _pressed() -> void:

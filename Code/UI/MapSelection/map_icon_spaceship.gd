@@ -20,7 +20,7 @@ var idling:bool = false
 
 
 func _ready() -> void:
-	Signals.RoomIconBtnPressed.connect(_set_new_target)
+	Signals.MoveSpaceshipTo.connect(_set_new_target)
 
 
 func _process(_delta: float) -> void:
@@ -49,7 +49,7 @@ func _move_finished() -> void:
 	target_room = null
 	idling = false
 	current_state = State.IDLE
-	Signals.SpaceshipMoveFinished.emit(current_room)
+	Signals.LoadRoom.emit(current_room)
 
 
 func _idle() -> void:
