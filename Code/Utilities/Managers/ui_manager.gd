@@ -1,8 +1,13 @@
 class_name UIManager extends CanvasLayer
 
 
+const SAVE_ICON_DISPLAY_TIME:float = 6.0
+const SAVE_ICON_TWEEN_TIME:float = 0.5
+
+
 var play_ui:PlayUi = null
 var pause_menu:PauseMenu = null
+var save_icon:Control = null
 var data_manager:DataManager:
 	get:
 		if data_manager == null:
@@ -25,6 +30,7 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	Signals.TogglePlayUi.connect(_toggle_play_ui)
+	Signals.DisplaySaveIcon.connect(_display_save_icon)
 
 
 func _toggle_play_ui(display:bool = false) -> void:
@@ -70,3 +76,24 @@ func _toggle_pause_menu() -> void:
 		else:
 			pause_menu.toggle_pause_menu(true)
 
+
+func _display_save_icon() -> void:
+	if save_icon == null:
+		save_icon = data_manager.save_icon.instantiate()
+		add_child(save_icon)
+		if not save_icon.is_node_ready(): await save_icon.ready
+		save_icon.position = Vector2(1920 - (save_icon.size.x * 1.5), 1080 - (save_icon.size.y * 1.5))
+		save_icon.hide()
+	
+	if save_icon != null and not save_icon.is_visible():
+		Debug.log("Displaying icon double ?")
+		if save_icon.get_index() < get_child_count()-1:
+			save_icon.move_child(self, get_child_count()-1)
+		
+		var i:int = SAVE_ICON_DISPLAY_TIME / 2
+		while i > 0:
+			save_icon.show()
+			await get_tree().create_timer(SAVE_ICON_TWEEN_TIME).timeout
+			save_icon.hide()
+			await get_tree().create_timer(SAVE_ICON_TWEEN_TIME).timeout
+			i -= 1

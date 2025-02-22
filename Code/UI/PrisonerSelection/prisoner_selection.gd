@@ -71,4 +71,5 @@ func _btn_confirm_pressed() -> void:
 	if save_manager.active_save.active_prisoners.is_empty():
 		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "no_prisoners_selected", PopupManager.Severity.NORMAL, "", tr("prisoner_selection_no_prisoners"), 3)
 	else:
+		Signals.Save.emit()
 		Signals.LoadScene.emit("map_selection_menu", true)

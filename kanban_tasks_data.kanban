@@ -21,13 +21,14 @@
 				"3a71316f-513d-4885-9219-111d4f04271a",
 				"667f9039-07fd-4fc9-a52f-2be28b465076",
 				"cc6c6d8a-4059-4edc-ae9d-d7738cffb70e",
-				"032396c5-92b8-46f2-b4fe-ff9ae8a34daf",
 				"fd2190ea-5958-49ba-9ca8-8db3b0beda98",
 				"f6f9ea0f-6f45-48c1-b748-b278e36f5502",
 				"5bf3db86-147a-42aa-99aa-bf7c4cd00366",
 				"2d949903-bf5f-43cb-8c9d-a0cee1cd43ff",
 				"7046621d-fee8-4040-bf2c-ca1c2cf70ade",
-				"34f361e8-926a-40d3-8887-b42223ba4ff5"
+				"34f361e8-926a-40d3-8887-b42223ba4ff5",
+				"decb5daf-8020-431a-9a77-fadbea128588",
+				"44f6fdb9-4aaf-4c88-940f-9ce6685e7a97"
 			]
 		},
 		{
@@ -59,6 +60,7 @@
 				"1bad3bbf-f561-4141-8190-04a78c0b7dd0",
 				"6cab2f33-ecf7-4a77-a980-e4df072bb179",
 				"10acfee8-5951-47be-bf8d-c1363a968704",
+				"032396c5-92b8-46f2-b4fe-ff9ae8a34daf",
 				"8194aa92-ce57-485a-84ef-994caa005497"
 			]
 		}
@@ -333,6 +335,20 @@
 		{
 			"uuid": "8194aa92-ce57-485a-84ef-994caa005497",
 			"title": "fix interactions in game",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "decb5daf-8020-431a-9a77-fadbea128588",
+			"title": "display prisoner name in revive popup",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "44f6fdb9-4aaf-4c88-940f-9ce6685e7a97",
+			"title": "add completion state to prog map points and allow clocking if not complete",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

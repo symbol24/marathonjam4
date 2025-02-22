@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=66 format=3 uid="uid://ckulva3dnkn8g"]
+[gd_resource type="Theme" load_steps=70 format=3 uid="uid://ckulva3dnkn8g"]
 
 [ext_resource type="Texture2D" uid="uid://c3rsuxy54fxmn" path="res://Textures/Ui/icons20x20_hslider_grabber.png" id="1_et1ol"]
 [ext_resource type="Texture2D" uid="uid://uf8eje2537gu" path="res://Textures/Ui/icons20x20_check_button_checked.png" id="1_r2vuf"]
@@ -263,6 +263,31 @@ border_width_top = 10
 border_width_bottom = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnjsq"]
+bg_color = Color(0, 0.513726, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lq8gd"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_top = 2
+border_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drx0g"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_color = Color(0, 0.513726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_haype"]
+bg_color = Color(0, 0.513726, 0, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hocge"]
 content_margin_left = 30.0
 content_margin_right = 30.0
@@ -484,6 +509,14 @@ ProgressBar/font_sizes/font_size = 40
 ProgressBar/styles/background = SubResource("StyleBoxFlat_7x6er")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_ifhq2")
 RichTextLabel/colors/default_color = Color(0, 0.513726, 0, 1)
+SaveBack/base_type = &"Panel"
+SaveBack/styles/panel = SubResource("StyleBoxFlat_dnjsq")
+SaveLabel/base_type = &"Panel"
+SaveLabel/styles/panel = SubResource("StyleBoxFlat_lq8gd")
+SaveSlider/base_type = &"Panel"
+SaveSlider/styles/panel = SubResource("StyleBoxFlat_drx0g")
+SaveSliderCutout/base_type = &"Panel"
+SaveSliderCutout/styles/panel = SubResource("StyleBoxFlat_haype")
 SmallPopupRTL/base_type = &"RichTextLabel"
 SmallPopupRTL/font_sizes/normal_font_size = 24
 TabBar/styles/tab_unselected = SubResource("StyleBoxEmpty_hocge")

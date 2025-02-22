@@ -145,7 +145,7 @@ func _btn_main_menu_settings_close_pressed() -> void:
 
 func _btn_main_menu_settings_apply_pressed() -> void:
 	if pending_changes:
-		_save_updates_to_player_data()
+		#_save_updates_to_player_data()
 		Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "setting_pending_changes_apply", PopupManager.Severity.NORMAL, "setting_pending_changes_apply_title", "setting_pending_changes_apply_text", 0)
 
 

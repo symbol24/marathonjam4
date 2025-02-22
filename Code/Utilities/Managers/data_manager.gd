@@ -20,6 +20,7 @@ class_name DataManager extends RidManager
 @export var normal_font:Resource
 @export var dyslexia_friendly_font:Resource
 @export var default_theme:Theme
+@export var save_icon:PackedScene
 
 @export_group("Map Generation")
 @export var map_generator:PackedScene
