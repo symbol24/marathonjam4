@@ -85,6 +85,7 @@ var input_manager:InputManager:
 		if input_manager == null: Debug.error("Settings cannot find input manager")
 		return input_manager
 var pending_changes:bool = false
+var popup_displayed:bool = false
 
 
 func _ready() -> void:
@@ -111,6 +112,7 @@ func _ready() -> void:
 		normal_window_mode.show()
 		normal_window_sizes.show()
 		web_fullscreen_hbox.hide()
+		
 	window_option_btn.item_selected.connect(_window_option_btn_item_selected)
 	window_sizes_btn.item_selected.connect(_window_sizes_btn_item_selected)
 	web_fullscreen_btn.pressed.connect(_web_fullscreen_btn_pressed)
@@ -132,12 +134,14 @@ func toggle_display(display:bool = false) -> void:
 		_setup_audio_values()
 		_setup_controls_values()
 	else:
-		hide()
+		if not popup_displayed:
+			hide()
 
 
 # Floating Buttons
 func _btn_main_menu_settings_close_pressed() -> void:
 	if pending_changes:
+		popup_displayed = true
 		Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "setting_pending_changes_close", PopupManager.Severity.WARNING, "setting_pending_changes_close_title", "setting_pending_changes_close_text", 0)
 	else:
 		toggle_display(false)
@@ -146,6 +150,7 @@ func _btn_main_menu_settings_close_pressed() -> void:
 func _btn_main_menu_settings_apply_pressed() -> void:
 	if pending_changes:
 		#_save_updates_to_player_data()
+		popup_displayed = true
 		Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "setting_pending_changes_apply", PopupManager.Severity.NORMAL, "setting_pending_changes_apply_title", "setting_pending_changes_apply_text", 0)
 
 
@@ -208,6 +213,7 @@ func _setup_video_values() -> void:
 func _window_option_btn_item_selected(new_value:int) -> void:
 	window_mode = new_value as Window_Mode
 	_set_display_mode(window_mode)
+	popup_displayed = true
 	Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "setting_window_mode_changes", PopupManager.Severity.NORMAL, "setting_window_mode_changes_title", "setting_window_mode_changes_text", 15)
 
 
@@ -229,7 +235,9 @@ func _window_sizes_btn_item_selected(new_value:int) -> void:
 
 func _update_window_size(new_size_id:int) -> void:
 	current_size = WINDOW_SIZES[new_size_id]
-	get_window().size = current_size
+	if save_manager.active_save.window_mode != Window_Mode.FULLSCREEN:
+		get_window().size = current_size
+	popup_displayed = true
 	Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "setting_resolution_changes", PopupManager.Severity.NORMAL, "setting_resolution_changes_title", "setting_resolution_changes_text", 15)
 
 
@@ -246,7 +254,8 @@ func _keep_resolution_change() -> void:
 
 func _revert_resolution_change() -> void:
 	current_size = save_manager.active_save.window_size
-	get_window().size = current_size
+	if save_manager.active_save.window_mode != Window_Mode.FULLSCREEN:
+		get_window().size = current_size
 	window_sizes_btn.select(_get_id_for_resolution(current_size))
 
 
@@ -519,6 +528,7 @@ func _check_popup_results(popup_id:String, result:bool) -> void:
 				pending_changes = false
 		_:
 			pass
+	popup_displayed = false
 
 
 func _get_window_mode_enum(mode:int, borderless:bool) -> Window_Mode:
@@ -538,9 +548,11 @@ func _set_display_mode(mode:Window_Mode) -> void:
 		Window_Mode.BORDERLESS_WINDOWED:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			get_window().set_size(save_manager.active_save.window_size)
 		Window_Mode.WINDOWED:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			get_window().set_size(save_manager.active_save.window_size)
 		_:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 

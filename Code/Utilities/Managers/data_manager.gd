@@ -9,6 +9,9 @@ class_name DataManager extends RidManager
 @export var prisoner_scene:PackedScene
 @export var prisoner_target_move_scene:PackedScene
 
+@export_group("Unknown Contacts")
+@export var unknown_contact_scene:PackedScene
+
 @export_group("UI")
 @export var large_popup:PackedScene
 @export var small_popup:PackedScene
@@ -21,6 +24,7 @@ class_name DataManager extends RidManager
 @export var dyslexia_friendly_font:Resource
 @export var default_theme:Theme
 @export var save_icon:PackedScene
+@export var damage_number_scene:PackedScene
 
 @export_group("Map Generation")
 @export var map_generator:PackedScene

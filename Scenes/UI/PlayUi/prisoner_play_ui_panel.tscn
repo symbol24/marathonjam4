@@ -123,3 +123,32 @@ theme_type_variation = &"PrisonerPanelInventoryButton"
 text = "INVENTORY"
 script = ExtResource("3_hdg2w")
 can_click = false
+
+[node name="disabled_panel" type="Panel" parent="floating_stuff"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(260, 101)
+layout_mode = 0
+offset_left = -10.0
+offset_top = -18.0
+offset_right = 270.0
+offset_bottom = 119.0
+theme_type_variation = &"PrisonerPlayUiPanelDisabler"
+
+[node name="dead_label" type="Label" parent="floating_stuff"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = 53.0
+offset_right = 258.0
+offset_bottom = 109.0
+rotation = -0.261799
+theme_type_variation = &"PrisonerPlayUiDeadLabel"
+text = "prisoner_play_ui_dead_label"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true

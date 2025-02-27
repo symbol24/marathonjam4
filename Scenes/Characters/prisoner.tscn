@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bsotrokkrx82l" path="res://Textures/Debug/temp_icon.png" id="4_sl3op"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmlgc"]
-radius = 31.0161
+radius = 15.0333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siccq"]
-radius = 45.0999
+radius = 36.0
 
-[node name="Prisoner" type="CharacterBody2D"]
+[node name="Prisoner" type="CharacterBody2D" groups=["prisoner"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_lhevl")
@@ -18,10 +18,12 @@ script = ExtResource("1_lhevl")
 unique_name_in_owner = true
 
 [node name="move_collider" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_lmlgc")
 
 [node name="area_detector" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -30,10 +32,11 @@ shape = SubResource("CircleShape2D_siccq")
 
 [node name="action_progress" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
+modulate = Color(0, 0.513726, 0, 1)
 offset_left = -8.0
-offset_top = -64.0
+offset_top = -57.0
 offset_right = 8.0
-offset_bottom = -48.0
+offset_bottom = -41.0
 rounded = true
 fill_mode = 4
 nine_patch_stretch = true
@@ -42,19 +45,29 @@ texture_progress = ExtResource("4_sl3op")
 [node name="prisoner_btn" type="Button" parent="." groups=["element"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
-offset_top = -45.0
-offset_right = 64.0
-offset_bottom = 19.0
-rotation = 0.785398
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 theme_type_variation = &"PrisonerPlayButton"
 toggle_mode = true
+
+[node name="flash_panel" type="Panel" parent="prisoner_btn"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_type_variation = &"PrisonerFlashPanel"
 
 [node name="prisoner_id" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -47.0
-offset_top = 45.0
+offset_top = 31.0
 offset_right = 53.0
-offset_bottom = 85.0
+offset_bottom = 71.0
 text = "P0"
 horizontal_alignment = 1
 vertical_alignment = 1

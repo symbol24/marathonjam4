@@ -1,0 +1,1 @@
+class_name EnemySpawnTag extends Marker2D

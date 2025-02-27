@@ -16,12 +16,17 @@ const TEXTHOVER:String = "PrisonerDetailsLabelSmallHover"
 @onready var prisoner_status: Label = %prisoner_status
 @onready var prisoner_play_panel_btn: TextureButton = %prisoner_play_panel_btn
 @onready var inventory_btn: Button = %inventory_btn
+@onready var disabled_panel: Panel = %disabled_panel
+@onready var dead_label: Label = %dead_label
 
 var prisoner_data:PrisonerData
 
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
+	Signals.PrisonerHpUpdated.connect(_update_prisoner_hp)
+	Signals.PrisonerActionStateUpdated.connect(_update_action_status)
+	#Signals.PrisonerDeath.connect(_update_action_status)
 	prisoner_play_panel_btn.mouse_entered.connect(_prisoner_play_panel_btn_mouse_entered)
 	prisoner_play_panel_btn.mouse_exited.connect(_prisoner_play_panel_btn_mouse_exited)
 	prisoner_play_panel_btn.pressed.connect(_prisoner_play_panel_btn_pressed)
@@ -33,7 +38,7 @@ func setup_panel(data:PrisonerData) -> void:
 	headshot.texture = prisoner_data.headshot_small
 	prisoner_display_id.text = str(prisoner_data.display_id)
 	_update_prisoner_hp(prisoner_data)
-	_update_status(prisoner_data)
+	_update_action_status(prisoner_data)
 
 
 func _inventory_btn_pressed() -> void:
@@ -45,9 +50,14 @@ func _update_prisoner_hp(data:PrisonerData) -> void:
 		prisoner_health.text = str(prisoner_data.current_hp) + "/" + str(prisoner_data.base_hp)
 
 
-func _update_status(data:PrisonerData) -> void:
+func _update_action_status(data:PrisonerData) -> void:
 	if prisoner_data == data:
 		prisoner_status.text = tr("prisoner_action_state_" + str(PrisonerData.Action_State.keys()[prisoner_data.current_action_state]))
+		if prisoner_data.current_action_state == PrisonerData.Action_State.DEAD:
+			disabled_panel.show()
+			dead_label.show()
+			inventory_btn.set_disabled(true)
+			prisoner_play_panel_btn.set_disabled(true)
 
 
 func _prisoner_play_panel_btn_pressed() -> void:

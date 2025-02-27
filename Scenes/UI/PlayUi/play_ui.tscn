@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://xpgtmytw67ym"]
+[gd_scene load_steps=8 format=3 uid="uid://xpgtmytw67ym"]
 
 [ext_resource type="Script" path="res://Code/UI/play_ui.gd" id="1_i4ul4"]
 [ext_resource type="PackedScene" uid="uid://dy4dv7h33imjw" path="res://Scenes/UI/PlayUi/prisoner_play_ui_panel.tscn" id="2_rjk1v"]
 [ext_resource type="Script" path="res://Code/Elements/Wrappers/element_control.gd" id="3_ic0sg"]
 [ext_resource type="StyleBox" uid="uid://h312rdmuejqo" path="res://Data/ThemeStyles/prisoner_play_normal.tres" id="3_tp2ex"]
+[ext_resource type="Script" path="res://Code/UI/damage_number_display.gd" id="3_xbytq"]
+[ext_resource type="PackedScene" uid="uid://c7ayc88y2ba75" path="res://Scenes/UI/PlayUi/damage_number.tscn" id="4_jaauw"]
 [ext_resource type="Script" path="res://Code/Elements/Wrappers/element_button.gd" id="5_3ywwo"]
 
 [node name="PlayUi" type="Control"]
@@ -18,6 +20,15 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_i4ul4")
 panel_btn = ExtResource("2_rjk1v")
+
+[node name="DamageNumberDisplay" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("3_xbytq")
+dmg_nbr_scene = ExtResource("4_jaauw")
 
 [node name="prisoner_info_panel" type="PanelContainer" parent="." groups=["UI", "element"]]
 unique_name_in_owner = true
@@ -39,7 +50,7 @@ can_click = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="prioner_list" type="VBoxContainer" parent="prisoner_info_panel/panel_vbox"]
+[node name="prisoner_list" type="VBoxContainer" parent="prisoner_info_panel/panel_vbox"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

@@ -60,4 +60,5 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 
 
 func _btn_select_prisoner_pressed() -> void:
+	prisoner_data.current_status = prisoner_data.default_status
 	Signals.ActivatePrisonerData.emit(prisoner_data)

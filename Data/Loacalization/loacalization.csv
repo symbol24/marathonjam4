@@ -1,2 +1,15 @@
 keys,en,fr,fr-CA
 main_menu_title,Main Menu,Menu Principale,Le menu cawlisse
+prisoner_health_state_DEAD,Dead,,
+prisoner_health_state_SICKLY,Sickly,,
+prisoner_health_state_SICK,Sick,,
+prisoner_health_state_HEALTHY,Healthy,,
+prisoner_health_state_ROBUST,Robust,,
+prisoner_health_state_CRYO,Cryo,,
+prisoner_action_state_DEAD,Dead,,
+prisoner_action_state_IDLE,Idle,,
+prisoner_action_state_MOVING,Moving,,
+prisoner_action_state_BUSY,Busy,,
+prisoner_action_state_COMBAT,Combat,,
+prisoner_action_state_IGNORE,Ignore,,
+prisoner_play_ui_dead_label,Deceased,,

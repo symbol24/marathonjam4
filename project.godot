@@ -10,8 +10,10 @@ config_version=5
 
 [application]
 
-config/name="marathonjam4"
+config/name="Prisoner Hulk"
 run/main_scene="res://Scenes/utilities/boot.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="prirate_hulk"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://Textures/Logos/logo_back_mini.png"
 config/icon="res://icon.svg"
@@ -56,6 +58,9 @@ element=""
 save_manager=""
 input_manager=""
 UI=""
+prisoner=""
+unknown_contact=""
+enemy_spawn_tag=""
 
 [gui]
 

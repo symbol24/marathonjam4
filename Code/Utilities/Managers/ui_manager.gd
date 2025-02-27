@@ -10,15 +10,11 @@ var pause_menu:PauseMenu = null
 var save_icon:Control = null
 var data_manager:DataManager:
 	get:
-		if data_manager == null:
-			data_manager = get_tree().get_first_node_in_group("data_manager")
-			if data_manager == null: Debug.error("Data manager missing in Ui Manager")
+		if data_manager == null: data_manager = get_tree().get_first_node_in_group("data_manager")
 		return data_manager
 var scene_manager:SceneManager:
 	get:
-		if scene_manager == null: 
-			scene_manager = get_tree().get_first_node_in_group("scene_manager")
-			if scene_manager == null: Debug.error("Scene Manager not found by UI Manager")
+		if scene_manager == null: scene_manager = get_tree().get_first_node_in_group("scene_manager")
 		return scene_manager
 
 
@@ -41,12 +37,13 @@ func _toggle_play_ui(display:bool = false) -> void:
 				add_child.call_deferred(play_ui)
 				if not play_ui.is_node_ready(): await play_ui.ready
 				play_ui.hide()
-		
-		play_ui.generate_prisoner_ui()
+
+		await play_ui.generate_prisoner_ui()
 		play_ui.show()
 	else:
-		play_ui.hide()
-		remove_child.call_deferred(play_ui)
+		if play_ui != null:
+			play_ui.hide()
+			remove_child.call_deferred(play_ui)
 
 
 func _press_pause() -> void:
@@ -87,7 +84,7 @@ func _display_save_icon() -> void:
 		if save_icon.get_index() < get_child_count()-1:
 			move_child(save_icon, get_child_count()-1)
 		
-		var i:int = SAVE_ICON_DISPLAY_TIME / 2
+		var i:int = floori(SAVE_ICON_DISPLAY_TIME / 2)
 		while i > 0:
 			save_icon.show()
 			await get_tree().create_timer(SAVE_ICON_TWEEN_TIME).timeout
