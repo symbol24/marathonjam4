@@ -20,6 +20,7 @@ var data_manager:DataManager:
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	Signals.AllPrisonersSpawned.connect(_prisoners_all_spawned)
+	Signals.AllUnknownContactsSpawned.connect(_all_ucs_spawned)
 	Signals.PlayUiDisplayed.connect(_play_level_loading_complete)
 	Signals.ManagerLoaded.connect(_load_managers)
 	btn_debug_complete.pressed.connect(_complete_room)
@@ -59,8 +60,14 @@ func _load_managers(manager:String = "start"):
 
 func _prisoners_all_spawned() -> void:
 	await get_tree().create_timer(0.5).timeout
-	Signals.ToggleLoadingScreen.emit(true, "play_level_loading_manager", 5)
+	Signals.ToggleLoadingScreen.emit(true, "play_level_done", 5)
 	Signals.TogglePlayUi.emit(true)
+	Signals.SpawnUnknownContacts.emit()
+
+
+func _all_ucs_spawned() -> void:
+	Signals.ToggleLoadingScreen.emit(true, "play_level_done", 5)
+	#Signals.TogglePlayUi.emit(true)
 
 
 func _play_level_loading_complete() -> void:

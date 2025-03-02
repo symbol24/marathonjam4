@@ -53,7 +53,12 @@ var move_speed:float:
 	get: return base_movement_speed
 var current_hp:int = base_hp
 var inventory:Array[LootItem] = []
-var current_action_state:Action_State = Action_State.IDLE
+var active_armor:ArmourData = null
+var active_weapon:WeaponData = WeaponData.new()
+var current_action_state:Action_State = Action_State.IDLE:
+	set(value):
+		current_action_state = value
+		Signals.PrisonerActionStateUpdated.emit(self)
 var display_id:int
 
 
@@ -75,3 +80,17 @@ func get_default_value(_const:int = 1, _str:int = 1) -> Health_Status:
 	return result
 
 
+func receive_damage(damage:Damage) -> float:
+	if damage:
+		var value = damage.final_damage
+		if active_armor: 
+			value -= value * active_armor.armour_value
+			var new_durability:float = active_armor.base_durability - (active_armor.base_durability * damage.get_armour_effect())
+			active_armor.update_durability(new_durability)
+		
+		if value >= current_hp:
+			value = current_hp
+		
+		current_hp -= value
+		return value
+	return 0

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://buext6l0ct8em"]
+
+[ext_resource type="Script" path="res://Code/UI/Popups/order_button.gd" id="1_m7o26"]
+
+[node name="order_button" type="Button"]
+custom_minimum_size = Vector2(100, 20)
+theme_type_variation = &"OrderMenuButton"
+text = "button"
+alignment = 0
+text_overrun_behavior = 1
+clip_text = true
+script = ExtResource("1_m7o26")

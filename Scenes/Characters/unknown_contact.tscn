@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4c88wj15shu3"]
+
+[ext_resource type="Script" path="res://Code/Characters/unknown_contact.gd" id="1_tjaxi"]
+[ext_resource type="Script" path="res://Code/Elements/unknown_contact_element_control.gd" id="2_r6kjl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fie3m"]
+radius = 15.0333
+
+[node name="UnknownContact" type="CharacterBody2D" groups=["unknown_contact"]]
+collision_layer = 8
+script = ExtResource("1_tjaxi")
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.2, 0.466667, 1)
+
+[node name="move_collider" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_fie3m")
+
+[node name="uc_icon" type="Panel" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_type_variation = &"UCIconNormal"
+script = ExtResource("2_r6kjl")
+
+[node name="uc_id" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+offset_left = -57.0
+offset_top = 31.0
+offset_right = 63.0
+offset_bottom = 71.0
+text = "UC1"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="uc_top_label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 0)
+offset_left = -47.0
+offset_top = -79.0
+offset_right = 53.0
+offset_bottom = -46.0
+text = "!"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="hp_bar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+offset_left = -32.0
+offset_top = -51.0
+offset_right = 32.0
+offset_bottom = -35.0
+theme_type_variation = &"UCHpBar"
+max_value = 1.0
+show_percentage = false
+
+[node name="flash_panel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_type_variation = &"UCFlashPanel"

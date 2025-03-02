@@ -15,8 +15,6 @@ class_name DataManager extends RidManager
 @export_group("UI")
 @export var large_popup:PackedScene
 @export var small_popup:PackedScene
-@export var context_popup:PackedScene
-@export var context_button:PackedScene
 @export var play_ui:PackedScene
 @export var pause_menu:PackedScene
 @export var settings:PackedScene
@@ -25,6 +23,8 @@ class_name DataManager extends RidManager
 @export var default_theme:Theme
 @export var save_icon:PackedScene
 @export var damage_number_scene:PackedScene
+@export var order_menu:PackedScene
+@export var context_button:PackedScene
 
 @export_group("Map Generation")
 @export var map_generator:PackedScene

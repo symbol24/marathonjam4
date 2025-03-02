@@ -1,7 +1,7 @@
 extends RidControl
 
 
-const LOAD_TIME:float = 4.0
+const LOAD_TIME:float = 3.0
 
 @export var manager_loader:PackedScene
 

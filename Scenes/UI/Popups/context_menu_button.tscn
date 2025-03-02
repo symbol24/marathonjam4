@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk5c05hr6shcp"]
 
-[ext_resource type="Script" path="res://Code/UI/context_menu_button.gd" id="1_33u2i"]
+[ext_resource type="Script" path="res://Code/UI/Popups/context_menu_button.gd" id="1_33u2i"]
 
 [node name="ContextMenuButton" type="Button" groups=["element"]]
 clip_contents = true

@@ -87,11 +87,11 @@ func _check_room_data(room_data:RoomData) -> void:
 
 
 func _move_popups() -> void:
-	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "map_select_prepare", PopupManager.Severity.NORMAL, "", tr("map_select_prepare"), MAP_MOVE_MESSAGE_TIME)
+	Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "map_select_prepare", RidPopupManager.Severity.NORMAL, "", tr("map_select_prepare"), MAP_MOVE_MESSAGE_TIME)
 	await get_tree().create_timer(MAP_MOVE_MESSAGE_TIME).timeout
-	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "map_select_transit", PopupManager.Severity.NORMAL, "", tr("map_select_transit"), MAP_MOVE_MESSAGE_TIME)
+	Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "map_select_transit", RidPopupManager.Severity.NORMAL, "", tr("map_select_transit"), MAP_MOVE_MESSAGE_TIME)
 	await get_tree().create_timer(MAP_MOVE_MESSAGE_TIME).timeout
-	Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "map_select_arriver", PopupManager.Severity.NORMAL, "", tr("map_select_arrived"), MAP_MOVE_MESSAGE_TIME)
+	Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "map_select_arriver", RidPopupManager.Severity.NORMAL, "", tr("map_select_arrived"), MAP_MOVE_MESSAGE_TIME)
 	await get_tree().create_timer(MAP_MOVE_MESSAGE_TIME).timeout
 
 

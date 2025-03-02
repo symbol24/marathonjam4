@@ -24,23 +24,29 @@
 				"2d949903-bf5f-43cb-8c9d-a0cee1cd43ff",
 				"7046621d-fee8-4040-bf2c-ca1c2cf70ade",
 				"34f361e8-926a-40d3-8887-b42223ba4ff5",
-				"decb5daf-8020-431a-9a77-fadbea128588"
+				"decb5daf-8020-431a-9a77-fadbea128588",
+				"bd1812c9-0db3-4c07-a2c8-eca9c3d36619",
+				"6d4d11e1-16e7-451e-bc3d-c9c40f8684ad",
+				"12e35636-d875-49ec-a682-781ab8738fe9"
 			]
 		},
 		{
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
 			"title": "Doing",
 			"tasks": [
-				"e691d741-1239-429f-82e7-bff81d7f047a",
-				"bd1812c9-0db3-4c07-a2c8-eca9c3d36619",
-				"12e35636-d875-49ec-a682-781ab8738fe9",
-				"6d4d11e1-16e7-451e-bc3d-c9c40f8684ad"
+				"b6a23dab-2f0e-4747-adf4-67c74ec5e5ae"
 			]
 		},
 		{
 			"uuid": "e5e74ad0-c93c-49b8-bc0e-dfa2d4e023e5",
 			"title": "Done",
 			"tasks": [
+				"621d8536-e6c0-4947-8064-0f671c28d818",
+				"393145d6-3b5d-477a-89c4-08b1dda81e7e",
+				"ea64c03c-a45d-4d13-85e9-57be757e0649",
+				"ffba1322-b94c-4ed8-9729-cc15f6ea5470",
+				"e691d741-1239-429f-82e7-bff81d7f047a",
+				"51fa75e5-10ac-4309-b7ed-d3ea0ea8a676",
 				"5bf3db86-147a-42aa-99aa-bf7c4cd00366",
 				"44f6fdb9-4aaf-4c88-940f-9ce6685e7a97",
 				"a53b0da1-521a-452e-9bd6-c8f8626378da",
@@ -366,6 +372,48 @@
 		{
 			"uuid": "6d4d11e1-16e7-451e-bc3d-c9c40f8684ad",
 			"title": "station interaction screen",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "ffba1322-b94c-4ed8-9729-cc15f6ea5470",
+			"title": "enemies",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "51fa75e5-10ac-4309-b7ed-d3ea0ea8a676",
+			"title": "enemy spawner",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "ea64c03c-a45d-4d13-85e9-57be757e0649",
+			"title": "refactor order menu",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "393145d6-3b5d-477a-89c4-08b1dda81e7e",
+			"title": "add attacking as order but no menu",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "621d8536-e6c0-4947-8064-0f671c28d818",
+			"title": "make prisoners attack",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "b6a23dab-2f0e-4747-adf4-67c74ec5e5ae",
+			"title": "add targetted selector to enemies",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

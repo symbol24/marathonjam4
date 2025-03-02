@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy4dv7h33imjw"]
 
 [ext_resource type="Texture2D" uid="uid://il1hc70nrwql" path="res://Textures/Prisoners/Portraits/Normal/SFCP 1-01_normal.jpg" id="1_dh0ix"]
-[ext_resource type="Script" path="res://Code/UI/prisoner_play_ui_panel.gd" id="1_t05ql"]
+[ext_resource type="Script" path="res://Code/UI/PlayUi/prisoner_play_ui_panel.gd" id="1_t05ql"]
 [ext_resource type="Script" path="res://Code/Elements/Wrappers/element_button.gd" id="3_hdg2w"]
 
 [node name="prisoner_play_ui_panel" type="PanelContainer"]

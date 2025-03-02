@@ -18,9 +18,14 @@ signal LoadPrisonerHeadshots(prisoner_array:Array[PrisonerData])
 
 # Level
 signal LevelReady(level:Node)
+signal SendQueueFreeOfPlayManagers()
+
+
+# Spawn Manager
 signal SpawnPrisoners()
 signal AllPrisonersSpawned()
-signal SendQueueFreeOfPlayManagers()
+signal SpawnUnknownContacts()
+signal AllUnknownContactsSpawned()
 
 
 # Menus
@@ -44,11 +49,14 @@ signal SelecetPrisonerByData(prisoner_data:PrisonerData)
 signal PrisonerInteract(interaction:String, interactible:Interactible)
 signal GrabPrisonerFocus(data:PrisonerData)
 signal ClearMoveToTargets(prisoner:Prisoner)
+signal PrisonerHpUpdated(data:PrisonerData)
+signal PrisonerDeath(data:PrisonerData)
+signal PrisonerActionStateUpdated(data:PrisonerData)
 
 
 # UI
 signal PopupResult(id:String, result:bool)
-signal DisplayPopup(type:PopupManager.Type, id:String, severity:PopupManager.Severity, title:String, text:String, timer:int)
+signal DisplayPopup(type:RidPopupManager.Type, id:String, severity:RidPopupManager.Severity, title:String, text:String, timer:int)
 signal DisplayContextPopup(interactible:Interactible)
 signal ContextPopupToggled(id:String, displayed:bool)
 signal ContextPopupResult(interactible:Interactible, key_selection:String)
@@ -66,6 +74,7 @@ signal ToggleFlashEffects(on:bool)
 signal TogglePlayUi(display:bool)
 signal ToggleInventoryForPrisonerData(prisoner_data:PrisonerData)
 signal PlayUiDisplayed()
+signal DisplayDamageNumber(value:float, pos:Vector2)
 
 
 # Interactibles

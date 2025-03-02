@@ -1,4 +1,4 @@
-class_name  PrisonerMoveToTarget extends TextureRect
+class_name  PrisonerMoveToTarget extends Panel
 
 
 var prisoner:Prisoner

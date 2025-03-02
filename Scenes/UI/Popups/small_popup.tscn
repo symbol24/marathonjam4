@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://p0wyhd2q5hfc"]
 
-[ext_resource type="Script" path="res://Code/UI/small_popup.gd" id="1_tykol"]
+[ext_resource type="Script" path="res://Code/UI/Popups/small_popup.gd" id="1_tykol"]
 
 [node name="SmallPopup" type="Control"]
 z_index = 4000

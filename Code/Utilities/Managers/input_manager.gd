@@ -19,17 +19,20 @@ var menu_displayed:bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_right"):
+		Signals.CloseContextMenu.emit()
 		if active_prisoner:
 			if mouse_over_element:
 				if mouse_over_element.can_click:
 					_check_element(mouse_over_element)
 			else:
 				_set_prisoner_move_target(event)
+			
+			get_viewport().set_input_as_handled()
 
 
-	#if event.is_action_pressed("mouse_left"):
-	#	Signals.MouseRightPressed.emit()
-	#	if active_prisoner != null: active_prisoner.grab_prisoner_focus()
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_left"):
+		Signals.CloseContextMenu.emit()
 
 
 func _ready() -> void:
@@ -44,16 +47,20 @@ func _ready() -> void:
 
 
 func _set_prisoner_move_target(event:InputEvent) -> void:
-	var pos:Vector2 = event.position
 	if data_manager:
-		var target_icon = data_manager.prisoner_target_move_scene.instantiate()
+		active_prisoner.add_move_to_action(event.position)
+		var target_icon:Panel = data_manager.prisoner_target_move_scene.instantiate()
 		add_child(target_icon)
-		pos = pos - (target_icon.texture.get_size()/2)
-		target_icon.global_position = pos
+		if not target_icon.is_node_ready(): await target_icon.ready
+		target_icon.global_position = event.position - (target_icon.size/2)
 		target_icon.name = "target_" + str(target_count)
+		target_icon.prisoner = active_prisoner
 		target_count += 1
-		Signals.PrisonerMoveTo.emit(active_prisoner, target_icon.global_position)
 
+
+func _set_prisoner_attack_target(ucec:ElementControl) -> void:
+	if ucec is UknownContactElementControl:
+		active_prisoner.add_attack_action(ucec.unknown_contact_parent)
 
 
 func _set_active_prisoner(_prisoner:Prisoner) -> void:
@@ -77,3 +84,5 @@ func _check_element(element:ElementControl) -> void:
 		#Debug.log("Interactible Type ", Interactible.Type.keys()[element.parent.data.type])
 		active_interactible = element.parent
 		Signals.DisplayContextPopup.emit(active_interactible)
+	elif element is UknownContactElementControl:
+		active_prisoner.add_attack_action(element.unknown_contact_parent)

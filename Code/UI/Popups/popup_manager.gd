@@ -1,4 +1,4 @@
-class_name PopupManager extends Control
+class_name RidPopupManager extends Control
 
 
 enum Severity {
@@ -15,7 +15,7 @@ enum Type {
 
 var large_popup:LargePopup = null
 var small_popup:SmallPopup = null
-var context_popup:ContextPopup = null
+var context_popup:PlayUiOrderPopupMenu = null
 var data_manager:DataManager:
 	get:
 		if data_manager == null:
@@ -43,7 +43,7 @@ func _ready() -> void:
 		if break_count == 100: break
 
 
-func _display_popup(_type:PopupManager.Type, _id:String, _severity:PopupManager.Severity, _title:String, _text:String, _timer:int) -> void:
+func _display_popup(_type:RidPopupManager.Type, _id:String, _severity:RidPopupManager.Severity, _title:String, _text:String, _timer:int) -> void:
 	#Debug.log(get_parent().get_child_count()-1)
 	if get_index() < get_parent().get_child_count()-1:
 		get_parent().move_child(self, get_child_count()-1)
@@ -56,7 +56,7 @@ func _display_popup(_type:PopupManager.Type, _id:String, _severity:PopupManager.
 			pass
 
 
-func _display_large_popup(_id:String, _severity:PopupManager.Severity = PopupManager.Severity.NORMAL , _timer:int = 0, _title:String = "", _text:String = "") -> void:
+func _display_large_popup(_id:String, _severity:RidPopupManager.Severity = RidPopupManager.Severity.NORMAL , _timer:int = 0, _title:String = "", _text:String = "") -> void:
 	if large_popup == null and data_manager != null:
 		large_popup = data_manager.large_popup.instantiate()
 		add_child.call_deferred(large_popup)
@@ -81,11 +81,15 @@ func _display_small_popup(_timer:int, _text:String) -> void:
 
 func _display_context_popup(interactible:Interactible) -> void:
 	if input_manager and input_manager.active_prisoner:
-		if context_popup == null and data_manager != null:
-			context_popup = data_manager.context_popup.instantiate()
-			add_child.call_deferred(context_popup)
+		if context_popup == null:
+			context_popup = data_manager.order_menu.instantiate()
+			add_child(context_popup)
 			if not context_popup.is_node_ready(): await context_popup.ready
-	# TODO: clear buttons before adding new
-		if context_popup != null: 
-			context_popup.display_popup(interactible, data_manager)
-		else: Debug.error("Context Popup null")
+			context_popup.data_manager = data_manager
+			context_popup.hide()
+		
+		if context_popup == null:
+			return
+		
+		context_popup.position = get_local_mouse_position()
+		context_popup.build_order_popup(interactible)

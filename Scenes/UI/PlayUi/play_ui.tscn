@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://xpgtmytw67ym"]
 
-[ext_resource type="Script" path="res://Code/UI/play_ui.gd" id="1_i4ul4"]
+[ext_resource type="Script" path="res://Code/UI/PlayUi/play_ui.gd" id="1_i4ul4"]
 [ext_resource type="PackedScene" uid="uid://dy4dv7h33imjw" path="res://Scenes/UI/PlayUi/prisoner_play_ui_panel.tscn" id="2_rjk1v"]
 [ext_resource type="Script" path="res://Code/Elements/Wrappers/element_control.gd" id="3_ic0sg"]
 [ext_resource type="StyleBox" uid="uid://h312rdmuejqo" path="res://Data/ThemeStyles/prisoner_play_normal.tres" id="3_tp2ex"]

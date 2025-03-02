@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	if timing: delta_timer += delta
 
 
-func display_popup(_id:String = "", _severity:PopupManager.Severity = PopupManager.Severity.NORMAL , _timer:int = 0, _title:String = "", _text:String = "") -> void:
+func display_popup(_id:String = "", _severity:RidPopupManager.Severity = RidPopupManager.Severity.NORMAL , _timer:int = 0, _title:String = "", _text:String = "") -> void:
 	if _timer > 0:
 		close_timer = _timer
 		timer.text = str(close_timer)
@@ -50,14 +50,14 @@ func display_popup(_id:String = "", _severity:PopupManager.Severity = PopupManag
 	id = _id
 
 	match _severity:
-		PopupManager.Severity.NORMAL:
+		RidPopupManager.Severity.NORMAL:
 			icon.hide()
-		PopupManager.Severity.WARNING:
+		RidPopupManager.Severity.WARNING:
 			if warning != null:
 				icon.texture = warning
 				icon.show()
 			else: icon.hide()
-		PopupManager.Severity.ERROR:
+		RidPopupManager.Severity.ERROR:
 			if error != null:
 				icon.texture = error
 				icon.show()

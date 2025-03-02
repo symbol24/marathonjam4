@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cndlh2ff4cgue"]
+
+[ext_resource type="Script" path="res://Code/Utilities/enemy_spawn_tag.gd" id="1_tqiqo"]
+
+[node name="enemy_spawn_tag" type="Marker2D" groups=["enemy_spawn_tag"]]
+script = ExtResource("1_tqiqo")

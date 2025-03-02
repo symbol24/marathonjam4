@@ -12,9 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bo178h7hu21m5" path="res://Scenes/UI/Popups/large_popup.tscn" id="7_aw1vj"]
 [ext_resource type="Resource" uid="uid://byg6cvos6cdwo" path="res://Data/Prisoners/prisoner_0005.tres" id="8_3fcmq"]
 [ext_resource type="PackedScene" uid="uid://p0wyhd2q5hfc" path="res://Scenes/UI/Popups/small_popup.tscn" id="8_7u762"]
-[ext_resource type="PackedScene" uid="uid://bdpdmgxdr6ywt" path="res://Scenes/UI/Popups/context_popup.tscn" id="9_agp78"]
 [ext_resource type="Resource" uid="uid://cdhswdlcixfqi" path="res://Data/Prisoners/prisoner_0006.tres" id="9_k14pn"]
-[ext_resource type="PackedScene" uid="uid://bk5c05hr6shcp" path="res://Scenes/UI/Popups/context_menu_button.tscn" id="10_1nsgm"]
 [ext_resource type="Resource" uid="uid://csnbthyhqhp4c" path="res://Data/Prisoners/prisoner_0007.tres" id="10_eg7o2"]
 [ext_resource type="Resource" uid="uid://c0vqx5w31d0a7" path="res://Data/Prisoners/prisoner_0008.tres" id="11_g8lap"]
 [ext_resource type="Resource" uid="uid://bgqbopmg2c4s0" path="res://Data/Prisoners/prisoner_0009.tres" id="12_i8618"]
@@ -140,8 +138,10 @@
 [ext_resource type="Theme" uid="uid://ckulva3dnkn8g" path="res://Data/default_theme.tres" id="136_76b4w"]
 [ext_resource type="PackedScene" uid="uid://b3ehv4ghrd0bx" path="res://Scenes/UI/SaveIcon/save_icon.tscn" id="137_4gk0w"]
 [ext_resource type="PackedScene" uid="uid://s5jy75f7aaif" path="res://Scenes/UI/MapSelection/map_line.tscn" id="138_6klp3"]
+[ext_resource type="PackedScene" uid="uid://buext6l0ct8em" path="res://Scenes/UI/Popups/order_button.tscn" id="139_5wysd"]
 [ext_resource type="PackedScene" uid="uid://bersd7cbttphe" path="res://Scenes/UI/MapSelection/map_icon.tscn" id="139_bs0u3"]
 [ext_resource type="PackedScene" uid="uid://c7ayc88y2ba75" path="res://Scenes/UI/PlayUi/damage_number.tscn" id="139_gbs0d"]
+[ext_resource type="PackedScene" uid="uid://bx7p03nv4tlmr" path="res://Scenes/UI/Popups/play_ui_order_menu.tscn" id="140_5nul4"]
 
 [node name="DataManager" type="Node" groups=["data_manager"]]
 script = ExtResource("1_lq4dl")
@@ -151,8 +151,6 @@ prisoner_target_move_scene = ExtResource("3_vx1em")
 unknown_contact_scene = ExtResource("127_v1auo")
 large_popup = ExtResource("7_aw1vj")
 small_popup = ExtResource("8_7u762")
-context_popup = ExtResource("9_agp78")
-context_button = ExtResource("10_1nsgm")
 play_ui = ExtResource("131_2tbbs")
 pause_menu = ExtResource("132_ed061")
 settings = ExtResource("133_c5mpy")
@@ -161,6 +159,8 @@ dyslexia_friendly_font = ExtResource("135_g5mp1")
 default_theme = ExtResource("136_76b4w")
 save_icon = ExtResource("137_4gk0w")
 damage_number_scene = ExtResource("139_gbs0d")
+order_menu = ExtResource("140_5nul4")
+context_button = ExtResource("139_5wysd")
 map_generator = ExtResource("131_xv8pf")
 map_icon = ExtResource("139_bs0u3")
 map_line = ExtResource("138_6klp3")

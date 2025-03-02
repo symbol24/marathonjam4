@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cklw3jbgocru3"]
 
-[ext_resource type="Script" path="res://Code/UI/popup_manager.gd" id="1_vq74y"]
+[ext_resource type="Script" path="res://Code/UI/Popups/popup_manager.gd" id="1_vq74y"]
 
 [node name="PopupManager" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)

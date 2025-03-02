@@ -1,8 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2i3gvwl5202p"]
+[gd_scene load_steps=2 format=3 uid="uid://d2i3gvwl5202p"]
 
-[ext_resource type="Texture2D" uid="uid://com831v3426at" path="res://Textures/Debug/temp_icon_target.png" id="1_6taut"]
 [ext_resource type="Script" path="res://Code/Elements/prisoner_target_move.gd" id="2_tvsev"]
 
-[node name="PrisonerTargetMove" type="TextureRect"]
-texture = ExtResource("1_6taut")
+[node name="PrisonerTargetMove" type="Panel"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 16.0
+offset_bottom = 16.0
+theme_type_variation = &"PrisonerTargetBack"
 script = ExtResource("2_tvsev")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_type_variation = &"PrisonerTargetCenter"

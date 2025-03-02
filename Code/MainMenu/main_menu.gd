@@ -53,7 +53,7 @@ func _btn_continue_run_pressed() -> void:
 
 func _btn_abandon_run_pressed() -> void:
 	_untoggle_panels()
-	Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "abandon_run", PopupManager.Severity.WARNING, tr("abandon_run_popup_title"), tr("abandon_run_popup_text"), 0)
+	Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "abandon_run", RidPopupManager.Severity.WARNING, tr("abandon_run_popup_title"), tr("abandon_run_popup_text"), 0)
 
 
 func _new_game_pressed() -> void:

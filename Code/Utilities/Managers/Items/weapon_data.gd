@@ -19,10 +19,12 @@ enum Firemode {
 @export var base_damage:float = 1.0
 @export var base_critical_chance:float = 0.0
 @export var base_critical_bonus:float = 0.0
-@export var delay_before_next_attack:float = 1.0
+## Time between bursts of attacks
+@export var delay_before_next_attack:float = 1.0 
 @export var fire_mode:Firemode = Firemode.SEMIAUTO
 @export var attack_count:int = 1
-@export var time_between_attacks:float = 0.5
+## Time between single attacks in a burst
+@export var time_between_attacks:float = 0.01
 @export var attack_distance:float = 500.0
 
 

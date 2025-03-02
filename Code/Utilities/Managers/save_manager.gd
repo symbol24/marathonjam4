@@ -66,11 +66,11 @@ func _save() -> void:
 
 func _save_for_hash_id(_hash_id:int) -> void:
 	if active_save == null:
-		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "save_error_no_save", PopupManager.Severity.ERROR, "", tr("no_save_error_text"), 3)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "save_error_no_save", RidPopupManager.Severity.ERROR, "", tr("no_save_error_text"), 3)
 		return
 	
 	if active_save.hash_id != _hash_id:
-		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "save_error_wrong_save", PopupManager.Severity.ERROR, "", tr("wrong_save_error_text"), 3)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "save_error_wrong_save", RidPopupManager.Severity.ERROR, "", tr("wrong_save_error_text"), 3)
 		return
 	
 	var date_time:String = Time.get_datetime_string_from_system()
@@ -80,7 +80,7 @@ func _save_for_hash_id(_hash_id:int) -> void:
 	_check_folder()
 	var result:Error = ResourceSaver.save(active_save, FOLDER + PREFIX + str(_hash_id) + "." + EXTENSION)
 	if result != OK:
-		Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "save_error_generic", PopupManager.Severity.ERROR, tr("save_error_title"), "save_error_text %s" % result, -1)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "save_error_generic", RidPopupManager.Severity.ERROR, tr("save_error_title"), "save_error_text %s" % result, -1)
 		return
 	
 	#_set_last_saved(_hash_id)
@@ -104,12 +104,12 @@ func _set_last_saved(_hash_id:int) -> void:
 func _try_load_for_hash_id(_hash_id:int) -> void:
 	if active_save != null:
 		if active_save.hash_id == _hash_id:
-			Signals.DisplayPopup.emit(PopupManager.Type.SMALL, "load_error_already_loaded", PopupManager.Severity.WARNING, "", tr("already_loaded_error_text"), 3)
+			Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "load_error_already_loaded", RidPopupManager.Severity.WARNING, "", tr("already_loaded_error_text"), 3)
 			return
 		
 		elif active_save.hash_id != _hash_id and active_save.has_unsaved_changes:
 			hash_id_cached = _hash_id
-			Signals.DisplayPopup.emit(PopupManager.Type.LARGE, "load_error_unsaved_changes", PopupManager.Severity.ERROR, tr("unsaved_changes_load_error_title"), "unsaved_changes_load_error_text", -1)
+			Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "load_error_unsaved_changes", RidPopupManager.Severity.ERROR, tr("unsaved_changes_load_error_title"), "unsaved_changes_load_error_text", -1)
 			return
 		
 	else:

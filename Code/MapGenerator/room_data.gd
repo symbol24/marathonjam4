@@ -20,6 +20,7 @@ enum Type {
 @export var selected:bool = false
 @export var icon:CompressedTexture2D
 @export var complete:bool = false
+@export var difficulty_rating:int = 1
 
 var coords_on_map:Vector2 = Vector2.ZERO
 var button_can_be_pressed:bool = false

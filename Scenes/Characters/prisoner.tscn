@@ -16,6 +16,9 @@ script = ExtResource("1_lhevl")
 
 [node name="nav_agent" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 0.262745, 1, 1)
 
 [node name="move_collider" type="CollisionShape2D" parent="."]
 visible = false

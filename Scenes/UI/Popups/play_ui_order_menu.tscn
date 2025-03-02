@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx7p03nv4tlmr"]
+
+[ext_resource type="Script" path="res://Code/UI/PlayUi/play_ui_order_menu.gd" id="1_it880"]
+
+[node name="PlayUiOrderMenu" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 40)
+offset_right = 100.0
+offset_bottom = 40.0
+theme_type_variation = &"PlayUiOrderMenu"
+script = ExtResource("1_it880")
+
+[node name="button_list_vbox" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
