@@ -8,7 +8,6 @@ const SETTTINGS_POSITION:Vector2 = Vector2(260,90)
 @onready var btn_continue_run: Button = %btn_continue_run
 @onready var btn_abandon_run: Button = %btn_abandon_run
 @onready var btn_new_game: Button = %btn_new_game
-@onready var btn_load_game: Button = %btn_load_game
 @onready var btn_settings: Button = %btn_settings
 @onready var btn_credits: Button = %btn_credits
 
@@ -34,7 +33,6 @@ func _ready() -> void:
 	btn_continue_run.pressed.connect(_btn_continue_run_pressed)
 	btn_abandon_run.pressed.connect(_btn_abandon_run_pressed)
 	btn_new_game.pressed.connect(_new_game_pressed)
-	btn_load_game.pressed.connect(_load_game_pressed)
 	btn_settings.pressed.connect(_settings_pressed)
 	btn_credits.pressed.connect(_credits_pressed)
 	if save_manager == null: Debug.error("Main menu unable to find save manager.")

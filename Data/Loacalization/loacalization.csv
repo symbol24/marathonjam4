@@ -1,15 +1,120 @@
 keys,en,fr,fr-CA
-main_menu_title,Main Menu,Menu Principale,Le menu cawlisse
-prisoner_health_state_DEAD,Dead,,
-prisoner_health_state_SICKLY,Sickly,,
-prisoner_health_state_SICK,Sick,,
-prisoner_health_state_HEALTHY,Healthy,,
-prisoner_health_state_ROBUST,Robust,,
-prisoner_health_state_CRYO,Cryo,,
-prisoner_action_state_DEAD,Dead,,
-prisoner_action_state_IDLE,Idle,,
-prisoner_action_state_MOVING,Moving,,
-prisoner_action_state_BUSY,Busy,,
-prisoner_action_state_COMBAT,Combat,,
-prisoner_action_state_IGNORE,Ignore,,
-prisoner_play_ui_dead_label,Deceased,,
+main_menu_title,Prisoner Hulk,Prison Flottante,Ponton Spatiale
+prisoner_health_state_DEAD,Dead,Mort,Mort
+prisoner_health_state_SICKLY,Sickly,Faible,Faible
+prisoner_health_state_SICK,Sick,Malade,malade
+prisoner_health_state_HEALTHY,Healthy,En Sante,En Sante
+prisoner_health_state_ROBUST,Robust,Robuste,Fort
+prisoner_health_state_CRYO,Cryo,En Cryo,Geler
+prisoner_action_state_DEAD,Dead,Mort,Mort
+prisoner_action_state_IDLE,Idle,au repos,fait rien
+prisoner_action_state_MOVING,Moving,En Mouvement,Bouge
+prisoner_action_state_BUSY,Busy,Occuper,OQP
+prisoner_action_state_COMBAT,Combat,En combat,s'bat
+prisoner_action_state_IGNORE,Ignoring,Difficile,y'ecoute pas
+prisoner_play_ui_dead_label,Deceased,Deceder,Mort Sti'
+main_menu_btn_new_run,NEW RUN,NOUVEAU DEPART,NOUVELLE RUN
+main_menu_btn_continue_run,CONTINUE RUN,CONTINUER,CONTINUER RUN
+main_menu_btn_abandon_run,ABANDON RUN,ABANDONER,LACHER RUN
+main_menu_btn_new_game,NEW GAME,NOUVELLE PARTIE,NOUVELLE PARTIE
+main_menu_btn_settings,SETTINGS,PARAMETRES,OPTIONS
+main_menu_btn_credits,CREDITS,CREDITS,CREDITS
+option_lang_english,English,English,English
+option_lang_french,Francais,Francais,Francais
+option_lang_quebecois,Quebecois,Quebecois,Quebecois
+option_dyslexia_font_label,Dyslexia-friendly font:,Police adaptée aux dyslexiques:,Police adaptée aux dyslexiques:
+option_crt_effect_label,Crt Effects:,Effect CRT:,Effet vieille tv:
+option_flash_effect_label,Flash effects:,Effets de flash:,Les flash:
+btn_on,ON,ACTIVE,ON
+btn_off,OFF,DESACTIVE,OFF
+btn_reset_general,RESET,REMETTRE PAR DEFAULT,RESET
+tab_general,GENERAL,GENERALES,GENERALES
+tab_video,VIDEO,VIDEO,VIDEO
+tab_audio,AUDIO,AUDIO,AUDIO
+tab_controls,CONTROLS,CONTROLLES,CONTROLLES
+option_btn_apply,APPLY,APPLIQUER,APPLIQUER
+option_btn_close,CLOSE,FERMER,FERMER
+option_lang_label,LANGUAGE:,LANGUE D'AFFICHAGE:,LANGUE AFFICHER:
+window_mode_label,Window Mode:,Mode de la fenetre:,Mode de la fenetre:
+window_size_label,Window Size:,Grandeur de la fenetre:,Grandeur de la fenetre:
+set_fullscreen_label,Fullscreen:,Mode Plein-ecran:,Mode Plein-ecran:
+window_mode_fullscreen,FULLSCREEN,PLEIN-ECRAN,PLEIN-ECRAN
+window_mode_windowed,WINDOWED,FENETRE,WINDOWED
+window_mode_w_borderless,BORDERLESS WINDOWED,FENETRE SANS BORDURES,WINDOWED SANS BORDURES
+master_volume_label,Master:,Principale:,Principale:
+music_volume_label,Music:,Musique:,Musique:
+sfx_volume_label,SFX:,Effets Sonores:,Effets Sonores:
+btn_reset_audio,RESET,REMETTRE PAR DEFAULT,RESET
+controls_interact_label,Interact:,Interaction:,Interaction:
+controls_deselect_label,Deselect:,Deselection:,Deselection:
+control_pause_label,Pause Menu:,Menu Pause:,Menu Pause:
+btn_reset_controls,RESET,REMETTRE PAR DEFAULT,RESET
+option_btn_apply,APPLY,APPLIQUER,APPLIQUER
+option_btn_close,CLOSE,FERMER,FERMER
+btn_close_pause_menu,CLOSE,FERMER,FERMER
+pause_tab_container,PAUSE MENU,MENUE DE PAUSE,MENUE PAUSE
+prisoner_list_panel_label,Prisoners,Prisoniers,Prisoniers
+prisoner_select_btn_goto_map,TO MAP,ALLEZ A LA CARTE,A LA MAP
+prisoner_select_btn_toggle_panel,ACTIVE PRISONERS,PRISONIERS ACTIFS,PRISONIERS ACTIFS
+prisoner_select_btn_revive,REVIVE,REANIMER,REANIMER
+prisoner_list_active_label,Active Prisoners,Reanime,Actifs
+active_panel_btn_toggle_panel,CLOSE,FERMER,FERMER
+label_name,Name:,Nom:,Nom:
+label_status,Status:,Etat:,Etat:
+label_height,Height:,Grandeur:,Grandeur:
+label_weight,Weight:,Poids:,Poids:
+label_dob,Date of Birth:,Date de naissance:,Date de naissance:
+label_doi,Date of incarceration:,Date d'incarceration:,Date d'empirsonment:
+label_sentence,Sentence:,peine d'emprisonnement:,Sentence:
+label_loo,Location of origin:,Lieu d'origin:,Lieu d'origin:
+label_loe,Location of e?,Lieu..,Lieu..
+label_criminality_rating,Criminiality Rating:,Valeur de Criminalite:,Valeur de Criminalite:
+label_strength_rating,Strength Rating:,Valeur de force:,Valeur de force:
+label_agility_rating,Agility Rating:,Valeur d'agilite:,Valeur d'agilite:
+label_endurance_rating,Endurance Rating:,Valeur d'endurance:,Valeur d'endurance:
+label_inteligence_rating,Intelligence Rating:,Valeur d'intelligence:,Valeur d'intelligence:
+label_criminal_record,Criminal Record,Casier judiciere,Casier judiciere
+prisoner_select_btn_label_name,Name:,Nom:,Nom:
+prisoner_select_btn_label_sentence,Sentence:,Peine:,Sentence:
+prisoner_select_btn_label_doi,DOI:,DI:,DE:
+prisoner_active_display_label_name,Name:,Nom:,Nom:
+prisoner_active_display_label_sentence,Sentence:,Peine:,Sentence:
+prisoner_active_display_label_doi,DOI:,DI:,DE:
+ship_naming_label,Please enter the name of the ship,Entrez un nom pour le vaisseau,Entrez un nom pour le vaisseau
+ship_naming_input,Challenger,Téméraire,Romano Fafard
+ship_naming_btn_confirm,CONFIRM,CONFIRMER,CONFIRMER
+map_prog_title,Select destination,Choisir la destination,Choisir la destination
+map_prog_ship_title,Spaceship,Vaisseau,Vaisseau
+map_registry_label,Registry:,Immatriculation:,Immatriculation:
+map_propulsion_label,Propulsion system:,System de propulsion:,System de propulsion:
+map_hull_label,Hull:,Coque:,Coque:
+map_ai_core_label,Ai Core:,Systeme de IA:,Systeme de IA:
+map_life_support_label,Life Support:,Systemes de survie:,Systemes de survie:
+map_active_prisoners_label,Active Prisoners:,Prisoniers Actifs:,Prisoniers Actifs:
+map_cryo_prisoners_label,Prisoners in cryo:,Prisoniers en cryo-stase:,Prisoniers en cryo-stase:
+map_dead_prisoners_label,Dead prisoners:,Prisoniers morts:,Prisoniers morts:
+map_open_legend_btn,LEGEND,LEGENDE,LEGENDE
+map_prisoner_btn,PRISONERS,PRISONIERS,PRISONIERS
+map_prog_legend_title,LEGEND,LEGENDE,LEGENDE
+map_start_location,Start location,Point de depart,Point de depart
+map_encounter,Contact Point,Point de contact,Point de contact
+map_shop,Trade vessel,Vaisseau marchand,Vaisseau marchand
+map_derilect,Derelict,Vaisseau a l'abandon,Vaisseau a l'abandon
+map_station,Space Station,Station Spatial,Station Spatial
+map_boss,Large Contact,Point de contact majeur,Point de contact majeur
+map_label_you_are_here,You are here,Vous etes ici,Vous etes ici
+legend_show,SHOW LEGEND,OUVRIR LEGENEDE,OUVRIR LEGENEDE
+legend_hide,HIDE LEGEND,FERMER LEGENDE,FERMER LEGENDE
+prisoner_info_toggle_btn_show,SHOW,OUVRIR,OUVRIR
+prisoner_info_toggle_btn_hide,HIDE,FERMER,FERMER
+prisoner_icon_label,Prisoner,Prisonier,Prisonier
+pickup_item_icon_label,Possible Item,Item Possible,Item Possible
+searchable_icon_label,Searchable container,Contenant cherchable,Contenant cherchable
+locked_interactible_label,Interactable Object LOCKED,Object interactif Verouiller,Object interactif Verouiller
+open_interactible_label,Interactable Object OPEN,Object interactif ouvert,Object interactif ouvert
+closed_interactible_label,Interactable Object CLOSED,Object interactif ferme,Object interactif ferme
+unknown_contact_icon_label,Unknown Contact,Contact inconnu,Contact inconnu
+inventory_btn,INVENTORY,INVENTAIRE,INVENTAIRE
+prisoner_id_label,Prisoner,Prisonier,Prisonier
+prisoner_health_label,Health:,Sante:,Sante:
+prisoner_status_label,Status:,Statut:,Statut:

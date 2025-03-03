@@ -37,9 +37,13 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_type_variation = &"PrisonerDetailsLabel"
-text = "NAME:"
+text = "prisoner_active_display_label_nameNAME:"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="prisoner_name" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -53,9 +57,13 @@ text_overrun_behavior = 1
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_type_variation = &"PrisonerDetailsLabel"
-text = "SENTENCE:"
+text = "prisoner_active_display_label_sentence"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="prisoner_sentence" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
@@ -69,9 +77,13 @@ text_overrun_behavior = 1
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_type_variation = &"PrisonerDetailsLabel"
-text = "DOI:"
+text = "prisoner_active_display_label_doiDOI:"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="prisoner_doi" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true

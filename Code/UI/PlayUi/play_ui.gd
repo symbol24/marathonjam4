@@ -52,12 +52,12 @@ func _generate_prisoner_panel(data:PrisonerData) -> void:
 
 func _prisoner_info_toggle_btn_pressed() -> void:
 	if prisoner_list.visible:
-		prisoner_info_toggle_btn.text = tr("show")
+		prisoner_info_toggle_btn.text = tr("prisoner_info_toggle_btn_show")
 		prisoner_list.hide()
 		spacer.hide()
 		prisoner_info_toggle_btn.release_focus()
 	else:
-		prisoner_info_toggle_btn.text = tr("hide")
+		prisoner_info_toggle_btn.text = tr("prisoner_info_toggle_btn_hide")
 		prisoner_list.show()
 		spacer.show()
 		prisoner_info_toggle_btn.release_focus()

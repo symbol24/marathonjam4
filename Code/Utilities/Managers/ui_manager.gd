@@ -97,7 +97,6 @@ func _display_save_icon() -> void:
 
 
 func _toggle_crt(display:bool = false) -> void:
-	Debug.log("Received toggle: ", display)
 	if display:
 		crtscreen.show()
 	else:

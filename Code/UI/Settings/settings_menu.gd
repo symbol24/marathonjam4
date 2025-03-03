@@ -159,11 +159,11 @@ func _setup_general_values() -> void:
 	current_language = _get_int_from_locale(save_manager.active_save.language)
 	language_options.select(current_language)
 	dyslexic_friendly_font = save_manager.active_save.dyslexic_font
-	dyslexic_friendly_font_btn.text = tr("ON") if dyslexic_friendly_font else tr("OFF")
+	dyslexic_friendly_font_btn.text = tr("btn_on") if dyslexic_friendly_font else tr("btn_off")
 	crt_effects = save_manager.active_save.filters_active
-	crt_effects_btn.text = tr("ON") if crt_effects else tr("OFF")
+	crt_effects_btn.text = tr("btn_on") if crt_effects else tr("btn_off")
 	flash_effects = save_manager.active_save.flashes_active
-	flash_effects_btn.text = tr("ON") if flash_effects else tr("OFF")
+	flash_effects_btn.text = tr("btn_on") if flash_effects else tr("btn_off")
 
 
 func _language_options_item_selected(value:int) -> void:
@@ -177,25 +177,25 @@ func _language_options_item_selected(value:int) -> void:
 func _dyslexic_friendly_font_btn_pressed() -> void:
 	if data_manager.default_theme.default_font == data_manager.normal_font:
 		data_manager.default_theme.default_font = data_manager.dyslexia_friendly_font
-		dyslexic_friendly_font_btn.text = tr("ON")
+		dyslexic_friendly_font_btn.text = tr("btn_on")
 		dyslexic_friendly_font = true
 	else:
 		data_manager.default_theme.default_font = data_manager.normal_font
-		dyslexic_friendly_font_btn.text = tr("OFF")
+		dyslexic_friendly_font_btn.text = tr("btn_off")
 		dyslexic_friendly_font = false
 	pending_changes = true
 
 
 func _crt_effects_btn_pressed() -> void:
 	crt_effects = !crt_effects
-	crt_effects_btn.text = tr("ON") if crt_effects else tr("OFF")
+	crt_effects_btn.text = tr("btn_on") if crt_effects else tr("btn_off")
 	pending_changes = true
 	Signals.ToggleCRTEffects.emit(crt_effects)
 
 
 func _flash_effects_btn_pressed() -> void:
 	flash_effects = !flash_effects
-	flash_effects_btn.text = tr("ON") if flash_effects else tr("OFF")
+	flash_effects_btn.text = tr("btn_on") if flash_effects else tr("btn_off")
 	pending_changes = true
 	Signals.ToggleFlashEffects.emit(flash_effects)
 
@@ -273,11 +273,11 @@ func _get_id_for_resolution(current:Vector2i) -> int:
 func _web_fullscreen_btn_pressed() -> void:
 	if full_screen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		web_fullscreen_btn.text = tr("OFF")
+		web_fullscreen_btn.text = tr("btn_off")
 		full_screen = false
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		web_fullscreen_btn.text = tr("ON")
+		web_fullscreen_btn.text = tr("btn_on")
 		full_screen = true
 
 
@@ -364,36 +364,36 @@ func _reset_general_to_saved() -> void:
 	if dyslexic_friendly_font != save_manager.active_save.dyslexic_font:
 		dyslexic_friendly_font = save_manager.active_save.dyslexic_font
 		data_manager.default_theme.default_font = data_manager.normal_font if not dyslexic_friendly_font else data_manager.dyslexia_friendly_font
-		dyslexic_friendly_font_btn.text = tr("OFF") if not dyslexic_friendly_font else tr("ON")
+		dyslexic_friendly_font_btn.text = tr("btn_off") if not dyslexic_friendly_font else tr("btn_on")
 
 	if crt_effects != save_manager.active_save.filters_active:
 		crt_effects = save_manager.active_save.filters_active
 		Signals.ToggleCRTEffects.emit(crt_effects)
-		crt_effects_btn.text = tr("ON") if crt_effects else tr("OFF")
+		crt_effects_btn.text = tr("btn_on") if crt_effects else tr("btn_off")
 
 	if flash_effects != save_manager.active_save.flashes_active:
 		flash_effects = save_manager.active_save.flashes_active
 		Signals.ToggleFlashEffects.emit(flash_effects)
-		flash_effects_btn.text = tr("ON") if flash_effects else tr("OFF")
+		flash_effects_btn.text = tr("btn_on") if flash_effects else tr("btn_off")
 
 
 func _reset_general_to_defaults() -> void:
 	if dyslexic_friendly_font != save_manager.active_save.dyslexic_font_default or save_manager.active_save.dyslexic_font != save_manager.active_save.dyslexic_font_default:
 		dyslexic_friendly_font = save_manager.active_save.dyslexic_font_default
 		data_manager.default_theme.default_font = data_manager.normal_font
-		dyslexic_friendly_font_btn.text = tr("OFF")
+		dyslexic_friendly_font_btn.text = tr("btn_off")
 		pending_changes = true
 	
 	if crt_effects != save_manager.active_save.filters_active_default or save_manager.active_save.filters_active != save_manager.active_save.filters_active_default:
 		crt_effects = save_manager.active_save.filters_active_default
 		Signals.ToggleCRTEffects.emit(crt_effects)
-		crt_effects_btn.text = tr("ON")
+		crt_effects_btn.text = tr("btn_on")
 		pending_changes = true
 
 	if flash_effects != save_manager.active_save.flashes_active_default or save_manager.active_save.flashes_active != save_manager.active_save.flashes_active_default:
 		flash_effects = save_manager.active_save.flashes_active_default
 		Signals.ToggleFlashEffects.emit(flash_effects)
-		flash_effects_btn.text = tr("ON")
+		flash_effects_btn.text = tr("btn_on")
 		pending_changes = true
 
 

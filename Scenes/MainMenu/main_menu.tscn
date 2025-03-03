@@ -22,6 +22,7 @@ theme_type_variation = &"MainMenuTitle"
 text = "main_menu_title"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="menu_buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -35,7 +36,7 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-text = "NEW RUN"
+text = "main_menu_btn_new_run"
 text_overrun_behavior = 1
 clip_text = true
 
@@ -43,7 +44,7 @@ clip_text = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-text = "CONTINUE RUN"
+text = "main_menu_btn_continue_run"
 text_overrun_behavior = 1
 clip_text = true
 
@@ -51,7 +52,7 @@ clip_text = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-text = "ABANDON RUN"
+text = "main_menu_btn_abandon_run"
 text_overrun_behavior = 1
 clip_text = true
 
@@ -59,16 +60,7 @@ clip_text = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-text = "NEW GAME"
-text_overrun_behavior = 1
-clip_text = true
-
-[node name="btn_load_game" type="Button" parent="menu_buttons"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(350, 100)
-layout_mode = 2
-text = "LOAD GAME"
+text = "main_menu_btn_new_game"
 text_overrun_behavior = 1
 clip_text = true
 
@@ -76,7 +68,7 @@ clip_text = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-text = "SETTINGS"
+text = "main_menu_btn_settings"
 text_overrun_behavior = 1
 clip_text = true
 
@@ -84,6 +76,6 @@ clip_text = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-text = "CREDITS"
+text = "main_menu_btn_credits"
 text_overrun_behavior = 1
 clip_text = true

@@ -50,9 +50,13 @@ theme_override_constants/separation = 2
 
 [node name="l_prisoner_name" type="Label" parent="panel_background/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"PrisonerDetailsLabelSmall"
-text = "NAME:"
+text = "prisoner_select_btn_label_name"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="prisoner_name" type="Label" parent="panel_background/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -68,9 +72,13 @@ theme_override_constants/separation = 2
 
 [node name="l_prisoner_sentence" type="Label" parent="panel_background/HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"PrisonerDetailsLabelSmall"
-text = "SENTENCE:"
+text = "prisoner_select_btn_label_sentence"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="prisoner_sentence" type="Label" parent="panel_background/HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
@@ -86,9 +94,13 @@ theme_override_constants/separation = 2
 
 [node name="l_prisoner_doi" type="Label" parent="panel_background/HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"PrisonerDetailsLabelSmall"
-text = "DOI:"
+text = "prisoner_select_btn_label_doi"
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
 
 [node name="prisoner_doi" type="Label" parent="panel_background/HBoxContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true

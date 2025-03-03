@@ -25,9 +25,10 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "Please enter the name of the ship"
+text = "ship_naming_label"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -42,7 +43,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Not the Enterprise"
+placeholder_text = "ship_naming_input"
 alignment = 1
 context_menu_enabled = false
 shortcut_keys_enabled = false
@@ -65,7 +66,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "CONFIRM"
+text = "ship_naming_btn_confirm"
+text_overrun_behavior = 1
+clip_text = true
 
 [node name="spacer2" type="Control" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
