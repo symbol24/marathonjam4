@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://wfhbot8yylsj"]
+
+[ext_resource type="Script" path="res://Code/Characters/Projectiles/projectile.gd" id="1_68dc6"]
+[ext_resource type="FontFile" uid="uid://cymk17yxaq6rp" path="res://Data/Fonts/80s-retro-future.ttf" id="1_ijf63"]
+
+[node name="projectile" type="Control"]
+process_mode = 1
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1910.0
+offset_bottom = -1070.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_68dc6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 12.0
+offset_right = 25.0
+offset_bottom = 45.0
+rotation = -1.5708
+theme_override_fonts/font = ExtResource("1_ijf63")
+text = "t"
+horizontal_alignment = 1

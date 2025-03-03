@@ -16,6 +16,8 @@ const COMBAT_DETECTION_TIME:float = 0.33
 @onready var uc_top_label: Label = %uc_top_label
 @onready var flash_panel: Panel = %flash_panel
 @onready var hp_bar: ProgressBar = %hp_bar
+@onready var right_melee: Control = %right_melee
+@onready var left_melee: Control = %left_melee
 
 var data:UnknownContactData
 var is_alive:bool = true
@@ -29,6 +31,7 @@ var detection_timer:float = 2.0:
 		if detection_timer <= 0.0:
 			_detect()
 			detection_timer = _get_detection_time()
+var melee_flashing:bool = false
 
 
 func _ready() -> void:
@@ -94,7 +97,7 @@ func _move_to(delta:float, current_velocity:Vector2, _direction:Vector2, multi:f
 	return current_velocity.move_toward(_direction * speed, delta * multi)
 
 
-func _perform_attack(target:Prisoner) -> void:
+func _attack(target:Prisoner) -> void:
 	if data.state != UnknownContactData.State.COMBAT:
 		data.set_state(UnknownContactData.State.COMBAT)
 		
@@ -103,20 +106,21 @@ func _perform_attack(target:Prisoner) -> void:
 		can_attack = false
 		nav_agent.target_position = global_position
 		if target != null:
-			_attack(data.active_weapon.get_damage(), data.active_weapon.attack_count, data.active_weapon.time_between_attacks)
+			_perform_one_attack(data.active_weapon.get_damage(), data.active_weapon.attack_count, data.active_weapon.time_between_attacks)
 	
 	elif can_attack and not current_attack_target.is_alive:
 		_reset_state()
 		
 
-func _attack(damage:Damage, attack_count_left:int = 0, time:float = 0.0) -> void:
+func _perform_one_attack(damage:Damage, attack_count_left:int = 0, time:float = 0.0) -> void:
 	if damage and attack_count_left > 0:
 		#Debug.log("%s attack # %s for %s." % [name, attack_count_left, damage.final_damage])
 		current_attack_target.receive_damage(damage)
 		attack_count_left -= 1
-		_display_react()
+		if data.active_weapon.weapon_type == WeaponData.Weapon_Type.MELEE: _flash_melee()
+		else: Signals.SpawnProjectile.emit(global_position, current_attack_target.global_position)
 		await get_tree().create_timer(time).timeout
-		_attack(damage, attack_count_left, time)
+		_perform_one_attack(damage, attack_count_left, time)
 	else:
 		_attack_ended()
 
@@ -149,7 +153,7 @@ func _detect() -> void:
 			_set_move_to_target(current_attack_target.global_position)
 
 		elif distance <= pow(data.active_weapon.attack_distance, 2):
-			_perform_attack(current_attack_target)
+			_attack(current_attack_target)
 
 
 func _get_closest_prisoner() -> Prisoner:
@@ -176,3 +180,14 @@ func _get_detection_time() -> float:
 			return COMBAT_DETECTION_TIME
 		_:
 			return FAR_DETECTION_TIME
+
+
+func _flash_melee() -> void:
+	if not melee_flashing:
+		melee_flashing = true
+		if current_attack_target.global_position.x >= global_position.x: right_melee.show()
+		else: left_melee.show()
+		await get_tree().create_timer(Prisoner.FLASH_TIME).timeout
+		right_melee.hide()
+		left_melee.hide()
+		melee_flashing = false

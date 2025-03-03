@@ -26,6 +26,7 @@ func _ready() -> void:
 	Signals.SpawnPrisoners.connect(_spawn_prisoner)
 	Signals.SpawnUnknownContacts.connect(_spawn_unknown_contacts)
 	Signals.SendQueueFreeOfPlayManagers.connect(queue_free)
+	Signals.SpawnProjectile.connect(_spawn_projectile)
 
 
 func _spawn_prisoner() -> void:
@@ -66,3 +67,11 @@ func _spawn_unknown_contacts() -> void:
 		spawn_count += 1
 		if spawn_count >= ucs.size()-1:
 			Signals.AllUnknownContactsSpawned.emit()
+
+
+func _spawn_projectile(origin_pos:Vector2, target_pos:Vector2) -> void:
+	var proj:Projectile = data_manager.projectile.instantiate()
+	add_child.call_deferred(proj)
+	if not proj.is_node_ready(): await proj.ready
+	proj.global_position = origin_pos
+	proj.setup_projectile(target_pos)

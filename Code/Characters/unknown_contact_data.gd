@@ -35,6 +35,10 @@ func setup_data(_difficulty:int = 1) -> void:
 	current_hp = randi_range(80 + hp_offset, 120 + hp_offset)
 	max_hp = current_hp
 
+	# TEMP: making weapon melee
+	active_weapon.weapon_type = WeaponData.Weapon_Type.MELEE
+	active_weapon.attack_distance = 128.0
+
 	var move_offset:float = base_agility * 0.25
 	move_speed = randf_range(30 + move_offset, 70 + move_offset)
 

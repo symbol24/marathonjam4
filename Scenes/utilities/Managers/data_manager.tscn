@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://dd11qq4g440l0"]
+[gd_scene load_steps=144 format=3 uid="uid://dd11qq4g440l0"]
 
 [ext_resource type="Script" path="res://Code/Utilities/Managers/data_manager.gd" id="1_lq4dl"]
 [ext_resource type="Script" path="res://Code/Characters/prisoner_data.gd" id="2_0r3q1"]
@@ -129,6 +129,7 @@
 [ext_resource type="Resource" uid="uid://cyktar8udkjk5" path="res://Data/Prisoners/prisoner_0120.tres" id="123_4b4mp"]
 [ext_resource type="Resource" uid="uid://c1m544cotnywq" path="res://Data/Prisoners/prisoner_0121.tres" id="124_grskq"]
 [ext_resource type="PackedScene" uid="uid://b4c88wj15shu3" path="res://Scenes/Characters/unknown_contact.tscn" id="127_v1auo"]
+[ext_resource type="PackedScene" uid="uid://wfhbot8yylsj" path="res://Scenes/Characters/Projectiles/projectile.tscn" id="128_iij8d"]
 [ext_resource type="PackedScene" uid="uid://xpgtmytw67ym" path="res://Scenes/UI/PlayUi/play_ui.tscn" id="131_2tbbs"]
 [ext_resource type="PackedScene" uid="uid://cqjoajxtl6mxa" path="res://Scenes/MapGenerator/map_generator.tscn" id="131_xv8pf"]
 [ext_resource type="PackedScene" uid="uid://7kk4vbr4iqdq" path="res://Scenes/UI/PauseMenu/pause_menu.tscn" id="132_ed061"]
@@ -149,6 +150,7 @@ prisoner_datas = Array[ExtResource("2_0r3q1")]([ExtResource("3_323lk"), ExtResou
 prisoner_scene = ExtResource("2_5eqfh")
 prisoner_target_move_scene = ExtResource("3_vx1em")
 unknown_contact_scene = ExtResource("127_v1auo")
+projectile = ExtResource("128_iij8d")
 large_popup = ExtResource("7_aw1vj")
 small_popup = ExtResource("8_7u762")
 play_ui = ExtResource("131_2tbbs")

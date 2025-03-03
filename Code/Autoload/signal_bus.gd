@@ -26,6 +26,7 @@ signal SpawnPrisoners()
 signal AllPrisonersSpawned()
 signal SpawnUnknownContacts()
 signal AllUnknownContactsSpawned()
+signal SpawnProjectile(origin:Vector2, target:Vector2)
 
 
 # Menus

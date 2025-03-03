@@ -13,6 +13,8 @@ const FLASH_TIME:float = 0.3
 @onready var action_progress: TextureProgressBar = %action_progress
 @onready var prisoner_id: Label = %prisoner_id
 @onready var flash_panel: Panel = %flash_panel
+@onready var right_melee: Control = %right_melee
+@onready var left_melee: Control = %left_melee
 
 var data:PrisonerData = null
 var selected:bool = false
@@ -58,6 +60,7 @@ var delay_timer:float = 1.0:
 		if delay_timer <= 0.01:
 			_attack()
 			delay_timer = data.active_weapon.delay_before_next_attack
+var melee_flashing:bool =false
 
 
 func _ready() -> void:
@@ -273,6 +276,10 @@ func _attack() -> void:
 
 
 func _perform_one_attack() -> void:
+	if data.active_weapon.weapon_type == WeaponData.Weapon_Type.MELEE:
+		_flash_melee()
+	else:
+		Signals.SpawnProjectile.emit(global_position, current_action.target.global_position)
 	current_action.target.receive_damage(data.active_weapon.get_damage())
 	attack_count += 1
 	if attack_count >= data.active_weapon.attack_count:
@@ -282,6 +289,17 @@ func _perform_one_attack() -> void:
 	else:
 		attack_delay_time = false
 		attack_time = true
+
+
+func _flash_melee() -> void:
+	if not melee_flashing:
+		melee_flashing = true
+		if current_action.target.global_position.x >= global_position.x: right_melee.show()
+		else: left_melee.show()
+		await get_tree().create_timer(FLASH_TIME).timeout
+		right_melee.hide()
+		left_melee.hide()
+		melee_flashing = false
 
 
 func _area_entered(area:Area2D) -> void:

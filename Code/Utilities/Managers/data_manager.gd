@@ -12,6 +12,9 @@ class_name DataManager extends RidManager
 @export_group("Unknown Contacts")
 @export var unknown_contact_scene:PackedScene
 
+@export_group("Stuff")
+@export var projectile:PackedScene
+
 @export_group("UI")
 @export var large_popup:PackedScene
 @export var small_popup:PackedScene

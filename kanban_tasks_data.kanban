@@ -33,14 +33,14 @@
 		{
 			"uuid": "384684ca-71ea-4b38-8bf3-83379331d8e2",
 			"title": "Doing",
-			"tasks": [
-				"b6a23dab-2f0e-4747-adf4-67c74ec5e5ae"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "e5e74ad0-c93c-49b8-bc0e-dfa2d4e023e5",
 			"title": "Done",
 			"tasks": [
+				"975e3e16-bdbe-4af8-a01f-efd0164516fb",
+				"b6a23dab-2f0e-4747-adf4-67c74ec5e5ae",
 				"621d8536-e6c0-4947-8064-0f671c28d818",
 				"393145d6-3b5d-477a-89c4-08b1dda81e7e",
 				"ea64c03c-a45d-4d13-85e9-57be757e0649",
@@ -413,7 +413,14 @@
 		},
 		{
 			"uuid": "b6a23dab-2f0e-4747-adf4-67c74ec5e5ae",
-			"title": "add targetted selector to enemies",
+			"title": "make projectiles for ranged weapons",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "975e3e16-bdbe-4af8-a01f-efd0164516fb",
+			"title": "make effect on sttack side for melee",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []
