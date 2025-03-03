@@ -33,7 +33,7 @@ func set_data(prisoner:PrisonerData) -> void:
 	prisoner_sentence.text = prisoner_data.sentence
 	prisoner_doi.text = prisoner_data.doi
 
-	if prisoner_data.current_status == PrisonerData.Health_Status.DEAD:
+	if prisoner_data.current_health_status == PrisonerData.Health_Status.DEAD:
 		deceased_label.show()
 
 

@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cymk17yxaq6rp" path="res://Data/Fonts/80s-retro-future.ttf" id="3_q2grt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fie3m"]
+resource_local_to_scene = true
 radius = 15.0333
 
 [node name="UnknownContact" type="CharacterBody2D" groups=["unknown_contact"]]

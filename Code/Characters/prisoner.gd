@@ -15,6 +15,7 @@ const FLASH_TIME:float = 0.3
 @onready var flash_panel: Panel = %flash_panel
 @onready var right_melee: Control = %right_melee
 @onready var left_melee: Control = %left_melee
+@onready var hp_bar: ProgressBar = %hp_bar
 
 var data:PrisonerData = null
 var selected:bool = false
@@ -24,7 +25,7 @@ var interactible_name:StringName = ""
 var is_alive:bool:
 	get:
 		if data == null: return true
-		return data.current_status != PrisonerData.Health_Status.DEAD or data.current_status != PrisonerData.Health_Status.CRYO
+		return data.current_health_status != PrisonerData.Health_Status.DEAD or data.current_health_status != PrisonerData.Health_Status.CRYO
 
 # Actions 
 var actions:Array[PrisonerActionData] = []
@@ -125,10 +126,15 @@ func _physics_process(delta: float) -> void:
 				_start_attack_action()
 
 
+func _exit_tree() -> void:
+	queue_free()
+
+
 func setup_prisoner(new_data:PrisonerData) -> void:
 	data = new_data
 	prisoner_id.text = "P" + str(data.display_id)
-	data.current_status = data.default_status
+	data.current_health_status = data.default_health_status
+	hp_bar.value = float(data.current_hp) / float(data.base_hp)
 
 
 func grab_prisoner_focus() -> void:
@@ -142,10 +148,11 @@ func receive_damage(damage:Damage) -> void:
 			Signals.DisplayDamageNumber.emit(value, global_position)
 			if display_debug: Debug.log("%s received %s damage." % [data.display_name, value])
 			_flash_for_damage()
+			hp_bar.value = float(data.current_hp) / float(data.base_hp)
 			Signals.PrisonerHpUpdated.emit(data)
 		
 		if data.current_hp <= 0:
-			data.current_status = PrisonerData.Health_Status.DEAD
+			data.current_health_status = PrisonerData.Health_Status.DEAD
 			data.current_action_state = PrisonerData.Action_State.DEAD
 			Signals.PrisonerDeath.emit(data)
 
@@ -183,10 +190,9 @@ func _set_nav_agent_target_pos() -> void:
 
 
 func _flash_for_damage() -> void:
-	if not flash_panel.is_visible():
+	if is_alive and not flash_panel.is_visible():
 		flash_panel.show()
-		await get_tree().create_timer(FLASH_TIME).timeout
-		flash_panel.hide()
+		if get_tree() != null: get_tree().create_timer(FLASH_TIME).timeout.connect(flash_panel.hide)
 
 
 func _move_to(delta:float, current_velocity:Vector2, _direction:Vector2, multi:float = 1.0) -> Vector2:
@@ -276,19 +282,26 @@ func _attack() -> void:
 
 
 func _perform_one_attack() -> void:
-	if data.active_weapon.weapon_type == WeaponData.Weapon_Type.MELEE:
-		_flash_melee()
+	if current_action.target != null and current_action.target.is_alive:
+		if data.active_weapon.weapon_type == WeaponData.Weapon_Type.MELEE:
+			_flash_melee()
+		else:
+			Signals.SpawnProjectile.emit(global_position, current_action.target.global_position)
+		current_action.target.receive_damage(data.active_weapon.get_damage())
+		attack_count += 1
+		if attack_count >= data.active_weapon.attack_count:
+			delay_timer = data.active_weapon.delay_before_next_attack
+			attack_delay_time = true
+			attack_time = false
+		else:
+			attack_delay_time = false
+			attack_time = true
 	else:
-		Signals.SpawnProjectile.emit(global_position, current_action.target.global_position)
-	current_action.target.receive_damage(data.active_weapon.get_damage())
-	attack_count += 1
-	if attack_count >= data.active_weapon.attack_count:
-		delay_timer = data.active_weapon.delay_before_next_attack
-		attack_delay_time = true
-		attack_time = false
-	else:
+		current_action = null
 		attack_delay_time = false
-		attack_time = true
+		delay_timer = data.active_weapon.delay_before_next_attack
+		attack_time = false
+		attack_timer = data.active_weapon.time_between_attacks
 
 
 func _flash_melee() -> void:
@@ -338,3 +351,4 @@ func _finish_interaction() -> void:
 
 	current_action.is_active = false
 	current_action = null
+

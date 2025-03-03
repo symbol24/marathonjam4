@@ -16,7 +16,7 @@ enum Firemode {
 
 @export var weapon_type:Weapon_Type = Weapon_Type.PROJECTILE
 @export var damage_type:Damage.Type = Damage.Type.PHYSICAL
-@export var base_damage:float = 1.0
+@export var base_damage:float = 10.0
 @export var base_critical_chance:float = 0.0
 @export var base_critical_bonus:float = 0.0
 ## Time between bursts of attacks

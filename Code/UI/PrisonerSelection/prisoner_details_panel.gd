@@ -27,6 +27,7 @@ var prisoner_data:PrisonerData
 
 func _ready() -> void:
 	Signals.BtnSelectPrisonerPressed.connect(_update_prisoner_detail)
+	Signals.PrisonerActivated.connect(_update_health_status)
 	btn_select_prisoner.pressed.connect(_btn_select_prisoner_pressed)
 
 
@@ -37,7 +38,7 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 	
 	prisoner_headshot.texture = prisoner_data.headshot_normal
 	prisoner_name.text = tr(prisoner_data.display_name)
-	prisoner_status.text = tr(PrisonerData.Health_Status.keys()[prisoner_data.current_status])
+	prisoner_status.text = tr(PrisonerData.Health_Status.keys()[prisoner_data.current_health_status])
 	prisoner_height.text = str(prisoner_data.height) + "cm"
 	prisoner_weight.text = str(prisoner_data.weight) + "kg"
 	prisoner_dob.text = prisoner_data.dob
@@ -60,5 +61,9 @@ func _update_prisoner_detail(new_prisoner:PrisonerData) -> void:
 
 
 func _btn_select_prisoner_pressed() -> void:
-	prisoner_data.current_status = prisoner_data.default_status
 	Signals.ActivatePrisonerData.emit(prisoner_data)
+
+
+func _update_health_status(data:PrisonerData) -> void:
+	if data == prisoner_data:
+		prisoner_status.text = tr(PrisonerData.Health_Status.keys()[prisoner_data.current_health_status])

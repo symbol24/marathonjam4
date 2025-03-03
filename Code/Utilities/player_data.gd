@@ -2,6 +2,7 @@ class_name PlayerData extends Resource
 
 
 const WEB_CANCEL:Key = KEY_BACKSPACE
+const MAX_PRISONERS_ACTIVE:int = 5
 
 
 @export_category("Basics")
@@ -131,7 +132,7 @@ func reset() -> void:
 func get_dead_prisoners() -> int:
 	var result:int = 0
 	for prisoner in prisoners:
-		if prisoner.current_status == PrisonerData.Health_Status.DEAD:
+		if prisoner.current_health_status == PrisonerData.Health_Status.DEAD:
 			result += 1
 	return result
 
@@ -139,6 +140,6 @@ func get_dead_prisoners() -> int:
 func get_crystasis_prisoner() -> int:
 	var not_cryo:int = active_prisoners.size()
 	for prisoner in prisoners:
-		if prisoner.current_status == PrisonerData.Health_Status.DEAD:
+		if prisoner.current_health_status == PrisonerData.Health_Status.DEAD:
 			not_cryo += 1
 	return prisoners.size() - not_cryo

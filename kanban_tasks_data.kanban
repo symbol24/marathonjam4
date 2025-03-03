@@ -13,7 +13,6 @@
 			"tasks": [
 				"19d122ab-00aa-45ab-baf3-47331bf0f7fe",
 				"37fa6565-7d01-4294-941e-b589dac4f7a7",
-				"21f81ea5-2ce1-469c-9abc-2950179b260e",
 				"0dc785e0-46d5-41bb-bc3b-792e08a868ff",
 				"e0c0571a-a0ca-4cd2-9cb0-d9781522a28e",
 				"3a71316f-513d-4885-9219-111d4f04271a",
@@ -39,6 +38,9 @@
 			"uuid": "e5e74ad0-c93c-49b8-bc0e-dfa2d4e023e5",
 			"title": "Done",
 			"tasks": [
+				"144707f3-d656-43ab-bcb4-aa5e53c6ba3c",
+				"c703cff4-9786-4f7d-9275-b4457c3e1187",
+				"21f81ea5-2ce1-469c-9abc-2950179b260e",
 				"975e3e16-bdbe-4af8-a01f-efd0164516fb",
 				"b6a23dab-2f0e-4747-adf4-67c74ec5e5ae",
 				"621d8536-e6c0-4947-8064-0f671c28d818",
@@ -421,6 +423,20 @@
 		{
 			"uuid": "975e3e16-bdbe-4af8-a01f-efd0164516fb",
 			"title": "make effect on sttack side for melee",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "c703cff4-9786-4f7d-9275-b4457c3e1187",
+			"title": "death of prisoners",
+			"description": "",
+			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
+			"steps": []
+		},
+		{
+			"uuid": "144707f3-d656-43ab-bcb4-aa5e53c6ba3c",
+			"title": "death of UC",
 			"description": "",
 			"category": "b53c7aa6-1138-49d9-8bc3-554b7961c3f8",
 			"steps": []

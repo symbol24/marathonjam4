@@ -376,7 +376,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label2" type="Label" parent="prisoners_active/VBoxContainer"]
+[node name="prisoner_count_label" type="Label" parent="prisoners_active/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "0/5"

@@ -19,6 +19,8 @@ var game_manager:GameManager:
 		return game_manager
 var to_spawn_count:int = -1
 var current_count:int = 0
+var prisoners:Array[Prisoner] = []
+var ucs:Array[UnknownContact] = []
 
 
 func _ready() -> void:
@@ -27,6 +29,8 @@ func _ready() -> void:
 	Signals.SpawnUnknownContacts.connect(_spawn_unknown_contacts)
 	Signals.SendQueueFreeOfPlayManagers.connect(queue_free)
 	Signals.SpawnProjectile.connect(_spawn_projectile)
+	Signals.PrisonerDeath.connect(_remove_prisoner)
+	Signals.UnknownContactDeath.connect(_remove_unknown_contact)
 
 
 func _spawn_prisoner() -> void:
@@ -38,34 +42,34 @@ func _spawn_prisoner() -> void:
 
 
 func _spawn_a_prisoner(prisoner_data:PrisonerData) -> void:
-	#Debug.log(prisoner_data)
-	if prisoner_data != null:
-		var new:Prisoner = data_manager.prisoner_scene.instantiate()
-		active_level.add_child.call_deferred(new)
-		if not new.is_node_ready(): await new.ready
+	if prisoner_data != null and not prisoner_data.current_health_status in [PrisonerData.Health_Status.CRYO, PrisonerData.Health_Status.DEAD]:
+		var prisoner:Prisoner = data_manager.prisoner_scene.instantiate()
+		active_level.add_child.call_deferred(prisoner)
+		if not prisoner.is_node_ready(): await prisoner.ready
 		prisoner_data.display_id = current_count + 1
-		new.setup_prisoner(prisoner_data)
-		new.global_position = Vector2(randi_range(100,200), randi_range(100,200))
-		new.name = prisoner_data.id
-		current_count += 1
-		if current_count >= to_spawn_count:
-			Signals.AllPrisonersSpawned.emit()
-			
-		#Debug.log("Prisoner %s spawned" % prisoner_data.display_name)
+		prisoner.setup_prisoner(prisoner_data)
+		prisoner.global_position = Vector2(randi_range(100,200), randi_range(100,200))
+		prisoner.name = prisoner_data.id
+		prisoners.append(prisoner)
+
+	current_count += 1
+	if current_count >= to_spawn_count:
+		Signals.AllPrisonersSpawned.emit()
 
 
 func _spawn_unknown_contacts() -> void:
-	var ucs:Array = get_tree().get_nodes_in_group("enemy_spawn_tag")
+	var spawn_points:Array = get_tree().get_nodes_in_group("enemy_spawn_tag")
 	var spawn_count:int = 0
-	for contact in ucs:
+	for contact in spawn_points:
 		var data:UnknownContactData = UnknownContactData.new()
 		data.setup_data()
-		var new_enemy:UnknownContact = data_manager.unknown_contact_scene.instantiate()
-		active_level.add_child(new_enemy)
-		if not new_enemy.is_node_ready(): await new_enemy.ready
-		new_enemy.setup_uc(data, contact.global_position, spawn_count)
+		var enemy:UnknownContact = data_manager.unknown_contact_scene.instantiate()
+		active_level.add_child(enemy)
+		if not enemy.is_node_ready(): await enemy.ready
+		enemy.setup_uc(data, contact.global_position, spawn_count)
+		ucs.append(enemy)
 		spawn_count += 1
-		if spawn_count >= ucs.size()-1:
+		if spawn_count >= spawn_points.size()-1:
 			Signals.AllUnknownContactsSpawned.emit()
 
 
@@ -75,3 +79,27 @@ func _spawn_projectile(origin_pos:Vector2, target_pos:Vector2) -> void:
 	if not proj.is_node_ready(): await proj.ready
 	proj.global_position = origin_pos
 	proj.setup_projectile(target_pos)
+
+
+func _remove_prisoner(data:PrisonerData) -> void:
+	var prisoner:Prisoner
+	for each in prisoners:
+		if each != null and each.data == data:
+			prisoner = each
+			break
+
+	if prisoner != null: 
+		prisoners.remove_at(prisoners.find(prisoner))
+		active_level.remove_child.call_deferred(prisoner)
+
+
+func _remove_unknown_contact(data:UnknownContactData) -> void:
+	var uc:UnknownContact
+	for each in ucs:
+		if each != null and each.data == data:
+			uc = each
+			break
+
+	if uc != null: 
+		ucs.remove_at(ucs.find(uc))
+		active_level.remove_child.call_deferred(uc)

@@ -9,6 +9,7 @@ const PRISONER_ACTIVE_DISPLAY:String = "res://Scenes/UI/PrisonerSelection/prison
 
 @onready var active_prisoners_panel_btn: Button = %active_prisoners_panel_btn
 @onready var prisoners_active_list: VBoxContainer = %prisoners_active_list
+@onready var prisoner_count_label: Label = %prisoner_count_label
 
 var displayed:bool = false
 var sliding:bool = false
@@ -72,6 +73,8 @@ func _update_active_prisoners(prisoners:Array[PrisonerData]) -> void:
 			prisoners_active_list.add_child(new_prisoner)
 			if not new_prisoner.is_node_ready(): await new_prisoner.ready
 			new_prisoner.setup_data(prisoner)
+		
+		prisoner_count_label.text = str(prisoners.size()) + "/" + str(PlayerData.MAX_PRISONERS_ACTIVE)
 
 
 func _clear_prisoners() -> void:

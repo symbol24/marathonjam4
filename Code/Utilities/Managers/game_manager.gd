@@ -42,19 +42,24 @@ func _toggle_pause_game(pause:bool = false) -> void:
 
 
 func _activate_prisoner(new_prisoner:PrisonerData) -> void:
-	if save_manager.active_save.current_prisoners.has(new_prisoner):
-		Debug.warning("Save current prisoners already contains prisoner %s. Prisoner not added" % new_prisoner.id)
-	else:
-		save_manager.active_save.current_prisoners.append(new_prisoner)
+	if save_manager.active_save.active_prisoners.size() < PlayerData.MAX_PRISONERS_ACTIVE:
+		if save_manager.active_save.current_prisoners.has(new_prisoner):
+			Debug.warning("Save current prisoners already contains prisoner %s. Prisoner not added" % new_prisoner.id)
+		else:
+			new_prisoner.current_health_status = new_prisoner.default_health_status
+			save_manager.active_save.current_prisoners.append(new_prisoner)
+			Signals.PrisonerActivated.emit(new_prisoner)
 
-	if save_manager.active_save.active_prisoners.has(new_prisoner.id):
-			Debug.warning("Save active prisoners already contains prisoner %s. Prisoner not added" % new_prisoner.id)
+		if save_manager.active_save.active_prisoners.has(new_prisoner.id):
+				Debug.warning("Save active prisoners already contains prisoner %s. Prisoner not added" % new_prisoner.id)
+		else:
+			save_manager.active_save.active_prisoners.append(new_prisoner.id)
+		
+		Signals.UpdateActivePrisonersPanel.emit(save_manager.active_save.current_prisoners)
+		# TODO: Make sure the prisoner name is displayed in popup
+		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "activated_prisoner", RidPopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text"), 3)
 	else:
-		save_manager.active_save.active_prisoners.append(new_prisoner.id)
-	
-	Signals.UpdateActivePrisonersPanel.emit(save_manager.active_save.current_prisoners)
-	# TODO: Make sure the prisoner name is displayed in popup
-	Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "activated_prisoner", RidPopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text"), 3)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "max_activated_prisoner", RidPopupManager.Severity.NORMAL, "", tr("popup_max_activated_prisoner_text"), 3)
 
 	
 func _select_ship_and_name(ship_name:String = "SS Botany Bay", ship_id:int = 1701) -> void:

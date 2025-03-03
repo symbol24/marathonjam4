@@ -25,8 +25,8 @@ enum Action_State {
 @export var headshot_small_path:String = ""
 
 @export var base_hp:int = 100
-## Values not below 30 to start
-@export var base_movement_speed:float = 50
+@export var current_hp:int = base_hp
+@export var base_movement_speed:float = 50 # Values not below 30 to start
 
 @export var base_strength:int = 1
 @export var base_agility:int = 1
@@ -43,23 +43,29 @@ enum Action_State {
 @export var criminal_record:String = ""
 @export var education:String = ""
 
-@export var current_status:Health_Status = Health_Status.CRYO
+@export var current_health_status:Health_Status = Health_Status.CRYO
 
+# Ui stuff
+var display_id:int
 var headshot_normal:CompressedTexture2D = null
 var headshot_small:CompressedTexture2D = null
-var default_status:Health_Status:
+
+# Health
+var default_health_status:Health_Status:
 	get: return get_default_value()
 var move_speed:float:
 	get: return base_movement_speed
-var current_hp:int = base_hp
+
+# Inventory
 var inventory:Array[LootItem] = []
 var active_armor:ArmourData = null
 var active_weapon:WeaponData = WeaponData.new()
+
+# Action State
 var current_action_state:Action_State = Action_State.IDLE:
 	set(value):
 		current_action_state = value
 		Signals.PrisonerActionStateUpdated.emit(self)
-var display_id:int
 
 
 func add_items_to_intentory(new_items:Array[LootItem] = []) -> void:

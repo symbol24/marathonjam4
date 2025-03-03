@@ -16,6 +16,14 @@ signal PrisonerHeadshotsLoaded()
 signal LoadPrisonerHeadshots(prisoner_array:Array[PrisonerData])
 
 
+# Game Manager
+signal PrisonerActivated(data:PrisonerData)
+signal SelectShipAndName(ship_name:String, ship_id:int)
+signal AbandonCurrentRun()
+signal TogglePauseGame(pause:bool)
+signal CompleteRoom()
+
+
 # Level
 signal LevelReady(level:Node)
 signal SendQueueFreeOfPlayManagers()
@@ -53,6 +61,10 @@ signal ClearMoveToTargets(prisoner:Prisoner)
 signal PrisonerHpUpdated(data:PrisonerData)
 signal PrisonerDeath(data:PrisonerData)
 signal PrisonerActionStateUpdated(data:PrisonerData)
+
+
+# Unknown Contacts
+signal UnknownContactDeath(data:UnknownContactData)
 
 
 # UI
@@ -117,13 +129,6 @@ signal BtnSelectPrisonerPressed(prisoner_data:PrisonerData)
 signal ActivatePrisonerData(prisoner_data:PrisonerData)
 signal ActivatePrisonerDataFromId(id:String)
 signal UpdateActivePrisonersPanel(prisoners:Array[PrisonerData])
-
-
-# Game Manager
-signal SelectShipAndName(ship_name:String, ship_id:int)
-signal AbandonCurrentRun()
-signal TogglePauseGame(pause:bool)
-signal CompleteRoom()
 
 
 # Elements

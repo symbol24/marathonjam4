@@ -57,6 +57,10 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
+func _exit_tree() -> void:
+	queue_free.call_deferred()
+
+
 func setup_uc(uc_data:UnknownContactData, pos:Vector2, id:int) -> void:
 	data = uc_data
 	data.setup_data()
@@ -66,7 +70,7 @@ func setup_uc(uc_data:UnknownContactData, pos:Vector2, id:int) -> void:
 	data.id = "UC_" + str(id) 
 	name = "UC_" + str(id)
 	prisoners = get_tree().get_nodes_in_group("prisoner")
-	hp_bar.value = data.current_hp / data.max_hp
+	hp_bar.value = float(data.current_hp) / float(data.max_hp)
 
 
 func receive_damage(damage:Damage) -> void:
@@ -79,12 +83,15 @@ func receive_damage(damage:Damage) -> void:
 			if display_debug: Debug.log("current hp: ", data.current_hp, " max hp: ", data.max_hp)
 			hp_bar.value = float(data.current_hp) / float(data.max_hp)
 
+			if data.current_hp <= 0:
+				is_alive = false
+				Signals.UnknownContactDeath.emit(data)
+
 
 func _flash_for_damage() -> void:
-	if not flash_panel.is_visible():
+	if is_alive and not flash_panel.is_visible():
 		flash_panel.show()
-		await get_tree().create_timer(Prisoner.FLASH_TIME).timeout
-		flash_panel.hide()
+		if get_tree() != null: get_tree().create_timer(Prisoner.FLASH_TIME).timeout.connect(flash_panel.hide)
 
 
 func _set_move_to_target(target_position:Vector2) -> void:
@@ -101,14 +108,14 @@ func _attack(target:Prisoner) -> void:
 	if data.state != UnknownContactData.State.COMBAT:
 		data.set_state(UnknownContactData.State.COMBAT)
 		
-	if can_attack and current_attack_target.is_alive:
+	if can_attack and current_attack_target != null and current_attack_target.is_alive:
 		if display_debug: Debug.log(name, " is perfoming its attack!")
 		can_attack = false
 		nav_agent.target_position = global_position
 		if target != null:
 			_perform_one_attack(data.active_weapon.get_damage(), data.active_weapon.attack_count, data.active_weapon.time_between_attacks)
 	
-	elif can_attack and not current_attack_target.is_alive:
+	elif can_attack and current_attack_target != null and not current_attack_target.is_alive:
 		_reset_state()
 		
 
@@ -160,7 +167,7 @@ func _get_closest_prisoner() -> Prisoner:
 	var closest:Prisoner = null
 	var last_distance:float = -1.0
 	for each in prisoners:
-		if each.is_alive:
+		if each != null and each.is_alive:
 			var new_distance:float = global_position.distance_squared_to(each.global_position)
 			if last_distance == -1:
 				closest = each
