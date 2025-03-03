@@ -8,6 +8,7 @@ const LOAD_TIME:float = 3.0
 @onready var godot: AnimatedSprite2D = %godot
 @onready var loading_progression_bar: TextureProgressBar = %loading_progression_bar
 
+var load_start:bool = false
 var can_load:bool = false
 var load_done:bool = false
 var timer:float = LOAD_TIME:
@@ -21,12 +22,16 @@ var timer:float = LOAD_TIME:
 func _ready() -> void:
 	Signals.ManagerLoaded.connect(_loading)
 	_load_loader()
+	await get_tree().create_timer(0.5).timeout
+	godot.show()
+	loading_progression_bar.show()
 	await get_tree().create_timer(0.3).timeout
+	load_start = true
 	godot.play("godot")
 
 
 func _process(delta: float) -> void:
-	if not can_load: timer -= delta
+	if load_start and not can_load: timer -= delta
 	if can_load and load_done: _load_done()
 
 
@@ -35,16 +40,16 @@ func _load_loader() -> void:
 		var loader:ManagerLoader = manager_loader.instantiate()
 		get_parent().add_child.call_deferred(loader)
 		if not loader.is_node_ready(): await loader.ready
-		Signals.LoadManager.emit("save_manager")
+		Signals.LoadManager.emit("data_manager")
 
 
 func _loading(manager_name:String) -> void:
 	match manager_name:
-		"save_manager":
-			Signals.LoadManager.emit("data_manager")
 		"data_manager":
 			Signals.LoadManager.emit("ui_manager")
 		"ui_manager":
+			Signals.LoadManager.emit("save_manager")
+		"save_manager":
 			Signals.LoadManager.emit("scene_manager")
 		"scene_manager":
 			Signals.LoadManager.emit("game_manager")

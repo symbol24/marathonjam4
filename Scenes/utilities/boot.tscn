@@ -101,6 +101,7 @@ id = "boot"
 
 [node name="godot" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(960, 424)
 sprite_frames = SubResource("SpriteFrames_lebmv")
 animation = &"godot"
@@ -109,6 +110,7 @@ frame_progress = 1.0
 
 [node name="loading_progression_bar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1200, 100)
 layout_mode = 0
 offset_left = 360.0

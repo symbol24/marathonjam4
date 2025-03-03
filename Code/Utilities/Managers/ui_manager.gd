@@ -5,6 +5,8 @@ const SAVE_ICON_DISPLAY_TIME:float = 6.0
 const SAVE_ICON_TWEEN_TIME:float = 0.5
 
 
+@onready var crtscreen: ColorRect = %CRTScreen
+
 var play_ui:PlayUi = null
 var pause_menu:PauseMenu = null
 var save_icon:Control = null
@@ -27,6 +29,7 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	Signals.TogglePlayUi.connect(_toggle_play_ui)
 	Signals.DisplaySaveIcon.connect(_display_save_icon)
+	Signals.ToggleCRTEffects.connect(_toggle_crt)
 
 
 func _toggle_play_ui(display:bool = false) -> void:
@@ -91,3 +94,11 @@ func _display_save_icon() -> void:
 			save_icon.hide()
 			await get_tree().create_timer(SAVE_ICON_TWEEN_TIME).timeout
 			i -= 1
+
+
+func _toggle_crt(display:bool = false) -> void:
+	Debug.log("Received toggle: ", display)
+	if display:
+		crtscreen.show()
+	else:
+		crtscreen.hide()

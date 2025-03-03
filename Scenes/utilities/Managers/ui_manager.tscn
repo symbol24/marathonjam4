@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dew6agc1588r3"]
+[gd_scene load_steps=7 format=3 uid="uid://dew6agc1588r3"]
 
 [ext_resource type="PackedScene" uid="uid://ckkvhmv1d5svm" path="res://Scenes/Debug/debug_command_menu.tscn" id="1_8qu8m"]
 [ext_resource type="PackedScene" uid="uid://cklw3jbgocru3" path="res://Scenes/UI/Popups/popup_manager.tscn" id="1_n6wcb"]
 [ext_resource type="Script" path="res://Code/Debug/debug_ui.gd" id="1_qmtsh"]
 [ext_resource type="Script" path="res://Code/Utilities/Managers/ui_manager.gd" id="1_w8v3o"]
 [ext_resource type="PackedScene" uid="uid://to313svmi6t6" path="res://Scenes/UI/loading_screen.tscn" id="2_04ojx"]
+[ext_resource type="Script" path="res://addons/crt_shader/crt_screen.gd" id="2_aqgr3"]
 
 [node name="UiManager" type="CanvasLayer"]
 script = ExtResource("1_w8v3o")
@@ -28,3 +29,13 @@ visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 600.0
+
+[node name="CRTScreen" type="ColorRect" parent="."]
+unique_name_in_owner = true
+top_level = true
+z_index = 4096
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("2_aqgr3")
