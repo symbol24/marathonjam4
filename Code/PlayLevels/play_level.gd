@@ -60,13 +60,13 @@ func _load_managers(manager:String = "start"):
 
 func _prisoners_all_spawned() -> void:
 	await get_tree().create_timer(0.5).timeout
-	Signals.ToggleLoadingScreen.emit(true, "play_level_done", 5)
+	Signals.ToggleLoadingScreen.emit(true, "play_level_done_prisoners", 5)
 	Signals.TogglePlayUi.emit(true)
 	Signals.SpawnUnknownContacts.emit()
 
 
 func _all_ucs_spawned() -> void:
-	Signals.ToggleLoadingScreen.emit(true, "play_level_done", 5)
+	Signals.ToggleLoadingScreen.emit(true, "play_level_done_ucs", 5)
 	#Signals.TogglePlayUi.emit(true)
 
 

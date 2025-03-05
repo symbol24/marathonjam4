@@ -335,7 +335,7 @@ func _finish_interaction() -> void:
 					"pickup":
 						if result["result"]:
 							if data != null: data.add_items_to_intentory(loot)
-							Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "pickup_loot", RidPopupManager.Severity.NORMAL, "", "Items picked up", 3)
+							Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "pickup_loot", RidPopupManager.Severity.NORMAL, "", tr("popup_item_picked_up_text"), 3)
 							Signals.InteractibleStateUpdate.emit(int_data, Interactible.State.DEPLETED)
 					"search":
 						if result["result"]:
@@ -345,7 +345,7 @@ func _finish_interaction() -> void:
 						if result["result"] and result.has("state"):
 							Signals.InteractibleStateUpdate.emit(int_data, result["state"])
 						else:
-							Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "seal_thing", RidPopupManager.Severity.NORMAL, "", "Unable to complete action.", 3)
+							Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "seal_thing", RidPopupManager.Severity.NORMAL, "", tr("popup_unable_to_complete_action_text"), 3)
 
 			if display_debug: Debug.log("Action complete")
 

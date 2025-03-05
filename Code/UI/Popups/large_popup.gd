@@ -5,7 +5,7 @@ class_name LargePopup extends RidPopup
 @export var error:CompressedTexture2D
 
 @onready var icon: TextureRect = %icon
-@onready var title: RichTextLabel = %title
+@onready var title: Label = %title
 @onready var timer: Label = %timer
 @onready var text: RichTextLabel = %text
 @onready var btn_popup_confirm: Button = %btn_popup_confirm

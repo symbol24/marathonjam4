@@ -142,7 +142,7 @@ func toggle_display(display:bool = false) -> void:
 func _btn_main_menu_settings_close_pressed() -> void:
 	if pending_changes:
 		popup_displayed = true
-		Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_pending_changes_close", RidPopupManager.Severity.WARNING, "setting_pending_changes_close_title", "setting_pending_changes_close_text", 0)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_pending_changes_close", RidPopupManager.Severity.WARNING, tr("setting_pending_changes_close_title"), tr("setting_pending_changes_close_text"), 0)
 	else:
 		toggle_display(false)
 
@@ -151,7 +151,7 @@ func _btn_main_menu_settings_apply_pressed() -> void:
 	if pending_changes:
 		#_save_updates_to_player_data()
 		popup_displayed = true
-		Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_pending_changes_apply", RidPopupManager.Severity.NORMAL, "setting_pending_changes_apply_title", "setting_pending_changes_apply_text", 0)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_pending_changes_apply", RidPopupManager.Severity.NORMAL, tr("setting_pending_changes_apply_title"), tr("setting_pending_changes_apply_text"), 0)
 
 
 # General
@@ -214,7 +214,7 @@ func _window_option_btn_item_selected(new_value:int) -> void:
 	window_mode = new_value as Window_Mode
 	_set_display_mode(window_mode)
 	popup_displayed = true
-	Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_window_mode_changes", RidPopupManager.Severity.NORMAL, "setting_window_mode_changes_title", "setting_window_mode_changes_text", 15)
+	Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_window_mode_changes", RidPopupManager.Severity.NORMAL, tr("setting_window_mode_changes_title"), tr("setting_window_mode_changes_text"), 15)
 
 
 func _keep_window_mode_change() -> void:
@@ -238,7 +238,7 @@ func _update_window_size(new_size_id:int) -> void:
 	if save_manager.active_save.window_mode != Window_Mode.FULLSCREEN:
 		get_window().size = current_size
 	popup_displayed = true
-	Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_resolution_changes", RidPopupManager.Severity.NORMAL, "setting_resolution_changes_title", "setting_resolution_changes_text", 15)
+	Signals.DisplayPopup.emit(RidPopupManager.Type.LARGE, "setting_resolution_changes", RidPopupManager.Severity.NORMAL, tr("setting_resolution_changes_title"), tr("setting_resolution_changes_text"), 15)
 
 
 func _setup_window_resolutions() -> void:
@@ -346,10 +346,11 @@ func _save_updates_to_player_data() -> void:
 
 
 func _get_int_from_locale(lang:String) -> int:
+	Debug.log(lang)
 	match lang:
 		"fr":
 			return 1
-		"fr_CA":
+		"fr-CA":
 			return 2
 		_:
 			return 0

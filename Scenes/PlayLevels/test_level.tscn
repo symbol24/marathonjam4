@@ -88,7 +88,7 @@ item_data = ExtResource("11_o5u1p")
 script = ExtResource("4_a7j1o")
 table = Array[ExtResource("5_4ovry")]([SubResource("Resource_tvd6t"), SubResource("Resource_y32s6"), SubResource("Resource_53xpo"), SubResource("Resource_4dc4d")])
 
-[sub_resource type="Resource" id="Resource_232vm"]
+[sub_resource type="Resource" id="Resource_y7skj"]
 resource_local_to_scene = true
 script = ExtResource("5_magcv")
 type = 2
@@ -117,20 +117,28 @@ navigation_polygon = SubResource("NavigationPolygon_hkvji")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
 [node name="pickup_item" parent="." instance=ExtResource("3_84dlm")]
-position = Vector2(374, 423)
+position = Vector2(390, 480)
 data = SubResource("Resource_wdq6s")
 
 [node name="OpenItem" parent="." instance=ExtResource("4_iutrr")]
-position = Vector2(289, 522)
+position = Vector2(331, 666)
 data = SubResource("Resource_h3x2u")
 
 [node name="locked_item" parent="." instance=ExtResource("4_iutrr")]
-position = Vector2(251, 499)
+position = Vector2(165, 570)
 data = SubResource("Resource_u2rpt")
 
 [node name="searchable_item" parent="." instance=ExtResource("4_iutrr")]
-position = Vector2(515, 494)
-data = SubResource("Resource_232vm")
+position = Vector2(518, 579)
+data = SubResource("Resource_y7skj")
+
+[node name="EnemySpawnTag" type="Marker2D" parent="." groups=["enemy_spawn_tag"]]
+position = Vector2(1316, 577)
+script = ExtResource("12_x6n7y")
+
+[node name="EnemySpawnTag3" type="Marker2D" parent="." groups=["enemy_spawn_tag"]]
+position = Vector2(1313, 748)
+script = ExtResource("12_x6n7y")
 
 [node name="btn_debug_complete" type="Button" parent="."]
 unique_name_in_owner = true
@@ -140,11 +148,3 @@ offset_top = 940.0
 offset_right = 1895.0
 offset_bottom = 1058.0
 text = "DEBUG COMPLETE ENCOUNTER"
-
-[node name="EnemySpawnTag" type="Marker2D" parent="." groups=["enemy_spawn_tag"]]
-position = Vector2(1316, 577)
-script = ExtResource("12_x6n7y")
-
-[node name="EnemySpawnTag3" type="Marker2D" parent="." groups=["enemy_spawn_tag"]]
-position = Vector2(1136, 958)
-script = ExtResource("12_x6n7y")

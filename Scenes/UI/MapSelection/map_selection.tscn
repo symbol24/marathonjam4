@@ -150,38 +150,56 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "100%"
 
-[node name="Label9" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+[node name="prisoner_label" type="Label" parent="ship_details_panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "map_selection_prisoner_label"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+uppercase = true
+
+[node name="GridContainer2" type="GridContainer" parent="ship_details_panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Label9" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "map_active_prisoners_label"
 clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="active_prisoners" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+[node name="active_prisoners" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "000"
 
-[node name="Label11" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+[node name="Label11" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "map_cryo_prisoners_label"
 clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="cryostasis_prisoner" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+[node name="cryostasis_prisoner" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "000"
 
-[node name="Label13" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+[node name="Label13" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "map_dead_prisoners_label"
 clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="dead_prisoners" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer"]
+[node name="dead_prisoners" type="Label" parent="ship_details_panel/VBoxContainer/GridContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "000"
@@ -211,6 +229,7 @@ uppercase = true
 
 [node name="GridContainer" type="GridContainer" parent="legend_panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 20
 columns = 2
 
 [node name="Control" type="Control" parent="legend_panel/VBoxContainer/GridContainer"]

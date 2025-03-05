@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://xpgtmytw67ym"]
+[gd_scene load_steps=7 format=3 uid="uid://xpgtmytw67ym"]
 
 [ext_resource type="Script" path="res://Code/UI/PlayUi/play_ui.gd" id="1_i4ul4"]
 [ext_resource type="PackedScene" uid="uid://dy4dv7h33imjw" path="res://Scenes/UI/PlayUi/prisoner_play_ui_panel.tscn" id="2_rjk1v"]
 [ext_resource type="Script" path="res://Code/Elements/Wrappers/element_control.gd" id="3_ic0sg"]
-[ext_resource type="StyleBox" uid="uid://h312rdmuejqo" path="res://Data/ThemeStyles/prisoner_play_normal.tres" id="3_tp2ex"]
 [ext_resource type="Script" path="res://Code/UI/damage_number_display.gd" id="3_xbytq"]
 [ext_resource type="PackedScene" uid="uid://c7ayc88y2ba75" path="res://Scenes/UI/PlayUi/damage_number.tscn" id="4_jaauw"]
 [ext_resource type="Script" path="res://Code/Elements/Wrappers/element_button.gd" id="5_3ywwo"]
@@ -103,13 +102,14 @@ columns = 2
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 30.0
-offset_right = 70.0
-offset_bottom = 40.0
-rotation = 0.785398
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendPrisonerIcon"
 
 [node name="prionser_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
@@ -121,13 +121,14 @@ uppercase = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control7"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control7"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 30.0
-offset_right = 70.0
-offset_bottom = 40.0
-rotation = 0.785398
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendUCIcon"
 
 [node name="prionser_label2" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
@@ -139,12 +140,14 @@ uppercase = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control2"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control2"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 10.0
-offset_right = 50.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendPickupIcon"
 
 [node name="pikup_item_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
@@ -156,12 +159,14 @@ uppercase = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control3"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control3"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 10.0
-offset_right = 50.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendSearchableIcon"
 
 [node name="searchable_item" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
@@ -173,12 +178,29 @@ uppercase = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control4"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control4"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 10.0
-offset_right = 50.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendLockedIcon"
+
+[node name="locked" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control4/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 16)
+offset_left = 14.0
+offset_top = 23.0
+offset_right = 46.0
+offset_bottom = 43.0
+scale = Vector2(0.6, 0.6)
+theme_type_variation = &"InteractItemPanel"
+
+[node name="Line2D" type="Line2D" parent="legend/VBoxContainer/legend_grid/icon_control4/PanelContainer/locked"]
+points = PackedVector2Array(2, 0, 2, -5, 3, -9, 5, -12, 8, -14, 11, -15, 16, -15, 21, -15, 24, -14, 27, -12, 29, -9, 30, -5, 30, 0)
+width = 4.0
+default_color = Color(0, 0.513726, 0, 1)
 
 [node name="locked_interactible_lable" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
@@ -190,12 +212,14 @@ uppercase = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control5"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control5"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 10.0
-offset_right = 50.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendOpenIcon"
 
 [node name="open_interactible_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
@@ -207,17 +231,66 @@ uppercase = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="legend/VBoxContainer/legend_grid/icon_control6"]
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control6"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 10.0
-offset_right = 50.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("3_tp2ex")
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendClosedIcon"
+
+[node name="closed" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control6/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 52.0
+offset_bottom = 52.0
+scale = Vector2(0.6, 0.6)
+theme_type_variation = &"InteractItemPanel"
 
 [node name="closed_interactible_label" type="Label" parent="legend/VBoxContainer/legend_grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "closed_interactible_label"
+uppercase = true
+script = ExtResource("3_ic0sg")
+
+[node name="icon_control8" type="Control" parent="legend/VBoxContainer/legend_grid"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="PanelContainer" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control8"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_type_variation = &"LegendClosedIcon"
+
+[node name="sealed" type="Panel" parent="legend/VBoxContainer/legend_grid/icon_control8/PanelContainer"]
+unique_name_in_owner = true
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 57.0
+offset_bottom = 58.0
+scale = Vector2(0.6, 0.6)
+theme_type_variation = &"InteractItemPanel"
+
+[node name="Line2D" type="Line2D" parent="legend/VBoxContainer/legend_grid/icon_control8/PanelContainer/sealed"]
+points = PackedVector2Array(0, 0, 48, 48)
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Line2D2" type="Line2D" parent="legend/VBoxContainer/legend_grid/icon_control8/PanelContainer/sealed"]
+points = PackedVector2Array(48, 0, 0, 48)
+default_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="closed_interactible_label2" type="Label" parent="legend/VBoxContainer/legend_grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sealed_interactible_label"
 uppercase = true
 script = ExtResource("3_ic0sg")
 

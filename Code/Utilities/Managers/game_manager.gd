@@ -57,7 +57,7 @@ func _activate_prisoner(new_prisoner:PrisonerData) -> void:
 		
 		Signals.UpdateActivePrisonersPanel.emit(save_manager.active_save.current_prisoners)
 		# TODO: Make sure the prisoner name is displayed in popup
-		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "activated_prisoner", RidPopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text"), 3)
+		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "activated_prisoner", RidPopupManager.Severity.NORMAL, "", tr("popup_activated_prisoner_text") % new_prisoner.display_name, 3)
 	else:
 		Signals.DisplayPopup.emit(RidPopupManager.Type.SMALL, "max_activated_prisoner", RidPopupManager.Severity.NORMAL, "", tr("popup_max_activated_prisoner_text"), 3)
 

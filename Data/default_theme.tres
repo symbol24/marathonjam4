@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=105 format=3 uid="uid://ckulva3dnkn8g"]
+[gd_resource type="Theme" load_steps=112 format=3 uid="uid://ckulva3dnkn8g"]
 
 [ext_resource type="Texture2D" uid="uid://c3rsuxy54fxmn" path="res://Textures/Ui/icons20x20_hslider_grabber.png" id="1_et1ol"]
 [ext_resource type="Texture2D" uid="uid://uf8eje2537gu" path="res://Textures/Ui/icons20x20_check_button_checked.png" id="1_r2vuf"]
@@ -179,6 +179,83 @@ corner_radius_top_left = 31
 corner_radius_top_right = 31
 corner_radius_bottom_right = 31
 corner_radius_bottom_left = 31
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6b1h"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ghdc"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scq3y"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyssl"]
+bg_color = Color(0, 0.513726, 0, 0.258824)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eorx3"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+corner_radius_top_left = 23
+corner_radius_top_right = 23
+corner_radius_bottom_right = 23
+corner_radius_bottom_left = 23
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i23aq"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy6qc"]
+bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0.513726, 0, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltree"]
 bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
@@ -681,6 +758,20 @@ Label/colors/font_color = Color(0, 0.513726, 0, 1)
 Label/font_sizes/font_size = 28
 LabelBlack/base_type = &"Label"
 LabelBlack/colors/font_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+LegendClosedIcon/base_type = &"Panel"
+LegendClosedIcon/styles/panel = SubResource("StyleBoxFlat_r6b1h")
+LegendLockedIcon/base_type = &"Panel"
+LegendLockedIcon/styles/panel = SubResource("StyleBoxFlat_7ghdc")
+LegendOpenIcon/base_type = &"Panel"
+LegendOpenIcon/styles/panel = SubResource("StyleBoxFlat_scq3y")
+LegendPickupIcon/base_type = &"Panel"
+LegendPickupIcon/styles/panel = SubResource("StyleBoxFlat_eyssl")
+LegendPrisonerIcon/base_type = &"Panel"
+LegendPrisonerIcon/styles/panel = SubResource("StyleBoxFlat_eorx3")
+LegendSearchableIcon/base_type = &"Panel"
+LegendSearchableIcon/styles/panel = SubResource("StyleBoxFlat_i23aq")
+LegendUCIcon/base_type = &"Panel"
+LegendUCIcon/styles/panel = SubResource("StyleBoxFlat_vy6qc")
 LineEdit/colors/caret_color = Color(0, 0.513726, 0, 1)
 LineEdit/colors/font_color = Color(0, 0.513726, 0, 1)
 LineEdit/colors/font_placeholder_color = Color(0, 0.513726, 0, 0.258824)

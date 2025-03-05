@@ -34,7 +34,6 @@ theme_type_variation = &"InteractItemPanel"
 
 [node name="sealed" type="Panel" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = -24.0
 offset_top = -24.0
 offset_right = 24.0
@@ -66,6 +65,7 @@ default_color = Color(0, 0.513726, 0, 1)
 
 [node name="interact_collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 shape = SubResource("RectangleShape2D_y1rjg")
 
 [node name="element_control" type="Control" parent="."]

@@ -85,14 +85,15 @@ ship_naming_input,Challenger,Téméraire,Romano Fafard
 ship_naming_btn_confirm,CONFIRM,CONFIRMER,CONFIRMER
 map_prog_title,Select destination,Choisir la destination,Choisir la destination
 map_prog_ship_title,Spaceship,Vaisseau,Vaisseau
-map_registry_label,Registry:,Immatriculation:,Immatriculation:
-map_propulsion_label,Propulsion system:,System de propulsion:,System de propulsion:
+map_registry_label,Registry:,Registre:,Registre:
+map_propulsion_label,Propulsion:,Propulsion:,Propulsion:
 map_hull_label,Hull:,Coque:,Coque:
-map_ai_core_label,Ai Core:,Systeme de IA:,Systeme de IA:
-map_life_support_label,Life Support:,Systemes de survie:,Systemes de survie:
-map_active_prisoners_label,Active Prisoners:,Prisoniers Actifs:,Prisoniers Actifs:
-map_cryo_prisoners_label,Prisoners in cryo:,Prisoniers en cryo-stase:,Prisoniers en cryo-stase:
-map_dead_prisoners_label,Dead prisoners:,Prisoniers morts:,Prisoniers morts:
+map_ai_core_label,Ai Core:,Core IA:,Core IA:
+map_life_support_label,Life Support:,SYS SURVIE:,SYS SURVIE:
+map_selection_prisoner_label,Prisoners,Prisoniers,Prisoniers
+map_active_prisoners_label,Active:,Actifs:,Actifs:
+map_cryo_prisoners_label,In Cryo:,En cryo:,En Cryo:
+map_dead_prisoners_label,Dead:,Deceder:,Morts:
 map_open_legend_btn,LEGEND,LEGENDE,LEGENDE
 map_prisoner_btn,PRISONERS,PRISONIERS,PRISONIERS
 map_prog_legend_title,LEGEND,LEGENDE,LEGENDE
@@ -114,7 +115,56 @@ locked_interactible_label,Interactable Object LOCKED,Object interactif Verouille
 open_interactible_label,Interactable Object OPEN,Object interactif ouvert,Object interactif ouvert
 closed_interactible_label,Interactable Object CLOSED,Object interactif ferme,Object interactif ferme
 unknown_contact_icon_label,Unknown Contact,Contact inconnu,Contact inconnu
+sealed_interactible_label,Interactable Object Sealed,Object interactif scelle,Object interactif scelle
 inventory_btn,INVENTORY,INVENTAIRE,INVENTAIRE
 prisoner_id_label,Prisoner,Prisonier,Prisonier
 prisoner_health_label,Health:,Sante:,Sante:
 prisoner_status_label,Status:,Statut:,Statut:
+play_level_loading_headshots,retreiving prisoner information,recuperation des informations de prisoniers,recuperation des informations de prisoniers
+play_level_starting,connecting to exterior source,connexion a une source externe,connexion a une source externe
+play_level_loading_manager,attempting to regulate levels,tentative de regulation de niveaux,tentative de regulation de niveaux
+play_level_input,regulating prisoner violent tendencies,regulation des tendences violentes de prisoniers,regulation des tendences violentes de prisoniers
+play_level_spawn_manager,connecting umbilical to exterior contact,connexion du cordon au contact externe,connexion du cordon au contact externe
+play_level_spawn_prisoners,prisoners transfering to exterior contact,prisoniers en transit au contact externe,prisoniers en transit au contact externe
+play_level_done_prisoners,prisoners in airlock,prisoniers en attente dans le sasse,prisoniers en attente dans le sasse
+play_level_done_ucs,scanning for possible contacts,detection de contacts potentiels,detection de contacts potentiels
+map_selection_ready,map retreival started,recuperation de la carte commencer,recuperation de la carte commencer
+map_selection_retrieving_map,map retreival processing,recuperation de la carte en traitement,recuperation de la carte en traitement
+map_selection_placing_stuff,scanning region for possible contacts,balayage de la region,balayage de la region
+map_selection_spawning_ship,triangulating current position,triangulation de la position courante,triangulation de la position courante
+map_selection_generating_map,connecting to navigation buoys,connexion au bouées de navigation,connexion au bouées de navigation
+prisoner_selection_ready,accessing prisoner database information,acces a la base de donnees de prisoniers,acces a la base de donnees de prisoniers
+prisoner_selection_populate,populating list of prisoners,remplissage de la liste de prisoniers,remplissage de la liste de prisoniers
+prisoner_selection_populate_done,list populated,liste complete,liste complete
+story_Intro_loading,accessing last captain's log for playback,recuperation du dernier journal de bord pour ecoute,recuperation du dernier journal de bord pour ecoute
+continue_loader_redirect_prisoner_select,accessing last known location,recuperation de la derniere position,recuperation de la derniere position
+continue_loader_prisoner_loading,"not active prisoners, redirecting to prisoner database","aucun prisoniers actifs, redircection a la base de donnees","aucun prisoniers actifs, redircection a la base de donnees"
+continue_loader_loading_map_location,accessing map database,recuperation de la base de donnees de la region,recuperation de la base de donnees de la region
+continue_loader_prisoner_loading,accessing prisoner database,recuperation de la base de donnees des prisoniers,recuperation de la base de donnees des prisoniers
+scene_load,retreiving location data,recuperation de l'information de localisation,recuperation de l'information de localisation
+popup_item_picked_up_text,Item has been retreived.,Objet recuperer.,Objet recuperer.
+popup_unable_to_complete_action_text,Unable to complete action.,Incapable de completer l'action.,Incapable de completer l'action.
+abandon_run_popup_title,Abandon run?,Abandonner la partie en cours?,Abandonner la partie en cours?
+abandon_run_popup_text,Do you wish to abandon the current run? Progress will be lost.,Voulez-vous abandonner la partie en cours? Le progres sera perdu.,Voulez-vous abandonner la partie en cours? Le progres sera perdu.
+map_select_prepare,Preparing vessel for FTL transit.,Preparation du vaisseau pour deplacement PVL.,Preparation du vaisseau pour deplacement PVL.
+map_select_transit,Vessel in FTL transit.,Vaisseau en deplacement FTL.,Vaisseau en deplacement FTL.
+map_select_arrived,Vessel arrived at destination.,Vaisseau arriver a destination.,Vaisseau arriver a destination.
+pause_settings_pending_changes_title,Pending changes,Changements en attente de sauvegarde,Changements en attente de sauvegarde
+pause_settings_pending_changes_title,"There are unsaved changes, do you wish to discard them?","Des changements aux options sont en attente de sauvegarde, voulez-vous les abandonner.","Des changements aux options sont en attente de sauvegarde, voulez-vous les abandonner."
+prisoner_selection_no_prisoners,"No active prisoners, minimum of 1 prisoner must be revived.",Aucun prisoniers actifs. Minimum de 1 prisonier est requis.,Aucun prisoniers actifs. Minimum de 1 prisonier est requis.
+setting_pending_changes_close_title,Pending changes,Changements en attente de sauvegarde,Changements en attente de sauvegarde
+setting_pending_changes_close_text,"There are unsaved changes, do you wish to discard them?","Des changements aux options sont en attente de sauvegarde, voulez-vous les abandonner.","Des changements aux options sont en attente de sauvegarde, voulez-vous les abandonner."
+setting_pending_changes_apply_title,Save changes?,Changements en attente de sauvegarde,Changements en attente de sauvegarde
+setting_pending_changes_apply_text,Do you wish to save current changes?,Sauvegarder les changements aux options?,Sauvegarder les changements aux options?
+setting_window_mode_changes_title,Window mode changed,Mode de fenetre changer,Mode de fenetre changer
+setting_window_mode_changes_text,Window mode has been changed. Do you wish to keep the change? Window mode will return to previous setting when the timer ends.,Le mode de la fenetre a ete changer. Voulez-vous garder le changement? Le changement sera automatiquement remis apres le decompte.,Le mode de la fenetre a ete changer. Voulez-vous garder le changement? Le changement sera automatiquement remis apres le decompte.
+setting_resolution_changes_title,Window size changed,Grandeur de fenetre changer,Grandeur de fenetre changer
+setting_resolution_changes_text,Window size has been changed. Do you wish to keep the change? Window size will return to previous setting when the timer ends.,La grandeur de la fenetre a ete changer. Voulez-vous garder le changement? Le changement sera automatiquement remis apres le decompte.,La grandeur de la fenetre a ete changer. Voulez-vous garder le changement? Le changement sera automatiquement remis apres le decompte.
+popup_activated_prisoner_text,Prisoner %s has been revived from cryo-stasis and is waiting.,Prisonier %s a ete reanimer de cryo-staze et est en attente.,Prisonier %s a ete reanimer de cryo-staze et est en attente.
+popup_max_activated_prisoner_text,Maximum amount of revived prisoners has been reached. No available life support.,Le maximum de prisoniers reanimes a ete atteint. System de survie insufisant.,Le maximum de prisoniers reanimes a ete atteint. System de survie insufisant.
+no_save_error_text,,,
+wrong_save_error_text,,,
+save_error_title,,,
+save_error_text,,,
+already_loaded_error_text,,,
+unsaved_changes_load_error_title,,,
